@@ -6,6 +6,7 @@
 - Andres Mateo Calderon Ortega
 ### Diagrama de Casos de Uso
 ### Diagrama de Clases
+![](./Img/EntidadRelacionDB.png)
 ### Diagrama de Componentes
 ### Despliegue en Heroku
 ### Calidad del Código
