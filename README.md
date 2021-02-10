@@ -2,11 +2,13 @@
 ## Proyecto-ARSW-MarketHub-2021-1
 ## Descripción del producto 📄
 ## Integrantes ✒️
-- Daniel Felipe Rincon Muñoz - [PaulaSanchez810](https://github.com/PaulaSanchez810)
-- Paula Andrea Guevara Sanchez - [danielrincon-m](https://github.com/danielrincon-m)
+- Daniel Felipe Rincon Muñoz - [danielrincon-m](https://github.com/danielrincon-m)
+- Paula Andrea Guevara Sanchez - [PaulaSanchez810](https://github.com/PaulaSanchez810)
 - Andres Mateo Calderon Ortega - [Candres1019](https://github.com/Candres1019)
 ## Arquitectura y Diseño 🔧
 ### Diagrama de Casos de Uso
+![](./Img/DiagramaCasodeUsoComprador.png)
+![](./Img/DiagramaCasodeUsovenderdor.png)
 ### Diagrama de Clases
 ![](./Img/EntidadRelacionDB.png)
 ### Diagrama de Componentes
