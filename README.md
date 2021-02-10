@@ -1,4 +1,4 @@
-# MarketHub
+# MarketHub 🛒
 ## Proyecto-ARSW-MarketHub-2021-1
 ## Descripción del producto 📄
 ## Integrantes ✒️
