@@ -14,19 +14,6 @@
 
 - Andres Mateo Calderon Ortega - [Candres1019](https://github.com/Candres1019)
 
-## Arquitectura y Diseño 🔧
-
-### Diagrama de Casos de Uso
-
-![](./Img/DiagramaCasodeUsoComprador.png)
-![](./Img/DiagramaCasodeUsovenderdor.png)
-
-### Diagrama de Clases
-
-![](./Img/EntidadRelacionDB.png)
-
-### Diagrama de Componentes
-
 ### Despliegue en Heroku ☁️
 
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://markethub-arsw.herokuapp.com)
@@ -42,3 +29,21 @@
 ### Scrum Task Plan 🎤
 
 [![Taiga Backlog](https://images.assets-landingi.com/jvS0A3Tm24feIBqs/logo_horizontal.png)](https://tree.taiga.io/project/candres1019-proyecto-arsw-markethub-2021-1/backlog)
+
+## Arquitectura y Diseño 🔧
+
+### Diagrama de Casos de Uso
+
+![](./Img/DiagramaCasodeUsoComprador.png)
+![](./Img/DiagramaCasodeUsovenderdor.png)
+
+### Diagrama de Clases
+
+![](./Img/EntidadRelacionDB.png)
+
+# Mockups
+
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista1.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista2.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista3.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista4.png)
