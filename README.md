@@ -44,7 +44,7 @@
 # Mockups
 ## Vista incial
 ![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista1.png)
-## Vista de Categorias
+## Vista de Categorías
 ![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista2.png)
 ## Vista de login
 ![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista3.png)
