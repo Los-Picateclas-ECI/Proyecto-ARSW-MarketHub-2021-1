@@ -4,6 +4,10 @@
 
 ## Descripción del producto 📄
 
+MarketHub ayuda a los vendedores a tener una herramienta útil y segura para realizar sus ventas, además de brindar la posibilidad de realizar compras al por mayor.
+
+Con MarketHub se busca brindar al vendedor una mejor experiencia al momento de vender sus productos sin necesidad de pagar una comisión a terceros por vender estos productos, y a los clientes una confianza en una plataforma intuitiva, segura y sobre todo en tiempo real en la cual el este informado al instante sobre todos los cambios que se realicen.
+
 ## Integrantes ✒️
 
 - Daniel Felipe Rincon Muñoz - [danielrincon-m](https://github.com/danielrincon-m)
@@ -31,22 +35,27 @@
 [![Taiga Backlog](https://images.assets-landingi.com/jvS0A3Tm24feIBqs/logo_horizontal.png)](https://tree.taiga.io/project/candres1019-proyecto-arsw-markethub-2021-1/backlog)
 
 ## Arquitectura y Diseño 🔧
-
-### Diagrama de Casos de Uso
+ 
+### Diagrama de Casos de Uso 👳
 
 ![](./Img/DiagramaCasodeUsoComprador.png)
+
 ![](./Img/DiagramaCasodeUsovenderdor.png)
 
-### Diagrama de Clases
+### Diagrama de Clases 🎖️
 
 ![](./Img/EntidadRelacionDB.png)
 
-# Mockups
+# Mockups 💻 📱
+
 ## Vista incial
-![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista1.png)
+![](./Img/Mockups-vista1.png)
+
 ## Vista de Categorías
-![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista2.png)
+![](./Img/Mockups-vista2.png)
+
 ## Vista de login
-![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista3.png)
+![](./Img/Mockups-vista3.png)
+
 ## vista carro de compras 
-![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista4.png)
+![](./Img/Mockups-vista4.png)
