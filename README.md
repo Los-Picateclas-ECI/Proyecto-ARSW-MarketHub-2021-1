@@ -38,13 +38,21 @@ Con MarketHub se busca brindar al vendedor una mejor experiencia al momento de v
  
 ### Diagrama de Casos de Uso 👳
 
+#### Caso de Uso de un Comprador
+
 ![](./Img/DiagramaCasodeUsoComprador.png)
+
+#### Caso de Uso de un Vendedor
 
 ![](./Img/DiagramaCasodeUsovenderdor.png)
 
-### Diagrama de Clases 🎖️
+### Diagrama de Entidades 🎖️
 
 ![](./Img/EntidadRelacionDB.png)
+
+### Diagrama de Clases 📐
+
+![](./Img/DiagramaClases.png)
 
 # Mockups 💻 📱
 
