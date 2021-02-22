@@ -13,11 +13,7 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 ## Integrantes ✒️
 
 -   Daniel Felipe Rincon Muñoz - [danielrincon-m](https://github.com/danielrincon-m)
-
-
 -   Paula Andrea Guevara Sanchez - [PaulaSanchez810](https://github.com/PaulaSanchez810)
-
-
 -   Andres Mateo Calderon Ortega - [Candres1019](https://github.com/Candres1019)
 
 ### Despliegue en Heroku ☁️
