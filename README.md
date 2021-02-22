@@ -1,12 +1,17 @@
 # MarketHub 🛒
 
+![](./Img/Logo.png)
+
 ## Proyecto-ARSW-MarketHub-2021-1
 
 ## Descripción del producto 📄
 
-MarketHub ayuda a los vendedores a tener una herramienta útil y segura para realizar sus ventas, además de brindar la posibilidad de realizar compras al por mayor.
+MarketHub ayuda a los vendedores a tener una herramienta útil y segura para realizar sus ventas, además de brindar la
+posibilidad de realizar compras al por mayor.
 
-Con MarketHub se busca brindar al vendedor una mejor experiencia al momento de vender sus productos sin necesidad de pagar una comisión a terceros por vender estos productos, y a los clientes una confianza en una plataforma intuitiva, segura y sobre todo en tiempo real en la cual el este informado al instante sobre todos los cambios que se realicen.
+Con MarketHub se busca brindar al vendedor una mejor experiencia al momento de vender sus productos sin necesidad de
+pagar una comisión a terceros por vender estos productos, y a los clientes una confianza en una plataforma intuitiva,
+segura y sobre todo en tiempo real en la cual el este informado al instante sobre todos los cambios que se realicen.
 
 Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion sobre el proyecto.
 
@@ -37,7 +42,7 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 [![Taiga Backlog](https://images.assets-landingi.com/jvS0A3Tm24feIBqs/logo_horizontal.png)](https://tree.taiga.io/project/candres1019-proyecto-arsw-markethub-2021-1/backlog)
 
 ## Arquitectura y Diseño 🔧
- 
+
 ### Diagrama de Casos de Uso 👳
 
 #### Caso de Uso de un Comprador
@@ -59,17 +64,20 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 ## Mockups 💻 📱
 
 ### Vista incial
+
 ![](./Img/Mockups-vista1.png)
 
 ### Vista de Categorías
+
 ![](./Img/Mockups-vista2.png)
 
 ### Vista de login
+
 ![](./Img/Mockups-vista3.png)
 
-### vista carro de compras 
-![](./Img/Mockups-vista4.png)
+### vista carro de compras
 
+![](./Img/Mockups-vista4.png)
 
 ## Construido Con
 
@@ -80,4 +88,5 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 * [Visual Studio Code](https://code.visualstudio.com) - Entorno de Desarrollo.
 
 # Licencia
+
 Este proyecto está licenciado bajo la GNU v3.0 - ver el archivo [LICENSE](LICENSE) para más detalles
