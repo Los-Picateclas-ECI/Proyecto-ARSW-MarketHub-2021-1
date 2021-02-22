@@ -78,5 +78,5 @@ Con MarketHub se busca brindar al vendedor una mejor experiencia al momento de v
 * [Visual Studio Code](https://code.visualstudio.com) - Entorno de Desarrollo.
 
 # Licencia
-Este proyecto está licenciado bajo la GNU v3.0 - ver el archivo [LICENSE.md](.LICENSE) para más detalles
+Este proyecto está licenciado bajo la GNU v3.0 - ver el archivo [LICENSE.md](LICENSE) para más detalles
 
