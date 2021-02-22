@@ -12,13 +12,13 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 
 ## Integrantes ✒️
 
-- Daniel Felipe Rincon Muñoz - [danielrincon-m](https://github.com/danielrincon-m)
+-   Daniel Felipe Rincon Muñoz - [danielrincon-m](https://github.com/danielrincon-m)
 
 
-- Paula Andrea Guevara Sanchez - [PaulaSanchez810](https://github.com/PaulaSanchez810)
+-   Paula Andrea Guevara Sanchez - [PaulaSanchez810](https://github.com/PaulaSanchez810)
 
 
-- Andres Mateo Calderon Ortega - [Candres1019](https://github.com/Candres1019)
+-   Andres Mateo Calderon Ortega - [Candres1019](https://github.com/Candres1019)
 
 ### Despliegue en Heroku ☁️
 
@@ -26,7 +26,7 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 
 ### Calidad del Código 🛡️
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8548ce8a709f4823b8412095ad8c2609)](https://www.codacy.com/gh/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8548ce8a709f4823b8412095ad8c2609)](https://www.codacy.com/gh/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/dashboard?utm_source=github.com&utm_medium=referral&utm_content=Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1&utm_campaign=Badge_Grade)
 
 ### Integracion Continua ✔️
 
@@ -37,7 +37,7 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 [![Taiga Backlog](https://images.assets-landingi.com/jvS0A3Tm24feIBqs/logo_horizontal.png)](https://tree.taiga.io/project/candres1019-proyecto-arsw-markethub-2021-1/backlog)
 
 ## Arquitectura y Diseño 🔧
- 
+
 ### Diagrama de Casos de Uso 👳
 
 #### Caso de Uso de un Comprador
@@ -59,25 +59,29 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 ## Mockups 💻 📱
 
 ### Vista incial
+
 ![](./Img/Mockups-vista1.png)
 
 ### Vista de Categorías
+
 ![](./Img/Mockups-vista2.png)
 
 ### Vista de login
+
 ![](./Img/Mockups-vista3.png)
 
-### vista carro de compras 
-![](./Img/Mockups-vista4.png)
+### vista carro de compras
 
+![](./Img/Mockups-vista4.png)
 
 ## Construido Con
 
-* [Java 8](https://www.java.com/es/) - Lenguaje de Programación.
-* [JUnit](https://junit.org/junit5/) - Pruebas de Unidad.
-* [Maven](https://maven.apache.org/) - Manejo de dependecias.
-* [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/) - Entorno de Desarrollo.
-* [Visual Studio Code](https://code.visualstudio.com) - Entorno de Desarrollo.
+-   [Java 8](https://www.java.com/es/) - Lenguaje de Programación.
+-   [JUnit](https://junit.org/junit5/) - Pruebas de Unidad.
+-   [Maven](https://maven.apache.org/) - Manejo de dependecias.
+-   [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/) - Entorno de Desarrollo.
+-   [Visual Studio Code](https://code.visualstudio.com) - Entorno de Desarrollo.
 
-# Licencia
+## Licencia
+
 Este proyecto está licenciado bajo la GNU v3.0 - ver el archivo [LICENSE](LICENSE) para más detalles
