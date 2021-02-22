@@ -4,6 +4,12 @@
 
 ## Descripción del producto 📄
 
+MarketHub ayuda a los vendedores a tener una herramienta útil y segura para realizar sus ventas, además de brindar la posibilidad de realizar compras al por mayor.
+
+Con MarketHub se busca brindar al vendedor una mejor experiencia al momento de vender sus productos sin necesidad de pagar una comisión a terceros por vender estos productos, y a los clientes una confianza en una plataforma intuitiva, segura y sobre todo en tiempo real en la cual el este informado al instante sobre todos los cambios que se realicen.
+
+Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion sobre el proyecto.
+
 ## Integrantes ✒️
 
 - Daniel Felipe Rincon Muñoz - [danielrincon-m](https://github.com/danielrincon-m)
@@ -31,22 +37,47 @@
 [![Taiga Backlog](https://images.assets-landingi.com/jvS0A3Tm24feIBqs/logo_horizontal.png)](https://tree.taiga.io/project/candres1019-proyecto-arsw-markethub-2021-1/backlog)
 
 ## Arquitectura y Diseño 🔧
+ 
+### Diagrama de Casos de Uso 👳
 
-### Diagrama de Casos de Uso
+#### Caso de Uso de un Comprador
 
 ![](./Img/DiagramaCasodeUsoComprador.png)
+
+#### Caso de Uso de un Vendedor
+
 ![](./Img/DiagramaCasodeUsovenderdor.png)
 
-### Diagrama de Clases
+### Diagrama de Entidades 🎖️
 
 ![](./Img/EntidadRelacionDB.png)
 
-# Mockups
-## Vista incial
-![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista1.png)
-## Vista de Categorías
-![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista2.png)
-## Vista de login
-![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista3.png)
-## vista carro de compras 
-![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/Mockups-vista4.png)
+### Diagrama de Clases 📐
+
+![](./Img/DiagramaClases.png)
+
+## Mockups 💻 📱
+
+### Vista incial
+![](./Img/Mockups-vista1.png)
+
+### Vista de Categorías
+![](./Img/Mockups-vista2.png)
+
+### Vista de login
+![](./Img/Mockups-vista3.png)
+
+### vista carro de compras 
+![](./Img/Mockups-vista4.png)
+
+
+## Construido Con
+
+* [Java 8](https://www.java.com/es/) - Lenguaje de Programación.
+* [JUnit](https://junit.org/junit5/) - Pruebas de Unidad.
+* [Maven](https://maven.apache.org/) - Manejo de dependecias.
+* [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/) - Entorno de Desarrollo.
+* [Visual Studio Code](https://code.visualstudio.com) - Entorno de Desarrollo.
+
+# Licencia
+Este proyecto está licenciado bajo la GNU v3.0 - ver el archivo [LICENSE](LICENSE) para más detalles
