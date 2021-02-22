@@ -54,16 +54,29 @@ Con MarketHub se busca brindar al vendedor una mejor experiencia al momento de v
 
 ![](./Img/DiagramaClases.png)
 
-# Mockups 💻 📱
+## Mockups 💻 📱
 
-## Vista incial
+### Vista incial
 ![](./Img/Mockups-vista1.png)
 
-## Vista de Categorías
+### Vista de Categorías
 ![](./Img/Mockups-vista2.png)
 
-## Vista de login
+### Vista de login
 ![](./Img/Mockups-vista3.png)
 
-## vista carro de compras 
+### vista carro de compras 
 ![](./Img/Mockups-vista4.png)
+
+
+## Construido Con
+
+* [Java 8](https://www.java.com/es/) - Lenguaje de Programación.
+* [JUnit](https://junit.org/junit5/) - Pruebas de Unidad.
+* [Maven](https://maven.apache.org/) - Manejo de dependecias.
+* [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/) - Entorno de Desarrollo.
+* [Visual Studio Code](https://code.visualstudio.com) - Entorno de Desarrollo.
+
+# Licencia
+Este proyecto está licenciado bajo la GNU v3.0 - ver el archivo [LICENSE.md](.LICENSE) para más detalles
+
