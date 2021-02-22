@@ -1,6 +1,6 @@
 # MarketHub 🛒
 
-![](./Img/Logo.png)
+![](src/main/resources/static/img/Logo.png)
 
 ## Proyecto-ARSW-MarketHub-2021-1
 
