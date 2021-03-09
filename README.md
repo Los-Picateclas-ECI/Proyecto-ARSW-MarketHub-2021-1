@@ -1,12 +1,17 @@
 # MarketHub 🛒
 
+![](src/main/resources/static/img/Logo.png)
+
 ## Proyecto-ARSW-MarketHub-2021-1
 
 ## Descripción del producto 📄
 
-MarketHub ayuda a los vendedores a tener una herramienta útil y segura para realizar sus ventas, además de brindar la posibilidad de realizar compras al por mayor.
+MarketHub ayuda a los vendedores a tener una herramienta útil y segura para realizar sus ventas, además de brindar la
+posibilidad de realizar compras al por mayor.
 
-Con MarketHub se busca brindar al vendedor una mejor experiencia al momento de vender sus productos sin necesidad de pagar una comisión a terceros por vender estos productos, y a los clientes una confianza en una plataforma intuitiva, segura y sobre todo en tiempo real en la cual el este informado al instante sobre todos los cambios que se realicen.
+Con MarketHub se busca brindar al vendedor una mejor experiencia al momento de vender sus productos sin necesidad de
+pagar una comisión a terceros por vender estos productos, y a los clientes una confianza en una plataforma intuitiva,
+segura y sobre todo en tiempo real en la cual el este informado al instante sobre todos los cambios que se realicen.
 
 Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion sobre el proyecto.
 
@@ -80,4 +85,4 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 
 ## Licencia
 
-Este proyecto está licenciado bajo la GNU v3.0 - ver el archivo [LICENSE](LICENSE) para más detalles
+Este proyecto está licenciado bajo la GNU v3.0 - ver el archivo [LICENSE](LICENSE) para más detallesbc
