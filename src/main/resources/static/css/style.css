@@ -80,10 +80,6 @@ p {
     background: radial-gradient(#ffffff, #ffd6d6);
 }
 
-.header .container-row {
-    margin-top: 70px;
-}
-
 .categories {
     margin: 70px 0;
 }
@@ -121,6 +117,7 @@ p {
 .title {
     text-align: center;
     margin: 0 auto;
+    padding-bottom: 30px;
     position: relative;
     line-height: 60px;
     color: #555555;
@@ -133,7 +130,7 @@ p {
     height: 5px;
     border-radius: 5px;
     position: absolute;
-    bottom: 0;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -470,7 +467,7 @@ th:last-child {
 /* Account */
 
 .account-page {
-    padding: 50px 0;
+    padding: 10px 0;
     background: radial-gradient(#ffffff, #ffd6d6);
 }
 
