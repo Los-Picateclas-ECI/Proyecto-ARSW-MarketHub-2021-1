@@ -569,8 +569,10 @@ form input {
 }
 
 form input:focus {
-    background: black;
+    background: #d3d3d3;
     color: #ffffff;
+    height: 40px;
+    color: #000000;
 }
 
 /* Media para menu responsive */
