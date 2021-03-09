@@ -1,0 +1,160 @@
+h1 {
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: #777;
+    font-family: sans-serif;
+    background: radial-gradient(#ffffff, #ffd6d6);
+    font-weight: 300;
+}
+
+.login-container {
+    position: relative;
+    margin: 10% auto;
+    height: 400px;
+    width: 600px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.login-container__login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 300px;
+    height: 400px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #ffffff;
+}
+
+.login-container__login input {
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 4px;
+    width: 220px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    outline: none;
+    font-size: 15px;
+    transition: .2s;
+    color: #ffffff;
+    background: transparent;
+}
+
+.login-container__login input:focus {
+    background: black;
+}
+
+.login-container__login button {
+    margin-bottom: 28px;
+    width: 180px;
+    height: 32px;
+    background: #f44336;
+    border: none;
+    border-radius: 2px;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.login-container__login button:hover {
+    background: #ff5722;
+    color: black;
+}
+
+.login-container__autologin {
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 300px;
+    height: 400px;
+    background: #ff523b;
+}
+
+.login-container__autologin-title {
+    display: block;
+    margin-bottom: 40px;
+    font-size: 28px;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.social-log {
+    margin-bottom: 20px;
+    width: 220px;
+    height: 36px;
+    border: none;
+    border-radius: 2px;
+    font-size: 15px;
+    transition: .2s;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.login-container__autologin-facebook {
+    background: #32508e;
+}
+
+.login-container__autologin-twitter {
+    background: #55acee;
+}
+
+.login-container__autologin-google {
+    background: #dd4b39;
+}
+
+.login-container__middle a {
+    position: absolute;
+    top: 180px;
+    left: 280px;
+    width: 40px;
+    height: 40px;
+    background: #efefef;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width: 600px){
+    
+    .login-container {
+        display: grid;
+        grid-template-rows: 50% 50%;
+        width: 100%;
+        height: 800px;
+        background: black;
+        align-items: center;
+    }
+
+    .login-container__login {
+        display: block;
+        background: #32508e;
+        margin: 20px;
+    }
+
+    .login-container__autologin {
+        display: block;
+    }
+
+    .login-container__middle {
+        display: none;
+    }
+}
