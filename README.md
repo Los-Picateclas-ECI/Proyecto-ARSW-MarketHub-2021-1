@@ -57,6 +57,14 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 
 ![](./Img/DiagramaClases.png)
 
+### Diagrama de Despliegue
+
+![](./Img/DiagramaDeDespliegue.png)
+
+### Diagrama de Componentes
+
+![](./Img/DiagramaDeComponenetes.png)
+
 ## Mockups 💻 📱
 
 ### Vista incial
