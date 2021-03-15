@@ -11,6 +11,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/carrito.html").authenticated().anyRequest().permitAll().and()
-                .formLogin();
+                .formLogin().loginPage("/login");
     }
 }
