@@ -18,8 +18,6 @@ public class MockPersistence implements Persistence {
 
     public MockPersistence() {
         /*Usuarios*/
-        registerUser("homie.simpson", "homie.simpson@springfield.com", "andapa");
-        registerUser("WTF", "W@T.F", "FTW");
         registerUser("homie.simpson", "homie.simpson@springfield.com", "andapa", "ADMIN");
         registerUser("WTF", "W@T.F", "FTW", "USER");
         /*¨Productos*/
