@@ -1,20 +1,27 @@
 package edu.escuelaing.arsw.markethub.persistence.impl;
 
-import java.util.HashMap;
-
+import edu.escuelaing.arsw.markethub.entities.UserMH;
+import edu.escuelaing.arsw.markethub.persistence.Persistence;
 import org.springframework.stereotype.Component;
 
-import edu.escuelaing.arsw.markethub.persistence.Persistence;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 @Component("mockPersistence")
 public class MockPersistence implements Persistence {
 
-    private HashMap<String, User> usersByUsername;
-    private HashMap<String, User> usersByEmail;
+    private final HashMap<String, UserMH> usersByUsername = new HashMap<>();
+    private final HashMap<String, UserMH> usersByEmail = new HashMap<>();
+
+    public MockPersistence() {
+        registerUser("homie.simpson", "homie.simpson@springfield.com", "andapa");
+        registerUser("WTF", "W@T.F", "FTW");
+    }
 
     @Override
     public boolean checkUserCredentials(String usernameOrEmail, String password) {
-        User user;
+        UserMH user;
         if (usersByUsername.containsKey(usernameOrEmail)) {
             user = usersByUsername.get(usernameOrEmail);
         } else if (usersByEmail.containsKey(usernameOrEmail)) {
@@ -29,45 +36,15 @@ public class MockPersistence implements Persistence {
     @Override
     public void registerUser(String username, String email, String password) {
         if (!usersByUsername.containsKey(username) && !usersByEmail.containsKey(email)) {
-            User user = new User(username, email, password);
+            UserMH user = new UserMH(username, email, password);
             usersByUsername.put(username, user);
             usersByEmail.put(email, user);
         }
     }
 
-    class User {
-        private String username;
-        private String password;
-        private String email;
-
-        public User(String username, String email, String password) {
-            this.username = username;
-            this.password = password;
-            this.email = email;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
+    @Override
+    public List<UserMH> getAllUsers() {
+        return new ArrayList<UserMH>(usersByUsername.values());
     }
+
 }
