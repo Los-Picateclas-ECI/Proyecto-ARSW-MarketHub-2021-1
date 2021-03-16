@@ -10,7 +10,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/carrito.html").authenticated().anyRequest().permitAll().and()
-                .formLogin();
+        http.authorizeRequests()
+                .antMatchers("/carrito")
+                .authenticated()
+                .anyRequest()
+                .permitAll()
+                .and()
+                .csrf().disable()
+                .formLogin()
+                .loginPage("/login").permitAll()
+                .loginProcessingUrl("/login/verificar")
+                .defaultSuccessUrl("/index", true);
     }
 }
