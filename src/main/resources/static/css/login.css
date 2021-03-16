@@ -154,22 +154,72 @@ h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-@media only screen and (max-width: 600px) {
-    .login-container {
-        display: grid;
-        grid-template-rows: 50% 50%;
+
+/* Media para menu responsive */
+
+@media only screen and (max-width: 800px) {
+    nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: #333333;
         width: 100%;
-        height: 800px;
-        background: black;
+        overflow: hidden;
+        transition: max-height 0.5s;
+        z-index: 100;
+    }
+    nav ul li {
+        display: block;
+        margin-right: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    nav ul li a {
+        color: #fff;
+    }
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container-row {
+        text-align: center;
+    }
+    .container-row__2,
+    .container-row__3,
+    .container-row__4 {
+        flex-basis: 100%;
+    }
+    .single-product .container-row {
+        text-align: left;
+    }
+    .single-product .container-row__2 {
+        padding: 20px 0;
+    }
+    .single-product .h1 {
+        font-size: 26px;
+        line-height: 32px;
+    }
+    .cart-info p {
+        display: none;
+    }
+    .login-container {
+        display: inline-block;
         align-items: center;
+        width: 100%;
+        height: 840px;
+        background: black;
     }
     .login-container__login {
-        display: block;
+        position: relative;
+        margin: 10px 30px;
         background: #32508e;
-        margin: 20px;
     }
     .login-container__autologin {
-        display: block;
+        position: relative;
+        margin: 10px 30px;
     }
     .login-container__middle {
         display: none;

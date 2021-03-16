@@ -1,39 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta content="Pagina de login de la plataforma MarketHub" name="description">
     <meta content="MarketHub" name="copyright">
     <meta content="index" name="robots">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
-    <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="./img/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="./css/normalize.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="./js/front.js"></script>
+    <script>
+        window.onload = front.changeImages;
+    </script>
     <title>Registro</title>
 </head>
+
 <body>
 <!-- Parte superior de la pagina, donde se eneucntra la barra de navegación -->
 <div class="container">
-    <div class="container-navbar">
-        <div class="navbar-logo">
-            <a href="./index.html"><img src="./img/logoLarge.png" width="125px"></a>
-        </div>
-        <nav>
-            <ul id="MenuItems">
-                <li><a href="./index.html">Inicio</a></li>
-                <li><a href="./products.html">Productos</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="./account.html">Cuenta</a></li>
-            </ul>
-        </nav>
-        <a href="./carrito.html"><img height="30px" src="./images/cart.png" width="30px"></a>
-        <img class="menu-icon" height="30px" onclick="menutoggle()" src="./images/menu.png">
-    </div>
+    <div class="container-navbar" id="barrita"></div>
 </div>
 
 <!-- Pagina de usuario -->
@@ -42,7 +34,7 @@
     <div class="container">
         <div class="container-row">
             <div class="container-row__2">
-                <img src="./img/loginImg.png" width="100%" alt="LoginImage">
+                <img alt="LoginImage" src="./img/loginImg.png" width="100%">
             </div>
             <div class="container-row__2">
                 <div class="form-container">
@@ -57,16 +49,16 @@
                     </form>
                     <form id="RegForm">
                         <label>
-                            <input type="text" placeholder="Usuario">
+                            <input placeholder="Usuario" type="text">
                         </label>
                         <label>
-                            <input type="email" placeholder="Correo">
+                            <input placeholder="Correo" type="email">
                         </label>
                         <label>
-                            <input type="password" placeholder="Contraseña">
+                            <input placeholder="Contraseña" type="password">
                         </label>
-                        <button type="submit" class="container-row__2-btn">Registrarse</button>
-                        <a href="./login.html">Iniciar Sesión</a>
+                        <button class="container-row__2-btn" type="submit">Registrarse</button>
+                        <a href="/login">Iniciar Sesión</a>
                     </form>
                 </div>
             </div>
@@ -113,21 +105,6 @@
         <p class="copyright">Copyright 2020 - MarketHub</p>
     </div>
 </div>
-
-<!-- Pal boton -->
-<script>
-    const MenuItems = document.getElementById("MenuItems");
-    MenuItems.style.maxHeight = "0px";
-
-    function menutoggle() {
-        if (MenuItems.style.maxHeight === "0px") {
-            MenuItems.style.maxHeight = "200px";
-        } else {
-            MenuItems.style.maxHeight = "0px";
-        }
-    }
-</script>
-
-<!-- Pal menu del registro -->
 </body>
+
 </html>

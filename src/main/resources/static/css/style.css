@@ -583,7 +583,6 @@ form input:focus {
     color: #000;
 }
 
-
 /* Media para menu responsive */
 
 @media only screen and (max-width: 800px) {
@@ -595,6 +594,7 @@ form input:focus {
         width: 100%;
         overflow: hidden;
         transition: max-height 0.5s;
+        z-index: 100;
     }
     nav ul li {
         display: block;
