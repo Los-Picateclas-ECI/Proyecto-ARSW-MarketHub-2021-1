@@ -15,8 +15,8 @@ public class MockPersistence implements Persistence {
     private final HashMap<String, UserMH> usersByEmail = new HashMap<>();
 
     public MockPersistence() {
-        registerUser("homie.simpson", "homie.simpson@springfield.com", "andapa");
-        registerUser("WTF", "W@T.F", "FTW");
+        registerUser("homie.simpson", "homie.simpson@springfield.com", "andapa", "ADMIN");
+        registerUser("WTF", "W@T.F", "FTW", "USER");
     }
 
     @Override
@@ -34,9 +34,9 @@ public class MockPersistence implements Persistence {
     }
 
     @Override
-    public void registerUser(String username, String email, String password) {
+    public void registerUser(String username, String email, String password, String role) {
         if (!usersByUsername.containsKey(username) && !usersByEmail.containsKey(email)) {
-            UserMH user = new UserMH(username, email, password);
+            UserMH user = new UserMH(username, email, password, role);
             usersByUsername.put(username, user);
             usersByEmail.put(email, user);
         }
@@ -45,6 +45,22 @@ public class MockPersistence implements Persistence {
     @Override
     public List<UserMH> getAllUsers() {
         return new ArrayList<UserMH>(usersByUsername.values());
+    }
+
+    @Override
+    public UserMH getUserByUsername(String username) {
+        if (usersByUsername.containsKey(username)) {
+            return usersByUsername.get(username);
+        }
+        return null;
+    }
+
+    @Override
+    public UserMH getUserByEmail(String email) {
+        if (usersByEmail.containsKey(email)) {
+            return usersByEmail.get(email);
+        }
+        return null;
     }
 
 }

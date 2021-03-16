@@ -11,8 +11,8 @@ public class AccountServices {
     @Qualifier("mockPersistence")
     private Persistence persistence;
 
-    public void registerUser(String username, String email, String password) {
-        persistence.registerUser(username, email, password);
+    public void registerUser(String username, String email, String password, String role) {
+        persistence.registerUser(username, email, password, role);
     }
 
     public boolean loginUser(String usernameOrEmail, String password) {

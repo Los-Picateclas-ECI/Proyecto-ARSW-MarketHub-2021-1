@@ -4,11 +4,13 @@ public class UserMH {
     private String username;
     private String password;
     private String email;
+    private String role;
 
-    public UserMH(String username, String email, String password) {
+    public UserMH(String username, String email, String password, String role) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.role = role;
     }
 
     public String getUsername() {
@@ -33,5 +35,13 @@ public class UserMH {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
