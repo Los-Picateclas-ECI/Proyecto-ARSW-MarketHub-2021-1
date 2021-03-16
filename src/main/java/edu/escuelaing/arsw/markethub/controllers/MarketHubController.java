@@ -1,6 +1,9 @@
 package edu.escuelaing.arsw.markethub.controllers;
 
-import org.springframework.web.bind.annotation.RequestBody;
+import edu.escuelaing.arsw.markethub.services.ProductServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MarketHubController {
 
+    @Autowired
+    ProductServices productServices;
+
     /**
      * Clase de hello markethub
      *
@@ -19,6 +25,17 @@ public class MarketHubController {
     @RequestMapping("/hello")
     public String helloMarketHub() {
         return "Bienvenidos a Markethub";
+    }
+
+    /*----------- METODOS GET -----------*/
+
+    @RequestMapping(value = "/productos/all", method = RequestMethod.GET)
+    public ResponseEntity<?> getProductos() {
+        try {
+            return new ResponseEntity<>(productServices.getProductos(), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 
 }

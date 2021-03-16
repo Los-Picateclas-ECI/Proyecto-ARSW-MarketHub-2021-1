@@ -10,7 +10,7 @@ const front = (function () {
     }
 
     function menutoggle() {
-        var MenuItems = document.getElementById("MenuItems");
+        const MenuItems = document.getElementById("MenuItems");
         if (MenuItems.style.maxHeight === "0px") {
             MenuItems.style.maxHeight = "200px";
         } else {
@@ -21,8 +21,8 @@ const front = (function () {
     function changeImages() {
         loadAll();
 
-        var ProductImg = document.getElementById("ProductImg");
-        var SmallImg = document.getElementsByClassName("small-img");
+        const ProductImg = document.getElementById("ProductImg");
+        const SmallImg = document.getElementsByClassName("small-img");
 
         SmallImg[0].onclick = function () {
             ProductImg.src = SmallImg[0].src;
@@ -38,9 +38,15 @@ const front = (function () {
         }
     }
 
+    function loadProducts(){
+        loadAll();
+        app.getAllProducts();
+    }
+
     return {
         menutoggle: menutoggle,
         changeImages: changeImages,
+        loadProducts: loadProducts,
         loadAll: loadAll
     }
 
