@@ -9,12 +9,16 @@ public interface Persistence {
 
     boolean checkUserCredentials(String usernameOrEmail, String password);
 
-    void registerUser(String username, String email, String password);
+    void registerUser(String username, String email, String password, String role);
 
     void registerProduct(Integer id, String nombre, List imagen, Integer precio, String descripcion, Double puntaje, Integer cantidad);
 
     List<UserMH> getAllUsers();
-
+	
     List<Producto> getAllProducts();
 
+    UserMH getUserByUsername(String username);
+
+    UserMH getUserByEmail(String email);
+	
 }
