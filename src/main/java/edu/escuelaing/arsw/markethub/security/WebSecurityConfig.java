@@ -16,7 +16,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .permitAll()
                 .and()
+                .csrf().disable()
                 .formLogin()
-                .loginPage("/login").permitAll();
+                .loginPage("/login").permitAll()
+                .loginProcessingUrl("/login/verificar")
+                .defaultSuccessUrl("/index", true);
     }
 }
