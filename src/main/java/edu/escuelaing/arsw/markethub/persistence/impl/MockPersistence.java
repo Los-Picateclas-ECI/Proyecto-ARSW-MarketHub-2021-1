@@ -65,6 +65,11 @@ public class MockPersistence implements Persistence {
         return new ArrayList<Producto>(productById.values());
     }
 
+    @Override
+    public Producto getProductoById(Integer id) {
+        return productById.get(id);
+    }
+
     private void registrarMuchosProductos(){
         ArrayList<String> imagenes = new ArrayList<>();
         imagenes.add("./images/product-1.jpg");

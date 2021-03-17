@@ -19,4 +19,8 @@ public class ProductServices {
         return persistence.getAllProducts();
     }
 
+    public Producto getProductoById(Integer id){
+        return persistence.getProductoById(id);
+    }
+
 }

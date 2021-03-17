@@ -108,6 +108,7 @@ p {
     min-width: 200px;
     margin-bottom: 50px;
     transition: transform 0.5s;
+    cursor: pointer;
 }
 
 .container-row__4 img {

@@ -2,7 +2,7 @@ const front = (function () {
 
     function loadAll() {
         const promise = new Promise((resolve, reject) => {
-            $("#barrita").load("./barrita.html", function () {
+            $("#barrita").load("../barrita.html", function () {
                 menutoggle();
                 resolve("Buenardo");
             });
@@ -21,6 +21,8 @@ const front = (function () {
     function changeImages() {
         loadAll();
 
+        app.loadProductInfo();
+
         const ProductImg = document.getElementById("ProductImg");
         const SmallImg = document.getElementsByClassName("small-img");
 
@@ -38,7 +40,7 @@ const front = (function () {
         }
     }
 
-    function loadProducts(){
+    function loadProducts() {
         loadAll();
         app.getAllProducts();
     }

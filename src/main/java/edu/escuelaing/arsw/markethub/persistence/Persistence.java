@@ -17,6 +17,8 @@ public interface Persistence {
 	
     List<Producto> getAllProducts();
 
+    Producto getProductoById(Integer id);
+
     UserMH getUserByUsername(String username);
 
     UserMH getUserByEmail(String email);
