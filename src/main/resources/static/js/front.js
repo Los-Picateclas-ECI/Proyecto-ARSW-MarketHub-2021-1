@@ -54,7 +54,7 @@ const front = (function () {
         menutoggle: menutoggle,
         changeImages: changeImages,
         loadProducts: loadProducts,
-        loadAll: loadAll,
+        loadAll: loadAll
     };
 
 })();

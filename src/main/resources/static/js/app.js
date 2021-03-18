@@ -119,7 +119,7 @@ const app = (function () {
         saveProductId: saveProductId,
         getAllProducts: getAllProducts,
         loadProductInfo: loadProductInfo,
-        registerUser: registerUser,
+        registerUser: registerUser
     };
 
 })();

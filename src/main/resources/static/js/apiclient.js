@@ -51,7 +51,7 @@ const apiclient = (function () {
         getAllProducts: getAllProducts,
         saveProductId: saveProductId,
         getProductPageInfo: getProductPageInfo,
-        registerUser: registerUser,
+        registerUser: registerUser
     };
 
 })();
