@@ -48,24 +48,6 @@ const app = (function () {
         }
     }
 
-    function saveProductId(data) {
-        productId = data.substr(7, 7);
-        apiclient.saveProductId(productId);
-        window.location.href = "/productos/" + productId;
-    }
-
-    function loadProductInfo() {
-        console.log("3");
-        return new Promise((resolve, reject) => {
-            apiclient.getProductPageInfo((req, resp) => {
-                console.log("app.loadproduct");
-                appendProductInfo(resp);
-                resolve("Producto Cargado");
-            });
-            console.log("4");
-        });
-    }
-
     function appendProductInfo(data) {
         console.log("app.appendProductInfo");
         $("#container-row__detail").append($(
@@ -98,6 +80,24 @@ const app = (function () {
         ));
     }
 
+    function saveProductId(data) {
+        productId = data.substr(7, 7);
+        apiclient.saveProductId(productId);
+        window.location.href = "/productos/" + productId;
+    }
+
+    function loadProductInfo() {
+        console.log("3");
+        return new Promise((resolve, reject) => {
+            apiclient.getProductPageInfo((req, resp) => {
+                console.log("app.loadproduct");
+                appendProductInfo(resp);
+                resolve("Producto Cargado");
+            });
+            console.log("4");
+        });
+    }
+
     function registerUser() {
         let dataCadenita = {};
         let username = $("#username").val();
@@ -119,7 +119,7 @@ const app = (function () {
         saveProductId: saveProductId,
         getAllProducts: getAllProducts,
         loadProductInfo: loadProductInfo,
-        registerUser: registerUser
+        registerUser: registerUser,
     };
 
 })();

@@ -17,11 +17,11 @@ const apiclient = (function () {
     }
 
     function saveProductId(data) {
-        console.log(data)
+        console.log(data);
         const promise = $.post({
             url: "/productos/guardar/id",
             contentType: "application/json",
-            data: data
+            data: data,
         });
     }
 
@@ -51,7 +51,7 @@ const apiclient = (function () {
         getAllProducts: getAllProducts,
         saveProductId: saveProductId,
         getProductPageInfo: getProductPageInfo,
-        registerUser: registerUser
+        registerUser: registerUser,
     };
 
 })();

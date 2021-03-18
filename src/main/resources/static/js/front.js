@@ -1,14 +1,5 @@
 const front = (function () {
 
-    function loadAll() {
-        const promise = new Promise((resolve, reject) => {
-            $("#barrita").load("../barrita.html", function () {
-                menutoggle();
-                resolve("Buenardo");
-            });
-        });
-    }
-
     function menutoggle() {
         const MenuItems = document.getElementById("MenuItems");
         if (MenuItems.style.maxHeight === "0px") {
@@ -16,6 +7,15 @@ const front = (function () {
         } else {
             MenuItems.style.maxHeight = "0px";
         }
+    }
+
+    function loadAll() {
+        const promise = new Promise((resolve, reject) => {
+            $("#barrita").load("../barrita.html", function () {
+                menutoggle();
+                resolve("Buenardo");
+            });
+        });
     }
 
     function changeImages() {
@@ -54,7 +54,7 @@ const front = (function () {
         menutoggle: menutoggle,
         changeImages: changeImages,
         loadProducts: loadProducts,
-        loadAll: loadAll
+        loadAll: loadAll,
     };
 
 })();
