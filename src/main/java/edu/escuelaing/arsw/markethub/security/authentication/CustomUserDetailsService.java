@@ -1,4 +1,4 @@
-package edu.escuelaing.arsw.markethub.persistence;
+package edu.escuelaing.arsw.markethub.security.authentication;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 

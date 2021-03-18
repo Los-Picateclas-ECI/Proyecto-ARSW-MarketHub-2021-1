@@ -7,15 +7,17 @@
     <meta content="MarketHub" name="copyright">
     <meta content="index" name="robots">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="./img/favicon.ico" rel="icon" type="image/x-icon"/>
-    <link href="./css/normalize.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet">
+    <link href="../img/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="../css/normalize.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="./js/front.js"></script>
+    <script src="../js/front.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/apiclient.js"></script>
     <script>
         window.onload = front.loadAll;
     </script>
@@ -34,7 +36,7 @@
     <div class="container">
         <div class="container-row">
             <div class="container-row__2">
-                <img alt="LoginImage" src="./img/loginImg.png" width="100%">
+                <img alt="LoginImage" src="../img/loginImg.png" width="100%">
             </div>
             <div class="container-row__2">
                 <div class="form-container">
@@ -47,17 +49,18 @@
                         <button class="social login-container__autologin-twitter">Twitter</button>
                         <button class="social login-container__autologin-google">Google</button>
                     </form>
-                    <form id="RegForm">
+                    <form action="#" id="RegForm">
                         <label>
-                            <input placeholder="Usuario" type="text">
+                            <input id="username" placeholder="Usuario" required type="text">
                         </label>
                         <label>
-                            <input placeholder="Correo" type="email">
+                            <input id="mail" placeholder="Correo" required type="email">
                         </label>
                         <label>
-                            <input placeholder="Contraseña" type="password">
+                            <input id="passwd" placeholder="Contraseña" required type="password">
                         </label>
-                        <button class="container-row__2-btn" type="submit">Registrarse</button>
+                        <button class="container-row__2-btn" onclick="app.registerUser()" type="button">Registrarse
+                        </button>
                         <a href="/login">Iniciar Sesión</a>
                     </form>
                 </div>

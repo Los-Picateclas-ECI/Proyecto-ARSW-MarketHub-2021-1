@@ -31,7 +31,6 @@ const apiclient = (function () {
             contentType: "application/json"
         });
         promise.then(function (data) {
-                console.log("apiclient.loadproduct");
                 callback(null, data);
             }, function (error) {
                 alert("No se pudo realizar la consulta");
@@ -39,10 +38,20 @@ const apiclient = (function () {
         );
     }
 
+    function registerUser(data) {
+        console.log(data)
+        const promise = $.post({
+            url: "/registrar/usuario",
+            contentType: "application/json",
+            data: JSON.stringify(data)
+        });
+    }
+
     return {
         getAllProducts: getAllProducts,
         saveProductId: saveProductId,
-        getProductPageInfo: getProductPageInfo
+        getProductPageInfo: getProductPageInfo,
+        registerUser: registerUser
     }
 
 })();

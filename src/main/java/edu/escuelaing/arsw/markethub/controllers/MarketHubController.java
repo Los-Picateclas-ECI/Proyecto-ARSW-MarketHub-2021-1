@@ -1,5 +1,7 @@
 package edu.escuelaing.arsw.markethub.controllers;
 
+import edu.escuelaing.arsw.markethub.entities.UserMH;
+import edu.escuelaing.arsw.markethub.services.AccountServices;
 import edu.escuelaing.arsw.markethub.services.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,10 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MarketHubController {
 
+    private static Integer productoPageId = 0;
     @Autowired
     ProductServices productServices;
-
-    private static Integer productoPageId = 0;
+    @Autowired
+    AccountServices accountServices;
 
     /**
      * Clase de hello markethub
@@ -39,31 +42,43 @@ public class MarketHubController {
     }
 
     @RequestMapping(value = "/productos/consultar/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getProductoById(@PathVariable("id") Integer id){
+    public ResponseEntity<?> getProductoById(@PathVariable("id") Integer id) {
         try {
             return new ResponseEntity<>(productServices.getProductoById(id), HttpStatus.ACCEPTED);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
     @RequestMapping(value = "/productos/consultar/page", method = RequestMethod.GET)
-    public ResponseEntity<?> getProductInfoPage(){
+    public ResponseEntity<?> getProductInfoPage() {
         try {
             return getProductoById(productoPageId);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
     /*----------- METODOS POST -----------*/
+
     @RequestMapping(value = "/productos/guardar/id", method = RequestMethod.POST)
-    public ResponseEntity<?> setProductPageId(@RequestBody Integer id){
+    public ResponseEntity<?> setProductPageId(@RequestBody Integer id) {
         try {
             productoPageId = id;
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/registrar/usuario", method = RequestMethod.POST)
+    public ResponseEntity<?> setProductPageId(@RequestBody UserMH user) {
+        try {
+            user.setRole("USER");
+            accountServices.registerUser(user);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 

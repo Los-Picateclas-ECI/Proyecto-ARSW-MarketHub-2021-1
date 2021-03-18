@@ -1,21 +1,32 @@
 package edu.escuelaing.arsw.markethub.services;
 
+import edu.escuelaing.arsw.markethub.entities.UserMH;
+import edu.escuelaing.arsw.markethub.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import edu.escuelaing.arsw.markethub.persistence.Persistence;
-
+@Service
+@Component("AccountServices")
 public class AccountServices {
 
     @Autowired
     @Qualifier("mockPersistence")
     private Persistence persistence;
 
-    public void registerUser(String username, String email, String password, String role) {
-        persistence.registerUser(username, email, password, role);
+    public void registerUser(UserMH userMH) {
+        persistence.registerUser(userMH);
     }
 
-    public boolean loginUser(String usernameOrEmail, String password) {
-        return persistence.checkUserCredentials(usernameOrEmail, password);
+    /**
+     * Método para solicitar información del usuario
+     *
+     * @param user - usuario o correo del usuario
+     * @return - informacion del usuario
+     */
+    public UserMH getUser(String user) {
+        return user.contains("@") ? persistence.getUserByEmail(user) : persistence.getUserByUsername(user);
     }
+
 }
