@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org"
+<html lang="es" layout:decorate="master"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="master">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta content="Pagina de login de la plataforma MarketHub" name="description">
     <meta content="MarketHub" name="copyright">
     <meta content="index" name="robots">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+    <link href="./img/favicon.ico" rel="icon" type="image/x-icon"/>
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -38,78 +38,81 @@
         <img class="menu-icon" height="30px" onclick="menutoggle()" src="./images/menu.png">
     </div>
 </div>
-<!-- Cotenido tabla de registro-->
+<!-- Contenido tabla de registro-->
 <div class="account-page">
     <div class="container">
-<div style="margin: 50px 100px 100px 90px;">
-<main layout:fragment="contenido">
-    <div class="col-12">
-        <h2>Registrar producto</h2>
-        <div style="margin: 20px 0 0 10px;"></div>
-        <div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
-             th:text="${mensaje}"
-             class="alert">
+        <div style="margin: 50px 100px 100px 90px;">
+            <main layout:fragment="contenido">
+                <div class="col-12">
+                    <h2>Registrar producto</h2>
+                    <div style="margin: 20px 0 0 10px;"></div>
+                    <div class="alert" th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+                         th:if="${mensaje != null}"
+                         th:text="${mensaje}">
+                    </div>
+                    <form method="post" th:action="@{/productos/agregar}" th:object="${producto}">
+                        <div class="form-group">
+                            <label for="codigo">Id del producto</label>
+                            <input autocomplete="off" class="form-control" id="codigo"
+                                   placeholder="Escribe el código del producto"
+                                   th:classappend="${#fields.hasErrors('codigo')} ? 'is-invalid' : ''"
+                                   th:field="*{codigo}"
+                                   type="text">
+                            <div class="invalid-feedback" th:errors="*{codigo}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre del
+                                <producto></producto>
+                            </label>
+                            <input autocomplete="off" autofocus class="form-control" id="nombre"
+                                   placeholder="Escribe el nombre del producto"
+                                   th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''"
+                                   th:field="*{nombre}"
+                                   type="text">
+                            <div class="invalid-feedback" th:errors="*{nombre}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Cantidad">Cantidad</label>
+                            <input autocomplete="off" class="form-control" id="cantidad"
+                                   placeholder="Cantidad actual del producto"
+                                   th:classappend="${#fields.hasErrors('Cantidad')} ? 'is-invalid' : ''"
+                                   th:field="*{existencia}"
+                                   type="number">
+                            <div class="invalid-feedback" th:errors="*{existencia}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Precio">Precio</label>
+                            <input autocomplete="off" autofocus class="form-control" id="Precio"
+                                   placeholder="Precio del producto"
+                                   th:classappend="${#fields.hasErrors('Precio')} ? 'is-invalid' : ''"
+                                   th:field="*{nombre}"
+                                   type="int">
+                            <div class="invalid-feedback" th:errors="*{nombre}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Descripcion">Descripción</label>
+                            <input autocomplete="off" autofocus class="form-control" id="Descripcion"
+                                   placeholder="Escribe detalle del producto"
+                                   th:classappend="${#fields.hasErrors('Descripcion')} ? 'is-invalid' : ''"
+                                   th:field="*{nombre}"
+                                   type="text">
+                            <div class="invalid-feedback" th:errors="*{nombre}"></div>
+                        </div>
+                        <div>
+                            <label for="avatar">Agrege imagen del producto</label>
+                            <div class="position-static">
+                                <input accept="image/png, image/jpeg" id="avatar" multiple name="avatar" type="file">
+                            </div>
+                        </div>
+                    </form>
+                    <div>
+                        <a class="container-row__2-btn" href="">Guardar</a>
+                    </div>
+                </div>
+            </main>
         </div>
-        <form th:object="${producto}" th:action="@{/productos/agregar}" method="post">
-            <div class="form-group">
-                <label for="codigo">Id del producto</label>
-                <input autocomplete="off" th:field="*{codigo}" id="codigo" placeholder="Escribe el código del producto"
-                       type="text"
-                       class="form-control" th:classappend="${#fields.hasErrors('codigo')} ? 'is-invalid' : ''">
-                <div class="invalid-feedback" th:errors="*{codigo}"></div>
-            </div>
-            <div class="form-group">
-                <label for="nombre">Nombre del <producto></producto></label>
-                <input autocomplete="off" autofocus th:field="*{nombre}" id="nombre"
-                       placeholder="Escribe el nombre del producto" type="text"
-                       class="form-control" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
-                <div class="invalid-feedback" th:errors="*{nombre}"></div>
-            </div>
-
-            <div class="form-group">
-                <label for="Cantidad">Cantidad</label>
-                <input autocomplete="off" th:field="*{existencia}" id="cantidad"
-                       placeholder="Cantidad actual del producto" type="number"
-                       class="form-control" th:classappend="${#fields.hasErrors('Cantidad')} ? 'is-invalid' : ''">
-                <div class="invalid-feedback" th:errors="*{existencia}"></div>
-
-            </div>
-            <div class="form-group">
-                <label for="Precio">Precio</label>
-                <input autocomplete="off" autofocus th:field="*{nombre}" id="Precio"
-                       placeholder="Precio del producto" type="int"
-                       class="form-control" th:classappend="${#fields.hasErrors('Precio')} ? 'is-invalid' : ''">
-                <div class="invalid-feedback" th:errors="*{nombre}"></div>
-
-            </div>
-            <div class="form-group">
-                <label for="Descripcion">Descripción</label>
-                <input autocomplete="off" autofocus th:field="*{nombre}" id="Descripcion"
-                       placeholder="Escribe detalle del producto" type="text"
-                       class="form-control" th:classappend="${#fields.hasErrors('Descripcion')} ? 'is-invalid' : ''">
-                <div class="invalid-feedback" th:errors="*{nombre}"></div>
-
-            </div>
-            <div>
-                <label  for="avatar">Agrege imagen del producto</label>
-                <div class="position-static">
-                    <input type="file"
-                           id="avatar" name="avatar"
-                           accept="image/png, image/jpeg"></div>
-            </div>
-        </form>
-
-        <div>
-            <!--<a href="#" class="badge badge-secondary">Secondary</a>-->
-            <a class="container-row__2-btn" href="">Guarda </a>
-        </div>
     </div>
-
-</main>
-    </div>
-    </div>
-    </div>
-
+</div>
 
 <!-- Pie de pagina -->
 <div class="footer">

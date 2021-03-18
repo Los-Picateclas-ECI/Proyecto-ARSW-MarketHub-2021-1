@@ -587,9 +587,32 @@ form input {
 
 form input:focus {
     background: #d3d3d3;
-    color: #fff;
     height: 40px;
     color: #000;
+}
+
+
+.position-static input {
+    height: 40px;
+    padding: 6px 0px 5px 3px;
+    background: transparent;
+    border: none;
+}
+
+.position-static input[type=file]::-webkit-file-upload-button {
+    height: 100%;
+    width: 40%;
+    margin-right: 2em;
+    padding: 6px 0px 5px 3px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.position-static input[type=file]::-webkit-file-upload-button:hover {
+    background: #ff523b;
+    color: white;
 }
 
 /* Media para menu responsive */
