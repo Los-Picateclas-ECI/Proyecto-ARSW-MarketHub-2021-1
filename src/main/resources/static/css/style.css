@@ -408,6 +408,14 @@ input:focus {
 .small-img-col {
     flex-basis: 24%;
     cursor: pointer;
+    width: 100px;
+    height: 100px;
+}
+
+.small-img-row img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 
