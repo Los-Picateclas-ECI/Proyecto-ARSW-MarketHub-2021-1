@@ -29,14 +29,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/carrito")
-                .authenticated()
-                .anyRequest()
-                .permitAll()
+                .antMatchers("/carrito").authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .csrf().disable()
                 .formLogin()
-                .loginPage("/login").permitAll();
+                .loginPage("/login").permitAll()
+                .failureUrl("/loginfailed");
                 // .loginProcessingUrl("/login/verificar")
                 // .defaultSuccessUrl("/index", true);
     }

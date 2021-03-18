@@ -1,6 +1,7 @@
 package edu.escuelaing.arsw.markethub.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,6 +36,12 @@ public class MarketHubWebController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String getLogin() {
+        return "login";
+    }
+
+    @RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
+    public String failedLogin(Model model) {
+        model.addAttribute("error", true);
         return "login";
     }
 
