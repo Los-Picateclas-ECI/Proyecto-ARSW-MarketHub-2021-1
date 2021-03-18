@@ -20,7 +20,7 @@ public class MockPersistence implements Persistence {
         /*Usuarios*/
         UserMH userMH = new UserMH("homie.simpson", "homie.simpson@springfield.com", "andapa", "ADMIN");
         registerUser(userMH);
-        UserMH userMH2 = new UserMH("WTF", "W@T.F", "FTW", "USER");
+        UserMH userMH2 = new UserMH("usuario", "usuario@usuario.com", "usuario", "USER");
         registerUser(userMH2);
         /*¨Productos*/
         registrarMuchosProductos();
