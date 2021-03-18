@@ -53,7 +53,7 @@ public class MockPersistence implements Persistence {
     }
 
     @Override
-    public void registerProduct(Integer id, String nombre, List imagen, Integer precio, String descripcion, Double puntaje, Integer cantidad) {
+    public void registerProduct(Integer id, String nombre, List<String> imagen, Integer precio, String descripcion, Double puntaje, Integer cantidad) {
         if (!productById.containsKey(id)) {
             Producto producto = new Producto(id, nombre, imagen, precio, descripcion, puntaje, cantidad);
             productById.put(id, producto);
