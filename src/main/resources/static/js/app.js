@@ -15,8 +15,8 @@ const app = (function () {
     }
 
     function selectPuntIns(data) {
-        puntaje = data.puntaje;
-        html = "<div class=\"rating\">";
+        let puntaje = data.puntaje;
+        let html = "<div class=\"rating\">";
         for (let i = 0; i < 5; i++) {
             if (puntaje >= 1) {
                 html += fullStar;
@@ -55,14 +55,14 @@ const app = (function () {
     }
 
     function loadProductInfo() {
-        console.log("3")
+        console.log("3");
         return new Promise((resolve, reject) => {
             apiclient.getProductPageInfo((req, resp) => {
                 console.log("app.loadproduct");
                 appendProductInfo(resp);
                 resolve("Producto Cargado");
             });
-            console.log("4")
+            console.log("4");
         });
     }
 
@@ -120,6 +120,6 @@ const app = (function () {
         getAllProducts: getAllProducts,
         loadProductInfo: loadProductInfo,
         registerUser: registerUser
-    }
+    };
 
 })();

@@ -19,16 +19,16 @@ const front = (function () {
     }
 
     function changeImages() {
-        console.log("1")
+        console.log("1");
         loadAll();
-        console.log("2")
+        console.log("2");
         app.loadProductInfo().then(function () {
-            console.log("5")
+            console.log("5");
             const ProductImg = document.getElementById("ProductImg");
             const SmallImg = document.getElementsByClassName("small-img");
 
-            console.log(ProductImg)
-            console.log(SmallImg)
+            console.log(ProductImg);
+            console.log(SmallImg);
 
             SmallImg[0].onclick = function () {
                 ProductImg.src = SmallImg[0].src;
@@ -55,6 +55,6 @@ const front = (function () {
         changeImages: changeImages,
         loadProducts: loadProducts,
         loadAll: loadAll
-    }
+    };
 
 })();

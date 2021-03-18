@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.*;
 public class MarketHubController {
 
     private static Integer productoPageId = 0;
+
     @Autowired
     ProductServices productServices;
+
     @Autowired
     AccountServices accountServices;
 

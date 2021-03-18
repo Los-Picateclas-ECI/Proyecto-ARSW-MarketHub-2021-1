@@ -2,7 +2,6 @@ package edu.escuelaing.arsw.markethub.persistence;
 
 import edu.escuelaing.arsw.markethub.entities.Producto;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
-import org.springframework.security.core.userdetails.User;
 
 import java.util.List;
 

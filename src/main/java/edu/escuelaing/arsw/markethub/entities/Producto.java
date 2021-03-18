@@ -7,13 +7,13 @@ import java.util.List;
  */
 public class Producto {
 
-    Integer id;
-    String nombre;
-    List<String> imagen;
-    Integer precio;
-    String descripcion;
-    Double puntaje;
-    Integer cantidad;
+    private Integer id;
+    private String nombre;
+    private List<String> imagen;
+    private Integer precio;
+    private String descripcion;
+    private Double puntaje;
+    private Integer cantidad;
 
     /**
      * Constructor vacio de la clase producto
