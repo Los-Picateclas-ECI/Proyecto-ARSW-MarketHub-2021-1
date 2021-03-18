@@ -4,10 +4,7 @@ import edu.escuelaing.arsw.markethub.services.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controlador principal del proyecto MarketHub
@@ -17,6 +14,8 @@ public class MarketHubController {
 
     @Autowired
     ProductServices productServices;
+
+    private static Integer productoPageId = 0;
 
     /**
      * Clase de hello markethub
@@ -43,6 +42,26 @@ public class MarketHubController {
     public ResponseEntity<?> getProductoById(@PathVariable("id") Integer id){
         try {
             return new ResponseEntity<>(productServices.getProductoById(id), HttpStatus.ACCEPTED);
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/productos/consultar/page", method = RequestMethod.GET)
+    public ResponseEntity<?> getProductInfoPage(){
+        try {
+            return getProductoById(productoPageId);
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /*----------- METODOS POST -----------*/
+    @RequestMapping(value = "/productos/guardar/id", method = RequestMethod.POST)
+    public ResponseEntity<?> setProductPageId(@RequestBody Integer id){
+        try {
+            productoPageId = id;
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }

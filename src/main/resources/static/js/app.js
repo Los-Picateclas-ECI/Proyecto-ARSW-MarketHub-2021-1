@@ -8,8 +8,7 @@ const app = (function () {
 
 
     function getAllProducts() {
-        console.log("sadadadassda")
-        apiclient().getAllProducts((req, resp) => {
+        apiclient.getAllProducts((req, resp) => {
             console.log(resp);
             appendAllProducts(resp);
         });
@@ -50,14 +49,53 @@ const app = (function () {
     }
 
     function saveProductId(data) {
-        console.log(data.substr(7,7))
         productId = data.substr(7,7);
-        console.log(productId);
+        apiclient.saveProductId(productId);
         window.location.href = "/productos/" + productId;
     }
 
     function loadProductInfo(){
-        console.log("cargando producto: " + productId)
+        console.log("3")
+        return new Promise((resolve, reject) => {
+            apiclient.getProductPageInfo((req, resp) => {
+                console.log("app.loadproduct");
+                appendProductInfo(resp);
+                resolve("Producto Cargado");
+            });
+            console.log("4")
+        });
+    }
+
+    function appendProductInfo(data){
+        console.log("app.appendProductInfo");
+        $("#container-row__detail").append($(
+            "<div class=\"container-row__2\">" +
+                "<img id=\"ProductImg\" src=\"" + data.imagen[1] + "\"" + "width=\"100%\"" + ">" +
+                "<div class=\"small-img-row\">" +
+                    "<div class=\"small-img-col\">" +
+                        "<img class=\"small-img\" src=\"" + data.imagen[1] + "\"" + "width=\"100%\"" + ">" +
+                    "</div>" +
+                    "<div class=\"small-img-col\">" +
+                        "<img class=\"small-img\" src=\"" + data.imagen[2] + "\"" + "width=\"100%\"" + ">" +
+                    "</div>" +
+                    "<div class=\"small-img-col\">" +
+                        "<img class=\"small-img\" src=\"" + data.imagen[3] + "\"" + "width=\"100%\"" + ">" +
+                    "</div>" +
+                    "<div class=\"small-img-col\">" +
+                        "<img class=\"small-img\" src=\"" + data.imagen[4] + "\"" + "width=\"100%\"" + ">" +
+                    "</div>" +
+                "</div>" +
+            "</div>" +
+            "<div class=\"container-row__2\">" +
+                "<p>" + "Productos / Ropa" + "</p>" +
+                "<h1>" + data.nombre + "</h1>" +
+                "<h4>" + "$ " + data.precio + "</h4>" +
+                "<input type=\"number\" value=\"" + data.cantidad + "\">" +
+                "<a class=\"container-row__2-btn\" href=\"\">Añadir Al Carrito</a>" +
+                "<h3>Detalles del Producto <i class=\"fa fa-indent\"></i></h3>" + "<br>" +
+                "<p>" + data.descripcion + "</p>" +
+            "</div>"
+        ));
     }
 
     return {

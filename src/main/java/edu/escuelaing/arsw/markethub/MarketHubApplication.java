@@ -15,5 +15,5 @@ public class MarketHubApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 		//Este método está intencionalmente en blanco
     }
-
+    
 }
