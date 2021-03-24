@@ -11,7 +11,7 @@ public interface Persistence {
 
     void registerUser(UserMH user);
 
-    void registerProduct(Integer id, String nombre, List<String> imagen, Integer precio, String descripcion, Double puntaje, Integer cantidad);
+    void registerProduct(Integer id, String categoria, String nombre, List<String> imagen, Integer precio, String descripcion, Double puntaje, Integer cantidad);
 
     List<UserMH> getAllUsers();
 
