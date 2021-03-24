@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings> -->
+
+    <properties resource="config.properties"></properties>
+    <typeAliases>
+        <!--TODO: Agregar Aliases-->
+        <!-- <typeAlias type="edu.escuelaing.arsw.markethub.entities.Producto" alias="Producto" />
+        <typeAlias type="edu.escuelaing.arsw.markethub.entities.UserMH" alias="Usuario" />
+        <typeAlias type="edu.escuelaing.arsw.markethub.entities.Rol" alias="Rol" /> -->
+        <package name="edu.escuelaing.arsw.markethub.entities" />
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${username}" />
+                <property name="password" value="${password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--TODO: Agregar Mappers-->
+        <mapper resource="mappers/RolMapper.xml" />
+    </mappers>
+
+
+</configuration>

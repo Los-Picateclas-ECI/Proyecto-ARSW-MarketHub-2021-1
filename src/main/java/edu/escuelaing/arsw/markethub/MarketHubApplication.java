@@ -13,7 +13,7 @@ public class MarketHubApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-		//Este método está intencionalmente en blanco
+        // Este método está intencionalmente en blanco
     }
-    
+
 }
