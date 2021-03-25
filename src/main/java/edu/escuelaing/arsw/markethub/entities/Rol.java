@@ -1,6 +1,7 @@
 package edu.escuelaing.arsw.markethub.entities;
 
 public class Rol {
+
     private int id;
     private String nombre;
     private String descripcion;
@@ -37,4 +38,5 @@ public class Rol {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
 }

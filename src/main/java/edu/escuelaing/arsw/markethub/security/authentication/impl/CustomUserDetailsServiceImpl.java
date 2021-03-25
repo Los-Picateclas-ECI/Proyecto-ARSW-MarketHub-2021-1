@@ -23,7 +23,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         UserMH user = accountServices.getUser(s);
         if (user != null) {
-            return User.withUsername(s).password(passwordEncoder.encode(user.getPassword())).roles(user.getRole()).build();
+            return User.withUsername(s).password(passwordEncoder.encode(user.getPassword())).roles(user.getRole().getNombre()).build();
         }
         throw new UsernameNotFoundException(s);
     }

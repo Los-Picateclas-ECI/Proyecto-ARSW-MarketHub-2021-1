@@ -1,6 +1,7 @@
 package edu.escuelaing.arsw.markethub.persistence.impl;
 
 import edu.escuelaing.arsw.markethub.entities.Producto;
+import edu.escuelaing.arsw.markethub.entities.Rol;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
 import edu.escuelaing.arsw.markethub.persistence.Persistence;
 import org.springframework.stereotype.Component;
@@ -17,14 +18,15 @@ public class MockPersistence implements Persistence {
     private final HashMap<Integer, Producto> productById = new HashMap<>();
 
     public MockPersistence() {
+        /*Roles*/
+        Rol RolAdmin = new Rol(1, "ADMIN", "Administrador de la plataforma MarketHub");
+        Rol RolUser = new Rol(1, "USER", "Usuario de la plataforma MarketHub");
         /* Usuarios */
-        // String username, Integer documento, Integer telefono, String email, String
-        // password, String direccion, String tipoDocumento, String role
-        UserMH userMH = new UserMH("homie.simpson", 123456789, "3174414419", "homie.simpson@springfield.com", "andapa",
-                "742 de Evergreen Terrace", "CC", "ADMIN");
+        UserMH userMH = new UserMH("homie.simpson", 123456789, "3174414419", "homie.simpson@springfield.com", "Homero J Simpson", 36, "andapa",
+                "742 de Evergreen Terrace", "CC", RolAdmin);
         registerUser(userMH);
-        UserMH userMH2 = new UserMH("montgomery.burns", 987654321, "3075627419", "montgomery.burns@springfield.com",
-                "burns123", "Mansión Burns", "CC", "USER");
+        UserMH userMH2 = new UserMH("montgomery.burns", 987654321, "3075627419", "montgomery.burns@springfield.com", "Montgomery Burns", 87,
+                "burns123", "Mansión Burns", "CC", RolUser);
         registerUser(userMH2);
         /* ¨Productos */
         registrarMuchosProductos();
@@ -61,7 +63,7 @@ public class MockPersistence implements Persistence {
 
     @Override
     public void registerProduct(Integer id, String categoria, String nombre, List<String> imagen, Integer precio,
-            String descripcion, Double puntaje, Integer cantidad) {
+                                String descripcion, Double puntaje, Integer cantidad) {
         if (!productById.containsKey(id)) {
             Producto producto = new Producto(id, categoria, nombre, imagen, precio, descripcion, puntaje, cantidad);
             productById.put(id, producto);

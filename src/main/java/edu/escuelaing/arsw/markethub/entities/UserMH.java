@@ -6,23 +6,27 @@ public class UserMH {
     private Integer documento;
     private String telefono;
     private String email;
+    private String nombre;
+    private Integer edad;
     private String password;
     private String direccion;
-    private String tipoDocumento;
-    private String role;
+    private String tipodocumento;
+    private Rol role;
 
     public UserMH() {
         //Contructor vacio
     }
 
-    public UserMH(String username, Integer documento, String telefono, String email, String password, String direccion, String tipoDocumento, String role) {
+    public UserMH(String username, Integer documento, String telefono, String email, String nombre, Integer edad, String password, String direccion, String tipodocumento, Rol role) {
         this.username = username;
         this.documento = documento;
         this.telefono = telefono;
         this.email = email;
+        this.nombre = nombre;
+        this.edad = edad;
         this.password = password;
         this.direccion = direccion;
-        this.tipoDocumento = tipoDocumento;
+        this.tipodocumento = tipodocumento;
         this.role = role;
     }
 
@@ -75,19 +79,26 @@ public class UserMH {
     }
 
     public String getTipoDocumento() {
-        return tipoDocumento;
+        return tipodocumento;
     }
 
     public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
+        this.tipodocumento = tipoDocumento;
     }
 
-    public String getRole() {
+    public Rol getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Rol role) {
         this.role = role;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

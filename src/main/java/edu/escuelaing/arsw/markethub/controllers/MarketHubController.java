@@ -1,5 +1,6 @@
 package edu.escuelaing.arsw.markethub.controllers;
 
+import edu.escuelaing.arsw.markethub.entities.Rol;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
 import edu.escuelaing.arsw.markethub.services.AccountServices;
 import edu.escuelaing.arsw.markethub.services.ProductServices;
@@ -76,7 +77,7 @@ public class MarketHubController {
     @RequestMapping(value = "/registrar/usuario", method = RequestMethod.POST)
     public ResponseEntity<?> setProductPageId(@RequestBody UserMH user) {
         try {
-            user.setRole("USER");
+            user.setRole(new Rol(2, "USER", "Usuario de la plataforma MarketHub"));
             accountServices.registerUser(user);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {

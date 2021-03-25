@@ -12,6 +12,7 @@
 
     <mappers>
         <mapper resource="mappers/RolMapper.xml" />
+        <mapper resource="mappers/UserMHMapper.xml" />
     </mappers>
 
 </configuration>
