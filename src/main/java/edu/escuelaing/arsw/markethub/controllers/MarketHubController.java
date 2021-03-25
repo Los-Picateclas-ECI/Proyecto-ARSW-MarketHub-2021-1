@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MarketHubController {
 
-    private static Integer productoPageId = 0;
-
     @Autowired
     ProductServices productServices;
 
@@ -53,26 +51,7 @@ public class MarketHubController {
         }
     }
 
-    @RequestMapping(value = "/productos/consultar/page", method = RequestMethod.GET)
-    public ResponseEntity<?> getProductInfoPage() {
-        try {
-            return getProductoById(productoPageId);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
-    }
-
     /*----------- METODOS POST -----------*/
-
-    @RequestMapping(value = "/productos/guardar/id", method = RequestMethod.POST)
-    public ResponseEntity<?> setProductPageId(@RequestBody Integer id) {
-        try {
-            productoPageId = id;
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
-    }
 
     @RequestMapping(value = "/registrar/usuario", method = RequestMethod.POST)
     public ResponseEntity<?> setProductPageId(@RequestBody UserMH user) {

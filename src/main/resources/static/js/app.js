@@ -9,7 +9,6 @@ const app = (function () {
 
     function getAllProducts() {
         apiclient.getAllProducts((req, resp) => {
-            console.log(resp);
             appendAllProducts(resp);
         });
     }
@@ -37,7 +36,7 @@ const app = (function () {
             let puntajeIns = selectPuntIns(data[i]);
             $("#container-row__id").append($(
                 "<div class=\"container-row__4\" id=\"product" + data[i].id + "\">" +
-                "<a id=\"product" + data[i].id + "\" onclick=\"" + "app.saveProductId(this.id)" + "\">" +
+                "<a id=\"product" + data[i].id + "\" onclick=\"" + "app.loadProductPage(this.id)" + "\">" +
                 "<img src=" + data[i].imagen[0] + ">" +
                 "<h4>" + data[i].nombre + "</h4>" +
                 puntajeIns +
@@ -49,7 +48,6 @@ const app = (function () {
     }
 
     function appendProductInfo(data) {
-        console.log("app.appendProductInfo");
         $("#container-row__detail").append($(
             "<div class=\"container-row__2\">" +
             "<img id=\"ProductImg\" src=\"" + data.imagen[1] + "\"" + "width=\"100%\"" + ">" +
@@ -80,21 +78,17 @@ const app = (function () {
         ));
     }
 
-    function saveProductId(data) {
+    function loadProductPage(data) {
         productId = data.substr(7, 7);
-        apiclient.saveProductId(productId);
-        window.location.href = "/productos/" + productId;
+        window.location.href = "/productos/producto/" + productId;
     }
 
-    function loadProductInfo() {
-        console.log("3");
+    function loadProductInfo(productId) {
         return new Promise((resolve, reject) => {
-            apiclient.getProductPageInfo((req, resp) => {
-                console.log("app.loadproduct");
+            apiclient.getProductPageInfo(productId, (req, resp) => {
                 appendProductInfo(resp);
                 resolve("Producto Cargado");
             });
-            console.log("4");
         });
     }
 
@@ -116,7 +110,7 @@ const app = (function () {
     }
 
     return {
-        saveProductId: saveProductId,
+        loadProductPage: loadProductPage,
         getAllProducts: getAllProducts,
         loadProductInfo: loadProductInfo,
         registerUser: registerUser

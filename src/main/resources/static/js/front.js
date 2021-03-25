@@ -20,7 +20,7 @@ const front = (function () {
 
     function loadAll() {
         const promise = new Promise((resolve, reject) => {
-            $("#barrita").load("../barrita.html", function () {
+            $("#barrita").load("../../barrita.html", function () {
                 menutoggle();
                 acctToggle();
                 resolve("Buenardo");
@@ -29,17 +29,11 @@ const front = (function () {
     }
 
     function changeImages() {
-        console.log("1");
+        const productId = window.location.pathname.substr(20, 20);
         loadAll();
-        console.log("2");
-        app.loadProductInfo().then(function () {
-            console.log("5");
+        app.loadProductInfo(productId).then(function () {
             const ProductImg = document.getElementById("ProductImg");
             const SmallImg = document.getElementsByClassName("small-img");
-
-            console.log(ProductImg);
-            console.log(SmallImg);
-
             SmallImg[0].onclick = function () {
                 ProductImg.src = SmallImg[0].src;
             }
