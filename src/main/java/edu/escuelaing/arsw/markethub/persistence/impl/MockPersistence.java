@@ -33,20 +33,6 @@ public class MockPersistence implements Persistence {
     }
 
     @Override
-    public boolean checkUserCredentials(String usernameOrEmail, String password) {
-        UserMH user;
-        if (usersByUsername.containsKey(usernameOrEmail)) {
-            user = usersByUsername.get(usernameOrEmail);
-        } else if (usersByEmail.containsKey(usernameOrEmail)) {
-            user = usersByEmail.get(usernameOrEmail);
-        } else {
-            return false;
-        }
-
-        return password.equals(user.getPassword());
-    }
-
-    @Override
     public void registerUser(UserMH user) {
         String username = user.getUsername();
         String email = user.getEmail();
@@ -54,11 +40,6 @@ public class MockPersistence implements Persistence {
             usersByUsername.put(username, user);
             usersByEmail.put(email, user);
         }
-    }
-
-    @Override
-    public List<UserMH> getAllUsers() {
-        return new ArrayList<UserMH>(usersByUsername.values());
     }
 
     @Override
@@ -78,6 +59,16 @@ public class MockPersistence implements Persistence {
     @Override
     public Producto getProductoById(Integer id) {
         return productById.get(id);
+    }
+
+    @Override
+    public UserMH getUser(String usernameOrEmail) {
+        if (usersByUsername.containsKey(usernameOrEmail)) {
+            return usersByUsername.get(usernameOrEmail);
+        } else if (usersByEmail.containsKey(usernameOrEmail)){
+            return usersByEmail.get(usernameOrEmail);
+        }
+        return null;
     }
 
     private void registrarMuchosProductos() {
@@ -179,21 +170,6 @@ public class MockPersistence implements Persistence {
         imagenes.add("../images/product-12.jpg");
         imagenes.add("../images/product-12.jpg");
         registerProduct(12, "ROPA", "Pantalon NIKE negro", imagenes, 150000, "Severo Yoger", 4.0, 20);
-    }
-
-    public UserMH getUserByUsername(String username) {
-        if (usersByUsername.containsKey(username)) {
-            return usersByUsername.get(username);
-        }
-        return null;
-    }
-
-    @Override
-    public UserMH getUserByEmail(String email) {
-        if (usersByEmail.containsKey(email)) {
-            return usersByEmail.get(email);
-        }
-        return null;
     }
 
 }

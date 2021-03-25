@@ -7,21 +7,15 @@ import java.util.List;
 
 public interface Persistence {
 
-    boolean checkUserCredentials(String usernameOrEmail, String password);
-
     void registerUser(UserMH user);
 
     void registerProduct(Integer id, String categoria, String nombre, List<String> imagen, Integer precio,
             String descripcion, Double puntaje, Integer cantidad);
 
-    List<UserMH> getAllUsers();
-
     List<Producto> getAllProducts();
 
     Producto getProductoById(Integer id);
 
-    UserMH getUserByUsername(String username);
-
-    UserMH getUserByEmail(String email);
+    UserMH getUser(String usernameOrEmail);
 
 }

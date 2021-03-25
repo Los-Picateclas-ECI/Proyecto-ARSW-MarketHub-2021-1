@@ -19,7 +19,7 @@
                rol.descripcion   AS rol_descripcion
         FROM usuarios AS usr
                  JOIN rol ON usr.rol = rol.id
-        WHERE usr.username = #{username}
+        WHERE usr.username = #{usernameOrEmail} OR usr.email = #{usernameOrEmail}
     </select>
 
     <resultMap id="UserResult" type="UserMH">

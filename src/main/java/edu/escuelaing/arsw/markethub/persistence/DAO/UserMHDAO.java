@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMHDAO {
 
-    UserMH getUserByUsername(@Param("username") String username);
+    UserMH getUserByUsername(@Param("usernameOrEmail") String usernameOrEmail);
 
 }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class AccountServices {
 
     @Autowired
-    @Qualifier("mockPersistence")
+    @Qualifier("myBatisPersistence")
     private Persistence persistence;
 
     public void registerUser(UserMH userMH) {
@@ -22,11 +22,11 @@ public class AccountServices {
     /**
      * Método para solicitar información del usuario
      *
-     * @param user - usuario o correo del usuario
-     * @return - informacion del usuario
+     * @param usernameOrEmail - usuario o correo del usuario
+     * @return - información del usuario
      */
-    public UserMH getUser(String user) {
-        return user.contains("@") ? persistence.getUserByEmail(user) : persistence.getUserByUsername(user);
+    public UserMH getUser(String usernameOrEmail) {
+        return persistence.getUser(usernameOrEmail);
     }
 
 }

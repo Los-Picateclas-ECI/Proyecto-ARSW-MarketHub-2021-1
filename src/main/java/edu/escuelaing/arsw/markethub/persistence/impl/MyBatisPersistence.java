@@ -4,15 +4,16 @@ import java.util.List;
 
 import edu.escuelaing.arsw.markethub.entities.Producto;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
+import edu.escuelaing.arsw.markethub.persistence.DAO.UserMHDAO;
 import edu.escuelaing.arsw.markethub.persistence.Persistence;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component("myBatisPersistence")
 public class MyBatisPersistence implements Persistence {
 
-    @Override
-    public boolean checkUserCredentials(String usernameOrEmail, String password) {
-        // TODO Auto-generated method stub
-        return false;
-    }
+    @Autowired
+    UserMHDAO userMHDAO;
 
     @Override
     public void registerUser(UserMH user) {
@@ -28,12 +29,6 @@ public class MyBatisPersistence implements Persistence {
     }
 
     @Override
-    public List<UserMH> getAllUsers() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public List<Producto> getAllProducts() {
         // TODO Auto-generated method stub
         return null;
@@ -46,15 +41,8 @@ public class MyBatisPersistence implements Persistence {
     }
 
     @Override
-    public UserMH getUserByUsername(String username) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public UserMH getUserByEmail(String email) {
-        // TODO Auto-generated method stub
-        return null;
+    public UserMH getUser(String usernameOrEmail) {
+        return userMHDAO.getUserByUsername(usernameOrEmail);
     }
 
 }
