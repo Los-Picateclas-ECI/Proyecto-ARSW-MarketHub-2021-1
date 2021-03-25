@@ -10,7 +10,7 @@ public class Producto {
     private Integer id;
     private String categoria;
     private String nombre;
-    private List<String> imagen;
+    private List<Imagen> imagen;
     private Integer precio;
     private String descripcion;
     private Double puntaje;
@@ -34,7 +34,7 @@ public class Producto {
      * @param puntaje     - puntaje del producto
      * @param cantidad    - cantidad de unidades disponibles del producto
      */
-    public Producto(Integer id, String categoria, String nombre, List<String> imagen, Integer precio,
+    public Producto(Integer id, String categoria, String nombre, List<Imagen> imagen, Integer precio,
             String descripcion, Double puntaje, Integer cantidad) {
         this.id = id;
         this.categoria = categoria;
@@ -87,7 +87,7 @@ public class Producto {
      *
      * @return - imagen del producto
      */
-    public List<String> getImagen() {
+    public List<Imagen> getImagen() {
         return imagen;
     }
 
@@ -96,7 +96,7 @@ public class Producto {
      *
      * @param imagen - imagen nueva del producto
      */
-    public void setImagen(List<String> imagen) {
+    public void setImagen(List<Imagen> imagen) {
         this.imagen = imagen;
     }
 

@@ -2,12 +2,14 @@ package edu.escuelaing.arsw.markethub.persistence.impl;
 
 import java.util.List;
 
-import edu.escuelaing.arsw.markethub.entities.Producto;
-import edu.escuelaing.arsw.markethub.entities.UserMH;
-import edu.escuelaing.arsw.markethub.persistence.DAO.UserMHDAO;
-import edu.escuelaing.arsw.markethub.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import edu.escuelaing.arsw.markethub.entities.Imagen;
+import edu.escuelaing.arsw.markethub.entities.Producto;
+import edu.escuelaing.arsw.markethub.entities.UserMH;
+import edu.escuelaing.arsw.markethub.persistence.Persistence;
+import edu.escuelaing.arsw.markethub.persistence.DAO.UserMHDAO;
 
 @Component("myBatisPersistence")
 public class MyBatisPersistence implements Persistence {
@@ -22,7 +24,7 @@ public class MyBatisPersistence implements Persistence {
     }
 
     @Override
-    public void registerProduct(Integer id, String categoria, String nombre, List<String> imagen, Integer precio,
+    public void registerProduct(Integer id, String categoria, String nombre, List<Imagen> imagen, Integer precio,
             String descripcion, Double puntaje, Integer cantidad) {
         // TODO Auto-generated method stub
 

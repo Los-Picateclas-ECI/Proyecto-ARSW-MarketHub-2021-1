@@ -1,0 +1,12 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.escuelaing.arsw.markethub.persistence.DAO.ProductoDAO">
+
+    <!-- Prefijo prod_ -->
+
+    <insert id="insertProduct" parameterType="map">
+        INSERT INTO productos (id, categoria, nombre, precio, descripcion, puntaje, cantidad)
+        VALUES (#{prod.id}, #{prod.categoria}, #{prod.nombre}, #{prod.precio}, #{prod.descripcion}, #{prod.puntaje}, #{prod.cantidad})
+    </insert>
+
+</mapper>

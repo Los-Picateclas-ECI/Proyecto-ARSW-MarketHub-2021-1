@@ -13,6 +13,8 @@
     <mappers>
         <mapper resource="mappers/RolMapper.xml" />
         <mapper resource="mappers/UserMHMapper.xml" />
+        <mapper resource="mappers/ImagenMapper.xml" />
+        <mapper resource="mappers/ProductoMapper.xml" />
     </mappers>
 
 </configuration>

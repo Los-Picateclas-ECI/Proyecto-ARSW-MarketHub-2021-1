@@ -14,10 +14,11 @@ public class UserMH {
     private Rol role;
 
     public UserMH() {
-        //Contructor vacio
+        // Contructor vacio
     }
 
-    public UserMH(String username, Integer documento, String telefono, String email, String nombre, Integer edad, String password, String direccion, String tipodocumento, Rol role) {
+    public UserMH(String username, Integer documento, String telefono, String email, String nombre, Integer edad,
+            String password, String direccion, String tipodocumento, Rol role) {
         this.username = username;
         this.documento = documento;
         this.telefono = telefono;
@@ -78,14 +79,6 @@ public class UserMH {
         this.direccion = direccion;
     }
 
-    public String getTipoDocumento() {
-        return tipodocumento;
-    }
-
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipodocumento = tipoDocumento;
-    }
-
     public Rol getRole() {
         return role;
     }
@@ -100,5 +93,21 @@ public class UserMH {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+    public String getTipodocumento() {
+        return tipodocumento;
+    }
+
+    public void setTipodocumento(String tipodocumento) {
+        this.tipodocumento = tipodocumento;
     }
 }

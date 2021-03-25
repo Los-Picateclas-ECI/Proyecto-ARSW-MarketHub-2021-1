@@ -1,5 +1,6 @@
 package edu.escuelaing.arsw.markethub.persistence;
 
+import edu.escuelaing.arsw.markethub.entities.Imagen;
 import edu.escuelaing.arsw.markethub.entities.Producto;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
 
@@ -9,7 +10,7 @@ public interface Persistence {
 
     void registerUser(UserMH user);
 
-    void registerProduct(Integer id, String categoria, String nombre, List<String> imagen, Integer precio,
+    void registerProduct(Integer id, String categoria, String nombre, List<Imagen> imagen, Integer precio,
             String descripcion, Double puntaje, Integer cantidad);
 
     List<Producto> getAllProducts();
