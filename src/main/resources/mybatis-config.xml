@@ -15,6 +15,7 @@
         <mapper resource="mappers/UserMHMapper.xml" />
         <mapper resource="mappers/ImagenMapper.xml" />
         <mapper resource="mappers/ProductoMapper.xml" />
+        <mapper resource="mappers/CategoriaMapper.xml" />
     </mappers>
 
 </configuration>

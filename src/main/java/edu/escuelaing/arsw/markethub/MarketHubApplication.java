@@ -10,8 +10,8 @@ import edu.escuelaing.arsw.markethub.persistence.impl.MockPersistence;
 @SpringBootApplication
 public class MarketHubApplication implements CommandLineRunner {
 
-    @Autowired
-    MockPersistence mp;
+    // @Autowired
+    // TempInsert ti;
 
     public static void main(String[] args) {
         SpringApplication.run(MarketHubApplication.class, args);
@@ -20,7 +20,7 @@ public class MarketHubApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Este método está intencionalmente en blanco
-        mp.insert();
+        // ti.insert();
     }
 
 }

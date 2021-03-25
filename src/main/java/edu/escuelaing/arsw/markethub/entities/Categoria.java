@@ -5,8 +5,8 @@ public class Categoria {
     private String nombre;
     private String descripcion;
 
-    public Categoria(){
-        //Constructor vació
+    public Categoria() {
+        // Constructor vacio
     }
 
     public Categoria(String nombre, String descripcion) {

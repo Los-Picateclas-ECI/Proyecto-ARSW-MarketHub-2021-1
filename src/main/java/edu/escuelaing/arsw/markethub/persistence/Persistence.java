@@ -1,22 +1,32 @@
 package edu.escuelaing.arsw.markethub.persistence;
 
+import java.util.List;
+
+import edu.escuelaing.arsw.markethub.entities.Categoria;
 import edu.escuelaing.arsw.markethub.entities.Imagen;
 import edu.escuelaing.arsw.markethub.entities.Producto;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
 
-import java.util.List;
-
 public interface Persistence {
 
+    // ------------------------- Usuarios --------------------------------
     void registerUser(UserMH user);
 
-    void registerProduct(Integer id, String categoria, String nombre, List<Imagen> imagen, Integer precio,
-            String descripcion, Double puntaje, Integer cantidad);
+    UserMH getUser(String usernameOrEmail);
+
+    // ------------------------- Productos -------------------------------
+
+    int registerProduct(Producto producto);
 
     List<Producto> getAllProducts();
 
     Producto getProductoById(Integer id);
 
-    UserMH getUser(String usernameOrEmail);
+    // ------------------------ Categorias -------------------------------
 
+    void insertCategory(Categoria categoria);
+
+    // ------------------------ Imágenes ----------------------------------
+
+    int insertImage(Imagen imagen);
 }

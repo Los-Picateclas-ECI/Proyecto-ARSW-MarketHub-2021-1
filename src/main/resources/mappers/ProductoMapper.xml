@@ -4,9 +4,17 @@
 
     <!-- Prefijo prod_ -->
 
+    <select id="getLatestId" resultType="int">
+        SELECT 
+            id AS prod_id
+        FROM productos
+        ORDER BY prod_id DESC 
+        LIMIT 1
+    </select>
+
     <insert id="insertProduct" parameterType="map">
-        INSERT INTO productos (id, categoria, nombre, precio, descripcion, puntaje, cantidad)
-        VALUES (#{prod.id}, #{prod.categoria}, #{prod.nombre}, #{prod.precio}, #{prod.descripcion}, #{prod.puntaje}, #{prod.cantidad})
+        INSERT INTO productos (categoria, nombre, precio, descripcion, puntaje, cantidad)
+        VALUES (#{prod.categoria.nombre}, #{prod.nombre}, #{prod.precio}, #{prod.descripcion}, #{prod.puntaje}, #{prod.cantidad})
     </insert>
 
 </mapper>

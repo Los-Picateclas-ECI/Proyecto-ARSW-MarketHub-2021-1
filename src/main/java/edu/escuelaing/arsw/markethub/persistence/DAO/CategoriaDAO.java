@@ -3,13 +3,11 @@ package edu.escuelaing.arsw.markethub.persistence.DAO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import edu.escuelaing.arsw.markethub.entities.Imagen;
+import edu.escuelaing.arsw.markethub.entities.Categoria;
 
 @Mapper
-public interface ImagenDAO {
+public interface CategoriaDAO {
 
-    int getLatestId();
-
-    void insertImage(@Param("img") Imagen img);
+    void insertCategory(@Param("cat") Categoria cat);
 
 }

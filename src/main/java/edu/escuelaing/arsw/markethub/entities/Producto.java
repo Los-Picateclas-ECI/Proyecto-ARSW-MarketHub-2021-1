@@ -8,7 +8,7 @@ import java.util.List;
 public class Producto {
 
     private Integer id;
-    private String categoria;
+    private Categoria categoria;
     private String nombre;
     private List<Imagen> imagen;
     private Integer precio;
@@ -34,7 +34,7 @@ public class Producto {
      * @param puntaje     - puntaje del producto
      * @param cantidad    - cantidad de unidades disponibles del producto
      */
-    public Producto(Integer id, String categoria, String nombre, List<Imagen> imagen, Integer precio,
+    public Producto(Integer id, Categoria categoria, String nombre, List<Imagen> imagen, Integer precio,
             String descripcion, Double puntaje, Integer cantidad) {
         this.id = id;
         this.categoria = categoria;
@@ -177,7 +177,7 @@ public class Producto {
      *
      * @return - categoría del articulo
      */
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
@@ -186,7 +186,7 @@ public class Producto {
      *
      * @param cantidad - nueva categoría
      */
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 }

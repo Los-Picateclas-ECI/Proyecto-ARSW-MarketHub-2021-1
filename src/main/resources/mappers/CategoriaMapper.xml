@@ -1,0 +1,12 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.escuelaing.arsw.markethub.persistence.DAO.CategoriaDAO">
+
+    <!-- Prefijo cat_ -->
+
+    <insert id="insertCategory" parameterType="map">
+        INSERT INTO categorias (nombre, descripcion)
+        VALUES (#{cat.nombre}, #{cat.descripcion})
+    </insert>
+
+</mapper>

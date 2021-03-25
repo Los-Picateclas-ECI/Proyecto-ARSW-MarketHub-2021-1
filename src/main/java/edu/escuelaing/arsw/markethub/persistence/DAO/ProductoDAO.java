@@ -8,6 +8,8 @@ import edu.escuelaing.arsw.markethub.entities.Producto;
 @Mapper
 public interface ProductoDAO {
 
+    int getLatestId();
+
     void insertProduct(@Param("prod") Producto prod);
 
 }

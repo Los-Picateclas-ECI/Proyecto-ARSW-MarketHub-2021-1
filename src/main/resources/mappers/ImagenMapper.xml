@@ -4,6 +4,14 @@
 
     <!-- Prefijo img_ -->
 
+    <select id="getLatestId" resultType="int">
+        SELECT 
+            id AS img_id
+        FROM imagenes
+        ORDER BY img_id DESC 
+        LIMIT 1
+    </select>
+
     <insert id="insertImage" parameterType="map">
         INSERT INTO imagenes (producto, imagen)
         VALUES (#{img.producto.id}, #{img.imagen})
