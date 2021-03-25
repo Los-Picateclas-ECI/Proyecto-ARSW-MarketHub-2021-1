@@ -296,6 +296,7 @@ ul {
 
 .app-logo img {
     width: 140px;
+    border-radius: 10px;
 }
 
 .footer hr {
