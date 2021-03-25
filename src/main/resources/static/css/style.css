@@ -615,6 +615,46 @@ form input:focus {
     color: white;
 }
 
+/* Pal menu de la cuenta*/
+
+/* TODO: WENAS */
+
+.acc-icon__container {
+    margin-left: 15px;
+}
+
+.acc-icon__container img {
+    cursor: pointer;
+}
+
+.acc-icon__container ul {
+    position: absolute;
+    top: 70px;
+    right: 5%;
+    background: #333333;
+    width: 20%;
+    overflow: hidden;
+    transition: max-height 0.8s;
+    z-index: 180;
+    text-align: right;
+    list-style-type: none;
+    border-radius: 10px;
+}
+
+.acc-icon__container li {
+    display: block;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.acc-icon__container ul li a {
+    color: #fff;
+    text-align: right;
+    width: 200px;
+}
+
 /* Media para menu responsive */
 
 @media only screen and (max-width: 800px) {
