@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <div class="navbar-logo">
-    <a href="/inicio"><img alt="LogoMarketHub" src="../img/logoLarge.png" width="125px"></a>
+    <a href="/inicio"><img alt="LogoMarketHub" src="../../img/logoLarge.png" width="125px"></a>
 </div>
 <nav>
     <ul id="MenuItems">
@@ -12,7 +12,14 @@
         <li><a href="/cuenta">Cuenta</a></li>
     </ul>
 </nav>
-<a href="/carrito"><img alt="IconoCarrito" height="30px" src="../images/cart.png" width="30px"></a>
-<img alt="MenuResposiveIcon" class="menu-icon" height="30px" onclick="front.menutoggle()" src="../images/menu.png">
+<a href="/carrito"><img alt="IconoCarrito" height="30px" src="../../images/cart.png" width="30px"></a>
+<div class="acc-icon__container">
+    <img alt="IconoAccount" height="30px" src="../../images/account.png" width="30px" onclick="front.acctToggle()">
+    <ul id="AccountItems">
+        <li><a href="#">Configuración</a></li>
+        <li><a href="/logout">Cerrar Sesión</a></li>
+    </ul>
+</div>
+<img alt="MenuResposiveIcon" class="menu-icon" height="30px" onclick="front.menutoggle()" src="../../images/menu.png">
 
 </html>

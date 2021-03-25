@@ -1,23 +1,19 @@
 const apiclient = (function () {
 
     function getAllProducts(callback) {
-        console.log("1");
         const promise = $.get({
             url: "/productos/all",
             contentType: "application/json"
         });
-        console.log("2");
         promise.then(function (data) {
                 callback(null, data);
             }, function (error) {
                 alert("No se pudo realizar la consulta");
             }
         );
-        console.log("3");
     }
 
     function saveProductId(data) {
-        console.log(data);
         const promise = $.post({
             url: "/productos/guardar/id",
             contentType: "application/json",
@@ -25,9 +21,9 @@ const apiclient = (function () {
         });
     }
 
-    function getProductPageInfo(callback) {
+    function getProductPageInfo(productId, callback) {
         const promise = $.get({
-            url: "/productos/consultar/page",
+            url: "/productos/consultar/" + productId,
             contentType: "application/json"
         });
         promise.then(function (data) {
@@ -39,7 +35,6 @@ const apiclient = (function () {
     }
 
     function registerUser(data) {
-        console.log(data)
         const promise = $.post({
             url: "/registrar/usuario",
             contentType: "application/json",

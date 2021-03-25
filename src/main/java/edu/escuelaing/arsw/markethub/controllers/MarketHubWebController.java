@@ -19,7 +19,7 @@ public class MarketHubWebController {
         return "products";
     }
 
-    @RequestMapping(value = "/productos/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/productos/producto/{id}", method = RequestMethod.GET)
     public String getProducts(@PathVariable("id") Integer id) {
         return "product-details";
     }

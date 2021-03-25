@@ -7,7 +7,7 @@
     <meta content="MarketHub" name="copyright">
     <meta content="index" name="robots">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="./img/favicon.ico" rel="icon" type="image/x-icon"/>
     <link href="./css/normalize.css" rel="stylesheet">
     <link href="./css/login.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
@@ -21,78 +21,78 @@
 </head>
 
 <body>
-    <div class="header">
-        <div class="container">
-            <div class="container-navbar" id="barrita"></div>
+<div class="header">
+    <div class="container">
+        <div class="container-navbar" id="barrita"></div>
+    </div>
+    <div class="login-container">
+        <div class="login-container__login">
+            <h2> Inicia Sesión </h2>
+            <form action="/login" method="POST" name="f">
+                <label>
+                    <input id="username_id" name="username" placeholder="Correo ó Usuario" required type="text">
+                </label>
+                <label>
+                    <input id="password_id" name="password" placeholder="Contraseña" required type="password">
+                </label>
+                <p class="alert-error" th:if="${error}">Usuario o contraseña incorrectos</p>
+                <button name="submit" type="submit">Iniciar Sesión</button>
+            </form>
         </div>
-        <div class="login-container">
-            <div class="login-container__login">
-                <h2> Inicia Sesión </h2>
-                <form action="/login" method="POST" name="f">
-                    <label>
-                        <input id="username_id" name="username" placeholder="Correo ó Usuario" required type="text">
-                    </label>
-                    <label>
-                        <input id="password_id" name="password" placeholder="Contraseña" required type="password">
-                    </label>
-                    <p th:if="${error}" class="alert-error">Usuario o contraseña incorrectos</p>
-                    <button name="submit" type="submit">Iniciar Sesión</button>
-                </form>
-            </div>
-            <div class="login-container__autologin">
+        <div class="login-container__autologin">
                 <span class="login-container__autologin-title">
                     Inicia sesión con <br> Red Social
                 </span>
-                <button class="social-log login-container__autologin-facebook">Log in with Facebook</button>
-                <button class="social-log login-container__autologin-twitter">Log in with Twitter</button>
-                <button class="social-log login-container__autologin-google">Log in with Google</button>
-            </div>
-            <div class="login-container__middle">
-                <a> ó </a>
-            </div>
+            <button class="social-log login-container__autologin-facebook">Log in with Facebook</button>
+            <button class="social-log login-container__autologin-twitter">Log in with Twitter</button>
+            <button class="social-log login-container__autologin-google">Log in with Google</button>
         </div>
-
-        <!-- Pie de pagina -->
-        <div class="footer">
-            <div class="container">
-                <div class="container-row">
-                    <div class="footer-col-1">
-                        <h3>Download Our App</h3>
-                        <p>Download App for Andorid and IOS mobile phone.</p>
-                        <div class="app-logo">
-                            <img src="./images/play-store.png">
-                            <img src="./images/app-store.png">
-                        </div>
-                    </div>
-                    <div class="footer-col-2">
-                        <img src="./img/logoLarge.png">
-                        <p>Our porpouse Is to Sustainably make the plasure and benefirs of sports Accesible to the many.
-                        </p>
-                    </div>
-                    <div class="footer-col-3">
-                        <h3>Useful Links</h3>
-                        <ul>
-                            <li>Coupons</li>
-                            <li>Blog Post</li>
-                            <li>Return Policy</li>
-                            <li>Join Affiliate</li>
-                        </ul>
-                    </div>
-                    <div class="footer-col-4">
-                        <h3>Follow US</h3>
-                        <ul>
-                            <li>Facebook</li>
-                            <li>Twitter</li>
-                            <li>Instagram</li>
-                            <li>YouTube</li>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <p class="copyright">Copyright 2020 - MarketHub</p>
-            </div>
+        <div class="login-container__middle">
+            <a> ó </a>
         </div>
     </div>
+
+    <!-- Pie de pagina -->
+    <div class="footer">
+        <div class="container">
+            <div class="container-row">
+                <div class="footer-col-1">
+                    <h3>Descarga nuestra aplicación</h3>
+                    <p>Descarga la aplicación en sus versiones:</p>
+                    <div class="app-logo">
+                        <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1"><img alt="GitHub"
+                                                                                                            src="../../images/GitHub.png"></a>
+                        <img alt="AppleStore" src="../../images/docker.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img alt="LogoLargo" src="./img/logoLarge.png">
+                    <p>MarketHub brinda a sus vendedores una mejor experiencia al momento de vender sus productos.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Contactanos</h3>
+                    <ul>
+                        <li><a href="https://github.com/danielrincon-m">Daniel Rincon</a></li>
+                        <li><a href="mailto: paula.guevara-s@mail.escuelaing.edu.co">Paula Guevara</a></li>
+                        <li><a href="https://wa.me/573174414419">Andres Calderón</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Síguenos En</h3>
+                    <ul>
+                        <li><a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1">Github</a>
+                        </li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Facebook</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2020 - MarketHub</p>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
