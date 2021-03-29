@@ -1,11 +1,10 @@
-package edu.escuelaing.arsw.markethub;
+package edu.escuelaing.arsw.markethub.tools;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
