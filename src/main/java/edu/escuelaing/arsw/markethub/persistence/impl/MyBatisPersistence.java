@@ -1,6 +1,14 @@
 package edu.escuelaing.arsw.markethub.persistence.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,19 +44,17 @@ public class MyBatisPersistence implements Persistence {
     @Override
     public int registerProduct(Producto producto) {
         productoDAO.insertProduct(producto);
-        return productoDAO.getLatestId();
+        return producto.getId();
     }
 
     @Override
     public List<Producto> getAllProducts() {
-        // TODO Auto-generated method stub
-        return null;
+        return productoDAO.getAllProducts();
     }
 
     @Override
-    public Producto getProductoById(Integer id) {
-        // TODO Auto-generated method stub
-        return null;
+    public Producto getProductById(Integer id) {
+        return productoDAO.getProductById(id);
     }
 
     @Override
@@ -62,9 +68,27 @@ public class MyBatisPersistence implements Persistence {
     }
 
     @Override
-    public int insertImage(Imagen imagen) {
-        imagenDAO.insertImage(imagen);
-        return imagenDAO.getLatestId();
+    public int insertImage(File image, Imagen imagenMH) {
+        // Subir imagen a Cloudinary
+        String key = "Y2xvdWRpbmFyeTovLzEzMTI0Njk1MzMyMzcxNjpuNHNPcVBfVlBDdU92SmRrcDZnMmpueG5BLVFAdDZmZDdnMXU=";
+        String decodedString = new String(Base64.getDecoder().decode(key));
+        Cloudinary cloudinary = new Cloudinary(decodedString);
+        Map<String, Object> res = new HashMap<>();
+        try {
+            res = cloudinary.uploader().upload(image, ObjectUtils.emptyMap());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return -1;
+        }
+        imagenMH.setUrl(res.get("secure_url").toString());
+        imagenDAO.insertImage(imagenMH);
+        return imagenMH.getId();
+    }
+
+    public static void main(String[] args) {
+        MyBatisPersistence mbp = new MyBatisPersistence();
+        mbp.insertImage(new File(""), new Imagen());
     }
 
 }

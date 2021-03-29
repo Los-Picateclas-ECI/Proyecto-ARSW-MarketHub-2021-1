@@ -1,5 +1,6 @@
 package edu.escuelaing.arsw.markethub.persistence.impl;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ public class MockPersistence implements Persistence {
     private final HashMap<String, UserMH> usersByUsername = new HashMap<>();
     private final HashMap<String, UserMH> usersByEmail = new HashMap<>();
     private final HashMap<Integer, Producto> productById = new HashMap<>();
+    private final HashMap<String, Categoria> categoryById = new HashMap<>();
 
     public MockPersistence() {
         /* Roles */
@@ -32,7 +34,7 @@ public class MockPersistence implements Persistence {
                 "Montgomery Burns", 87, "burns123", "Mansión Burns", "CC", RolUser);
         registerUser(userMH2);
         /* ¨Productos */
-        // registrarMuchosProductos();
+        registrarMuchosProductos();
     }
 
     @Override
@@ -60,7 +62,7 @@ public class MockPersistence implements Persistence {
     }
 
     @Override
-    public Producto getProductoById(Integer id) {
+    public Producto getProductById(Integer id) {
         return productById.get(id);
     }
 
@@ -76,127 +78,139 @@ public class MockPersistence implements Persistence {
 
     @Override
     public void insertCategory(Categoria categoria) {
-        // TODO Auto-generated method stub
-
+        if (!categoryById.containsKey(categoria.getNombre())) {
+            categoryById.put(categoria.getNombre(), categoria);
+        }
     }
 
     @Override
-    public int insertImage(Imagen imagen) {
+    public int insertImage(File image, Imagen imagenMH) {
         // TODO Auto-generated method stub
         return 0;
     }
 
-    // private void registrarMuchosProductos() {
-    // ArrayList<String> imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-1.jpg");
-    // imagenes.add("../images/gallery-1.jpg");
-    // imagenes.add("../images/gallery-2.jpg");
-    // imagenes.add("../images/gallery-3.jpg");
-    // imagenes.add("../images/gallery-4.jpg");
-    // registerProduct(1, "ROPA", "Red Printed T-shirt", imagenes, 50000, "Camiseta
-    // Roja Lo mas de aleta", 4.0, 20);
+    private void registrarMuchosProductos() {
+        Categoria cat = new Categoria("Ropa", "Todos los productos para que estés a la moda.");
+        insertCategory(cat);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-2.jpg");
-    // imagenes.add("../images/product-2.jpg");
-    // imagenes.add("../images/product-2.jpg");
-    // imagenes.add("../images/product-2.jpg");
-    // imagenes.add("../images/product-2.jpg");
-    // registerProduct(2, "ROPA", "Zapatillas Negras HRX", imagenes, 320000,
-    // "Zapatillas negras ultra pelles", 3.5, 2);
+        Producto prod = new Producto(1, cat, "Red Printed T-shirt", 50000, "Camiseta Roja Lo mas de aleta", 4.0, 20);
+        ArrayList<Imagen> imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(1, prod.getId(), "/images/product-1.jpg"));
+        imagenes.add(new Imagen(2, prod.getId(), "/images/gallery-1.jpg"));
+        imagenes.add(new Imagen(3, prod.getId(), "/images/gallery-2.jpg"));
+        imagenes.add(new Imagen(4, prod.getId(), "/images/gallery-3.jpg"));
+        imagenes.add(new Imagen(5, prod.getId(), "/images/gallery-4.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-3.jpg");
-    // imagenes.add("../images/product-3.jpg");
-    // imagenes.add("../images/product-3.jpg");
-    // imagenes.add("../images/product-3.jpg");
-    // imagenes.add("../images/product-3.jpg");
-    // registerProduct(3, "ROPA", "Pantalon Gris Ultra 4k", imagenes, 60000,
-    // "Pantalos gris hiper pelle", 4.5, 43);
+        prod = new Producto(2, cat, "Zapatillas Negras HRX", 320000, "Zapatillas negras ultra pelles", 3.5, 2);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(6, prod.getId(), "/images/product-2.jpg"));
+        imagenes.add(new Imagen(7, prod.getId(), "/images/product-2.jpg"));
+        imagenes.add(new Imagen(8, prod.getId(), "/images/product-2.jpg"));
+        imagenes.add(new Imagen(9, prod.getId(), "/images/product-2.jpg"));
+        imagenes.add(new Imagen(10, prod.getId(), "/images/product-2.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-4.jpg");
-    // imagenes.add("../images/product-4.jpg");
-    // imagenes.add("../images/product-4.jpg");
-    // imagenes.add("../images/product-4.jpg");
-    // imagenes.add("../images/product-4.jpg");
-    // registerProduct(4, "ROPA", "Camisa Polo Azul PUMA", imagenes, 100000, "Camisa
-    // mas pelle HD", 4.0, 29);
+        prod = new Producto(3, cat, "Pantalon Gris Ultra 4k", 60000, "Pantalos gris hiper pelle", 4.5, 43);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(11, prod.getId(), "/images/product-3.jpg"));
+        imagenes.add(new Imagen(12, prod.getId(), "/images/product-3.jpg"));
+        imagenes.add(new Imagen(13, prod.getId(), "/images/product-3.jpg"));
+        imagenes.add(new Imagen(14, prod.getId(), "/images/product-3.jpg"));
+        imagenes.add(new Imagen(15, prod.getId(), "/images/product-3.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-5.jpg");
-    // imagenes.add("../images/product-5.jpg");
-    // imagenes.add("../images/product-5.jpg");
-    // imagenes.add("../images/product-5.jpg");
-    // imagenes.add("../images/product-5.jpg");
-    // registerProduct(5, "ROPA", "Zapatillas Grises PUMA", imagenes, 520000,
-    // "Zapatillas grises ultra pelles", 4.0,
-    // 45);
+        prod = new Producto(4, cat, "Camisa Polo Azul PUMA", 100000, "Camisa mas pelle HD", 4.0, 29);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(16, prod.getId(), "/images/product-4.jpg"));
+        imagenes.add(new Imagen(17, prod.getId(), "/images/product-4.jpg"));
+        imagenes.add(new Imagen(18, prod.getId(), "/images/product-4.jpg"));
+        imagenes.add(new Imagen(19, prod.getId(), "/images/product-4.jpg"));
+        imagenes.add(new Imagen(20, prod.getId(), "/images/product-4.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-6.jpg");
-    // imagenes.add("../images/product-6.jpg");
-    // imagenes.add("../images/product-6.jpg");
-    // imagenes.add("../images/product-6.jpg");
-    // imagenes.add("../images/product-6.jpg");
-    // registerProduct(6, "ROPA", "Camisa Negra PUMA", imagenes, 40000, "Camisa
-    // PUMIX 1080p", 3.5, 432);
+        prod = new Producto(5, cat, "Zapatillas Grises PUMA", 520000, "Zapatillas grises ultra pelles", 4.0, 45);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(21, prod.getId(), "/images/product-5.jpg"));
+        imagenes.add(new Imagen(22, prod.getId(), "/images/product-5.jpg"));
+        imagenes.add(new Imagen(23, prod.getId(), "/images/product-5.jpg"));
+        imagenes.add(new Imagen(24, prod.getId(), "/images/product-5.jpg"));
+        imagenes.add(new Imagen(25, prod.getId(), "/images/product-5.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-7.jpg");
-    // imagenes.add("../images/product-7.jpg");
-    // imagenes.add("../images/product-7.jpg");
-    // imagenes.add("../images/product-7.jpg");
-    // imagenes.add("../images/product-7.jpg");
-    // registerProduct(7, "ROPA", "Medias HRX", imagenes, 20000, "Medias Medio
-    // Medio", 4.5, 204);
+        prod = new Producto(6, cat, "Camisa Negra PUMA", 40000, "Camisa PUMIX 1080p", 3.5, 432);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(26, prod.getId(), "/images/product-6.jpg"));
+        imagenes.add(new Imagen(27, prod.getId(), "/images/product-6.jpg"));
+        imagenes.add(new Imagen(28, prod.getId(), "/images/product-6.jpg"));
+        imagenes.add(new Imagen(29, prod.getId(), "/images/product-6.jpg"));
+        imagenes.add(new Imagen(30, prod.getId(), "/images/product-6.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-8.jpg");
-    // imagenes.add("../images/product-8.jpg");
-    // imagenes.add("../images/product-8.jpg");
-    // imagenes.add("../images/product-8.jpg");
-    // imagenes.add("../images/product-8.jpg");
-    // registerProduct(8, "ROPA", "Reloj Negro Fossil", imagenes, 3200000, "Ultra
-    // fino 4k el reloj", 4.0, 5);
+        prod = new Producto(7, cat, "Medias HRX", 20000, "Medias Medio Medio", 4.5, 204);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(31, prod.getId(), "/images/product-7.jpg"));
+        imagenes.add(new Imagen(32, prod.getId(), "/images/product-7.jpg"));
+        imagenes.add(new Imagen(33, prod.getId(), "/images/product-7.jpg"));
+        imagenes.add(new Imagen(34, prod.getId(), "/images/product-7.jpg"));
+        imagenes.add(new Imagen(35, prod.getId(), "/images/product-7.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-9.jpg");
-    // imagenes.add("../images/product-9.jpg");
-    // imagenes.add("../images/product-9.jpg");
-    // imagenes.add("../images/product-9.jpg");
-    // imagenes.add("../images/product-9.jpg");
-    // registerProduct(9, "ROPA", "Reloj Roadster Negro", imagenes, 1203000,
-    // "Relojito aspero", 4.0, 54);
+        prod = new Producto(8, cat, "Reloj Negro Fossil", 3200000, "Ultra fino 4k el reloj", 4.0, 5);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(36, prod.getId(), "/images/product-8.jpg"));
+        imagenes.add(new Imagen(37, prod.getId(), "/images/product-8.jpg"));
+        imagenes.add(new Imagen(38, prod.getId(), "/images/product-8.jpg"));
+        imagenes.add(new Imagen(39, prod.getId(), "/images/product-8.jpg"));
+        imagenes.add(new Imagen(40, prod.getId(), "/images/product-8.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-10.jpg");
-    // imagenes.add("../images/product-10.jpg");
-    // imagenes.add("../images/product-10.jpg");
-    // imagenes.add("../images/product-10.jpg");
-    // imagenes.add("../images/product-10.jpg");
-    // registerProduct(10, "ROPA", "Zapatillas Deportivas HRX", imagenes, 200000,
-    // "Zapatillas negras ultra pelles",
-    // 4.5, 20);
+        prod = new Producto(9, cat, "Reloj Roadster Negro", 1203000, "Relojito aspero", 4.0, 54);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(41, prod.getId(), "/images/product-9.jpg"));
+        imagenes.add(new Imagen(42, prod.getId(), "/images/product-9.jpg"));
+        imagenes.add(new Imagen(43, prod.getId(), "/images/product-9.jpg"));
+        imagenes.add(new Imagen(44, prod.getId(), "/images/product-9.jpg"));
+        imagenes.add(new Imagen(45, prod.getId(), "/images/product-9.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-11.jpg");
-    // imagenes.add("../images/product-11.jpg");
-    // imagenes.add("../images/product-11.jpg");
-    // imagenes.add("../images/product-11.jpg");
-    // imagenes.add("../images/product-11.jpg");
-    // registerProduct(11, "ROPA", "Zapatillas Grises HRX", imagenes, 125999,
-    // "Zapatillas grises ultra pelles", 4.5,
-    // 54);
+        prod = new Producto(10, cat, "Zapatillas Deportivas HRX", 200000, "Zapatillas negras ultra pelles", 4.5, 20);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(46, prod.getId(), "/images/product-10.jpg"));
+        imagenes.add(new Imagen(47, prod.getId(), "/images/product-10.jpg"));
+        imagenes.add(new Imagen(48, prod.getId(), "/images/product-10.jpg"));
+        imagenes.add(new Imagen(49, prod.getId(), "/images/product-10.jpg"));
+        imagenes.add(new Imagen(50, prod.getId(), "/images/product-10.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
-    // imagenes = new ArrayList<>();
-    // imagenes.add("../images/product-12.jpg");
-    // imagenes.add("../images/product-12.jpg");
-    // imagenes.add("../images/product-12.jpg");
-    // imagenes.add("../images/product-12.jpg");
-    // imagenes.add("../images/product-12.jpg");
-    // registerProduct(12, "ROPA", "Pantalon NIKE negro", imagenes, 150000, "Severo
-    // Yoger", 4.0, 20);
-    // }
+        prod = new Producto(11, cat, "Zapatillas Grises HRX", 125999, "Zapatillas grises ultra pelles", 4.5, 54);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(51, prod.getId(), "/images/product-11.jpg"));
+        imagenes.add(new Imagen(52, prod.getId(), "/images/product-11.jpg"));
+        imagenes.add(new Imagen(53, prod.getId(), "/images/product-11.jpg"));
+        imagenes.add(new Imagen(54, prod.getId(), "/images/product-11.jpg"));
+        imagenes.add(new Imagen(55, prod.getId(), "/images/product-11.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
 
+        prod = new Producto(12, cat, "Pantalon NIKE negro", 150000, "Severo Yoger", 4.0, 20);
+        imagenes = new ArrayList<>();
+        imagenes.add(new Imagen(56, prod.getId(), "/images/product-12.jpg"));
+        imagenes.add(new Imagen(57, prod.getId(), "/images/product-12.jpg"));
+        imagenes.add(new Imagen(58, prod.getId(), "/images/product-12.jpg"));
+        imagenes.add(new Imagen(59, prod.getId(), "/images/product-12.jpg"));
+        imagenes.add(new Imagen(60, prod.getId(), "/images/product-12.jpg"));
+        prod.setImagenes(imagenes);
+        registerProduct(prod);
+    }
 }

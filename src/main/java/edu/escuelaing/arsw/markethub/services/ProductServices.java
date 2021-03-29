@@ -14,15 +14,15 @@ import java.util.List;
 public class ProductServices {
 
     @Autowired
-    @Qualifier("mockPersistence")
+    @Qualifier("myBatisPersistence")
     Persistence persistence;
 
     public List<Producto> getProductos() {
         return persistence.getAllProducts();
     }
 
-    public Producto getProductoById(Integer id) {
-        return persistence.getProductoById(id);
+    public Producto getProductById(Integer id) {
+        return persistence.getProductById(id);
     }
 
 }

@@ -25,7 +25,8 @@ public class TempInsert {
     public void registerToTheGrandDatabase(Integer id, Categoria categoria, String nombre, List<String> imagenes,
             Integer precio, String descripcion, Double puntaje, Integer cantidad) throws IOException {
 
-        ArrayList<Imagen> imgs = new ArrayList<>();
+        ArrayList<File> binImgs = new ArrayList<>();
+        ArrayList<Imagen> MHImgs = new ArrayList<>();
         Producto prod = new Producto(id, categoria, nombre, new ArrayList<Imagen>(), precio, descripcion, puntaje,
                 cantidad);
 
@@ -35,16 +36,19 @@ public class TempInsert {
             ClassLoader classLoader = getClass().getClassLoader();
 
             img = new File(classLoader.getResource(imgPath).getFile());
+            binImgs.add(img);
 
             Imagen imagencita = new Imagen();
-            imagencita.setProducto(prod);
-            imagencita.setImagen(FileUtils.readFileToByteArray(img));
-            imgs.add(imagencita);
+            imagencita.setProductoId(prod.getId());
+            // imagencita.setImagen(FileUtils.readFileToByteArray(img));
+            MHImgs.add(imagencita);
         }
 
         id = persistence.registerProduct(prod);
         prod.setId(id);
-        imgs.forEach((image) -> persistence.insertImage(image));
+        for (int i = 0; i < binImgs.size(); i++) {
+            System.out.println("ID: " + persistence.insertImage(binImgs.get(i), MHImgs.get(i)));
+        }
     }
 
     public void insert() throws IOException {

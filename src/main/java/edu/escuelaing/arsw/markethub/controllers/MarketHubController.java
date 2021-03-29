@@ -38,6 +38,7 @@ public class MarketHubController {
         try {
             return new ResponseEntity<>(productServices.getProductos(), HttpStatus.ACCEPTED);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -45,7 +46,7 @@ public class MarketHubController {
     @RequestMapping(value = "/productos/consultar/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getProductoById(@PathVariable("id") Integer id) {
         try {
-            return new ResponseEntity<>(productServices.getProductoById(id), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(productServices.getProductById(id), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }

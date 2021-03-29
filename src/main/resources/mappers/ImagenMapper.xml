@@ -4,17 +4,15 @@
 
     <!-- Prefijo img_ -->
 
-    <select id="getLatestId" resultType="int">
-        SELECT 
-            id AS img_id
-        FROM imagenes
-        ORDER BY img_id DESC 
-        LIMIT 1
-    </select>
-
-    <insert id="insertImage" parameterType="map">
-        INSERT INTO imagenes (producto, imagen)
-        VALUES (#{img.producto.id}, #{img.imagen})
+    <insert id="insertImage" parameterType="map" useGeneratedKeys="true" keyProperty="img.id" keyColumn="id">
+        INSERT INTO imagenes (producto, url)
+        VALUES (#{img.producto.id}, #{img.url})
     </insert>
+
+    <resultMap id="imgResult" type="Imagen">
+        <id property="id" column="img_id" />
+        <result property="producto" column="img_producto" />
+        <result property="url" column="img_url" />
+    </resultMap>
 
 </mapper>

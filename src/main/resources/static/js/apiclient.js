@@ -6,10 +6,10 @@ const apiclient = (function () {
             contentType: "application/json"
         });
         promise.then(function (data) {
-                callback(null, data);
-            }, function (error) {
-                alert("No se pudo realizar la consulta");
-            }
+            callback(null, data);
+        }, function (error) {
+            alert("No se pudo realizar la consulta");
+        }
         );
     }
 
@@ -27,10 +27,10 @@ const apiclient = (function () {
             contentType: "application/json"
         });
         promise.then(function (data) {
-                callback(null, data);
-            }, function (error) {
-                alert("No se pudo realizar la consulta");
-            }
+            callback(null, data);
+        }, function (error) {
+            alert("No se pudo realizar la consulta");
+        }
         );
     }
 

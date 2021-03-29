@@ -2,17 +2,17 @@ package edu.escuelaing.arsw.markethub.entities;
 
 public class Imagen {
     private int id;
-    private Producto producto;
-    private byte[] imagen;
+    private int producto;
+    private String url;
 
     public Imagen() {
 
     }
 
-    public Imagen(int id, Producto producto, byte[] imagen) {
+    public Imagen(int id, int producto, String url) {
         this.id = id;
         this.producto = producto;
-        this.imagen = imagen;
+        this.url = url;
     }
 
     public int getId() {
@@ -23,19 +23,19 @@ public class Imagen {
         this.id = id;
     }
 
-    public Producto getProducto() {
+    public Integer getProducto() {
         return producto;
     }
 
-    public void setProducto(Producto producto) {
+    public void setProductoId(Integer producto) {
         this.producto = producto;
     }
 
-    public byte[] getImagen() {
-        return imagen;
+    public String getUrl() {
+        return url;
     }
 
-    public void setImagen(byte[] imagen) {
-        this.imagen = imagen;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

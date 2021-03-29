@@ -9,4 +9,9 @@
         VALUES (#{cat.nombre}, #{cat.descripcion})
     </insert>
 
+    <resultMap id="categoryResult" type="Categoria">
+        <id property="nombre" column="cat_nombre" />
+        <result property="descripcion" column="cat_descripcion" />
+    </resultMap>
+
 </mapper>

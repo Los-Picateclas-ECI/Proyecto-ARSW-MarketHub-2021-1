@@ -10,6 +10,6 @@ public interface ImagenDAO {
 
     int getLatestId();
 
-    void insertImage(@Param("img") Imagen img);
+    int insertImage(@Param("img") Imagen img);
 
 }

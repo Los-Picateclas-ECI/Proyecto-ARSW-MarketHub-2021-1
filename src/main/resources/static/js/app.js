@@ -37,7 +37,7 @@ const app = (function () {
             $("#container-row__id").append($(
                 "<div class=\"container-row__4\" id=\"product" + data[i].id + "\">" +
                 "<a id=\"product" + data[i].id + "\" onclick=\"" + "app.loadProductPage(this.id)" + "\">" +
-                "<img src=" + data[i].imagen[0] + ">" +
+                "<img src=" + data[i].imagenes[0].url + ">" +
                 "<h4>" + data[i].nombre + "</h4>" +
                 puntajeIns +
                 "<p> $" + data[i].precio + "</p>" +
@@ -50,19 +50,19 @@ const app = (function () {
     function appendProductInfo(data) {
         $("#container-row__detail").append($(
             "<div class=\"container-row__2\">" +
-            "<img id=\"ProductImg\" src=\"" + data.imagen[1] + "\"" + "width=\"100%\"" + ">" +
+            "<img id=\"ProductImg\" src=\"" + data.imagenes[0].url + "\"" + "width=\"100%\"" + ">" +
             "<div class=\"small-img-row\">" +
             "<div class=\"small-img-col\">" +
-            "<img class=\"small-img\" src=\"" + data.imagen[1] + "\"" + "width=\"100%\"" + ">" +
+            "<img class=\"small-img\" src=\"" + data.imagenes[1].url + "\"" + "width=\"100%\"" + ">" +
             "</div>" +
             "<div class=\"small-img-col\">" +
-            "<img class=\"small-img\" src=\"" + data.imagen[2] + "\"" + "width=\"100%\"" + ">" +
+            "<img class=\"small-img\" src=\"" + data.imagenes[2].url + "\"" + "width=\"100%\"" + ">" +
             "</div>" +
             "<div class=\"small-img-col\">" +
-            "<img class=\"small-img\" src=\"" + data.imagen[3] + "\"" + "width=\"100%\"" + ">" +
+            "<img class=\"small-img\" src=\"" + data.imagenes[3].url + "\"" + "width=\"100%\"" + ">" +
             "</div>" +
             "<div class=\"small-img-col\">" +
-            "<img class=\"small-img\" src=\"" + data.imagen[4] + "\"" + "width=\"100%\"" + ">" +
+            "<img class=\"small-img\" src=\"" + data.imagenes[4].url + "\"" + "width=\"100%\"" + ">" +
             "</div>" +
             "</div>" +
             "</div>" +
