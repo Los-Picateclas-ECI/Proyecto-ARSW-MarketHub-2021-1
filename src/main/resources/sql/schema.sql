@@ -34,7 +34,7 @@ CREATE TABLE public.productos (
 
 -- public.productos foreign keys
 
-ALTER TABLE public.productos ADD CONSTRAINT fk_productos_categorias FOREIGN KEY (categoria) REFERENCES public.categorias(nombre);
+ALTER TABLE public.productos ADD CONSTRAINT fk_productos_categorias FOREIGN KEY (categoria) REFERENCES public.categorias(nombre) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ CREATE TABLE public.usuarios (
 
 -- public.usuarios foreign keys
 
-ALTER TABLE public.usuarios ADD CONSTRAINT usuarios_fk FOREIGN KEY (rol) REFERENCES public.rol(id);
+ALTER TABLE public.usuarios ADD CONSTRAINT usuarios_fk FOREIGN KEY (rol) REFERENCES public.rol(id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -122,8 +122,8 @@ CREATE TABLE public.compras (
 
 -- public.compras foreign keys
 
-ALTER TABLE public.compras ADD CONSTRAINT fk_compras_productos FOREIGN KEY (producto) REFERENCES public.productos(id);
-ALTER TABLE public.compras ADD CONSTRAINT fk_compras_usuarios FOREIGN KEY (usuario) REFERENCES public.usuarios(username);
+ALTER TABLE public.compras ADD CONSTRAINT fk_compras_productos FOREIGN KEY (producto) REFERENCES public.productos(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public.compras ADD CONSTRAINT fk_compras_usuarios FOREIGN KEY (usuario) REFERENCES public.usuarios(username) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -144,8 +144,8 @@ CREATE TABLE public.carrito_compras (
 
 -- public.carrito_compras foreign keys
 
-ALTER TABLE public.carrito_compras ADD CONSTRAINT fk_carritocompras_productos FOREIGN KEY (producto) REFERENCES public.productos(id);
-ALTER TABLE public.carrito_compras ADD CONSTRAINT fk_carritocompras_usuarios FOREIGN KEY (usuario) REFERENCES public.usuarios(username);
+ALTER TABLE public.carrito_compras ADD CONSTRAINT fk_carritocompras_productos FOREIGN KEY (producto) REFERENCES public.productos(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public.carrito_compras ADD CONSTRAINT fk_carritocompras_usuarios FOREIGN KEY (usuario) REFERENCES public.usuarios(username) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -165,8 +165,8 @@ CREATE TABLE public.favoritos (
 
 -- public.favoritos foreign keys
 
-ALTER TABLE public.favoritos ADD CONSTRAINT fk_favoritos_productos FOREIGN KEY (producto) REFERENCES public.productos(id);
-ALTER TABLE public.favoritos ADD CONSTRAINT fk_favoritos_usuarios FOREIGN KEY (usuario) REFERENCES public.usuarios(username);
+ALTER TABLE public.favoritos ADD CONSTRAINT fk_favoritos_productos FOREIGN KEY (producto) REFERENCES public.productos(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public.favoritos ADD CONSTRAINT fk_favoritos_usuarios FOREIGN KEY (usuario) REFERENCES public.usuarios(username) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -185,8 +185,8 @@ CREATE TABLE public.comentarios (
 
 -- public.comentarios foreign keys
 
-ALTER TABLE public.comentarios ADD CONSTRAINT fk_comentaios_productos FOREIGN KEY (producto) REFERENCES public.productos(id);
-ALTER TABLE public.comentarios ADD CONSTRAINT fk_comentarios_usuarios FOREIGN KEY (usuario) REFERENCES public.usuarios(username);
+ALTER TABLE public.comentarios ADD CONSTRAINT fk_comentaios_productos FOREIGN KEY (producto) REFERENCES public.productos(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public.comentarios ADD CONSTRAINT fk_comentarios_usuarios FOREIGN KEY (usuario) REFERENCES public.usuarios(username) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -210,6 +210,6 @@ CREATE TABLE public.mensajes (
 
 -- public.mensajes foreign keys
 
-ALTER TABLE public.mensajes ADD CONSTRAINT fk_mensajes_usuarios FOREIGN KEY (emisor) REFERENCES public.usuarios(username);
+ALTER TABLE public.mensajes ADD CONSTRAINT fk_mensajes_usuarios FOREIGN KEY (emisor) REFERENCES public.usuarios(username) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ---------------------------------------------------------------------------------------------------------------------------------

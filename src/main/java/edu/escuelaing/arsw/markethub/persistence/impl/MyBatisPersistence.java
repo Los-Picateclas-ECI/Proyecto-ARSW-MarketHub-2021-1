@@ -73,11 +73,10 @@ public class MyBatisPersistence implements Persistence {
         String key = "Y2xvdWRpbmFyeTovLzEzMTI0Njk1MzMyMzcxNjpuNHNPcVBfVlBDdU92SmRrcDZnMmpueG5BLVFAdDZmZDdnMXU=";
         String decodedString = new String(Base64.getDecoder().decode(key));
         Cloudinary cloudinary = new Cloudinary(decodedString);
-        Map<String, Object> res = new HashMap<>();
+        Map<?, ?> res = new HashMap<>();
         try {
             res = cloudinary.uploader().upload(image, ObjectUtils.emptyMap());
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             return -1;
         }
