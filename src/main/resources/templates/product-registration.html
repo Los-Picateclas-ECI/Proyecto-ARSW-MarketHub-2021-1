@@ -1,94 +1,72 @@
 <!DOCTYPE html>
-<html lang="es" layout:decorate="master"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta content="Pagina de login de la plataforma MarketHub" name="description">
+    <meta content="Pagina de registro de productos" name="description">
     <meta content="MarketHub" name="copyright">
-    <meta content="index" name="robots">
+    <meta content="noindex" name="robots">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="./img/favicon.ico" rel="icon" type="image/x-icon"/>
-    <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="/css/normalize.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-    <title>Registro de producto</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/js/front.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/apiclient.js"></script>
+    <script>
+        window.onload = front.loadCategorias;
+    </script>
+    <title>Registrar Producto</title>
 </head>
+
 <body>
 <!-- Parte superior de la pagina, donde se eneucntra la barra de navegación -->
 <div class="container">
-    <div class="container-navbar">
-        <div class="navbar-logo">
-            <a href="../templates/index.html"><img src="./img/logoLarge.png" width="125px"></a>
-        </div>
-        <nav>
-            <ul id="MenuItems">
-                <li><a href="../templates/index.html">Inicio</a></li>
-                <li><a href="../templates/products.html">Productos</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="../templates/account.html">Cuenta</a></li>
-            </ul>
-        </nav>
-        <a href="../templates/carrito.html"><img height="30px" height="30px" src="./images/cart.png" width="30px"></a>
-        <img class="menu-icon" height="30px" onclick="menutoggle()" src="./images/menu.png">
-    </div>
+    <div class="container-navbar" id="barrita"></div>
 </div>
 <!-- Contenido tabla de registro-->
 <div class="account-page">
     <div class="container">
         <div style="margin: 50px 100px 100px 90px;">
-            <main layout:fragment="contenido">
+            <main>
                 <div class="col-12">
                     <h2>Registrar producto</h2>
                     <div style="margin: 20px 0 0 10px;"></div>
-                    <form method="post">
-                        <div class="form-group">
-                            <label for="codigo">Id del producto</label>
-                            <input autocomplete="off" class="form-control" id="codigo"
-                                   placeholder="Escribe el código del producto"
-                                   type="text">
+                    <form id="formRegistrarProd" onsubmit="app.registerProduct();return false">
+                        <label for="nombre">Nombre</label>
+                        <input autocomplete="off" autofocus class="form-control" id="nombre" name="nombre"
+                               placeholder="Nombre del producto" type="text" required>
+
+                        <label for="Cantidad">Cantidad</label>
+                        <input autocomplete="off" class="form-control" id="cantidad" min="1"
+                               name="cantidad" placeholder="Unidades disponibles" type="number" required>
+
+                        <label for="Precio">Precio</label>
+                        <input autocomplete="off" class="form-control" id="precio" min="50"
+                               name="precio" placeholder="Precio del producto" type="number" required>
+
+                        <label for="descripcion">Descripción</label>
+                        <input autocomplete="off" class="form-control" id="descripcion" name="descripcion"
+                               placeholder="Escribe detalle del producto" type="text" required>
+
+                        <label for="categorias">Categoria:</label>
+                        <br>
+                        <select id="categorias" required>
+                        </select>
+
+                        <label for="images">Imagenes del producto</label>
+                        <div class="position-static">
+                            <input accept="image/png, image/jpeg" id="images" multiple name="images"
+                                   type="file"  required>
                         </div>
-                        <div class="form-group">
-                            <label for="nombre">Nombre del
-                                <producto></producto>
-                            </label>
-                            <input autocomplete="off" autofocus class="form-control" id="nombre"
-                                   placeholder="Escribe el nombre del producto"
-                                   type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="Cantidad">Cantidad</label>
-                            <input autocomplete="off" class="form-control" id="cantidad"
-                                   placeholder="Cantidad actual del producto"
-                                   type="number">
-                        </div>
-                        <div class="form-group">
-                            <label for="Precio">Precio</label>
-                            <input autocomplete="off" autofocus class="form-control" id="Precio"
-                                   placeholder="Precio del producto"
-                                   type="int">
-                        </div>
-                        <div class="form-group">
-                            <label for="Descripcion">Descripción</label>
-                            <input autocomplete="off" autofocus class="form-control" id="Descripcion"
-                                   placeholder="Escribe detalle del producto"
-                                   type="text">
-                        </div>
-                        <div>
-                            <label for="avatar">Agrege imagen del producto</label>
-                            <div class="position-static">
-                                <input accept="image/png, image/jpeg" id="avatar" multiple name="avatar" type="file">
-                            </div>
-                        </div>
+
+                        <button class="container-row__2-btn">Guardar</button>
                     </form>
-                    <div>
-                        <a class="container-row__2-btn" href="">Guardar</a>
-                    </div>
                 </div>
             </main>
         </div>
@@ -103,12 +81,13 @@
                 <h3>Descarga nuestra aplicación</h3>
                 <p>Descarga la aplicación en sus versiones:</p>
                 <div class="app-logo">
-                    <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1"><img alt="GitHub" src="../../images/GitHub.png"></a>
-                    <img alt="AppleStore" src="../../images/docker.png">
+                    <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1"><img alt="GitHub"
+                                                                                                        src="/images/GitHub.png"></a>
+                    <img alt="AppleStore" src="/images/docker.png">
                 </div>
             </div>
             <div class="footer-col-2">
-                <img alt="LogoLargo" src="./img/logoLarge.png">
+                <img alt="LogoLargo" src="/img/logoLarge.png">
                 <p>MarketHub brinda a sus vendedores una mejor experiencia al momento de vender sus productos.</p>
             </div>
             <div class="footer-col-3">
@@ -122,7 +101,8 @@
             <div class="footer-col-4">
                 <h3>Síguenos En</h3>
                 <ul>
-                    <li><a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1">Github</a></li>
+                    <li><a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1">Github</a>
+                    </li>
                     <li>Twitter</li>
                     <li>Instagram</li>
                     <li>Facebook</li>
@@ -134,4 +114,5 @@
     </div>
 </div>
 </body>
+
 </html>

@@ -13,6 +13,12 @@ const app = (function () {
         });
     }
 
+    function getAllCategories(){
+        apiclient.getAllCategories((req, resp) => {
+            appendAllCategoriesOption(resp);
+        });
+    }
+
     function selectPuntIns(data) {
         let puntaje = data.puntaje;
         let html = "<div class=\"rating\">";
@@ -29,6 +35,14 @@ const app = (function () {
         }
         html += "</div>";
         return html;
+    }
+
+    function appendAllCategoriesOption(data){
+        for (let i = 0; i < data.length; i++) {
+            $("#categorias").append($(
+                "<option>" + data[i].nombre +"</option>"
+            ));
+        }
     }
 
     function appendAllProducts(data) {
@@ -109,11 +123,31 @@ const app = (function () {
         }
     }
 
+    function registerProduct(){
+        let dataProduct = {};
+        let nombre = $("#nombre").val();
+        let cantidad = $("#cantidad").val();
+        let precio = $("#precio").val();
+        let descripcion = $("#descripcion").val();
+        let categoria = $("#categorias").children("option:selected").val();
+        let imagenes = $("#images")[0].files;
+        dataProduct["nombre"] = nombre;
+        dataProduct["cantidad"] = cantidad;
+        dataProduct["precio"] = precio;
+        dataProduct["descripcion"] = descripcion;
+        dataProduct["categoria"] = categoria;
+        dataProduct["imagenes"] = imagenes;
+        console.log(dataProduct)
+        apiclient.registerProduct(dataProduct)
+    }
+
     return {
         loadProductPage: loadProductPage,
         getAllProducts: getAllProducts,
         loadProductInfo: loadProductInfo,
-        registerUser: registerUser
+        registerUser: registerUser,
+        getAllCategories: getAllCategories,
+        registerProduct: registerProduct
     };
 
 })();

@@ -1,5 +1,7 @@
 package edu.escuelaing.arsw.markethub.controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import edu.escuelaing.arsw.markethub.entities.Rol;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
 import edu.escuelaing.arsw.markethub.services.AccountServices;
@@ -68,6 +70,16 @@ public class MarketHubController {
         try {
             user.setRole(new Rol(2, "USER", "Usuario de la plataforma MarketHub"));
             accountServices.registerUser(user);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(value = "/registrar/producto", method = RequestMethod.POST)
+    public ResponseEntity<?> setProductPageId(@RequestBody JsonObject cadenita) {
+        try {
+            System.out.println(cadenita.toString());
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

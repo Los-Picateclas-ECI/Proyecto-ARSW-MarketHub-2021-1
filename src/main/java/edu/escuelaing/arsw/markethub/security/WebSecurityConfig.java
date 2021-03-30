@@ -30,7 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/carrito/**").authenticated().antMatchers("/admin/**").hasRole("ADMIN")
+        /*http.authorizeRequests().antMatchers("/carrito/**").authenticated().antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().permitAll().and().csrf().disable().formLogin().loginPage("/login").permitAll()
+                .failureUrl("/loginfailed").successHandler(authenticationSuccessHandler());*/
+        http.authorizeRequests().antMatchers("/carrito/**").authenticated().antMatchers("/admin/**").permitAll()
                 .anyRequest().permitAll().and().csrf().disable().formLogin().loginPage("/login").permitAll()
                 .failureUrl("/loginfailed").successHandler(authenticationSuccessHandler());
     }

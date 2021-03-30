@@ -21,17 +21,9 @@ const apiclient = (function () {
         promise.then(function (data) {
                 callback(null, data);
             }, function (error) {
-                alert("No se pudo realizar la consulta");
+                alert("No se pudo realizar la consulta de categorias");
             }
         );
-    }
-
-    function saveProductId(data) {
-        const promise = $.post({
-            url: "/productos/guardar/id",
-            contentType: "application/json",
-            data: data,
-        });
     }
 
     function getProductPageInfo(productId, callback) {
@@ -47,9 +39,25 @@ const apiclient = (function () {
         );
     }
 
+    function saveProductId(data) {
+        const promise = $.post({
+            url: "/productos/guardar/id",
+            contentType: "application/json",
+            data: data,
+        });
+    }
+
     function registerUser(data) {
         const promise = $.post({
             url: "/registrar/usuario",
+            contentType: "application/json",
+            data: JSON.stringify(data)
+        });
+    }
+
+    function registerProduct(data) {
+        const promise = $.post({
+            url: "/registrar/producto",
             contentType: "application/json",
             data: JSON.stringify(data)
         });
@@ -60,7 +68,8 @@ const apiclient = (function () {
         saveProductId: saveProductId,
         getProductPageInfo: getProductPageInfo,
         registerUser: registerUser,
-        getAllCategories: getAllCategories
+        getAllCategories: getAllCategories,
+        registerProduct: registerProduct
     };
 
 })();

@@ -20,7 +20,7 @@ const front = (function () {
 
     function loadAll() {
         const promise = new Promise((resolve, reject) => {
-            $("#barrita").load("../../barrita.html", function () {
+            $("#barrita").load("/barrita.html", function () {
                 menutoggle();
                 acctToggle();
                 resolve("Buenardo");
@@ -54,11 +54,17 @@ const front = (function () {
         app.getAllProducts();
     }
 
+    function loadCategorias(){
+        loadAll();
+        app.getAllCategories();
+    }
+
     return {
         menutoggle: menutoggle,
         acctToggle: acctToggle,
         changeImages: changeImages,
         loadProducts: loadProducts,
+        loadCategorias: loadCategorias,
         loadAll: loadAll
     };
 
