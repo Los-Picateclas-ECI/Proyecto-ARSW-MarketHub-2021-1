@@ -45,4 +45,10 @@ public class MarketHubWebController {
         return "login";
     }
 
+    /*----------- MAPPING DEL ADMIN SOCIO -----------*/
+    @RequestMapping(value = "/admin/registrar/producto", method = RequestMethod.GET)
+    public String productRegistration() {
+        return "product-registration";
+    }
+
 }
