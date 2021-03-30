@@ -30,4 +30,6 @@ public interface Persistence {
     // ------------------------ Imágenes ----------------------------------
 
     int insertImage(File image, Imagen imagenMH);
+
+    List<Categoria> getAllCategories();
 }

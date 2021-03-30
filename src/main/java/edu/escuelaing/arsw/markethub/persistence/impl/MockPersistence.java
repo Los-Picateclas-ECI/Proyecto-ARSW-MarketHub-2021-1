@@ -89,6 +89,11 @@ public class MockPersistence implements Persistence {
         return 0;
     }
 
+    @Override
+    public List<Categoria> getAllCategories() {
+        return null;
+    }
+
     private void registrarMuchosProductos() {
         Categoria cat = new Categoria("Ropa", "Todos los productos para que estés a la moda.");
         insertCategory(cat);

@@ -86,9 +86,9 @@ public class MyBatisPersistence implements Persistence {
         return imagenMH.getId();
     }
 
-    public static void main(String[] args) {
-        MyBatisPersistence mbp = new MyBatisPersistence();
-        mbp.insertImage(new File(""), new Imagen());
+    @Override
+    public List<Categoria> getAllCategories(){
+        return categoriaDAO.getAllCategories();
     }
 
 }

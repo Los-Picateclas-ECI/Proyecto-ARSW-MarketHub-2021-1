@@ -4,14 +4,24 @@
 
     <!-- Prefijo cat_ -->
 
+    <sql id="selectCategory">
+        SELECT cat.nombre      AS cat_nombre,
+               cat.descripcion AS cat_descripcion
+        FROM categorias AS cat
+    </sql>
+
+    <select id="getAllCategories" resultMap="categoryResult">
+        <include refid="selectCategory"/>
+    </select>
+
     <insert id="insertCategory" parameterType="map">
         INSERT INTO categorias (nombre, descripcion)
         VALUES (#{cat.nombre}, #{cat.descripcion})
     </insert>
 
     <resultMap id="categoryResult" type="Categoria">
-        <id property="nombre" column="cat_nombre" />
-        <result property="descripcion" column="cat_descripcion" />
+        <id property="nombre" column="cat_nombre"/>
+        <result property="descripcion" column="cat_descripcion"/>
     </resultMap>
 
 </mapper>

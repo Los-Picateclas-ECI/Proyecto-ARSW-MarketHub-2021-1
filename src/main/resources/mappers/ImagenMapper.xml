@@ -10,9 +10,9 @@
     </insert>
 
     <resultMap id="imgResult" type="Imagen">
-        <id property="id" column="img_id" />
-        <result property="producto" column="img_producto" />
-        <result property="url" column="img_url" />
+        <id property="id" column="img_id"/>
+        <result property="producto" column="img_producto"/>
+        <result property="url" column="img_url"/>
     </resultMap>
 
 </mapper>

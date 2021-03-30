@@ -33,7 +33,7 @@ public class MarketHubController {
 
     /*----------- METODOS GET -----------*/
 
-    @RequestMapping(value = "/productos/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/productos/consultar", method = RequestMethod.GET)
     public ResponseEntity<?> getProductos() {
         try {
             return new ResponseEntity<>(productServices.getProductos(), HttpStatus.ACCEPTED);
@@ -47,6 +47,15 @@ public class MarketHubController {
     public ResponseEntity<?> getProductoById(@PathVariable("id") Integer id) {
         try {
             return new ResponseEntity<>(productServices.getProductById(id), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/categorias/consultar", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllCategories() {
+        try {
+            return new ResponseEntity<>(productServices.getAllCategories(), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }

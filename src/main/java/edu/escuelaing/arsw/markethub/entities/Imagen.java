@@ -6,7 +6,7 @@ public class Imagen {
     private String url;
 
     public Imagen() {
-
+        //Contructor vacio a proposito
     }
 
     public Imagen(int id, int producto, String url) {

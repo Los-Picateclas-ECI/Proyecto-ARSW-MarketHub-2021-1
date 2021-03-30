@@ -1,5 +1,6 @@
 package edu.escuelaing.arsw.markethub.services;
 
+import edu.escuelaing.arsw.markethub.entities.Categoria;
 import edu.escuelaing.arsw.markethub.entities.Producto;
 import edu.escuelaing.arsw.markethub.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class ProductServices {
 
     public Producto getProductById(Integer id) {
         return persistence.getProductById(id);
+    }
+
+    public List<Categoria> getAllCategories() {
+        return persistence.getAllCategories();
     }
 
 }
