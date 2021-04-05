@@ -34,7 +34,6 @@ const front = (function () {
             const ProductImg = document.getElementById("ProductImg");
             const SmallImg = document.getElementsByClassName("small-img");
             for (let i = 0; i < SmallImg.length; i++) {
-                console.log("asdfasdfasd");
                 SmallImg[i].onclick = function () {
                     ProductImg.src = SmallImg[i].src;
                 };

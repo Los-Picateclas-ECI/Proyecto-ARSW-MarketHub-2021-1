@@ -21,13 +21,14 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest req, HttpServletResponse res, Authentication auth)
-            throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest req, HttpServletResponse res,
+            Authentication auth) throws IOException, ServletException {
         handle(req, res, auth);
         clearAuthenticationAttributes(req);
     }
 
-    private void handle(HttpServletRequest req, HttpServletResponse res, Authentication auth) throws IOException {
+    private void handle(HttpServletRequest req, HttpServletResponse res, Authentication auth)
+            throws IOException {
         String targetUrl = determineTargetUrl(auth);
         if (res.isCommitted()) {
             return;
@@ -38,7 +39,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     private String determineTargetUrl(Authentication auth) {
         Map<String, String> roleTargetUrlMap = new HashMap<>();
         roleTargetUrlMap.put("ROLE_USER", "/inicio");
-        roleTargetUrlMap.put("ROLE_ADMIN", "/productos");
+        roleTargetUrlMap.put("ROLE_ADMIN", "/admin/registrar/producto");
 
         final Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
         for (final GrantedAuthority grantedAuthority : authorities) {
