@@ -6,7 +6,7 @@
 
     <insert id="insertImage" parameterType="map" useGeneratedKeys="true" keyProperty="img.id" keyColumn="id">
         INSERT INTO imagenes (producto, url)
-        VALUES (#{img.producto.id}, #{img.url})
+        VALUES (#{img.producto}, #{img.url})
     </insert>
 
     <resultMap id="imgResult" type="Imagen">

@@ -1,15 +1,29 @@
 package edu.escuelaing.arsw.markethub.controllers;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import edu.escuelaing.arsw.markethub.entities.Categoria;
+import edu.escuelaing.arsw.markethub.entities.Imagen;
+import edu.escuelaing.arsw.markethub.entities.Producto;
 import edu.escuelaing.arsw.markethub.entities.Rol;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
 import edu.escuelaing.arsw.markethub.services.AccountServices;
 import edu.escuelaing.arsw.markethub.services.ProductServices;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import edu.escuelaing.arsw.markethub.tools.FileManager;
 
 /**
  * Controlador principal del proyecto MarketHub
@@ -69,6 +83,7 @@ public class MarketHubController {
     public ResponseEntity<?> setProductPageId(@RequestBody UserMH user) {
         try {
             user.setRole(new Rol(2, "USER", "Usuario de la plataforma MarketHub"));
+            // TODO: Obtener el rol de la base de datos en vez de instanciarlo
             accountServices.registerUser(user);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
@@ -76,14 +91,39 @@ public class MarketHubController {
         }
     }
 
-    @RequestMapping(value = "/registrar/producto", method = RequestMethod.POST)
-    public ResponseEntity<?> setProductPageId(@RequestBody JsonObject cadenita) {
+    @RequestMapping(value = "/registrar/producto", method = RequestMethod.POST,
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> setProductPageId(@ModelAttribute Producto producto,
+            @RequestPart("categoria_nombre") String categoria_str,
+            @RequestPart List<MultipartFile> images) {
         try {
-            System.out.println(cadenita.toString());
+            Categoria categoria = productServices.getCategory(categoria_str);
+            producto.setCategoria(categoria);
+            producto.setPuntaje(3d);
+            productServices.insertProduct(producto);
+
+            String tempDir = "temp";
+            File dir = new File(tempDir);
+            if (!dir.exists())
+                dir.mkdirs();
+            for (MultipartFile mpFile : images) {
+                Imagen imagenMH = new Imagen();
+                imagenMH.setProductoId(producto.getId());
+
+                String fileName = System.currentTimeMillis() + ".jpg";
+                File img = new File(tempDir + File.separator + fileName);
+
+                byte[] bytes = mpFile.getBytes();
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(img));
+                stream.write(bytes);
+                stream.close();
+
+                productServices.insertImage(img, imagenMH);
+            }
+            FileManager.removeDir(dir);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
 }

@@ -2,18 +2,21 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta content="Pagina de registro de productos" name="description">
-    <meta content="MarketHub" name="copyright">
-    <meta content="noindex" name="robots">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="/img/favicon.ico" rel="icon" type="image/x-icon"/>
-    <link href="/css/normalize.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <meta charset="UTF-8" />
+    <meta content="Pagina de registro de productos" name="description" />
+    <meta content="MarketHub" name="copyright" />
+    <meta content="noindex" name="robots" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="/css/normalize.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="/js/front.js"></script>
     <script src="/js/app.js"></script>
@@ -25,94 +28,110 @@
 </head>
 
 <body>
-<!-- Parte superior de la pagina, donde se eneucntra la barra de navegación -->
-<div class="container">
-    <div class="container-navbar" id="barrita"></div>
-</div>
-<!-- Contenido tabla de registro-->
-<div class="account-page">
+    <!-- Parte superior de la pagina, donde se eneucntra la barra de navegación -->
     <div class="container">
-        <div style="margin: 50px 100px 100px 90px;">
-            <main>
-                <div class="col-12">
-                    <h2>Registrar producto</h2>
-                    <div style="margin: 20px 0 0 10px;"></div>
-                    <form id="formRegistrarProd" onsubmit="app.registerProduct();return false">
-                        <label for="nombre">Nombre</label>
-                        <input autocomplete="off" autofocus class="form-control" id="nombre" name="nombre"
-                               placeholder="Nombre del producto" type="text" required>
+        <div class="container-navbar" id="barrita"></div>
+    </div>
+    <!-- Contenido tabla de registro-->
+    <div class="account-page">
+        <div class="container">
+            <div style="margin: 50px auto 100px auto; max-width: 800px;">
+                <main>
+                    <div class="col-12">
+                        <h2>Registrar producto</h2>
+                        <div style="margin: 20px 0 0 10px"></div>
+                        <!-- onsubmit="app.registerProduct();return false" -->
+                        <form id="formRegistrarProd" method="POST" action="/registrar/producto"
+                            enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input autocomplete="off" autofocus class="form-control" id="nombre" name="nombre"
+                                    placeholder="Nombre del producto" type="text" required />
+                            </div>
 
-                        <label for="Cantidad">Cantidad</label>
-                        <input autocomplete="off" class="form-control" id="cantidad" min="1"
-                               name="cantidad" placeholder="Unidades disponibles" type="number" required>
+                            <div class="form-group">
+                                <label for="Cantidad">Cantidad</label>
+                                <input autocomplete="off" class="form-control" id="cantidad" min="1" name="cantidad"
+                                    placeholder="Unidades disponibles" type="number" required />
+                            </div>
 
-                        <label for="Precio">Precio</label>
-                        <input autocomplete="off" class="form-control" id="precio" min="50"
-                               name="precio" placeholder="Precio del producto" type="number" required>
+                            <div class="form-group">
+                                <label for="Precio">Precio</label>
+                                <input autocomplete="off" class="form-control" id="precio" min="50" name="precio"
+                                    placeholder="Precio del producto" type="number" required />
+                            </div>
 
-                        <label for="descripcion">Descripción</label>
-                        <input autocomplete="off" class="form-control" id="descripcion" name="descripcion"
-                               placeholder="Escribe detalle del producto" type="text" required>
+                            <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                                <input autocomplete="off" class="form-control" id="descripcion" name="descripcion"
+                                    placeholder="Escribe detalle del producto" type="text" required />
+                            </div>
 
-                        <label for="categorias">Categoria:</label>
-                        <br>
-                        <select id="categorias" required>
-                        </select>
+                            <div class="form-group">
+                                <label for="categorias">Categoria:</label>
+                                <br />
+                                <select id="categorias" name="categoria_nombre" class="form-control" required></select>
+                            </div>
 
-                        <label for="images">Imagenes del producto</label>
-                        <div class="position-static">
-                            <input accept="image/png, image/jpeg" id="images" multiple name="images"
-                                   type="file"  required>
-                        </div>
+                            <div class="form-group">
+                                <label for="images">Imagenes del producto:</label>
+                                <div class="position-static">
+                                    <input accept="image/png, image/jpeg" id="images" multiple name="images" type="file"
+                                        required />
+                                </div>
+                            </div>
 
-                        <button class="container-row__2-btn">Guardar</button>
-                    </form>
-                </div>
-            </main>
+                            <button class="container-row__2-btn">Guardar</button>
+                        </form>
+                    </div>
+                </main>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Pie de pagina -->
-<div class="footer">
-    <div class="container">
-        <div class="container-row">
-            <div class="footer-col-1">
-                <h3>Descarga nuestra aplicación</h3>
-                <p>Descarga la aplicación en sus versiones:</p>
-                <div class="app-logo">
-                    <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1"><img alt="GitHub"
-                                                                                                        src="/images/GitHub.png"></a>
-                    <img alt="AppleStore" src="/images/docker.png">
+    <!-- Pie de pagina -->
+    <div class="footer">
+        <div class="container">
+            <div class="container-row">
+                <div class="footer-col-1">
+                    <h3>Descarga nuestra aplicación</h3>
+                    <p>Descarga la aplicación en sus versiones:</p>
+                    <div class="app-logo">
+                        <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1"><img alt="GitHub"
+                                src="/images/GitHub.png" /></a>
+                        <img alt="AppleStore" src="/images/docker.png" />
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img alt="LogoLargo" src="/img/logoLarge.png" />
+                    <p>
+                        MarketHub brinda a sus vendedores una mejor experiencia al momento de vender sus productos.
+                    </p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Contactanos</h3>
+                    <ul>
+                        <li><a href="https://github.com/danielrincon-m">Daniel Rincon</a></li>
+                        <li><a href="mailto: paula.guevara-s@mail.escuelaing.edu.co">Paula Guevara</a></li>
+                        <li><a href="https://wa.me/573174414419">Andres Calderón</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Síguenos En</h3>
+                    <ul>
+                        <li>
+                            <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1">Github</a>
+                        </li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Facebook</li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-col-2">
-                <img alt="LogoLargo" src="/img/logoLarge.png">
-                <p>MarketHub brinda a sus vendedores una mejor experiencia al momento de vender sus productos.</p>
-            </div>
-            <div class="footer-col-3">
-                <h3>Contactanos</h3>
-                <ul>
-                    <li><a href="https://github.com/danielrincon-m">Daniel Rincon</a></li>
-                    <li><a href="mailto: paula.guevara-s@mail.escuelaing.edu.co">Paula Guevara</a></li>
-                    <li><a href="https://wa.me/573174414419">Andres Calderón</a></li>
-                </ul>
-            </div>
-            <div class="footer-col-4">
-                <h3>Síguenos En</h3>
-                <ul>
-                    <li><a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1">Github</a>
-                    </li>
-                    <li>Twitter</li>
-                    <li>Instagram</li>
-                    <li>Facebook</li>
-                </ul>
-            </div>
+            <hr />
+            <p class="copyright">Copyright 2020 - MarketHub</p>
         </div>
-        <hr>
-        <p class="copyright">Copyright 2020 - MarketHub</p>
     </div>
-</div>
 </body>
 
 </html>

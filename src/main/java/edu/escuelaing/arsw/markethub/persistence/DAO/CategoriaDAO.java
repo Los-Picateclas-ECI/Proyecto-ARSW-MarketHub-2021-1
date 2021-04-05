@@ -13,4 +13,5 @@ public interface CategoriaDAO {
 
     List<Categoria> getAllCategories();
 
+    Categoria getCategory(@Param("name") String name);
 }

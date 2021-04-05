@@ -1,5 +1,5 @@
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .container-navbar {
@@ -23,7 +23,8 @@ nav ul li {
     margin-right: 20px;
 }
 
-a {
+a,
+a:hover {
     text-decoration: none;
     color: #555;
 }
@@ -125,7 +126,7 @@ p {
 }
 
 .title:after {
-    content: '';
+    content: "";
     background: #ff523b;
     width: 80px;
     height: 5px;
@@ -159,7 +160,6 @@ h4 {
     margin: 25px 0;
 }
 
-
 /* Offer */
 
 .offer {
@@ -175,7 +175,6 @@ h4 {
 small {
     color: #555;
 }
-
 
 /* Comentarios */
 
@@ -218,7 +217,6 @@ small {
     font-size: 16px;
 }
 
-
 /* Marcas */
 
 .brands {
@@ -238,7 +236,6 @@ small {
 .container-row__5 img:hover {
     filter: grayscale(0);
 }
-
 
 /* Pie de pagina */
 
@@ -316,7 +313,6 @@ ul {
     display: none;
 }
 
-
 /* Drop down */
 
 .row-2 {
@@ -352,7 +348,6 @@ select:focus {
     background: #ff523b;
     color: #fff;
 }
-
 
 /* Pa un solo producto */
 
@@ -398,7 +393,6 @@ input:focus {
     margin-left: 10px;
 }
 
-
 /* Pa las mini imagenes de el prod */
 
 .small-img-row {
@@ -418,7 +412,6 @@ input:focus {
     height: 100%;
     object-fit: cover;
 }
-
 
 /* Pal carrito */
 
@@ -484,7 +477,6 @@ th:last-child {
     text-align: right;
 }
 
-
 /* Account */
 
 .account-page {
@@ -521,12 +513,8 @@ th:last-child {
     top: 130px;
 }
 
-form input {
-    width: 100%;
-    height: 30px;
+.form-group {
     margin: 10px 0;
-    padding: 0 10px;
-    border: 1px solid #cccccc;
 }
 
 form .container-row__2-btn {
@@ -565,7 +553,7 @@ form a {
     border: none;
     border-radius: 2px;
     font-size: 15px;
-    transition: .2s;
+    transition: 0.2s;
     color: #fff;
     cursor: pointer;
 }
@@ -582,16 +570,27 @@ form a {
     background: #dd4b39;
 }
 
-form input {
-    transition: all 1s;
+form select {
+    cursor: pointer;
 }
 
-form input:focus {
-    background: #d3d3d3;
+form input,
+form select {
+    width: 100%;
+    height: 30px;
+    margin: 5px 0;
+    padding: 0 10px;
+    background-color: white;
+    border: 1px solid #cccccc;
+    transition: all 0.5s linear;
+}
+
+form input:focus,
+form select:focus {
+    background: #e9e9e9;
     height: 40px;
     color: #000;
 }
-
 
 .position-static input {
     height: 40px;
@@ -600,7 +599,7 @@ form input:focus {
     border: none;
 }
 
-.position-static input[type=file]::-webkit-file-upload-button {
+.position-static input[type="file"]::-webkit-file-upload-button {
     height: 100%;
     width: 40%;
     margin-right: 2em;
@@ -611,7 +610,7 @@ form input:focus {
     transition: all 0.5s;
 }
 
-.position-static input[type=file]::-webkit-file-upload-button:hover {
+.position-static input[type="file"]::-webkit-file-upload-button:hover {
     background: #ff523b;
     color: white;
 }
@@ -683,7 +682,6 @@ form input:focus {
         cursor: pointer;
     }
 }
-
 
 /* Media para disp pequeños */
 

@@ -29,4 +29,15 @@ public class Categoria {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Categoria [descripcion=");
+        builder.append(descripcion);
+        builder.append(", nombre=");
+        builder.append(nombre);
+        builder.append("]");
+        return builder.toString();
+    }
 }

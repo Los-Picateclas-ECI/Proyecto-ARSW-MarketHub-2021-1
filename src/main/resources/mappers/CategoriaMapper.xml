@@ -14,6 +14,11 @@
         <include refid="selectCategory" />
     </select>
 
+    <select id="getCategory" resultMap="categoryResult">
+        <include refid="selectCategory" />
+        WHERE cat.nombre = #{name}
+    </select>
+
     <insert id="insertCategory" parameterType="map">
         INSERT INTO categorias (nombre, descripcion)
         VALUES (#{cat.nombre}, #{cat.descripcion})

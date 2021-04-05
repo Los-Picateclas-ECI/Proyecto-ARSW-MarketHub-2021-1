@@ -4,9 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.springframework.stereotype.Component;
-
 import edu.escuelaing.arsw.markethub.entities.Categoria;
 import edu.escuelaing.arsw.markethub.entities.Imagen;
 import edu.escuelaing.arsw.markethub.entities.Producto;
@@ -27,11 +25,13 @@ public class MockPersistence implements Persistence {
         Rol RolAdmin = new Rol(1, "ADMIN", "Administrador de la plataforma MarketHub");
         Rol RolUser = new Rol(1, "USER", "Usuario de la plataforma MarketHub");
         /* Usuarios */
-        UserMH userMH = new UserMH("homie.simpson", 123456789, "3174414419", "homie.simpson@springfield.com",
-                "Homero J Simpson", 36, "andapa", "742 de Evergreen Terrace", "CC", RolAdmin);
+        UserMH userMH = new UserMH("homie.simpson", 123456789, "3174414419",
+                "homie.simpson@springfield.com", "Homero J Simpson", 36, "andapa",
+                "742 de Evergreen Terrace", "CC", RolAdmin);
         registerUser(userMH);
-        UserMH userMH2 = new UserMH("montgomery.burns", 987654321, "3075627419", "montgomery.burns@springfield.com",
-                "Montgomery Burns", 87, "burns123", "Mansión Burns", "CC", RolUser);
+        UserMH userMH2 = new UserMH("montgomery.burns", 987654321, "3075627419",
+                "montgomery.burns@springfield.com", "Montgomery Burns", 87, "burns123",
+                "Mansión Burns", "CC", RolUser);
         registerUser(userMH2);
         /* ¨Productos */
         registrarMuchosProductos();
@@ -84,9 +84,8 @@ public class MockPersistence implements Persistence {
     }
 
     @Override
-    public int insertImage(File image, Imagen imagenMH) {
+    public void insertImage(File image, Imagen imagenMH) {
         // TODO Auto-generated method stub
-        return 0;
     }
 
     @Override
@@ -94,11 +93,18 @@ public class MockPersistence implements Persistence {
         return null;
     }
 
+    @Override
+    public Categoria getCategory(String name) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
     private void registrarMuchosProductos() {
         Categoria cat = new Categoria("Ropa", "Todos los productos para que estés a la moda.");
         insertCategory(cat);
 
-        Producto prod = new Producto(1, cat, "Red Printed T-shirt", 50000, "Camiseta Roja Lo mas de aleta", 4.0, 20);
+        Producto prod = new Producto(1, cat, "Red Printed T-shirt", 50000,
+                "Camiseta Roja Lo mas de aleta", 4.0, 20);
         ArrayList<Imagen> imagenes = new ArrayList<>();
         imagenes.add(new Imagen(1, prod.getId(), "/images/product-1.jpg"));
         imagenes.add(new Imagen(2, prod.getId(), "/images/gallery-1.jpg"));
@@ -108,7 +114,8 @@ public class MockPersistence implements Persistence {
         prod.setImagenes(imagenes);
         registerProduct(prod);
 
-        prod = new Producto(2, cat, "Zapatillas Negras HRX", 320000, "Zapatillas negras ultra pelles", 3.5, 2);
+        prod = new Producto(2, cat, "Zapatillas Negras HRX", 320000,
+                "Zapatillas negras ultra pelles", 3.5, 2);
         imagenes = new ArrayList<>();
         imagenes.add(new Imagen(6, prod.getId(), "/images/product-2.jpg"));
         imagenes.add(new Imagen(7, prod.getId(), "/images/product-2.jpg"));
@@ -118,7 +125,8 @@ public class MockPersistence implements Persistence {
         prod.setImagenes(imagenes);
         registerProduct(prod);
 
-        prod = new Producto(3, cat, "Pantalon Gris Ultra 4k", 60000, "Pantalos gris hiper pelle", 4.5, 43);
+        prod = new Producto(3, cat, "Pantalon Gris Ultra 4k", 60000, "Pantalos gris hiper pelle",
+                4.5, 43);
         imagenes = new ArrayList<>();
         imagenes.add(new Imagen(11, prod.getId(), "/images/product-3.jpg"));
         imagenes.add(new Imagen(12, prod.getId(), "/images/product-3.jpg"));
@@ -128,7 +136,8 @@ public class MockPersistence implements Persistence {
         prod.setImagenes(imagenes);
         registerProduct(prod);
 
-        prod = new Producto(4, cat, "Camisa Polo Azul PUMA", 100000, "Camisa mas pelle HD", 4.0, 29);
+        prod = new Producto(4, cat, "Camisa Polo Azul PUMA", 100000, "Camisa mas pelle HD", 4.0,
+                29);
         imagenes = new ArrayList<>();
         imagenes.add(new Imagen(16, prod.getId(), "/images/product-4.jpg"));
         imagenes.add(new Imagen(17, prod.getId(), "/images/product-4.jpg"));
@@ -138,7 +147,8 @@ public class MockPersistence implements Persistence {
         prod.setImagenes(imagenes);
         registerProduct(prod);
 
-        prod = new Producto(5, cat, "Zapatillas Grises PUMA", 520000, "Zapatillas grises ultra pelles", 4.0, 45);
+        prod = new Producto(5, cat, "Zapatillas Grises PUMA", 520000,
+                "Zapatillas grises ultra pelles", 4.0, 45);
         imagenes = new ArrayList<>();
         imagenes.add(new Imagen(21, prod.getId(), "/images/product-5.jpg"));
         imagenes.add(new Imagen(22, prod.getId(), "/images/product-5.jpg"));
@@ -168,7 +178,8 @@ public class MockPersistence implements Persistence {
         prod.setImagenes(imagenes);
         registerProduct(prod);
 
-        prod = new Producto(8, cat, "Reloj Negro Fossil", 3200000, "Ultra fino 4k el reloj", 4.0, 5);
+        prod = new Producto(8, cat, "Reloj Negro Fossil", 3200000, "Ultra fino 4k el reloj", 4.0,
+                5);
         imagenes = new ArrayList<>();
         imagenes.add(new Imagen(36, prod.getId(), "/images/product-8.jpg"));
         imagenes.add(new Imagen(37, prod.getId(), "/images/product-8.jpg"));
@@ -188,7 +199,8 @@ public class MockPersistence implements Persistence {
         prod.setImagenes(imagenes);
         registerProduct(prod);
 
-        prod = new Producto(10, cat, "Zapatillas Deportivas HRX", 200000, "Zapatillas negras ultra pelles", 4.5, 20);
+        prod = new Producto(10, cat, "Zapatillas Deportivas HRX", 200000,
+                "Zapatillas negras ultra pelles", 4.5, 20);
         imagenes = new ArrayList<>();
         imagenes.add(new Imagen(46, prod.getId(), "/images/product-10.jpg"));
         imagenes.add(new Imagen(47, prod.getId(), "/images/product-10.jpg"));
@@ -198,7 +210,8 @@ public class MockPersistence implements Persistence {
         prod.setImagenes(imagenes);
         registerProduct(prod);
 
-        prod = new Producto(11, cat, "Zapatillas Grises HRX", 125999, "Zapatillas grises ultra pelles", 4.5, 54);
+        prod = new Producto(11, cat, "Zapatillas Grises HRX", 125999,
+                "Zapatillas grises ultra pelles", 4.5, 54);
         imagenes = new ArrayList<>();
         imagenes.add(new Imagen(51, prod.getId(), "/images/product-11.jpg"));
         imagenes.add(new Imagen(52, prod.getId(), "/images/product-11.jpg"));

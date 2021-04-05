@@ -34,8 +34,8 @@ public class Producto {
      * @param puntaje     - puntaje del producto
      * @param cantidad    - cantidad de unidades disponibles del producto
      */
-    public Producto(Integer id, Categoria categoria, String nombre, List<Imagen> imagenes, Integer precio,
-            String descripcion, Double puntaje, Integer cantidad) {
+    public Producto(Integer id, Categoria categoria, String nombre, List<Imagen> imagenes,
+            Integer precio, String descripcion, Double puntaje, Integer cantidad) {
         this.id = id;
         this.categoria = categoria;
         this.nombre = nombre;
@@ -57,8 +57,8 @@ public class Producto {
      * @param puntaje     - puntaje del producto
      * @param cantidad    - cantidad de unidades disponibles del producto
      */
-    public Producto(Integer id, Categoria categoria, String nombre, Integer precio, String descripcion, Double puntaje,
-            Integer cantidad) {
+    public Producto(Integer id, Categoria categoria, String nombre, Integer precio,
+            String descripcion, Double puntaje, Integer cantidad) {
         this.id = id;
         this.categoria = categoria;
         this.nombre = nombre;
@@ -206,9 +206,32 @@ public class Producto {
     /**
      * Método set del atributo categoría
      *
-     * @param cantidad - nueva categoría
+     * @param categoria - nueva categoría
      */
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Producto [cantidad=");
+        builder.append(cantidad);
+        builder.append(", categoria=");
+        builder.append(categoria);
+        builder.append(", descripcion=");
+        builder.append(descripcion);
+        builder.append(", id=");
+        builder.append(id);
+        builder.append(", imagenes=");
+        builder.append(imagenes);
+        builder.append(", nombre=");
+        builder.append(nombre);
+        builder.append(", precio=");
+        builder.append(precio);
+        builder.append(", puntaje=");
+        builder.append(puntaje);
+        builder.append("]");
+        return builder.toString();
     }
 }

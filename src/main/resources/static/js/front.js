@@ -1,5 +1,4 @@
 const front = (function () {
-
     function menutoggle() {
         const MenuItems = document.getElementById("MenuItems");
         if (MenuItems.style.maxHeight === "0px") {
@@ -34,17 +33,11 @@ const front = (function () {
         app.loadProductInfo(productId).then(function () {
             const ProductImg = document.getElementById("ProductImg");
             const SmallImg = document.getElementsByClassName("small-img");
-            SmallImg[0].onclick = function () {
-                ProductImg.src = SmallImg[0].src;
-            }
-            SmallImg[1].onclick = function () {
-                ProductImg.src = SmallImg[1].src;
-            }
-            SmallImg[2].onclick = function () {
-                ProductImg.src = SmallImg[2].src;
-            }
-            SmallImg[3].onclick = function () {
-                ProductImg.src = SmallImg[3].src;
+            for (let i = 0; i < SmallImg.length; i++) {
+                console.log("asdfasdfasd");
+                SmallImg[i].onclick = function () {
+                    ProductImg.src = SmallImg[i].src;
+                };
             }
         });
     }
@@ -54,7 +47,7 @@ const front = (function () {
         app.getAllProducts();
     }
 
-    function loadCategorias(){
+    function loadCategorias() {
         loadAll();
         app.getAllCategories();
     }
@@ -65,7 +58,6 @@ const front = (function () {
         changeImages: changeImages,
         loadProducts: loadProducts,
         loadCategorias: loadCategorias,
-        loadAll: loadAll
+        loadAll: loadAll,
     };
-
 })();

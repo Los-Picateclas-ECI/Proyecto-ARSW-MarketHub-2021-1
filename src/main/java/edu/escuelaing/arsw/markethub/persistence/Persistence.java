@@ -2,7 +2,6 @@ package edu.escuelaing.arsw.markethub.persistence;
 
 import java.io.File;
 import java.util.List;
-
 import edu.escuelaing.arsw.markethub.entities.Categoria;
 import edu.escuelaing.arsw.markethub.entities.Imagen;
 import edu.escuelaing.arsw.markethub.entities.Producto;
@@ -27,9 +26,11 @@ public interface Persistence {
 
     void insertCategory(Categoria categoria);
 
+    List<Categoria> getAllCategories();
+
+    Categoria getCategory(String name);
+
     // ------------------------ Imágenes ----------------------------------
 
-    int insertImage(File image, Imagen imagenMH);
-
-    List<Categoria> getAllCategories();
+    void insertImage(File image, Imagen imagenMH);
 }
