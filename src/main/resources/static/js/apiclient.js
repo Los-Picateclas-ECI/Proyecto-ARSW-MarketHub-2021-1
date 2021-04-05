@@ -1,13 +1,14 @@
 const apiclient = (function () {
-
     function getAllProducts(callback) {
         const promise = $.get({
             url: "/productos/consultar",
-            contentType: "application/json"
+            contentType: "application/json",
         });
-        promise.then(function (data) {
+        promise.then(
+            function (data) {
                 callback(null, data);
-            }, function (error) {
+            },
+            function (error) {
                 alert("No se pudo realizar la consulta");
             }
         );
@@ -16,11 +17,13 @@ const apiclient = (function () {
     function getAllCategories(callback) {
         const promise = $.get({
             url: "/categorias/consultar",
-            contentType: "application/json"
+            contentType: "application/json",
         });
-        promise.then(function (data) {
+        promise.then(
+            function (data) {
                 callback(null, data);
-            }, function (error) {
+            },
+            function (error) {
                 alert("No se pudo realizar la consulta de categorias");
             }
         );
@@ -29,11 +32,13 @@ const apiclient = (function () {
     function getProductPageInfo(productId, callback) {
         const promise = $.get({
             url: "/productos/consultar/" + productId,
-            contentType: "application/json"
+            contentType: "application/json",
         });
-        promise.then(function (data) {
+        promise.then(
+            function (data) {
                 callback(null, data);
-            }, function (error) {
+            },
+            function (error) {
                 alert("No se pudo realizar la consulta");
             }
         );
@@ -51,15 +56,24 @@ const apiclient = (function () {
         const promise = $.post({
             url: "/registrar/usuario",
             contentType: "application/json",
-            data: JSON.stringify(data)
+            data: JSON.stringify(data),
         });
     }
 
     function registerProduct(data) {
-        const promise = $.post({
+        return $.ajax({
+            type: "POST",
             url: "/registrar/producto",
-            contentType: "application/json",
-            data: JSON.stringify(data)
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                // alert("Se registró satisfactoriamente el producto");
+            },
+            error: function (xhr, status, err) {
+                alert("Ha ocurrido un error en el servidor");
+            },
         });
     }
 
@@ -69,7 +83,6 @@ const apiclient = (function () {
         getProductPageInfo: getProductPageInfo,
         registerUser: registerUser,
         getAllCategories: getAllCategories,
-        registerProduct: registerProduct
+        registerProduct: registerProduct,
     };
-
 })();

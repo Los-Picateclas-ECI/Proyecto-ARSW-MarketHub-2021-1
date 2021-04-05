@@ -70,7 +70,7 @@ p {
     padding: 8px 30px;
     margin: 30px 0;
     border-radius: 30px;
-    transition: background 0.5s;
+    transition: all 0.5s;
 }
 
 .container-row__2-btn:hover {
@@ -517,11 +517,31 @@ th:last-child {
     margin: 10px 0;
 }
 
+form .submit_btn_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 15px 0;
+}
+
 form .container-row__2-btn {
+    margin: 0;
     width: 100%;
+    height: 40px;
     border: none;
     cursor: pointer;
-    margin: 10px 0;
+    font-size: 20px;
+    transition: all 0.5s, background 0s;
+}
+
+form .container-row__2-btn.success {
+    background: #467b31;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    padding: 8px 8px;
+    border-radius: 50%;
+    cursor: default;
 }
 
 form .container-row__2-btn:focus {

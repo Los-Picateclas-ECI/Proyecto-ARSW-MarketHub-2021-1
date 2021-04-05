@@ -100,12 +100,11 @@ public class MarketHubController {
             Categoria categoria = productServices.getCategory(categoria_str);
             producto.setCategoria(categoria);
             producto.setPuntaje(3d);
+
             productServices.insertProduct(producto);
 
             String tempDir = "temp";
-            File dir = new File(tempDir);
-            if (!dir.exists())
-                dir.mkdirs();
+            File dir = FileManager.createDir(tempDir);
             for (MultipartFile mpFile : images) {
                 Imagen imagenMH = new Imagen();
                 imagenMH.setProductoId(producto.getId());
@@ -123,6 +122,7 @@ public class MarketHubController {
             FileManager.removeDir(dir);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }

@@ -17,10 +17,13 @@
     <link href="/css/normalize.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet" />
 
+    <script src="https://kit.fontawesome.com/e8e93dbb30.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/js/util.js"></script>
     <script src="/js/front.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/apiclient.js"></script>
+    <!-- <script src="/js/event-handler.js"></script> -->
     <script>
         window.onload = front.loadCategorias;
     </script>
@@ -37,53 +40,52 @@
         <div class="container">
             <div style="margin: 50px auto 100px auto; max-width: 800px;">
                 <main>
-                    <div class="col-12">
-                        <h2>Registrar producto</h2>
-                        <div style="margin: 20px 0 0 10px"></div>
-                        <!-- onsubmit="app.registerProduct();return false" -->
-                        <form id="formRegistrarProd" method="POST" action="/registrar/producto"
-                            enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="nombre">Nombre</label>
-                                <input autocomplete="off" autofocus class="form-control" id="nombre" name="nombre"
-                                    placeholder="Nombre del producto" type="text" required />
-                            </div>
+                    <h2>Registrar producto</h2>
+                    <div style="margin: 20px 0 0 10px"></div>
+                    <form id="formRegistrarProd" onsubmit="app.registerProduct();return false">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input autocomplete="off" autofocus class="form-control" id="nombre" name="nombre"
+                                placeholder="Nombre del producto" type="text" required />
+                        </div>
 
-                            <div class="form-group">
-                                <label for="Cantidad">Cantidad</label>
-                                <input autocomplete="off" class="form-control" id="cantidad" min="1" name="cantidad"
-                                    placeholder="Unidades disponibles" type="number" required />
-                            </div>
+                        <div class="form-group">
+                            <label for="Cantidad">Cantidad</label>
+                            <input autocomplete="off" class="form-control" id="cantidad" min="1" name="cantidad"
+                                placeholder="Unidades disponibles" type="number" required />
+                        </div>
 
-                            <div class="form-group">
-                                <label for="Precio">Precio</label>
-                                <input autocomplete="off" class="form-control" id="precio" min="50" name="precio"
-                                    placeholder="Precio del producto" type="number" required />
-                            </div>
+                        <div class="form-group">
+                            <label for="Precio">Precio</label>
+                            <input autocomplete="off" class="form-control" id="precio" min="50" name="precio"
+                                placeholder="Precio del producto" type="number" required />
+                        </div>
 
-                            <div class="form-group">
-                                <label for="descripcion">Descripción</label>
-                                <input autocomplete="off" class="form-control" id="descripcion" name="descripcion"
-                                    placeholder="Escribe detalle del producto" type="text" required />
-                            </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción</label>
+                            <input autocomplete="off" class="form-control" id="descripcion" name="descripcion"
+                                placeholder="Escribe detalle del producto" type="text" required />
+                        </div>
 
-                            <div class="form-group">
-                                <label for="categorias">Categoria:</label>
-                                <br />
-                                <select id="categorias" name="categoria_nombre" class="form-control" required></select>
-                            </div>
+                        <div class="form-group">
+                            <label for="categorias">Categoria:</label>
+                            <br />
+                            <select id="categorias" name="categoria_nombre" class="form-control" required></select>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="images">Imagenes del producto:</label>
-                                <div class="position-static">
-                                    <input accept="image/png, image/jpeg" id="images" multiple name="images" type="file"
-                                        required />
-                                </div>
+                        <div class="form-group">
+                            <label for="images">Imagenes del producto:</label>
+                            <div class="position-static">
+                                <input accept="image/png, image/jpeg" id="images" multiple name="images" type="file"
+                                    required />
                             </div>
+                        </div>
 
-                            <button class="container-row__2-btn">Guardar</button>
-                        </form>
-                    </div>
+                        <div class="submit_btn_wrapper">
+                            <button id="reg_prod_submit_btn" class="container-row__2-btn"
+                                type="submit">Registrar</button>
+                        </div>
+                    </form>
                 </main>
             </div>
         </div>

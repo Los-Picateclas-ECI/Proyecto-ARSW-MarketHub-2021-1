@@ -150,21 +150,15 @@ const app = (function () {
     }
 
     function registerProduct() {
-        let dataProduct = {};
-        let nombre = $("#nombre").val();
-        let cantidad = $("#cantidad").val();
-        let precio = $("#precio").val();
-        let descripcion = $("#descripcion").val();
-        let categoria = $("#categorias").children("option:selected").val();
-        let imagenes = $("#images")[0].files;
-        dataProduct["nombre"] = nombre;
-        dataProduct["cantidad"] = cantidad;
-        dataProduct["precio"] = precio;
-        dataProduct["descripcion"] = descripcion;
-        dataProduct["categoria"] = categoria;
-        dataProduct["imagenes"] = imagenes;
-        console.log(dataProduct);
-        apiclient.registerProduct(dataProduct);
+        let dataProduct = new FormData($("#formRegistrarProd")[0]);
+        $("#reg_prod_submit_btn").prop("disabled", true);
+        $("#reg_prod_submit_btn").html('<i class="fas fa-spinner fa-pulse"></i>');
+        apiclient.registerProduct(dataProduct).then(async (data) => {
+            $("#reg_prod_submit_btn").html('<i class="fas fa-check"></i>');
+            $("#reg_prod_submit_btn").addClass("success");
+            await util.sleep(3000);
+            window.location.replace("/productos");
+        });
     }
 
     return {
