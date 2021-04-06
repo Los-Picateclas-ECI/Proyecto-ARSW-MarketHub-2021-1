@@ -231,4 +231,16 @@ public class MockPersistence implements Persistence {
         prod.setImagenes(imagenes);
         registerProduct(prod);
     }
+
+    @Override
+    public List<Producto> getProductsByRating() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Producto> getProductsByLatest() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

@@ -19,12 +19,22 @@
                img.producto     AS img_producto,
                img.url          AS img_url
         FROM productos prod
-                 JOIN imagenes img ON img.producto = prod.id
+                 JOIN imagenes img ON img.prod ucto = prod.id
                  JOIN categorias cat ON prod.categoria = cat.nombre
     </sql>
 
     <select id="getAllProducts" resultMap="prodResult">
         <include refid="selectProducts" />
+    </select>
+
+    <select id="getProductsByRating" resultMap="prodResult">
+        <include refid="selectProducts" />
+        ORDER BY prod.puntaje DESC
+    </select>
+
+    <select id="getProductsByLatest" resultMap="prodResult">
+        <include refid="selectProducts" />
+        ORDER BY prod.id DESC
     </select>
 
     <select id="getProductById" resultMap="prodResult">

@@ -35,11 +35,22 @@ public class MyBatisPersistence implements Persistence {
     @Autowired
     ImagenDAO imagenDAO;
 
+    /*------------------------------------*/
+    /*------------- USUARIOS -------------*/
+    /*------------------------------------*/
     @Override
     public void registerUser(UserMH user) {
         // TODO Auto-generated method stub
-
     }
+
+    @Override
+    public UserMH getUser(String usernameOrEmail) {
+        return userMHDAO.getUserByUsername(usernameOrEmail);
+    }
+
+    /*------------------------------------*/
+    /*------------ PRODUCTOS -------------*/
+    /*------------------------------------*/
 
     @Override
     public int registerProduct(Producto producto) {
@@ -58,31 +69,22 @@ public class MyBatisPersistence implements Persistence {
     }
 
     @Override
-    public UserMH getUser(String usernameOrEmail) {
-        return userMHDAO.getUserByUsername(usernameOrEmail);
+    public List<Producto> getProductsByRating() {
+        return productoDAO.getProductsByRating();
     }
+
+    @Override
+    public List<Producto> getProductsByLatest() {
+        return productoDAO.getProductsByLatest();
+    }
+
+    /*------------------------------------*/
+    /*------------ CATEGORÍAS ------------*/
+    /*------------------------------------*/
 
     @Override
     public void insertCategory(Categoria categoria) {
         categoriaDAO.insertCategory(categoria);
-    }
-
-    @Override
-    public void insertImage(File image, Imagen imagenMH) {
-        // Subir imagen a Cloudinary
-        String key =
-                "Y2xvdWRpbmFyeTovLzEzMTI0Njk1MzMyMzcxNjpuNHNPcVBfVlBDdU92SmRrcDZnMmpueG5BLVFAdDZmZDdnMXU=";
-        String decodedString = new String(Base64.getDecoder().decode(key));
-        Cloudinary cloudinary = new Cloudinary(decodedString);
-        Map<String, Object> res = new HashMap<>();
-        try {
-            res = cloudinary.uploader().upload(image, ObjectUtils.emptyMap());
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        imagenMH.setUrl(res.get("secure_url").toString());
-        imagenDAO.insertImage(imagenMH);
     }
 
     @Override
@@ -95,4 +97,24 @@ public class MyBatisPersistence implements Persistence {
         return categoriaDAO.getCategory(name);
     }
 
+    /*------------------------------------*/
+    /*------------- IMÁGENES -------------*/
+    /*------------------------------------*/
+
+    @Override
+    public void insertImage(File image, Imagen imagenMH) {
+        // Subir imagen a Cloudinary
+        String key =
+                "Y2xvdWRpbmFyeTovLzEzMTI0Njk1MzMyMzcxNjpuNHNPcVBfVlBDdU92SmRrcDZnMmpueG5BLVFAdDZmZDdnMXU=";
+        String decodedString = new String(Base64.getDecoder().decode(key));
+        Cloudinary cloudinary = new Cloudinary(decodedString);
+        Map<String, Object> res = new HashMap<>();
+        try {
+            res = cloudinary.uploader().upload(image, ObjectUtils.emptyMap());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imagenMH.setUrl(res.get("secure_url").toString());
+        imagenDAO.insertImage(imagenMH);
+    }
 }

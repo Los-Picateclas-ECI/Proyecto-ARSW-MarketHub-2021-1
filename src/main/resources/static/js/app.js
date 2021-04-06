@@ -152,7 +152,7 @@ const app = (function () {
     function registerProduct() {
         let dataProduct = new FormData($("#formRegistrarProd")[0]);
         $("#reg_prod_submit_btn").prop("disabled", true);
-        $("#reg_prod_submit_btn").html('<i class="fas fa-spinner fa-pulse"></i>');
+        $("#reg_prod_submit_btn").html('<i class="fas fa-spinner fa-spin"></i>');
         apiclient.registerProduct(dataProduct).then(async (data) => {
             $("#reg_prod_submit_btn").html('<i class="fas fa-check"></i>');
             $("#reg_prod_submit_btn").addClass("success");
