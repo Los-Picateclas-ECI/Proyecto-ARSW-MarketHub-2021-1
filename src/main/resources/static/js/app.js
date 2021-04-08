@@ -95,7 +95,7 @@ const app = (function () {
             'width="100%"' +
             ">" +
             '<div class="small-img-row">';
-        for (let i = 1; i < data.imagenes.length; i++) {
+        for (let i = 0; i < data.imagenes.length; i++) {
             html +=
                 '<div class="small-img-col">' +
                 '<img class="small-img" src="' +
