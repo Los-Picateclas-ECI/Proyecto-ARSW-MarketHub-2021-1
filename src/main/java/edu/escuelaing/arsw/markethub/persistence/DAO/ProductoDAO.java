@@ -10,10 +10,13 @@ import edu.escuelaing.arsw.markethub.entities.Producto;
 @Mapper
 public interface ProductoDAO {
 
-    List<Producto> getAllProducts();
-
-    Producto getProductById(@Param("id") int id);
-
     void insertProduct(@Param("prod") Producto prod);
 
+    List<Producto> getAllProducts();
+
+    List<Producto> getProductsByRating();
+
+    List<Producto> getProductsByLatest();
+
+    Producto getProductById(@Param("id") int id);
 }

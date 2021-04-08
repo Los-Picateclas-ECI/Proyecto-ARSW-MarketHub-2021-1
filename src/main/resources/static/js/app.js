@@ -11,6 +11,18 @@ const app = (function () {
         });
     }
 
+    function getStarProducts() {
+        apiclient.getStarProducts((req, resp) => {
+            appendStartProducts(resp);
+        });
+    }
+
+    function getLatestProducts(){
+        apiclient.getLatestProducts((req, resp) => {
+            appedLatestProducts(resp);
+        });
+    }
+
     function getAllCategories() {
         apiclient.getAllCategories((req, resp) => {
             appendAllCategoriesOption(resp);
@@ -41,32 +53,35 @@ const app = (function () {
         }
     }
 
+    function appedLatestProducts(data){
+        for (let i = 0; i < data.length; i++) {
+            let puntajeIns = selectPuntIns(data[i]);
+            $("#container-row__ultimos").append(
+                $('<div class="container-row__4" id="product' + data[i].id + '">' + '<a id="product' + data[i].id +
+                    '" onclick="' + "app.loadProductPage(this.id)" + '">' + "<img src=" + data[i].imagenes[0].url + ">" + "<h4>" +
+                    data[i].nombre + "</h4>" + puntajeIns + "<p> $" + data[i].precio + "</p>" + "</a>" + "</div>")
+            );
+        }
+    }
+
+    function appendStartProducts(data) {
+        for (let i = 0; i < data.length; i++) {
+            let puntajeIns = selectPuntIns(data[i]);
+            $("#container-row__star").append(
+                $('<div class="container-row__4" id="product' + data[i].id + '">' + '<a id="product' + data[i].id +
+                    '" onclick="' + "app.loadProductPage(this.id)" + '">' + "<img src=" + data[i].imagenes[0].url + ">" + "<h4>" +
+                    data[i].nombre + "</h4>" + puntajeIns + "<p> $" + data[i].precio + "</p>" + "</a>" + "</div>")
+            );
+        }
+    }
+
     function appendAllProducts(data) {
         for (let i = 0; i < data.length; i++) {
             let puntajeIns = selectPuntIns(data[i]);
             $("#container-row__id").append(
-                $(
-                    '<div class="container-row__4" id="product' +
-                        data[i].id +
-                        '">' +
-                        '<a id="product' +
-                        data[i].id +
-                        '" onclick="' +
-                        "app.loadProductPage(this.id)" +
-                        '">' +
-                        "<img src=" +
-                        data[i].imagenes[0].url +
-                        ">" +
-                        "<h4>" +
-                        data[i].nombre +
-                        "</h4>" +
-                        puntajeIns +
-                        "<p> $" +
-                        data[i].precio +
-                        "</p>" +
-                        "</a>" +
-                        "</div>"
-                )
+                $('<div class="container-row__4" id="product' + data[i].id + '">' + '<a id="product' + data[i].id +
+                    '" onclick="' + "app.loadProductPage(this.id)" + '">' + "<img src=" + data[i].imagenes[0].url + ">" + "<h4>" +
+                    data[i].nombre + "</h4>" + puntajeIns + "<p> $" + data[i].precio + "</p>" + "</a>" + "</div>")
             );
         }
     }
@@ -152,7 +167,7 @@ const app = (function () {
     function registerProduct() {
         let dataProduct = new FormData($("#formRegistrarProd")[0]);
         $("#reg_prod_submit_btn").prop("disabled", true);
-        $("#reg_prod_submit_btn").html('<i class="fas fa-spinner fa-pulse"></i>');
+        $("#reg_prod_submit_btn").html('<i class="fas fa-spinner fa-spin"></i>');
         apiclient.registerProduct(dataProduct).then(async (data) => {
             $("#reg_prod_submit_btn").html('<i class="fas fa-check"></i>');
             $("#reg_prod_submit_btn").addClass("success");
@@ -164,9 +179,13 @@ const app = (function () {
     return {
         loadProductPage: loadProductPage,
         getAllProducts: getAllProducts,
+        getStarProducts: getStarProducts,
+        getLatestProducts: getLatestProducts,
         loadProductInfo: loadProductInfo,
         registerUser: registerUser,
         getAllCategories: getAllCategories,
         registerProduct: registerProduct,
     };
-})();
+}
+
+)();

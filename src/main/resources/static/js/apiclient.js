@@ -1,7 +1,38 @@
 const apiclient = (function () {
+
     function getAllProducts(callback) {
         const promise = $.get({
             url: "/productos/consultar",
+            contentType: "application/json",
+        });
+        promise.then(
+            function (data) {
+                callback(null, data);
+            },
+            function (error) {
+                alert("No se pudo realizar la consulta");
+            }
+        );
+    }
+
+    function getStarProducts(callback) {
+        const promise = $.get({
+            url: "/productos/consultar/estrella",
+            contentType: "application/json",
+        });
+        promise.then(
+            function (data) {
+                callback(null, data);
+            },
+            function (error) {
+                alert("No se pudo realizar la consulta");
+            }
+        );
+    }
+
+    function getLatestProducts(callback) {
+        const promise = $.get({
+            url: "/productos/consultar/ultimos",
             contentType: "application/json",
         });
         promise.then(
@@ -79,6 +110,8 @@ const apiclient = (function () {
 
     return {
         getAllProducts: getAllProducts,
+        getStarProducts: getStarProducts,
+        getLatestProducts: getLatestProducts,
         saveProductId: saveProductId,
         getProductPageInfo: getProductPageInfo,
         registerUser: registerUser,

@@ -9,20 +9,30 @@ import edu.escuelaing.arsw.markethub.entities.UserMH;
 
 public interface Persistence {
 
-    // ------------------------- Usuarios --------------------------------
+    /*------------------------------------*/
+    /*------------- USUARIOS -------------*/
+    /*------------------------------------*/
     void registerUser(UserMH user);
 
     UserMH getUser(String usernameOrEmail);
 
-    // ------------------------- Productos -------------------------------
+    /*------------------------------------*/
+    /*------------ PRODUCTOS -------------*/
+    /*------------------------------------*/
 
     int registerProduct(Producto producto);
 
     List<Producto> getAllProducts();
 
+    List<Producto> getProductsByRating();
+
+    List<Producto> getProductsByLatest();
+
     Producto getProductById(Integer id);
 
-    // ------------------------ Categorias -------------------------------
+    /*------------------------------------*/
+    /*------------ CATEGORÍAS ------------*/
+    /*------------------------------------*/
 
     void insertCategory(Categoria categoria);
 
@@ -30,7 +40,9 @@ public interface Persistence {
 
     Categoria getCategory(String name);
 
-    // ------------------------ Imágenes ----------------------------------
+    /*------------------------------------*/
+    /*------------- IMÁGENES -------------*/
+    /*------------------------------------*/
 
     void insertImage(File image, Imagen imagenMH);
 }

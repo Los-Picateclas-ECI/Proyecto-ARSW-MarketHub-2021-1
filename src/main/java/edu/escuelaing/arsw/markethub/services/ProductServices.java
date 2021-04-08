@@ -27,6 +27,14 @@ public class ProductServices {
         return persistence.getAllProducts();
     }
 
+    public List<Producto> getProductsByRating() {
+        return persistence.getProductsByRating();
+    }
+
+    public List<Producto> getProductsByLatest() {
+        return persistence.getProductsByLatest();
+    }
+
     public Producto getProductById(Integer id) {
         return persistence.getProductById(id);
     }

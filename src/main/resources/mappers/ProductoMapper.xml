@@ -20,15 +20,34 @@
                img.url          AS img_url
         FROM productos prod
                  JOIN imagenes img ON img.producto = prod.id
-                 JOIN categorias cat ON prod.categoria = cat.nombre
+                 JOIN categorias cat
+        ON prod.categoria = cat.nombre
     </sql>
 
     <select id="getAllProducts" resultMap="prodResult">
-        <include refid="selectProducts" />
+        <include refid="selectProducts"/>
+    </select>
+
+    <select id="getProductsByRating" resultMap="prodResult">
+        WITH productos AS (
+            SELECT *
+            FROM productos p LIMIT 4
+        )
+        <include refid="selectProducts"/>
+        ORDER BY prod.puntaje DESC
+    </select>
+
+    <select id="getProductsByLatest" resultMap="prodResult">
+        WITH productos AS (
+        SELECT *
+        FROM productos p LIMIT 8
+        )
+        <include refid="selectProducts"/>
+        ORDER BY prod.id DESC
     </select>
 
     <select id="getProductById" resultMap="prodResult">
-        <include refid="selectProducts" />
+        <include refid="selectProducts"/>
         WHERE prod.id = #{id}
     </select>
 
@@ -39,15 +58,17 @@
     </insert>
 
     <resultMap id="prodResult" type="Producto">
-        <id property="id" column="prod_id" />
-        <result property="nombre" column="prod_nombre" />
-        <result property="precio" column="prod_precio" />
-        <result property="descripcion" column="prod_descripcion" />
-        <result property="puntaje" column="prod_puntaje" />
-        <result property="cantidad" column="prod_cantidad" />
+        <id property="id" column="prod_id"/>
+        <result property="nombre" column="prod_nombre"/>
+        <result property="precio" column="prod_precio"/>
+        <result property="descripcion" column="prod_descripcion"/>
+        <result property="puntaje" column="prod_puntaje"/>
+        <result property="cantidad" column="prod_cantidad"/>
 
-        <association property="categoria" resultMap="edu.escuelaing.arsw.markethub.persistence.DAO.CategoriaDAO.categoryResult" />
-        <collection property="imagenes" ofType="Imagen" resultMap="edu.escuelaing.arsw.markethub.persistence.DAO.ImagenDAO.imgResult" />
+        <association property="categoria"
+                     resultMap="edu.escuelaing.arsw.markethub.persistence.DAO.CategoriaDAO.categoryResult"/>
+        <collection property="imagenes" ofType="Imagen"
+                    resultMap="edu.escuelaing.arsw.markethub.persistence.DAO.ImagenDAO.imgResult"/>
     </resultMap>
 
 </mapper>
