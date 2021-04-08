@@ -41,6 +41,12 @@ const front = (function () {
         });
     }
 
+    function loadHomePage(){
+        loadAll();
+        app.getStarProducts();
+        app.getLatestProducts();
+    }
+
     function loadProducts() {
         loadAll();
         app.getAllProducts();
@@ -54,6 +60,7 @@ const front = (function () {
     return {
         menutoggle: menutoggle,
         acctToggle: acctToggle,
+        loadHomePage: loadHomePage,
         changeImages: changeImages,
         loadProducts: loadProducts,
         loadCategorias: loadCategorias,
