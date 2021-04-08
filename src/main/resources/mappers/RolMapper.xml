@@ -1,6 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="edu.escuelaing.arsw.markethub.persistence.DAO.RolDAO">
+<mapper namespace="edu.escuelaing.arsw.markethub.persistence.dao.RolDAO">
 
     <!-- Prefijo rol_ -->
 

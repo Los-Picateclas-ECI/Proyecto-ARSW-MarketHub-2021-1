@@ -1,4 +1,4 @@
-package edu.escuelaing.arsw.markethub.persistence.DAO;
+package edu.escuelaing.arsw.markethub.persistence.dao;
 
 import edu.escuelaing.arsw.markethub.entities.Categoria;
 import org.apache.ibatis.annotations.Mapper;

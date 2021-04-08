@@ -1,4 +1,4 @@
-package edu.escuelaing.arsw.markethub.persistence.DAO;
+package edu.escuelaing.arsw.markethub.persistence.dao;
 
 import java.util.List;
 

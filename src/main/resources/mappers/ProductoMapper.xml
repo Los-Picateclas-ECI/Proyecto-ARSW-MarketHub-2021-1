@@ -1,6 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="edu.escuelaing.arsw.markethub.persistence.DAO.ProductoDAO">
+<mapper namespace="edu.escuelaing.arsw.markethub.persistence.dao.ProductoDAO">
 
     <!-- Prefijo prod_ -->
 
@@ -76,8 +76,8 @@
         <result property="puntaje" column="prod_puntaje" />
         <result property="cantidad" column="prod_cantidad" />
 
-        <association property="categoria" resultMap="edu.escuelaing.arsw.markethub.persistence.DAO.CategoriaDAO.categoryResult" />
-        <collection property="imagenes" ofType="Imagen" resultMap="edu.escuelaing.arsw.markethub.persistence.DAO.ImagenDAO.imgResult" />
+        <association property="categoria" resultMap="edu.escuelaing.arsw.markethub.persistence.dao.CategoriaDAO.categoryResult" />
+        <collection property="imagenes" ofType="Imagen" resultMap="edu.escuelaing.arsw.markethub.persistence.dao.ImagenDAO.imgResult" />
     </resultMap>
 
 </mapper>

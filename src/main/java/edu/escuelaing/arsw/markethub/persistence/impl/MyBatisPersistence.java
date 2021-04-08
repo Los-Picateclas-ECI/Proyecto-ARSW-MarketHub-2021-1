@@ -16,11 +16,11 @@ import edu.escuelaing.arsw.markethub.entities.Producto;
 import edu.escuelaing.arsw.markethub.entities.Rol;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
 import edu.escuelaing.arsw.markethub.persistence.Persistence;
-import edu.escuelaing.arsw.markethub.persistence.DAO.CategoriaDAO;
-import edu.escuelaing.arsw.markethub.persistence.DAO.ImagenDAO;
-import edu.escuelaing.arsw.markethub.persistence.DAO.ProductoDAO;
-import edu.escuelaing.arsw.markethub.persistence.DAO.RolDAO;
-import edu.escuelaing.arsw.markethub.persistence.DAO.UserMHDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.CategoriaDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.ImagenDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.ProductoDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.RolDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.UserMHDAO;
 
 @Component("myBatisPersistence")
 public class MyBatisPersistence implements Persistence {
