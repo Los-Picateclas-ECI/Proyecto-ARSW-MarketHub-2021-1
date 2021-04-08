@@ -21,29 +21,48 @@
         FROM productos prod
                  JOIN imagenes img ON img.producto = prod.id
                  JOIN categorias cat
-        ON prod.categoria = cat.nombre
+                      ON prod.categoria = cat.nombre
     </sql>
 
     <select id="getAllProducts" resultMap="prodResult">
+<<<<<<< HEAD
         <include refid="selectProducts" />
+=======
+        <include refid="selectProducts"/>
+        ORDER BY prod.id, img.id
+>>>>>>> 13c755d2469a04af04da1301caefbc0f1b0a2a1b
     </select>
 
     <select id="getProductsByRating" resultMap="prodResult">
         WITH productos AS (
-            SELECT *
-            FROM productos p LIMIT 4
+        SELECT *
+        FROM productos p
+        ORDER BY p.puntaje DESC
+        LIMIT 4
         )
+<<<<<<< HEAD
         <include refid="selectProducts" />
         ORDER BY prod.puntaje DESC
+=======
+        <include refid="selectProducts"/>
+        ORDER BY prod.puntaje DESC, img.id
+>>>>>>> 13c755d2469a04af04da1301caefbc0f1b0a2a1b
     </select>
 
     <select id="getProductsByLatest" resultMap="prodResult">
         WITH productos AS (
         SELECT *
-        FROM productos p LIMIT 8
+        FROM productos p
+        ORDER BY p.id DESC
+        LIMIT 8
         )
+<<<<<<< HEAD
         <include refid="selectProducts" />
         ORDER BY prod.id DESC
+=======
+        <include refid="selectProducts"/>
+        ORDER BY prod.id DESC, img.id
+>>>>>>> 13c755d2469a04af04da1301caefbc0f1b0a2a1b
     </select>
 
     <select id="getProductById" resultMap="prodResult">
