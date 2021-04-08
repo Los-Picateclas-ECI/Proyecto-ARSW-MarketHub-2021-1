@@ -19,7 +19,7 @@
                img.producto     AS img_producto,
                img.url          AS img_url
         FROM productos prod
-                 JOIN imagenes img ON img.prod ucto = prod.id
+                 JOIN imagenes img ON img.producto = prod.id
                  JOIN categorias cat ON prod.categoria = cat.nombre
     </sql>
 

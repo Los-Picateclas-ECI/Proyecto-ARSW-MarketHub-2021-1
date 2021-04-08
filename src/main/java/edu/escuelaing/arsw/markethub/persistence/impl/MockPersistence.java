@@ -243,4 +243,10 @@ public class MockPersistence implements Persistence {
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public Rol getRoleByName(String name) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

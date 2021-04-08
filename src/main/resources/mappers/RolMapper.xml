@@ -4,17 +4,26 @@
 
     <!-- Prefijo rol_ -->
 
-    <select id="getRoles" resultMap="RolResult">
+    <sql id="selectRoles">
         SELECT id          AS rol_id,
                nombre      AS rol_nombre,
                descripcion AS rol_descripcion
         FROM rol
+    </sql>
+
+    <select id="getRoles" resultMap="RolResult">
+        <include refid="selectRoles" />
+    </select>
+
+    <select id="getRoleByName" resultMap="RolResult">
+        <include refid="selectRoles" />
+        WHERE nombre = #{name}
     </select>
 
     <resultMap id="RolResult" type="Rol">
-        <result property="id" column="rol_id"/>
-        <result property="nombre" column="rol_nombre"/>
-        <result property="descripcion" column="rol_descripcion"/>
+        <result property="id" column="rol_id" />
+        <result property="nombre" column="rol_nombre" />
+        <result property="descripcion" column="rol_descripcion" />
     </resultMap>
 
 </mapper>

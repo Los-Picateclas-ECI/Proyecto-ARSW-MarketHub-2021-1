@@ -5,6 +5,7 @@ import java.util.List;
 import edu.escuelaing.arsw.markethub.entities.Categoria;
 import edu.escuelaing.arsw.markethub.entities.Imagen;
 import edu.escuelaing.arsw.markethub.entities.Producto;
+import edu.escuelaing.arsw.markethub.entities.Rol;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
 
 public interface Persistence {
@@ -45,4 +46,10 @@ public interface Persistence {
     /*------------------------------------*/
 
     void insertImage(File image, Imagen imagenMH);
+
+    /*------------------------------------*/
+    /*--------------- ROLES --------------*/
+    /*------------------------------------*/
+
+    Rol getRoleByName(String name);
 }

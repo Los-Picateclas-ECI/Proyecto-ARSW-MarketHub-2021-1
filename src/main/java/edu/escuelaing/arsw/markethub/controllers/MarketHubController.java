@@ -82,8 +82,7 @@ public class MarketHubController {
     @RequestMapping(value = "/registrar/usuario", method = RequestMethod.POST)
     public ResponseEntity<?> setProductPageId(@RequestBody UserMH user) {
         try {
-            user.setRole(new Rol(2, "USER", "Usuario de la plataforma MarketHub"));
-            // TODO: Obtener el rol de la base de datos en vez de instanciarlo
+            user.setRole(accountServices.getRoleByName("USER"));
             accountServices.registerUser(user);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {

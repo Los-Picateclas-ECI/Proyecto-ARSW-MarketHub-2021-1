@@ -6,21 +6,20 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import edu.escuelaing.arsw.markethub.entities.Categoria;
 import edu.escuelaing.arsw.markethub.entities.Imagen;
 import edu.escuelaing.arsw.markethub.entities.Producto;
+import edu.escuelaing.arsw.markethub.entities.Rol;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
 import edu.escuelaing.arsw.markethub.persistence.Persistence;
 import edu.escuelaing.arsw.markethub.persistence.DAO.CategoriaDAO;
 import edu.escuelaing.arsw.markethub.persistence.DAO.ImagenDAO;
 import edu.escuelaing.arsw.markethub.persistence.DAO.ProductoDAO;
+import edu.escuelaing.arsw.markethub.persistence.DAO.RolDAO;
 import edu.escuelaing.arsw.markethub.persistence.DAO.UserMHDAO;
 
 @Component("myBatisPersistence")
@@ -34,6 +33,8 @@ public class MyBatisPersistence implements Persistence {
     CategoriaDAO categoriaDAO;
     @Autowired
     ImagenDAO imagenDAO;
+    @Autowired
+    RolDAO rolDAO;
 
     /*------------------------------------*/
     /*------------- USUARIOS -------------*/
@@ -108,7 +109,7 @@ public class MyBatisPersistence implements Persistence {
                 "Y2xvdWRpbmFyeTovLzEzMTI0Njk1MzMyMzcxNjpuNHNPcVBfVlBDdU92SmRrcDZnMmpueG5BLVFAdDZmZDdnMXU=";
         String decodedString = new String(Base64.getDecoder().decode(key));
         Cloudinary cloudinary = new Cloudinary(decodedString);
-        Map<String, Object> res = new HashMap<>();
+        Map<?, ?> res = new HashMap<>();
         try {
             res = cloudinary.uploader().upload(image, ObjectUtils.emptyMap());
         } catch (IOException e) {
@@ -116,5 +117,14 @@ public class MyBatisPersistence implements Persistence {
         }
         imagenMH.setUrl(res.get("secure_url").toString());
         imagenDAO.insertImage(imagenMH);
+    }
+
+    /*------------------------------------*/
+    /*--------------- ROLES --------------*/
+    /*------------------------------------*/
+
+    @Override
+    public Rol getRoleByName(String name) {
+        return rolDAO.getRoleByName(name);
     }
 }
