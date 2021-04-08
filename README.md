@@ -15,6 +15,10 @@ segura y sobre todo en tiempo real en la cual el este informado al instante sobr
 
 Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion sobre el proyecto.
 
+### Manual de Usuario
+
+Haga click [aqui](./Documentacion/MarketHub Manual de Usuario.pdf) para ver el documento del manual de usuario 
+
 ## Integrantes ✒️
 
 -   Daniel Felipe Rincon Muñoz - [danielrincon-m](https://github.com/danielrincon-m)
