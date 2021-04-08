@@ -25,6 +25,8 @@ public interface Persistence {
 
     List<Producto> getAllProducts();
 
+    List<Producto> getProductsByCategory(String categoryName);
+
     List<Producto> getProductsByRating();
 
     List<Producto> getProductsByLatest();

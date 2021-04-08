@@ -25,12 +25,14 @@
     </sql>
 
     <select id="getAllProducts" resultMap="prodResult">
-<<<<<<< HEAD
         <include refid="selectProducts" />
-=======
-        <include refid="selectProducts"/>
         ORDER BY prod.id, img.id
->>>>>>> 13c755d2469a04af04da1301caefbc0f1b0a2a1b
+    </select>
+
+    <select id="getProductsByCategory" resultMap="prodResult">
+        <include refid="selectProducts" />
+        WHERE cat.nombre = #{categoryName}
+        ORDER BY prod.id, img.id
     </select>
 
     <select id="getProductsByRating" resultMap="prodResult">
@@ -40,13 +42,8 @@
         ORDER BY p.puntaje DESC
         LIMIT 4
         )
-<<<<<<< HEAD
         <include refid="selectProducts" />
-        ORDER BY prod.puntaje DESC
-=======
-        <include refid="selectProducts"/>
         ORDER BY prod.puntaje DESC, img.id
->>>>>>> 13c755d2469a04af04da1301caefbc0f1b0a2a1b
     </select>
 
     <select id="getProductsByLatest" resultMap="prodResult">
@@ -56,13 +53,8 @@
         ORDER BY p.id DESC
         LIMIT 8
         )
-<<<<<<< HEAD
         <include refid="selectProducts" />
-        ORDER BY prod.id DESC
-=======
-        <include refid="selectProducts"/>
         ORDER BY prod.id DESC, img.id
->>>>>>> 13c755d2469a04af04da1301caefbc0f1b0a2a1b
     </select>
 
     <select id="getProductById" resultMap="prodResult">

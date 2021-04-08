@@ -14,6 +14,8 @@ public interface ProductoDAO {
 
     List<Producto> getAllProducts();
 
+    List<Producto> getProductsByCategory(@Param("categoryName") String categoryName);
+
     List<Producto> getProductsByRating();
 
     List<Producto> getProductsByLatest();

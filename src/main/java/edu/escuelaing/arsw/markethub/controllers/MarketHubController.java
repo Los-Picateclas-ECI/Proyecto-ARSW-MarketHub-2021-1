@@ -43,7 +43,7 @@ public class MarketHubController {
     @RequestMapping(value = "/productos/consultar", method = RequestMethod.GET)
     public ResponseEntity<?> getProductos() {
         try {
-            return new ResponseEntity<>(productServices.getProductos(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(productServices.getAllProducts(), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
@@ -54,15 +54,6 @@ public class MarketHubController {
     public ResponseEntity<?> getProductoById(@PathVariable("id") Integer id) {
         try {
             return new ResponseEntity<>(productServices.getProductById(id), HttpStatus.ACCEPTED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @RequestMapping(value = "/categorias/consultar", method = RequestMethod.GET)
-    public ResponseEntity<?> getAllCategories() {
-        try {
-            return new ResponseEntity<>(productServices.getAllCategories(), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
@@ -86,6 +77,15 @@ public class MarketHubController {
         }
     }
 
+    @RequestMapping(value = "/categorias/consultar", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllCategories() {
+        try {
+            return new ResponseEntity<>(productServices.getAllCategories(), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
     /*----------- METODOS POST -----------*/
 
     @RequestMapping(value = "/registrar/usuario", method = RequestMethod.POST)
@@ -102,8 +102,8 @@ public class MarketHubController {
     @RequestMapping(value = "/registrar/producto", method = RequestMethod.POST,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> setProductPageId(@ModelAttribute Producto producto,
-                                              @RequestPart("categoria_nombre") String categoria_str,
-                                              @RequestPart List<MultipartFile> images) {
+            @RequestPart("categoria_nombre") String categoria_str,
+            @RequestPart List<MultipartFile> images) {
         try {
             Categoria categoria = productServices.getCategory(categoria_str);
             producto.setCategoria(categoria);

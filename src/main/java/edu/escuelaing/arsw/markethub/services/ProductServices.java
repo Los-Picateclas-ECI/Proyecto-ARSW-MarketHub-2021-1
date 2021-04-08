@@ -23,8 +23,12 @@ public class ProductServices {
     /*------------ PRODUCTOS -------------*/
     /*------------------------------------*/
 
-    public List<Producto> getProductos() {
+    public List<Producto> getAllProducts() {
         return persistence.getAllProducts();
+    }
+
+    public List<Producto> getProductsByCategory(String categoryName) {
+        return persistence.getProductsByCategory(categoryName);
     }
 
     public List<Producto> getProductsByRating() {

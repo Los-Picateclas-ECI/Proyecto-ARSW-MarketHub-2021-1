@@ -65,6 +65,11 @@ public class MyBatisPersistence implements Persistence {
     }
 
     @Override
+    public List<Producto> getProductsByCategory(String categoryName) {
+        return productoDAO.getProductsByCategory(categoryName);
+    }
+
+    @Override
     public Producto getProductById(Integer id) {
         return productoDAO.getProductById(id);
     }
@@ -127,4 +132,5 @@ public class MyBatisPersistence implements Persistence {
     public Rol getRoleByName(String name) {
         return rolDAO.getRoleByName(name);
     }
+
 }
