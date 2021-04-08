@@ -17,7 +17,7 @@ Haga click [aqui](./Documentacion/Documentacion.docx) para ver mas informacion s
 
 ### Manual de Usuario
 
-Haga click [Aqui](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Documentacion/MarketHub%20Manual%20de%20Usuario.pdf) para ver el documento del manual de usuario 
+Haga click [Aqui](/Documentacion/MarketHubManualdeUsuario.pdf) para ver el documento del manual de usuario 
 
 ## Integrantes ✒️
 
