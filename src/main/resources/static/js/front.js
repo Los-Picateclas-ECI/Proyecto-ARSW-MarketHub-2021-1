@@ -48,6 +48,11 @@ const front = (function () {
         app.getLatestProducts();
     }
 
+    function loadProductsCategories(){
+        loadAll();
+        app.getProductsByCategory(window.location.pathname.substr(11));
+    }
+
     function loadProducts() {
         loadAll();
         app.getAllProducts();
@@ -64,6 +69,7 @@ const front = (function () {
         loadHomePage: loadHomePage,
         changeImages: changeImages,
         loadProducts: loadProducts,
+        loadProductsCategories: loadProductsCategories,
         loadCategorias: loadCategorias,
         loadAll: loadAll,
     };

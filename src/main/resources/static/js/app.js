@@ -29,6 +29,13 @@ const app = (function () {
         });
     }
 
+    function getProductsByCategory(category){
+        apiclient.getProductsByCategory(category, (req, resp) => {
+            appendAllProducts(resp);
+            $("#pagetitle__catg").text("Productos / " + resp[0].categoria.nombre);
+        });
+    }
+
     function selectPuntIns(data) {
         let puntaje = data.puntaje;
         let html = '<div class="rating">';
@@ -110,7 +117,7 @@ const app = (function () {
             "</div>" +
             '<div class="container-row__2">' +
             "<p>" +
-            "Productos / Ropa" +
+            "Productos / " + data.categoria.nombre +
             "</p>" +
             "<h1>" +
             data.nombre +
@@ -181,6 +188,7 @@ const app = (function () {
         getAllProducts: getAllProducts,
         getStarProducts: getStarProducts,
         getLatestProducts: getLatestProducts,
+        getProductsByCategory: getProductsByCategory,
         loadProductInfo: loadProductInfo,
         registerUser: registerUser,
         getAllCategories: getAllCategories,

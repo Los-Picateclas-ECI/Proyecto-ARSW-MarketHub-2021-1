@@ -94,6 +94,7 @@ p {
 .container-row__3 img {
     width: 100%;
     border-radius: 15%;
+    cursor: pointer;
 }
 
 .small-container {

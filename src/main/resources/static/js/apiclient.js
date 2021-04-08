@@ -75,6 +75,21 @@ const apiclient = (function () {
         );
     }
 
+    function getProductsByCategory(categoria, callback) {
+        const promise = $.get({
+            url: "/productos/consultar/categorias/" + categoria,
+            contentType: "application/json",
+        });
+        promise.then(
+            function (data) {
+                callback(null, data);
+            },
+            function (error) {
+                alert("No se pudo realizar la consulta");
+            }
+        );
+    }
+
     function saveProductId(data) {
         const promise = $.post({
             url: "/productos/guardar/id",
@@ -110,6 +125,7 @@ const apiclient = (function () {
 
     return {
         getAllProducts: getAllProducts,
+        getProductsByCategory: getProductsByCategory,
         getStarProducts: getStarProducts,
         getLatestProducts: getLatestProducts,
         saveProductId: saveProductId,

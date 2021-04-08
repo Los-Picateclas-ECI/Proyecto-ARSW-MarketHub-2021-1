@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="Pagina de login de la plataforma MarketHub" name="description">
+    <meta content="MarketHub" name="copyright">
+    <meta content="index" name="robots">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="/css/normalize.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/js/front.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/apiclient.js"></script>
+    <script>
+        window.onload = front.loadProductsCategories;
+    </script>
+    <title>Productos</title>
+</head>
+
+<body>
+    <!-- Parte superior de la pagina, donde se eneucntra la barra de navegación -->
+    <div class="container">
+        <div class="container-navbar" id="barrita"></div>
+    </div>
+
+    <!-- Productos Estrella -->
+    <div class="small-container">
+        <div class="container-row row-2">
+            <h2 id="pagetitle__catg">Productos / </h2>
+            <select>
+                <option>Defecto</option>
+                <option>Mayor Precio</option>
+                <option>Mas Populares</option>
+                <option>Mejores Evaluados</option>
+                <option>Mas vendidos</option>
+            </select>
+        </div>
+        <div class="container-row" id="container-row__id"></div>
+        <!--  -->
+        <div class="page-btn">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>&#8594;</span>
+        </div>
+    </div>
+
+    <!-- Pie de pagina -->
+    <div class="footer">
+        <div class="container">
+            <div class="container-row">
+                <div class="footer-col-1">
+                    <h3>Descarga nuestra aplicación</h3>
+                    <p>Descarga la aplicación en sus versiones:</p>
+                    <div class="app-logo">
+                        <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1"><img alt="GitHub"
+                                src="/img/GitHub.png"></a>
+                        <img alt="AppleStore" src="/img/docker.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img alt="LogoLargo" src="/img/logoLarge.png">
+                    <p>MarketHub brinda a sus vendedores una mejor experiencia al momento de vender sus productos.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Contactanos</h3>
+                    <ul>
+                        <li><a href="https://github.com/danielrincon-m">Daniel Rincon</a></li>
+                        <li><a href="mailto: paula.guevara-s@mail.escuelaing.edu.co">Paula Guevara</a></li>
+                        <li><a href="https://wa.me/573174414419">Andres Calderón</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Síguenos En</h3>
+                    <ul>
+                        <li><a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1">Github</a>
+                        </li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Facebook</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2020 - MarketHub</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

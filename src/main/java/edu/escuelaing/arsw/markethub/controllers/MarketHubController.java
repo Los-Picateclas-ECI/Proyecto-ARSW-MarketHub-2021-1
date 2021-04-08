@@ -77,6 +77,15 @@ public class MarketHubController {
         }
     }
 
+    @RequestMapping(value = "/productos/consultar/categorias/{categoria}", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllProductsByCategory(@PathVariable("categoria") String categoria) {
+        try {
+            return new ResponseEntity<>(productServices.getProductsByCategory(categoria), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(value = "/categorias/consultar", method = RequestMethod.GET)
     public ResponseEntity<?> getAllCategories() {
         try {
