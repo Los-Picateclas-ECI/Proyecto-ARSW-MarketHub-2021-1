@@ -30,6 +30,7 @@ const front = (function () {
     function changeImages() {
         const productId = window.location.pathname.substr(20, 20);
         loadAll();
+        app.getStarProducts();
         app.loadProductInfo(productId).then(function () {
             const ProductImg = document.getElementById("ProductImg");
             const SmallImg = document.getElementsByClassName("small-img");
