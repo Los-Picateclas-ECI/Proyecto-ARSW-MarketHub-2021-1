@@ -17,51 +17,78 @@ public class ProductServices {
 
     @Autowired
     @Qualifier("myBatisPersistence")
-    Persistence persistence;
+    Persistence persistenceMyBatis;
+
+    @Autowired
+    @Qualifier("cachePersistence")
+    Persistence persistenceCache;
 
     /*------------------------------------*/
     /*------------ PRODUCTOS -------------*/
     /*------------------------------------*/
 
     public List<Producto> getAllProducts() {
-        return persistence.getAllProducts();
+        if (persistenceCache.getAllProducts().isEmpty()){
+            List<Producto> productos = persistenceMyBatis.getAllProducts();
+            for (Producto producto : productos){
+                persistenceCache.registerProduct(producto);
+            }
+        }
+        return persistenceCache.getAllProducts();
     }
 
     public List<Producto> getProductsByCategory(String categoryName) {
-        return persistence.getProductsByCategory(categoryName);
+        if (persistenceCache.getProductsByCategory(categoryName).isEmpty()){
+            List<Producto> productos = persistenceMyBatis.getAllProducts();
+            for (Producto producto : productos){
+                persistenceCache.registerProduct(producto);
+            }
+        }
+        return persistenceCache.getProductsByCategory(categoryName);
     }
 
     public List<Producto> getProductsByRating() {
-        return persistence.getProductsByRating();
+        if (persistenceCache.getProductsByRating().isEmpty()){
+            List<Producto> productos = persistenceMyBatis.getAllProducts();
+            for (Producto producto : productos){
+                persistenceCache.registerProduct(producto);
+            }
+        }
+        return persistenceCache.getProductsByRating();
     }
 
     public List<Producto> getProductsByLatest() {
-        return persistence.getProductsByLatest();
+        return persistenceMyBatis.getProductsByLatest();
     }
 
     public Producto getProductById(Integer id) {
-        return persistence.getProductById(id);
+        if (persistenceCache.getProductById(id) == null){
+            Producto producto = persistenceMyBatis.getProductById(id);
+            persistenceCache.registerProduct(producto);
+        }
+        return persistenceCache.getProductById(id);
     }
 
     public void insertProduct(Producto product) {
-        persistence.registerProduct(product);
+        persistenceMyBatis.registerProduct(product);
+        persistenceCache.registerProduct(product);
     }
 
     /*------------------------------------*/
     /*------------ CATEGORÍAS ------------*/
     /*------------------------------------*/
     public List<Categoria> getAllCategories() {
-        return persistence.getAllCategories();
+        return persistenceMyBatis.getAllCategories();
     }
 
     public Categoria getCategory(String name) {
-        return persistence.getCategory(name);
+        return persistenceMyBatis.getCategory(name);
     }
 
     /*------------------------------------*/
     /*------------- IMÁGENES -------------*/
     /*------------------------------------*/
     public void insertImage(File image, Imagen imagenMH) {
-        persistence.insertImage(image, imagenMH);
+        persistenceMyBatis.insertImage(image, imagenMH);
     }
 }
