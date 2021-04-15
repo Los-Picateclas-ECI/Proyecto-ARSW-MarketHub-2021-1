@@ -61,7 +61,6 @@ public class MyBatisPersistence implements Persistence {
 
     @Override
     public List<Producto> getAllProducts() {
-        System.out.println("MyBatis");
         return productoDAO.getAllProducts();
     }
 

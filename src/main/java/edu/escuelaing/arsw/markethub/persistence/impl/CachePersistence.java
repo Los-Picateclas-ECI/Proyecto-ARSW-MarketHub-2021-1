@@ -56,23 +56,30 @@ public class CachePersistence implements Persistence {
     @Override
     public List<Producto> getProductsByRating() {
         List<Producto> productosRating = new ArrayList<Producto>(productMap.values());
-        productosRating.sort(new Comparator<Producto>() {
-            @Override
-            public int compare(Producto o1, Producto o2) {
-                if (o1.getPuntaje() > o2.getPuntaje()){
-                    return 1;
-                }else {
-                    return 0;
-                }
+        productosRating.sort((o1, o2) -> {
+            if (o1.getPuntaje() > o2.getPuntaje()){
+                return 1;
+            }else {
+                return 0;
             }
         });
-        return productosRating.subList(0,3);
+        try {
+            productosRating = productosRating.subList(0,4);
+        }catch (Exception e) {
+            return productosRating;
+        }
+        return productosRating;
     }
 
-    //TODO:Falta esta cosa
     @Override
     public List<Producto> getProductsByLatest() {
-        return null;
+        List<Producto> productosRating = new ArrayList<Producto>(productMap.values());
+        try {
+            productosRating = productosRating.subList(productosRating.size()-8,productosRating.size());
+        }catch (Exception e) {
+            return productosRating;
+        }
+        return productosRating;
     }
 
     @Override

@@ -58,7 +58,13 @@ public class ProductServices {
     }
 
     public List<Producto> getProductsByLatest() {
-        return persistenceMyBatis.getProductsByLatest();
+        if (persistenceCache.getProductsByLatest().isEmpty()){
+            List<Producto> productos = persistenceMyBatis.getAllProducts();
+            for (Producto producto : productos){
+                persistenceCache.registerProduct(producto);
+            }
+        }
+        return persistenceCache.getProductsByLatest();
     }
 
     public Producto getProductById(Integer id) {
