@@ -66,7 +66,7 @@ public class CachePersistence implements Persistence {
                 }
             }
         });
-        return productosRating;
+        return productosRating.subList(0,3);
     }
 
     //TODO:Falta esta cosa
