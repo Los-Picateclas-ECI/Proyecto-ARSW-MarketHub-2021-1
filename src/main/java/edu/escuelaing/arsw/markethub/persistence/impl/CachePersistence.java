@@ -109,7 +109,7 @@ public class CachePersistence implements Persistence {
 
     @Override
     public Rol getRoleByName(String name) {
-        //Metodo no necesitado de implementar
+        // Método no necesitado de implementar
         return null;
     }
 
@@ -129,6 +129,17 @@ public class CachePersistence implements Persistence {
     public Integer registerComment(Comentario comentario) {
         comentarioMap.put(comentario.getId(), comentario);
         return comentario.getId();
+    }
+
+    @Override
+    public List<CarritoCompra> getCarritoProductsByUsername(String username) {
+        // Método no necesitado de implementar
+        return null;
+    }
+
+    @Override
+    public void deleteProductFromCar(String username, Integer productID) {
+        // Método no necesitado de implementar
     }
 
 }

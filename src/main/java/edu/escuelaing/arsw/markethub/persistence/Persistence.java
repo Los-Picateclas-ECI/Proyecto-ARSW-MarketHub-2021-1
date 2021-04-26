@@ -55,4 +55,8 @@ public interface Persistence {
     List<Comentario> getAllCommentsByProductID(Integer producto);
 
     Integer registerComment(Comentario comentario);
+
+    List<CarritoCompra> getCarritoProductsByUsername(String username);
+
+    void deleteProductFromCar(String username, Integer productID);
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.escuelaing.arsw.markethub.persistence.dao.CarritoCompraDAO">
+
+    <!--Prefijo car -->
+
+    <select id="getCarritoProductsByUsername" resultMap="CarritoResult">
+        SELECT car.usuario      AS car_usuario,
+               car.cantidad     AS car_cantidad,
+
+               prod.id          AS prod_id,
+               prod.nombre      AS prod_nombre,
+               prod.precio      AS prod_precio,
+               prod.descripcion AS prod_descripcion,
+               prod.puntaje     AS prod_puntaje,
+               prod.cantidad    AS prod_cantidad,
+
+               cat.nombre       AS cat_nombre,
+               cat.descripcion  AS cat_descripcion,
+
+               img.id           AS img_id,
+               img.producto     AS img_producto,
+               img.url          AS img_url
+        FROM carrito_compras car
+                 JOIN productos prod ON car.producto = prod.id
+                 JOIN imagenes img ON img.producto = prod.id
+                 JOIN categorias cat ON prod.categoria = cat.nombre
+        WHERE car.usuario = #{username}
+        ORDER BY prod.id DESC, img.id
+    </select>
+
+    <delete id="deleteProductFromCar">
+        DELETE
+        FROM carrito_compras car
+        WHERE car.usuario = #{username}
+          AND car.producto = #{producto}
+    </delete>
+
+    <resultMap id="CarritoResult" type="CarritoCompra">
+        <result property="usuario" column="car_usuario"/>
+        <result property="cantidad" column="car_cantidad"/>
+        <association property="producto"
+                     resultMap="edu.escuelaing.arsw.markethub.persistence.dao.ProductoDAO.prodResult"/>
+    </resultMap>
+
+</mapper>
