@@ -40,7 +40,7 @@ public class MyBatisPersistence implements Persistence {
     /*------------------------------------*/
     @Override
     public void registerUser(UserMH user) {
-        // TODO Auto-generated method stub
+        userMHDAO.registerUser(user);
     }
 
     @Override

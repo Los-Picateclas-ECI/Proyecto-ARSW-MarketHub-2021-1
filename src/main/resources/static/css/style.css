@@ -527,6 +527,21 @@ th:last-child {
     margin: 10px 0;
 }
 
+.form-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.inline25 {
+    flex: 0 1 25%;
+}
+
+.inline70 {
+    flex: 0 1 70%;
+}
+
 form .submit_btn_wrapper {
     display: flex;
     flex-direction: row;

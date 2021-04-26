@@ -34,6 +34,11 @@ public class MarketHubWebController {
         return "account";
     }
 
+    @RequestMapping(value = "/cuenta/registrar", method = RequestMethod.GET)
+    public String getRegistrarCuenta() {
+        return "account-registration";
+    }
+
     @RequestMapping(value = "/carrito", method = RequestMethod.GET)
     public String getCarrito() {
         return "carrito";

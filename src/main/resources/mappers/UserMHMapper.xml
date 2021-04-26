@@ -23,6 +23,12 @@
            OR usr.email = #{usernameOrEmail}
     </select>
 
+    <insert id="registerUser"  parameterType="map">
+        INSERT INTO usuarios(username, documento, telefono, email, nombre, edad, "password", direccion, tipodocumento, rol)
+        VALUES(#{user.username}, #{user.documento}, #{user.telefono}, #{user.email}, 
+                #{user.nombre}, #{user.edad}, #{user.passwoed}, #{user.direccion}, #{user.tipodocumento}, #{user.role.id});
+    </insert>
+
     <resultMap id="UserResult" type="UserMH">
         <result property="username" column="usr_username" />
         <result property="documento" column="usr_documento" />

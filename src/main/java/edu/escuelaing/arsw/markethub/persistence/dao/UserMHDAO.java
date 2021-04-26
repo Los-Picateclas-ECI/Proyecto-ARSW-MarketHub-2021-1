@@ -9,4 +9,6 @@ public interface UserMHDAO {
 
     UserMH getUserByUsername(@Param("usernameOrEmail") String usernameOrEmail);
 
+    void registerUser(@Param("user") UserMH user);
+
 }
