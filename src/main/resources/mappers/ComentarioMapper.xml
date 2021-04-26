@@ -1,0 +1,30 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.escuelaing.arsw.markethub.persistence.dao.ComentarioDAO">
+
+    <sql id="selectComentarios">
+        SELECT com.id        AS com_id,
+               com.usuario   AS com_usuario,
+               com.producto  AS com_producto,
+               com.contenido AS com_contenido
+        FROM comentarios AS com
+    </sql>
+
+    <select id="getAllCommentsByProductID" resultMap="comResult">
+        <include refid="selectComentarios"/>
+        WHERE com.producto = #{producto}
+    </select>
+
+    <insert id="insertComment" parameterType="map" useGeneratedKeys="true" keyProperty="com.id" keyColumn="id">
+        INSERT INTO comentarios (usuario, producto, contenido)
+        VALUES (#{com.usuario}, #{com.producto}, #{com.contenido})
+    </insert>
+
+    <resultMap id="comResult" type="Comentario">
+        <result property="id" column="com_id"/>
+        <result property="usuario" column="com_usuario"/>
+        <result property="producto" column="com_producto"/>
+        <result property="contenido" column="com_contenido"/>
+    </resultMap>
+
+</mapper>

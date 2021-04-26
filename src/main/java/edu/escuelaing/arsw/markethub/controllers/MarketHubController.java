@@ -1,16 +1,17 @@
 package edu.escuelaing.arsw.markethub.controllers;
 
-import edu.escuelaing.arsw.markethub.entities.Categoria;
-import edu.escuelaing.arsw.markethub.entities.Imagen;
-import edu.escuelaing.arsw.markethub.entities.UserMH;
-import edu.escuelaing.arsw.markethub.entities.Producto;
+import edu.escuelaing.arsw.markethub.entities.*;
 import edu.escuelaing.arsw.markethub.services.AccountServices;
 import edu.escuelaing.arsw.markethub.services.ProductServices;
 import edu.escuelaing.arsw.markethub.tools.FileManager;
+import org.cloudinary.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,6 +43,16 @@ public class MarketHubController {
     }
 
     /*----------- METODOS GET -----------*/
+
+    @RequestMapping(value = "/logged/username", method = RequestMethod.GET)
+    public ResponseEntity<?> getUsrInfo() {
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            return new ResponseEntity<>(((User) auth.getPrincipal()).getUsername(), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+    }
 
     @RequestMapping(value = "/productos/consultar", method = RequestMethod.GET)
     public ResponseEntity<?> getProductos() {
@@ -98,6 +109,16 @@ public class MarketHubController {
         }
     }
 
+    @RequestMapping(value = "/comentarios/{producto}", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllComments(@PathVariable("producto") Integer producto) {
+        try {
+            //.getAllCommentsByProductID
+            return new ResponseEntity<>(productServices.getAllCommentsByProductID(producto), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
     /*----------- METODOS POST -----------*/
 
     @RequestMapping(value = "/registrar/usuario", method = RequestMethod.POST)
@@ -114,8 +135,8 @@ public class MarketHubController {
     @RequestMapping(value = "/registrar/producto", method = RequestMethod.POST,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> setProductPageId(@ModelAttribute Producto producto,
-            @RequestPart("categoria_nombre") String categoria_str,
-            @RequestPart List<MultipartFile> images) {
+                                              @RequestPart("categoria_nombre") String categoria_str,
+                                              @RequestPart List<MultipartFile> images) {
         try {
             Categoria categoria = productServices.getCategory(categoria_str);
             producto.setCategoria(categoria);
@@ -144,6 +165,17 @@ public class MarketHubController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(value = "/registrar/comentario", method = RequestMethod.POST)
+    public ResponseEntity<?> registerComment(@RequestBody Comentario comentario) {
+        try {
+            //.getAllCommentsByProductID
+            productServices.registerComment(comentario);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 

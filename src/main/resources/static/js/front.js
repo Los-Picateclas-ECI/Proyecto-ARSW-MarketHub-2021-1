@@ -40,6 +40,8 @@ const front = (function () {
                 };
             }
         });
+
+        app.getAllCommentsByProductID(productId);
     }
 
     function loadHomePage(){

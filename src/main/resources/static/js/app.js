@@ -1,199 +1,237 @@
 const app = (function () {
-    let productId = 0;
+        let productId = 0;
 
-    const fullStar = '<i class="fa fa-star"></i>';
-    const halfStar = '<i class="fa fa-star-half-o"></i>';
-    const noStar = '<i class="fa fa-star-o"></i>';
+        const fullStar = '<i class="fa fa-star"></i>';
+        const halfStar = '<i class="fa fa-star-half-o"></i>';
+        const noStar = '<i class="fa fa-star-o"></i>';
 
-    function getAllProducts() {
-        apiclient.getAllProducts((req, resp) => {
-            appendAllProducts(resp);
-        });
-    }
+        function getAllProducts() {
+            apiclient.getAllProducts((req, resp) => {
+                appendAllProducts(resp);
+            });
+        }
 
-    function getStarProducts() {
-        apiclient.getStarProducts((req, resp) => {
-            appendStartProducts(resp);
-        });
-    }
+        function getStarProducts() {
+            apiclient.getStarProducts((req, resp) => {
+                appendStartProducts(resp);
+            });
+        }
 
-    function getLatestProducts(){
-        apiclient.getLatestProducts((req, resp) => {
-            appedLatestProducts(resp);
-        });
-    }
+        function getLatestProducts() {
+            apiclient.getLatestProducts((req, resp) => {
+                appedLatestProducts(resp);
+            });
+        }
 
-    function getAllCategories() {
-        apiclient.getAllCategories((req, resp) => {
-            appendAllCategoriesOption(resp);
-        });
-    }
+        function getAllCategories() {
+            apiclient.getAllCategories((req, resp) => {
+                appendAllCategoriesOption(resp);
+            });
+        }
 
-    function getProductsByCategory(category){
-        apiclient.getProductsByCategory(category, (req, resp) => {
-            appendAllProducts(resp);
-            $("#pagetitle__catg").text("Productos / " + resp[0].categoria.nombre);
-        });
-    }
+        function getProductsByCategory(category) {
+            apiclient.getProductsByCategory(category, (req, resp) => {
+                appendAllProducts(resp);
+                $("#pagetitle__catg").text("Productos / " + resp[0].categoria.nombre);
+            });
+        }
 
-    function selectPuntIns(data) {
-        let puntaje = data.puntaje;
-        let html = '<div class="rating">';
-        for (let i = 0; i < 5; i++) {
-            if (puntaje >= 1) {
-                html += fullStar;
-                puntaje -= 1;
-            } else if (puntaje >= 0.5) {
-                html += halfStar;
-                puntaje -= 0.5;
-            } else {
-                html += noStar;
+        function getAllCommentsByProductID(product) {
+            //TODO:ANDO ACA XD
+            apiclient.getAllCommentsByProductID(product, (req, resp) => {
+                console.log(resp);
+                appendAllComments(resp);
+            })
+        }
+
+        function selectPuntIns(data) {
+            let puntaje = data.puntaje;
+            let html = '<div class="rating">';
+            for (let i = 0; i < 5; i++) {
+                if (puntaje >= 1) {
+                    html += fullStar;
+                    puntaje -= 1;
+                } else if (puntaje >= 0.5) {
+                    html += halfStar;
+                    puntaje -= 0.5;
+                } else {
+                    html += noStar;
+                }
+            }
+            html += "</div>";
+            return html;
+        }
+
+        function appendAllCategoriesOption(data) {
+            for (let i = 0; i < data.length; i++) {
+                $("#categorias").append($("<option>" + data[i].nombre + "</option>"));
             }
         }
-        html += "</div>";
-        return html;
-    }
 
-    function appendAllCategoriesOption(data) {
-        for (let i = 0; i < data.length; i++) {
-            $("#categorias").append($("<option>" + data[i].nombre + "</option>"));
+        function appendAllComments(data) {
+            const comentBox = $("#comment-box-id");
+            for (let i = 0; i < data.length; i++) {
+                console.log(data[i]);
+                comentBox.append($("<div class=\"comentario\">" + "<h3>" + data[i].usuario + "</h3>" + "<p>" + data[i].contenido + "</p>"));
+            }
         }
-    }
 
-    function appedLatestProducts(data){
-        for (let i = 0; i < data.length; i++) {
-            let puntajeIns = selectPuntIns(data[i]);
-            $("#container-row__ultimos").append(
-                $('<div class="container-row__4" id="product' + data[i].id + '">' + '<a id="product' + data[i].id +
-                    '" onclick="' + "app.loadProductPage(this.id)" + '">' + "<img src=" + data[i].imagenes[0].url + ">" + "<h4>" +
-                    data[i].nombre + "</h4>" + puntajeIns + "<p> $" + data[i].precio + "</p>" + "</a>" + "</div>")
-            );
+        function appedLatestProducts(data) {
+            for (let i = 0; i < data.length; i++) {
+                let puntajeIns = selectPuntIns(data[i]);
+                $("#container-row__ultimos").append(
+                    $('<div class="container-row__4" id="product' + data[i].id + '">' + '<a id="product' + data[i].id +
+                        '" onclick="' + "app.loadProductPage(this.id)" + '">' + "<img src=" + data[i].imagenes[0].url + ">" + "<h4>" +
+                        data[i].nombre + "</h4>" + puntajeIns + "<p> $" + data[i].precio + "</p>" + "</a>" + "</div>")
+                );
+            }
         }
-    }
 
-    function appendStartProducts(data) {
-        for (let i = 0; i < data.length; i++) {
-            let puntajeIns = selectPuntIns(data[i]);
-            $("#container-row__star").append(
-                $('<div class="container-row__4" id="product' + data[i].id + '">' + '<a id="product' + data[i].id +
-                    '" onclick="' + "app.loadProductPage(this.id)" + '">' + "<img src=" + data[i].imagenes[0].url + ">" + "<h4>" +
-                    data[i].nombre + "</h4>" + puntajeIns + "<p> $" + data[i].precio + "</p>" + "</a>" + "</div>")
-            );
+        function appendStartProducts(data) {
+            for (let i = 0; i < data.length; i++) {
+                let puntajeIns = selectPuntIns(data[i]);
+                $("#container-row__star").append(
+                    $('<div class="container-row__4" id="product' + data[i].id + '">' + '<a id="product' + data[i].id +
+                        '" onclick="' + "app.loadProductPage(this.id)" + '">' + "<img src=" + data[i].imagenes[0].url + ">" + "<h4>" +
+                        data[i].nombre + "</h4>" + puntajeIns + "<p> $" + data[i].precio + "</p>" + "</a>" + "</div>")
+                );
+            }
         }
-    }
 
-    function appendAllProducts(data) {
-        for (let i = 0; i < data.length; i++) {
-            let puntajeIns = selectPuntIns(data[i]);
-            $("#container-row__id").append(
-                $('<div class="container-row__4" id="product' + data[i].id + '">' + '<a id="product' + data[i].id +
-                    '" onclick="' + "app.loadProductPage(this.id)" + '">' + "<img src=" + data[i].imagenes[0].url + ">" + "<h4>" +
-                    data[i].nombre + "</h4>" + puntajeIns + "<p> $" + data[i].precio + "</p>" + "</a>" + "</div>")
-            );
+        function appendAllProducts(data) {
+            for (let i = 0; i < data.length; i++) {
+                let puntajeIns = selectPuntIns(data[i]);
+                $("#container-row__id").append(
+                    $('<div class="container-row__4" id="product' + data[i].id + '">' + '<a id="product' + data[i].id +
+                        '" onclick="' + "app.loadProductPage(this.id)" + '">' + "<img src=" + data[i].imagenes[0].url + ">" + "<h4>" +
+                        data[i].nombre + "</h4>" + puntajeIns + "<p> $" + data[i].precio + "</p>" + "</a>" + "</div>")
+                );
+            }
         }
-    }
 
-    function appendProductInfo(data) {
-        let html =
-            '<div class="container-row__2">' +
-            '<img id="ProductImg" src="' +
-            data.imagenes[0].url +
-            '"' +
-            'width="100%"' +
-            ">" +
-            '<div class="small-img-row">';
-        for (let i = 0; i < data.imagenes.length; i++) {
-            html +=
-                '<div class="small-img-col">' +
-                '<img class="small-img" src="' +
-                data.imagenes[i].url +
+        function appendProductInfo(data) {
+            let html =
+                '<div class="container-row__2">' +
+                '<img id="ProductImg" src="' +
+                data.imagenes[0].url +
                 '"' +
                 'width="100%"' +
                 ">" +
+                '<div class="small-img-row">';
+            for (let i = 0; i < data.imagenes.length; i++) {
+                html +=
+                    '<div class="small-img-col">' +
+                    '<img class="small-img" src="' +
+                    data.imagenes[i].url +
+                    '"' +
+                    'width="100%"' +
+                    ">" +
+                    "</div>";
+            }
+            html +=
+                "</div>" +
+                "</div>" +
+                '<div class="container-row__2">' +
+                "<p>" +
+                "Productos / " + data.categoria.nombre +
+                "</p>" +
+                "<h1>" +
+                data.nombre +
+                "</h1>" +
+                "<h4>" +
+                "$ " +
+                data.precio +
+                "</h4>" +
+                '<input type="number" value="' +
+                data.cantidad +
+                '">' +
+                '<a class="container-row__2-btn" href="">Añadir Al Carrito</a>' +
+                '<h3>Detalles del Producto <i class="fa fa-indent"></i></h3>' +
+                "<br>" +
+                "<p>" +
+                data.descripcion +
+                "</p>" +
                 "</div>";
+
+            $("#container-row__detail").append($(html));
         }
-        html +=
-            "</div>" +
-            "</div>" +
-            '<div class="container-row__2">' +
-            "<p>" +
-            "Productos / " + data.categoria.nombre +
-            "</p>" +
-            "<h1>" +
-            data.nombre +
-            "</h1>" +
-            "<h4>" +
-            "$ " +
-            data.precio +
-            "</h4>" +
-            '<input type="number" value="' +
-            data.cantidad +
-            '">' +
-            '<a class="container-row__2-btn" href="">Añadir Al Carrito</a>' +
-            '<h3>Detalles del Producto <i class="fa fa-indent"></i></h3>' +
-            "<br>" +
-            "<p>" +
-            data.descripcion +
-            "</p>" +
-            "</div>";
 
-        $("#container-row__detail").append($(html));
-    }
+        function loadProductPage(data) {
+            productId = data.substr(7, 7);
+            window.location.href = "/productos/producto/" + productId;
+        }
 
-    function loadProductPage(data) {
-        productId = data.substr(7, 7);
-        window.location.href = "/productos/producto/" + productId;
-    }
-
-    function loadProductInfo(productId) {
-        return new Promise((resolve, reject) => {
-            apiclient.getProductPageInfo(productId, (req, resp) => {
-                appendProductInfo(resp);
-                resolve("Producto Cargado");
+        function loadProductInfo(productId) {
+            return new Promise((resolve, reject) => {
+                apiclient.getProductPageInfo(productId, (req, resp) => {
+                    appendProductInfo(resp);
+                    resolve("Producto Cargado");
+                });
             });
-        });
-    }
-
-    function registerUser() {
-        let dataCadenita = {};
-        let username = $("#username").val();
-        let password = $("#passwd").val();
-        let email = $("#mail").val();
-        if (username === "" || password === "" || email === "") {
-            alert("Debe Ingresar todos los datos");
-        } else {
-            dataCadenita["username"] = username;
-            dataCadenita["password"] = password;
-            dataCadenita["email"] = email;
-            dataCadenita["role"] = "USER";
-            apiclient.registerUser(dataCadenita);
-            window.location.href = "/login";
         }
-    }
 
-    function registerProduct() {
-        let dataProduct = new FormData($("#formRegistrarProd")[0]);
-        $("#reg_prod_submit_btn").prop("disabled", true);
-        $("#reg_prod_submit_btn").html('<i class="fas fa-spinner fa-spin"></i>');
-        apiclient.registerProduct(dataProduct).then(async (data) => {
-            $("#reg_prod_submit_btn").html('<i class="fas fa-check"></i>');
-            $("#reg_prod_submit_btn").addClass("success");
-            await util.sleep(3000);
-            window.location.replace("/productos");
-        });
-    }
+        function registerUser() {
+            let dataCadenita = {};
+            let username = $("#username").val();
+            let password = $("#passwd").val();
+            let email = $("#mail").val();
+            if (username === "" || password === "" || email === "") {
+                alert("Debe Ingresar todos los datos");
+            } else {
+                dataCadenita["username"] = username;
+                dataCadenita["password"] = password;
+                dataCadenita["email"] = email;
+                dataCadenita["role"] = "USER";
+                apiclient.registerUser(dataCadenita);
+                window.location.href = "/login";
+            }
+        }
 
-    return {
-        loadProductPage: loadProductPage,
-        getAllProducts: getAllProducts,
-        getStarProducts: getStarProducts,
-        getLatestProducts: getLatestProducts,
-        getProductsByCategory: getProductsByCategory,
-        loadProductInfo: loadProductInfo,
-        registerUser: registerUser,
-        getAllCategories: getAllCategories,
-        registerProduct: registerProduct,
-    };
-}
+        function registerProduct() {
+            let dataProduct = new FormData($("#formRegistrarProd")[0]);
+            $("#reg_prod_submit_btn").prop("disabled", true);
+            $("#reg_prod_submit_btn").html('<i class="fas fa-spinner fa-spin"></i>');
+            apiclient.registerProduct(dataProduct).then(async (data) => {
+                $("#reg_prod_submit_btn").html('<i class="fas fa-check"></i>');
+                $("#reg_prod_submit_btn").addClass("success");
+                await util.sleep(3000);
+                window.location.replace("/productos");
+            });
+        }
+
+        function registerComment() {
+            const dataCadenita = {};
+            const contenido = $("#comment-textarea-id").val();
+            const productId = window.location.pathname.substr(20, 20);
+            if (contenido === null) {
+                alert("Debe escribir algo en la caja de comentarios! ")
+            } else {
+                apiclient.getActualUserName((req, resp) => {
+                    dataCadenita["id"] = 0;
+                    dataCadenita["usuario"] = resp;
+                    dataCadenita["producto"] = parseInt(productId);
+                    dataCadenita["contenido"] = contenido;
+                    console.log(dataCadenita);
+                    apiclient.registerComment(dataCadenita);
+                    let comentBox = $("#comment-box-id");
+                    comentBox.append($("<div class=\"comentario\">" + "<h3>" + dataCadenita.usuario + "</h3>" + "<p>" + dataCadenita.contenido + "</p>"));
+                })
+            }
+        }
+
+        return {
+            loadProductPage: loadProductPage,
+            getAllProducts: getAllProducts,
+            getStarProducts: getStarProducts,
+            getLatestProducts: getLatestProducts,
+            getProductsByCategory: getProductsByCategory,
+            getAllCommentsByProductID: getAllCommentsByProductID,
+            loadProductInfo: loadProductInfo,
+            registerUser: registerUser,
+            registerComment: registerComment,
+            getAllCategories: getAllCategories,
+            registerProduct: registerProduct,
+        };
+    }
 
 )();

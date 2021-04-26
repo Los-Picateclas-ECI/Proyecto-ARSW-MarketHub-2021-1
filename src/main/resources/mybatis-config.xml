@@ -16,6 +16,7 @@
         <mapper resource="mappers/ImagenMapper.xml" />
         <mapper resource="mappers/ProductoMapper.xml" />
         <mapper resource="mappers/CategoriaMapper.xml" />
+        <mapper resource="mappers/ComentarioMapper.xml" />
     </mappers>
 
 </configuration>

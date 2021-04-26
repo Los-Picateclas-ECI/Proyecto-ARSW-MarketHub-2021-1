@@ -90,6 +90,36 @@ const apiclient = (function () {
         );
     }
 
+    function getAllCommentsByProductID(producto, callback) {
+        const  promise = $.get({
+            url: "/comentarios/" + producto,
+            contentType: "application/json",
+        });
+        promise.then(
+            function (data) {
+                callback(null, data);
+            },
+            function (error) {
+                alert("No se pudieron cargar los comentarios")
+            }
+        );
+    }
+
+    function getActualUserName(callback) {
+        const promise = $.get({
+            url: "/logged/username",
+            contentType: "application/json",
+        });
+        promise.then(
+            function (data) {
+                callback(null, data);
+            },
+            function (error) {
+                alert("Es necesario estar loggeado para realizar un comentario.")
+            }
+        )
+    }
+
     function saveProductId(data) {
         const promise = $.post({
             url: "/productos/guardar/id",
@@ -123,14 +153,25 @@ const apiclient = (function () {
         });
     }
 
+    function registerComment(data){
+        const promise = $.post({
+            url: "/registrar/comentario",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+        });
+    }
+
     return {
         getAllProducts: getAllProducts,
         getProductsByCategory: getProductsByCategory,
         getStarProducts: getStarProducts,
         getLatestProducts: getLatestProducts,
-        saveProductId: saveProductId,
         getProductPageInfo: getProductPageInfo,
+        getAllCommentsByProductID: getAllCommentsByProductID,
+        getActualUserName: getActualUserName,
+        saveProductId: saveProductId,
         registerUser: registerUser,
+        registerComment: registerComment,
         getAllCategories: getAllCategories,
         registerProduct: registerProduct,
     };

@@ -8,33 +8,32 @@ import java.util.List;
 import java.util.Map;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import edu.escuelaing.arsw.markethub.entities.*;
+import edu.escuelaing.arsw.markethub.persistence.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import edu.escuelaing.arsw.markethub.entities.Categoria;
-import edu.escuelaing.arsw.markethub.entities.Imagen;
-import edu.escuelaing.arsw.markethub.entities.Producto;
-import edu.escuelaing.arsw.markethub.entities.Rol;
-import edu.escuelaing.arsw.markethub.entities.UserMH;
 import edu.escuelaing.arsw.markethub.persistence.Persistence;
-import edu.escuelaing.arsw.markethub.persistence.dao.CategoriaDAO;
-import edu.escuelaing.arsw.markethub.persistence.dao.ImagenDAO;
-import edu.escuelaing.arsw.markethub.persistence.dao.ProductoDAO;
-import edu.escuelaing.arsw.markethub.persistence.dao.RolDAO;
-import edu.escuelaing.arsw.markethub.persistence.dao.UserMHDAO;
 
 @Component("myBatisPersistence")
 public class MyBatisPersistence implements Persistence {
 
     @Autowired
     UserMHDAO userMHDAO;
+
     @Autowired
     ProductoDAO productoDAO;
+
     @Autowired
     CategoriaDAO categoriaDAO;
+
     @Autowired
     ImagenDAO imagenDAO;
+
     @Autowired
     RolDAO rolDAO;
+
+    @Autowired
+    ComentarioDAO comentarioDAO;
 
     /*------------------------------------*/
     /*------------- USUARIOS -------------*/
@@ -131,6 +130,21 @@ public class MyBatisPersistence implements Persistence {
     @Override
     public Rol getRoleByName(String name) {
         return rolDAO.getRoleByName(name);
+    }
+
+    /*------------------------------------*/
+    /*------------ COMENTARIOS -----------*/
+    /*------------------------------------*/
+
+    @Override
+    public List<Comentario> getAllCommentsByProductID(Integer producto){
+        return comentarioDAO.getAllCommentsByProductID(producto);
+    }
+
+    @Override
+    public Integer registerComment(Comentario comentario) {
+        comentarioDAO.insertComment(comentario);
+        return comentario.getId();
     }
 
 }

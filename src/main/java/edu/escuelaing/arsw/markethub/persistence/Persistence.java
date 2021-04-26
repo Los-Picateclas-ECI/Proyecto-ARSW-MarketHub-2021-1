@@ -2,11 +2,8 @@ package edu.escuelaing.arsw.markethub.persistence;
 
 import java.io.File;
 import java.util.List;
-import edu.escuelaing.arsw.markethub.entities.Categoria;
-import edu.escuelaing.arsw.markethub.entities.Imagen;
-import edu.escuelaing.arsw.markethub.entities.Producto;
-import edu.escuelaing.arsw.markethub.entities.Rol;
-import edu.escuelaing.arsw.markethub.entities.UserMH;
+
+import edu.escuelaing.arsw.markethub.entities.*;
 
 public interface Persistence {
 
@@ -54,4 +51,8 @@ public interface Persistence {
     /*------------------------------------*/
 
     Rol getRoleByName(String name);
+
+    List<Comentario> getAllCommentsByProductID(Integer producto);
+
+    Integer registerComment(Comentario comentario);
 }

@@ -2,6 +2,8 @@ package edu.escuelaing.arsw.markethub.services;
 
 import java.io.File;
 import java.util.List;
+
+import edu.escuelaing.arsw.markethub.entities.Comentario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -28,9 +30,9 @@ public class ProductServices {
     /*------------------------------------*/
 
     public List<Producto> getAllProducts() {
-        if (persistenceCache.getAllProducts().isEmpty()){
+        if (persistenceCache.getAllProducts().isEmpty()) {
             List<Producto> productos = persistenceMyBatis.getAllProducts();
-            for (Producto producto : productos){
+            for (Producto producto : productos) {
                 persistenceCache.registerProduct(producto);
             }
         }
@@ -38,9 +40,9 @@ public class ProductServices {
     }
 
     public List<Producto> getProductsByCategory(String categoryName) {
-        if (persistenceCache.getProductsByCategory(categoryName).isEmpty()){
+        if (persistenceCache.getProductsByCategory(categoryName).isEmpty()) {
             List<Producto> productos = persistenceMyBatis.getAllProducts();
-            for (Producto producto : productos){
+            for (Producto producto : productos) {
                 persistenceCache.registerProduct(producto);
             }
         }
@@ -48,9 +50,9 @@ public class ProductServices {
     }
 
     public List<Producto> getProductsByRating() {
-        if (persistenceCache.getProductsByRating().isEmpty()){
+        if (persistenceCache.getProductsByRating().isEmpty()) {
             List<Producto> productos = persistenceMyBatis.getAllProducts();
-            for (Producto producto : productos){
+            for (Producto producto : productos) {
                 persistenceCache.registerProduct(producto);
             }
         }
@@ -58,9 +60,9 @@ public class ProductServices {
     }
 
     public List<Producto> getProductsByLatest() {
-        if (persistenceCache.getProductsByLatest().isEmpty()){
+        if (persistenceCache.getProductsByLatest().isEmpty()) {
             List<Producto> productos = persistenceMyBatis.getAllProducts();
-            for (Producto producto : productos){
+            for (Producto producto : productos) {
                 persistenceCache.registerProduct(producto);
             }
         }
@@ -68,7 +70,7 @@ public class ProductServices {
     }
 
     public Producto getProductById(Integer id) {
-        if (persistenceCache.getProductById(id) == null){
+        if (persistenceCache.getProductById(id) == null) {
             Producto producto = persistenceMyBatis.getProductById(id);
             persistenceCache.registerProduct(producto);
         }
@@ -97,4 +99,23 @@ public class ProductServices {
     public void insertImage(File image, Imagen imagenMH) {
         persistenceMyBatis.insertImage(image, imagenMH);
     }
+
+    /*------------------------------------*/
+    /*------------ COMENTARIOS -----------*/
+    /*------------------------------------*/
+    public List<Comentario> getAllCommentsByProductID(Integer productID) {
+        if (persistenceCache.getAllCommentsByProductID(productID).isEmpty()) {
+            List<Comentario> comentarioList = persistenceMyBatis.getAllCommentsByProductID(productID);
+            for (Comentario comentario : comentarioList) {
+                persistenceCache.registerComment(comentario);
+            }
+        }
+        return persistenceCache.getAllCommentsByProductID(productID);
+    }
+
+    public void registerComment(Comentario comentario){
+        persistenceMyBatis.registerComment(comentario);
+        persistenceCache.registerComment(comentario);
+    }
+
 }

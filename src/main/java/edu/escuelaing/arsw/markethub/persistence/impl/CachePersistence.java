@@ -17,6 +17,7 @@ public class CachePersistence implements Persistence {
     private static final Map<String, UserMH> userMap = new ConcurrentHashMap<String, UserMH>();
     private static final Map<Integer, Producto> productMap = new ConcurrentHashMap<Integer, Producto>();
     private static final Map<String, Categoria> categoriaMap = new ConcurrentHashMap<String, Categoria>();
+    private static final Map<Integer, Comentario> comentarioMap = new ConcurrentHashMap<Integer, Comentario>();
 
 
     @Override
@@ -38,15 +39,14 @@ public class CachePersistence implements Persistence {
 
     @Override
     public List<Producto> getAllProducts() {
-        System.out.println("Cache");
         return new ArrayList<>(productMap.values());
     }
 
     @Override
     public List<Producto> getProductsByCategory(String categoryName) {
         List<Producto> productosCategory = new ArrayList<Producto>();
-        for (Producto producto : productMap.values()){
-            if(producto.getCategoria().getNombre().equals(categoryName)){
+        for (Producto producto : productMap.values()) {
+            if (producto.getCategoria().getNombre().equals(categoryName)) {
                 productosCategory.add(producto);
             }
         }
@@ -57,15 +57,15 @@ public class CachePersistence implements Persistence {
     public List<Producto> getProductsByRating() {
         List<Producto> productosRating = new ArrayList<Producto>(productMap.values());
         productosRating.sort((o1, o2) -> {
-            if (o1.getPuntaje() > o2.getPuntaje()){
+            if (o1.getPuntaje() > o2.getPuntaje()) {
                 return 1;
-            }else {
+            } else {
                 return 0;
             }
         });
         try {
-            productosRating = productosRating.subList(0,4);
-        }catch (Exception e) {
+            productosRating = productosRating.subList(0, 4);
+        } catch (Exception e) {
             return productosRating;
         }
         return productosRating;
@@ -75,8 +75,8 @@ public class CachePersistence implements Persistence {
     public List<Producto> getProductsByLatest() {
         List<Producto> productosRating = new ArrayList<Producto>(productMap.values());
         try {
-            productosRating = productosRating.subList(productosRating.size()-8,productosRating.size());
-        }catch (Exception e) {
+            productosRating = productosRating.subList(productosRating.size() - 8, productosRating.size());
+        } catch (Exception e) {
             return productosRating;
         }
         return productosRating;
@@ -111,6 +111,24 @@ public class CachePersistence implements Persistence {
     public Rol getRoleByName(String name) {
         //Metodo no necesitado de implementar
         return null;
+    }
+
+    @Override
+    public List<Comentario> getAllCommentsByProductID(Integer producto) {
+        List<Comentario> comentarioList = new ArrayList<Comentario>(comentarioMap.values());
+        List<Comentario> comentarioResult = new ArrayList<Comentario>();
+        for (Comentario comentario : comentarioList) {
+            if (comentario.getProducto().equals(producto)) {
+                comentarioResult.add(comentario);
+            }
+        }
+        return comentarioResult;
+    }
+
+    @Override
+    public Integer registerComment(Comentario comentario) {
+        comentarioMap.put(comentario.getId(), comentario);
+        return comentario.getId();
     }
 
 }
