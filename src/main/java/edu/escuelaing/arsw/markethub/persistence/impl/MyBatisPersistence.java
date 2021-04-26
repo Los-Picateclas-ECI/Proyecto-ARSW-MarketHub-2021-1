@@ -35,6 +35,9 @@ public class MyBatisPersistence implements Persistence {
     @Autowired
     ComentarioDAO comentarioDAO;
 
+    @Autowired
+    CarritoCompraDAO carritoCompraDAO;
+
     /*------------------------------------*/
     /*------------- USUARIOS -------------*/
     /*------------------------------------*/
@@ -145,6 +148,20 @@ public class MyBatisPersistence implements Persistence {
     public Integer registerComment(Comentario comentario) {
         comentarioDAO.insertComment(comentario);
         return comentario.getId();
+    }
+
+    /*------------------------------------*/
+    /*---------- CARRITO COMPRA ----------*/
+    /*------------------------------------*/
+
+    @Override
+    public List<CarritoCompra> getCarritoProductsByUsername(String username){
+        return carritoCompraDAO.getCarritoProductsByUsername(username);
+    }
+
+    @Override
+    public void deleteProductFromCar(String username, Integer productID){
+        carritoCompraDAO.deleteProductFromCar(username, productID);
     }
 
 }

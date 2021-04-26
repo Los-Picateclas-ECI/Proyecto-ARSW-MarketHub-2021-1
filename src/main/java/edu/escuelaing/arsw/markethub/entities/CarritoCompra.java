@@ -3,14 +3,14 @@ package edu.escuelaing.arsw.markethub.entities;
 public class CarritoCompra {
 
     private String usuario;
-    private Integer producto;
+    private Producto producto;
     private Integer cantidad;
 
     public CarritoCompra(){
         //Constructor vació
     }
 
-    public CarritoCompra(String usuario, Integer producto, Integer cantidad) {
+    public CarritoCompra(String usuario, Producto producto, Integer cantidad) {
         this.usuario = usuario;
         this.producto = producto;
         this.cantidad = cantidad;
@@ -24,11 +24,11 @@ public class CarritoCompra {
         this.usuario = usuario;
     }
 
-    public Integer getProducto() {
+    public Producto getProducto() {
         return producto;
     }
 
-    public void setProducto(Integer producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 

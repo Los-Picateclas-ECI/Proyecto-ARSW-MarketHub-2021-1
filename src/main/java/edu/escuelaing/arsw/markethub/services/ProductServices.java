@@ -3,14 +3,14 @@ package edu.escuelaing.arsw.markethub.services;
 import java.io.File;
 import java.util.List;
 
-import edu.escuelaing.arsw.markethub.entities.Comentario;
+import edu.escuelaing.arsw.markethub.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import edu.escuelaing.arsw.markethub.entities.Categoria;
-import edu.escuelaing.arsw.markethub.entities.Imagen;
-import edu.escuelaing.arsw.markethub.entities.Producto;
 import edu.escuelaing.arsw.markethub.persistence.Persistence;
 
 @Service
@@ -85,6 +85,7 @@ public class ProductServices {
     /*------------------------------------*/
     /*------------ CATEGORÍAS ------------*/
     /*------------------------------------*/
+
     public List<Categoria> getAllCategories() {
         return persistenceMyBatis.getAllCategories();
     }
@@ -96,6 +97,7 @@ public class ProductServices {
     /*------------------------------------*/
     /*------------- IMÁGENES -------------*/
     /*------------------------------------*/
+
     public void insertImage(File image, Imagen imagenMH) {
         persistenceMyBatis.insertImage(image, imagenMH);
     }
@@ -103,6 +105,7 @@ public class ProductServices {
     /*------------------------------------*/
     /*------------ COMENTARIOS -----------*/
     /*------------------------------------*/
+
     public List<Comentario> getAllCommentsByProductID(Integer productID) {
         if (persistenceCache.getAllCommentsByProductID(productID).isEmpty()) {
             List<Comentario> comentarioList = persistenceMyBatis.getAllCommentsByProductID(productID);
@@ -116,6 +119,20 @@ public class ProductServices {
     public void registerComment(Comentario comentario){
         persistenceMyBatis.registerComment(comentario);
         persistenceCache.registerComment(comentario);
+    }
+
+    /*------------------------------------*/
+    /*---------- CARRITO COMPRA ----------*/
+    /*------------------------------------*/
+
+    public List<CarritoCompra> getCarritoProductsByUsername(String username){
+        return persistenceMyBatis.getCarritoProductsByUsername(username);
+    }
+
+    public void deleteProductFromCar(Integer productID){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = ((User) auth.getPrincipal()).getUsername();
+        persistenceMyBatis.deleteProductFromCar(username, productID);
     }
 
 }

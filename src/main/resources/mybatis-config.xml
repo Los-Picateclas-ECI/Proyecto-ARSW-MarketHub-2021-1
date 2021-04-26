@@ -17,6 +17,7 @@
         <mapper resource="mappers/ProductoMapper.xml" />
         <mapper resource="mappers/CategoriaMapper.xml" />
         <mapper resource="mappers/ComentarioMapper.xml" />
+        <mapper resource="mappers/CarritoCompra.xml" />
     </mappers>
 
 </configuration>

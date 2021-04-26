@@ -715,6 +715,10 @@ form select:focus {
     cursor: pointer;
 }
 
+.carrito-table-cl a {
+    cursor: pointer;
+}
+
 /* Media para menu responsive */
 
 @media only screen and (max-width: 800px) {

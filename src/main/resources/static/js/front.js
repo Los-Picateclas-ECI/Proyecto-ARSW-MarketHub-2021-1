@@ -44,6 +44,11 @@ const front = (function () {
         app.getAllCommentsByProductID(productId);
     }
 
+    function loadCarritoProducts(){
+        loadAll();
+        app.getCarritoProducts();
+    }
+
     function loadHomePage(){
         loadAll();
         app.getStarProducts();
@@ -70,6 +75,7 @@ const front = (function () {
         acctToggle: acctToggle,
         loadHomePage: loadHomePage,
         changeImages: changeImages,
+        loadCarritoProducts: loadCarritoProducts,
         loadProducts: loadProducts,
         loadProductsCategories: loadProductsCategories,
         loadCategorias: loadCategorias,

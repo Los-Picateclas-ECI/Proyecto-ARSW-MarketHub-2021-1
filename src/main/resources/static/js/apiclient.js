@@ -115,9 +115,24 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("Es necesario estar loggeado para realizar un comentario.")
+                alert("Es necesario estar loggeado para realizar esta acción.")
             }
         )
+    }
+
+    function getCarritoProducts(username, callback) {
+        const promise = $.get({
+            url: "/carrito-compra/" + username,
+            contentType: "application/json",
+        });
+        promise.then(
+            function (data) {
+                callback(null, data);
+            },
+            function (error) {
+                alert("No se pudo realizar la consulta! ")
+            }
+        );
     }
 
     function saveProductId(data) {
@@ -161,6 +176,23 @@ const apiclient = (function () {
         });
     }
 
+    function deleteProductFromCar(data) {
+        return $.ajax({
+            type: "DELETE",
+            url: "/carrito/borrar/" + data,
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                // alert("Se registró satisfactoriamente el producto");
+            },
+            error: function (xhr, status, err) {
+                alert("Ha ocurrido un error en el servidor");
+            },
+        });
+    }
+
     return {
         getAllProducts: getAllProducts,
         getProductsByCategory: getProductsByCategory,
@@ -169,10 +201,12 @@ const apiclient = (function () {
         getProductPageInfo: getProductPageInfo,
         getAllCommentsByProductID: getAllCommentsByProductID,
         getActualUserName: getActualUserName,
+        getCarritoProducts: getCarritoProducts,
         saveProductId: saveProductId,
         registerUser: registerUser,
         registerComment: registerComment,
         getAllCategories: getAllCategories,
         registerProduct: registerProduct,
+        deleteProductFromCar: deleteProductFromCar
     };
 })();
