@@ -39,7 +39,6 @@ const app = (function () {
 
         function getAllCommentsByProductID(product) {
             apiclient.getAllCommentsByProductID(product, (req, resp) => {
-                console.log(resp);
                 appendAllComments(resp);
             })
         }
@@ -77,14 +76,14 @@ const app = (function () {
         }
 
         function appendCarritoCompras(data) {
-            console.log(data);
             $("#carrito-table tbody").empty();
             total = 0;
             for (let i = 0; i < data.length; i++) {
                 const subTotal = data[i].cantidad * data[i].producto.precio;
                 total += subTotal;
                 $("#carrito-table > tbody:last").append(
-                    $("<tr id=\"SuperDiv" + data[i].producto.id + "\"><td><div class=\"cart-info\"><img src=\"" + data[i].producto.imagenes[0].url + "\"> <div><p>" +
+                    $("<tr id=\"SuperDiv" + data[i].producto.id + "\"><td><div class=\"cart-info\"><a href=\"/productos/producto/" +
+                        data[i].producto.id + "\"><img src=\"" + data[i].producto.imagenes[0].url + "\"></a><div><p>" +
                         data[i].producto.nombre + "</p><small> Precio: $" + data[i].producto.precio + "</small><br>" +
                         "<a id=\"" + data[i].producto.id + "\" onclick=\"app.deleteProductFromCar(this.id)\">Eliminar</a></div></div></td><td><p>" +
                         data[i].cantidad + "</p>" + "</td><td><p id=\"PrecioProd" + data[i].producto.id + "\">$" + subTotal + "</p></td></tr>")
@@ -100,7 +99,6 @@ const app = (function () {
         function appendAllComments(data) {
             const comentBox = $("#comment-box-id");
             for (let i = 0; i < data.length; i++) {
-                console.log(data[i]);
                 comentBox.append($("<div class=\"comentario\">" + "<h3>" + data[i].usuario + "</h3>" + "<p>" + data[i].contenido + "</p>"));
             }
         }
@@ -147,8 +145,8 @@ const app = (function () {
                     'width="100%"' + ">" + "</div>";
             }
             html += "</div>" + "</div>" + '<div class="container-row__2">' + "<p>" + "Productos / " + data.categoria.nombre +
-                "</p>" + "<h1>" + data.nombre + "</h1>" + "<h4>" + "$ " + data.precio + "</h4>" + '<input type="number" value="' +
-                data.cantidad + '">' + '<a class="container-row__2-btn" href="">Añadir Al Carrito</a>' + '<h3>Detalles del Producto <i class="fa fa-indent"></i></h3>' +
+                "</p>" + "<h1>" + data.nombre + "</h1>" + "<h4>" + "$ " + data.precio + "</h4>" + '<input id="ProdID' + data.id + '" type="number" value="' +
+                data.cantidad + '">' + '<a class="container-row__2-btn" onclick="app.registerProductInToCar()">Añadir Al Carrito</a>' + '<h3>Detalles del Producto <i class="fa fa-indent"></i></h3>' +
                 "<br>" + "<p>" + data.descripcion + "</p>" + "</div>";
             $("#container-row__detail").append($(html));
         }
@@ -209,7 +207,6 @@ const app = (function () {
                     dataCadenita["usuario"] = resp;
                     dataCadenita["producto"] = parseInt(productId);
                     dataCadenita["contenido"] = contenido;
-                    console.log(dataCadenita);
                     apiclient.registerComment(dataCadenita);
                     let comentBox = $("#comment-box-id");
                     comentBox.append($("<div class=\"comentario\">" + "<h3>" + dataCadenita.usuario + "</h3>" + "<p>" + dataCadenita.contenido + "</p>"));
@@ -217,12 +214,24 @@ const app = (function () {
             }
         }
 
-        function deleteProductFromCar(product){
-            console.log(product);
+        function registerProductInToCar() {
+            const productId = window.location.pathname.substr(20, 20);
+            const cantidad = $("#ProdID" + productId).val();
+            apiclient.getActualUserName((req, resp) => {
+                let dataCadenita = {};
+                dataCadenita["usuario"] = resp;
+                apiclient.getProductPageInfo(productId, (req, resp) => {
+                    dataCadenita["producto"] = resp;
+                    dataCadenita["cantidad"] = cantidad;
+                    apiclient.registerProductInToCar(dataCadenita);
+                })
+            });
+        }
+
+        function deleteProductFromCar(product) {
             let precioS = $("#PrecioProd" + product)[0].outerText;
             let precio = parseInt(precioS.substr(1));
             $("#SuperDiv" + product).remove();
-            console.log(precio)
             let totalPrice = $("#total-price-id");
             totalPrice.empty();
             total -= precio;
@@ -243,6 +252,7 @@ const app = (function () {
             getAllCommentsByProductID: getAllCommentsByProductID,
             getCarritoProducts: getCarritoProducts,
             loadProductInfo: loadProductInfo,
+            registerProductInToCar: registerProductInToCar,
             registerUser: registerUser,
             registerComment: registerComment,
             getAllCategories: getAllCategories,

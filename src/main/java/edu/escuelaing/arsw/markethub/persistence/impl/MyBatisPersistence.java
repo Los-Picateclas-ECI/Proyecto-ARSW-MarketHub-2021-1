@@ -1,18 +1,20 @@
 package edu.escuelaing.arsw.markethub.persistence.impl;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import edu.escuelaing.arsw.markethub.entities.*;
+import edu.escuelaing.arsw.markethub.persistence.Persistence;
+import edu.escuelaing.arsw.markethub.persistence.dao.*;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
-import edu.escuelaing.arsw.markethub.entities.*;
-import edu.escuelaing.arsw.markethub.persistence.dao.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import edu.escuelaing.arsw.markethub.persistence.Persistence;
 
 @Component("myBatisPersistence")
 public class MyBatisPersistence implements Persistence {
@@ -140,7 +142,7 @@ public class MyBatisPersistence implements Persistence {
     /*------------------------------------*/
 
     @Override
-    public List<Comentario> getAllCommentsByProductID(Integer producto){
+    public List<Comentario> getAllCommentsByProductID(Integer producto) {
         return comentarioDAO.getAllCommentsByProductID(producto);
     }
 
@@ -155,13 +157,23 @@ public class MyBatisPersistence implements Persistence {
     /*------------------------------------*/
 
     @Override
-    public List<CarritoCompra> getCarritoProductsByUsername(String username){
+    public List<CarritoCompra> getCarritoProductsByUsername(String username) {
         return carritoCompraDAO.getCarritoProductsByUsername(username);
     }
 
     @Override
-    public void deleteProductFromCar(String username, Integer productID){
+    public void deleteProductFromCar(String username, Integer productID) {
         carritoCompraDAO.deleteProductFromCar(username, productID);
+    }
+
+    @Override
+    public void insertCarritoCompra(CarritoCompra carrito) {
+        carritoCompraDAO.insertCarritoCompra(carrito);
+    }
+
+    @Override
+    public void updateCantidad(CarritoCompra carrito) {
+        carritoCompraDAO.updateCantidad(carrito);
     }
 
 }

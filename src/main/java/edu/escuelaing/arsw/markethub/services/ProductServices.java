@@ -6,6 +6,7 @@ import java.util.List;
 import edu.escuelaing.arsw.markethub.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -116,7 +117,7 @@ public class ProductServices {
         return persistenceCache.getAllCommentsByProductID(productID);
     }
 
-    public void registerComment(Comentario comentario){
+    public void registerComment(Comentario comentario) {
         persistenceMyBatis.registerComment(comentario);
         persistenceCache.registerComment(comentario);
     }
@@ -125,14 +126,22 @@ public class ProductServices {
     /*---------- CARRITO COMPRA ----------*/
     /*------------------------------------*/
 
-    public List<CarritoCompra> getCarritoProductsByUsername(String username){
+    public List<CarritoCompra> getCarritoProductsByUsername(String username) {
         return persistenceMyBatis.getCarritoProductsByUsername(username);
     }
 
-    public void deleteProductFromCar(Integer productID){
+    public void deleteProductFromCar(Integer productID) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = ((User) auth.getPrincipal()).getUsername();
         persistenceMyBatis.deleteProductFromCar(username, productID);
+    }
+
+    public void insertCarritoCompra(CarritoCompra carrito) {
+        try {
+            persistenceMyBatis.insertCarritoCompra(carrito);
+        } catch (DuplicateKeyException e){
+            persistenceMyBatis.updateCantidad(carrito);
+        }
     }
 
 }

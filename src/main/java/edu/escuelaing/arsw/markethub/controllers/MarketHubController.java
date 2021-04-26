@@ -186,13 +186,26 @@ public class MarketHubController {
         }
     }
 
+    @RequestMapping(value = "/carrito/registrar/producto", method = RequestMethod.POST)
+    public ResponseEntity<?> registerProductInToCar(@RequestBody CarritoCompra carritoCompra) {
+        try {
+            System.out.println(carritoCompra.getUsuario());
+            System.out.println(carritoCompra.getProducto().getId());
+            productServices.insertCarritoCompra(carritoCompra);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
     /*----------- METODOS DELETE -----------*/
     @RequestMapping(value = "/carrito/borrar/{producto}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteProductFromCar(@PathVariable Integer producto){
+    public ResponseEntity<?> deleteProductFromCar(@PathVariable Integer producto) {
         try {
             productServices.deleteProductFromCar(producto);
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }

@@ -29,6 +29,18 @@
         ORDER BY prod.id DESC, img.id
     </select>
 
+    <insert id="insertCarritoCompra" parameterType="map">
+        INSERT INTO carrito_compras (usuario, producto, cantidad)
+        VALUES (#{carrito.usuario}, #{carrito.producto.id}, #{carrito.cantidad})
+    </insert>
+
+    <update id="updateCantidad" parameterType="map">
+        UPDATE carrito_compras
+        SET cantidad = #{carrito.cantidad}
+        WHERE usuario = #{carrito.usuario}
+          AND producto = #{carrito.producto.id}
+    </update>
+
     <delete id="deleteProductFromCar">
         DELETE
         FROM carrito_compras car

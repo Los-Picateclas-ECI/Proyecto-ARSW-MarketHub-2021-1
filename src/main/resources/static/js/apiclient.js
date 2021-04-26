@@ -176,6 +176,14 @@ const apiclient = (function () {
         });
     }
 
+    function registerProductInToCar(data) {
+        const promise = $.post({
+            url: "/carrito/registrar/producto",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+        });
+    }
+
     function deleteProductFromCar(data) {
         return $.ajax({
             type: "DELETE",
@@ -205,6 +213,7 @@ const apiclient = (function () {
         saveProductId: saveProductId,
         registerUser: registerUser,
         registerComment: registerComment,
+        registerProductInToCar: registerProductInToCar,
         getAllCategories: getAllCategories,
         registerProduct: registerProduct,
         deleteProductFromCar: deleteProductFromCar

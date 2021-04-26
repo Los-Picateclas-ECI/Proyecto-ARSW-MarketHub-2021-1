@@ -13,4 +13,8 @@ public interface CarritoCompraDAO {
 
     void deleteProductFromCar(@Param("username") String username, @Param("producto") Integer producto);
 
+    void insertCarritoCompra(@Param("carrito") CarritoCompra carrito);
+
+    void updateCantidad(@Param("carrito") CarritoCompra carrito);
+
 }

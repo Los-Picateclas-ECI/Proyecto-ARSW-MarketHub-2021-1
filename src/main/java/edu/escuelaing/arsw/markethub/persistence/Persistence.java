@@ -59,4 +59,8 @@ public interface Persistence {
     List<CarritoCompra> getCarritoProductsByUsername(String username);
 
     void deleteProductFromCar(String username, Integer productID);
+
+    void insertCarritoCompra(CarritoCompra carrito);
+
+    void updateCantidad(CarritoCompra carrito);
 }

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -139,6 +138,16 @@ public class CachePersistence implements Persistence {
 
     @Override
     public void deleteProductFromCar(String username, Integer productID) {
+        // Método no necesitado de implementar
+    }
+
+    @Override
+    public void insertCarritoCompra(CarritoCompra carrito) {
+        // Método no necesitado de implementar
+    }
+
+    @Override
+    public void updateCantidad(CarritoCompra carrito) {
         // Método no necesitado de implementar
     }
 

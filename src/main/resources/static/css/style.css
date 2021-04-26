@@ -383,7 +383,7 @@ select:focus {
 }
 
 .single-product input {
-    width: 50px;
+    width: 55px;
     height: 40px;
     padding-left: 10px;
     font-size: 20px;
@@ -731,6 +731,10 @@ form select:focus {
 }
 
 .carrito-table-cl a {
+    cursor: pointer;
+}
+
+.container-row__2-btn {
     cursor: pointer;
 }
 
