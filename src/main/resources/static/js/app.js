@@ -76,7 +76,6 @@ const app = (function () {
         }
 
         function appendCarritoCompras(data) {
-            console.log(data);
             $("#carrito-table tbody").empty();
             total = 0;
             for (let i = 0; i < data.length; i++) {
@@ -172,7 +171,6 @@ const app = (function () {
 
         function loadUserInfo() {
             apiclient.getActualUserInfo((req, resp) => {
-                console.log(resp);
                 appendUserInfo(resp);
             })
         }

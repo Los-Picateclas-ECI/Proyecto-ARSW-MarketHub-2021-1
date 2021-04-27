@@ -31,7 +31,6 @@ const epayco = (function () {
                     data["country"] = "co";
                     data["lang"] = "es";
                     apiclient.getActualUserInfo((req, resp) => {
-                        console.log(resp);
                         data["name_billing"] = resp.nombre;
                         data["address_billing"] = resp.direccion;
                         data["type_doc_billing"] = resp.tipodocumento;
