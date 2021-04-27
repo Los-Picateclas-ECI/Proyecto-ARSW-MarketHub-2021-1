@@ -144,6 +144,7 @@ const apiclient = (function () {
     }
 
     function registerUser(data) {
+        console.log(data.password);
         const promise = $.post({
             url: "/registrar/usuario",
             contentType: "application/json",

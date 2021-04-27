@@ -165,20 +165,40 @@ const app = (function () {
             });
         }
 
+        function registerPage() {
+            window.location.href = "/cuenta/registrar";
+        }
+
         function registerUser() {
             let dataCadenita = {};
             let username = $("#username").val();
-            let password = $("#passwd").val();
-            let email = $("#mail").val();
-            if (username === "" || password === "" || email === "") {
+            let nombre = $("#nombre").val();
+            let edad = $("#edad").val();
+            let email = $("#email").val();
+            let telefono = $("#telefono").val();
+            let direccion = $("#direccion").val();
+            let tipoDocumento = $("#tipoDoc").val();
+            let documento = $("#documento").val();
+            let password = $("#password").val();
+            let passwordConfirm = $("#confirm").val();
+
+            if (username === "" || nombre === "" || edad === "" || telefono === "" || direccion === "" || tipoDocumento === ""
+                || documento === "" || password === "" || passwordConfirm === "" || email === "") {
                 alert("Debe Ingresar todos los datos");
+            } else if (!(password === passwordConfirm)) {
+                alert("Las contraseñas no coinciden! ");
             } else {
                 dataCadenita["username"] = username;
-                dataCadenita["password"] = password;
+                dataCadenita["documento"] = parseInt(documento);
+                dataCadenita["telefono"] = telefono;
                 dataCadenita["email"] = email;
-                dataCadenita["role"] = "USER";
+                dataCadenita["nombre"] = nombre;
+                dataCadenita["edad"] = parseInt(edad);
+                dataCadenita["password"] = password;
+                dataCadenita["direccion"] = direccion;
+                dataCadenita["tipodocumento"] = tipoDocumento;
                 apiclient.registerUser(dataCadenita);
-                window.location.href = "/login";
+                window.location.href = "/login"
             }
         }
 
@@ -254,6 +274,7 @@ const app = (function () {
             loadProductInfo: loadProductInfo,
             registerProductInToCar: registerProductInToCar,
             registerUser: registerUser,
+            registerPage: registerPage,
             registerComment: registerComment,
             getAllCategories: getAllCategories,
             registerProduct: registerProduct,

@@ -2,166 +2,169 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta content="Pagina de registro de productos" name="description" />
-    <meta content="MarketHub" name="copyright" />
-    <meta content="noindex" name="robots" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="UTF-8"/>
+    <meta content="Pagina de registro de productos" name="description"/>
+    <meta content="MarketHub" name="copyright"/>
+    <meta content="noindex" name="robots"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+          rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
-    <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
-    <link href="/css/normalize.css" rel="stylesheet" />
-    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="/css/normalize.css" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
 
-    <script src="https://kit.fontawesome.com/e8e93dbb30.js" crossorigin="anonymous"></script>
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/e8e93dbb30.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="/js/util.js"></script>
     <script src="/js/front.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/apiclient.js"></script>
-    <!-- <script src="/js/event-handler.js"></script> -->
     <script>
-        window.onload = front.loadCategorias;
+        window.onload = front.loadAll;
     </script>
-    <title>Registrar Producto</title>
+    <title>Crea Tú Cuenta</title>
 </head>
 
 <body>
-    <!-- Parte superior de la pagina, donde se eneucntra la barra de navegación -->
+<!-- Parte superior de la pagina, donde se eneucntra la barra de navegación -->
+<div class="container">
+    <div class="container-navbar" id="barrita"></div>
+</div>
+<!-- Contenido tabla de registro-->
+<div class="account-page">
     <div class="container">
-        <div class="container-navbar" id="barrita"></div>
-    </div>
-    <!-- Contenido tabla de registro-->
-    <div class="account-page">
-        <div class="container">
-            <div style="margin: 50px auto 100px auto; max-width: 800px;">
-                <main>
-                    <h2>Registro</h2>
-                    <div style="margin: 20px 0 0 10px"></div>
-                    <form id="formRegistrarUsr" onsubmit="">
-                        <div class="form-group">
-                            <label for="username">Nombre de Usuario</label>
-                            <input autocomplete="off" autofocus class="form-control" id="username" name="username"
-                                placeholder="Nombre de usuario" type="text" required />
+        <div style="margin: 50px auto 100px auto; max-width: 800px;">
+            <main>
+                <h2>Registro</h2>
+                <div style="margin: 20px 0 0 10px"></div>
+                <form id="formRegistrarUsr" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="username">Nombre de Usuario</label>
+                        <input autocomplete="off" autofocus class="form-control" id="username" name="username"
+                               placeholder="Nombre de usuario" required type="text"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input autocomplete="off" autofocus class="form-control" id="email" name="email"
+                               placeholder="Email" required type="text"/>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group inline70">
+                            <label for="nombre">Nombre</label>
+                            <input autocomplete="off" autofocus class="form-control" id="nombre" name="nombre"
+                                   placeholder="Nombre" required type="text"/>
                         </div>
 
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input autocomplete="off" autofocus class="form-control" id="email" name="email" 
-                                placeholder="Email" type="text" required />
+                        <div class="form-group inline25">
+                            <label for="edad">Edad</label>
+                            <input autocomplete="off" autofocus class="form-control" id="edad" min="18"
+                                   name="edad" placeholder="Edad"
+                                   required type="number"/>
                         </div>
+                    </div>
 
-                        <div class="form-row">
-                            <div class="form-group inline70">
-                                <label for="nombre">Nombre</label>
-                                <input autocomplete="off" autofocus class="form-control" id="nombre" name="nombre"
-                                        placeholder="Nombre" type="text" required />
-                            </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input autocomplete="off" autofocus class="form-control" id="telefono" name="telefono"
+                               placeholder="Teléfono" required type="text"/>
+                    </div>
 
-                            <div class="form-group inline25">
-                                <label for="edad">Edad</label>
-                                <input autocomplete="off" autofocus class="form-control" id="edad" name="edad" placeholder="Edad" type="number"
-                                    min="18" required />
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="direccion">Dirección</label>
+                        <input autocomplete="off" autofocus class="form-control" id="direccion" name="direccion"
+                               placeholder="Dirección" required type="text"/>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="telefono">Teléfono</label>
-                            <input autocomplete="off" autofocus class="form-control" id="telefono" name="telefono" 
-                                    placeholder="Teléfono" type="text" required />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="direccion">Dirección</label>
-                            <input autocomplete="off" autofocus class="form-control" id="direccion" name="direccion" 
-                                    placeholder="Dirección" type="text" required />
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group inline25">
-                                <label for="tipodocumento">Tipo de Documento</label>
-                                <select>
+                    <div class="form-row">
+                        <div class="form-group inline25">
+                            <label>
+                                Tipo de Documento
+                                <select id="tipoDoc">
                                     <option value="cc">CC</option>
                                     <option value="ce">CE</option>
                                 </select>
-                            </div>
-
-                            <div class="form-group inline70">
-                                <label for="documento">Documento</label>
-                                <input autocomplete="off" autofocus class="form-control" id="documento" name="documento" 
-                                        placeholder="Documento" type="number" min="0" required />
-                            </div>                            
+                            </label>
                         </div>
 
-                        <div class="form-group">
-                            <label for="password">Contraseña</label>
-                            <input autocomplete="off" autofocus class="form-control" id="password" name="password" 
-                                    placeholder="Contraseña" type="password" required />
+                        <div class="form-group inline70">
+                            <label for="documento">Documento</label>
+                            <input autocomplete="off" autofocus class="form-control" id="documento" min="0"
+                                   name="documento" placeholder="Documento" required type="number"/>
                         </div>
-
-                        <div class="form-group">
-                            <label for="password">Confirmar Contraseña</label>
-                            <input autocomplete="off" autofocus class="form-control" id="confirm" name="confirm" 
-                                    placeholder="Contraseña" type="password" required />
-                        </div>
-
-                        <div class="submit_btn_wrapper">
-                            <button id="reg_prod_submit_btn" class="container-row__2-btn"
-                                type="submit">Registrar</button>
-                        </div>
-                    </form>
-                </main>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pie de pagina -->
-    <div class="footer">
-        <div class="container">
-            <div class="container-row">
-                <div class="footer-col-1">
-                    <h3>Descarga nuestra aplicación</h3>
-                    <p>Descarga la aplicación en sus versiones:</p>
-                    <div class="app-logo">
-                        <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1"><img alt="GitHub"
-                                src="/img/GitHub.png" /></a>
-                        <img alt="AppleStore" src="/img/docker.png" />
                     </div>
-                </div>
-                <div class="footer-col-2">
-                    <img alt="LogoLargo" src="/img/logoLarge.png" />
-                    <p>
-                        MarketHub brinda a sus vendedores una mejor experiencia al momento de vender sus productos.
-                    </p>
-                </div>
-                <div class="footer-col-3">
-                    <h3>Contactanos</h3>
-                    <ul>
-                        <li><a href="https://github.com/danielrincon-m">Daniel Rincon</a></li>
-                        <li><a href="mailto: paula.guevara-s@mail.escuelaing.edu.co">Paula Guevara</a></li>
-                        <li><a href="https://wa.me/573174414419">Andres Calderón</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col-4">
-                    <h3>Síguenos En</h3>
-                    <ul>
-                        <li>
-                            <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1">Github</a>
-                        </li>
-                        <li>Twitter</li>
-                        <li>Instagram</li>
-                        <li>Facebook</li>
-                    </ul>
-                </div>
-            </div>
-            <hr />
-            <p class="copyright">Copyright 2020 - MarketHub</p>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input autocomplete="off" autofocus class="form-control" id="password" name="password"
+                               placeholder="Contraseña" required type="password"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Confirmar Contraseña</label>
+                        <input autocomplete="off" autofocus class="form-control" id="confirm" name="confirm"
+                               placeholder="Contraseña" required type="password"/>
+                    </div>
+
+                    <div class="submit_btn_wrapper">
+                        <button class="container-row__2-btn" id="reg_prod_submit_btn"
+                                onclick="app.registerUser()">Registrar
+                        </button>
+                    </div>
+                </form>
+            </main>
         </div>
     </div>
+</div>
+
+<!-- Pie de pagina -->
+<div class="footer">
+    <div class="container">
+        <div class="container-row">
+            <div class="footer-col-1">
+                <h3>Descarga nuestra aplicación</h3>
+                <p>Descarga la aplicación en sus versiones:</p>
+                <div class="app-logo">
+                    <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1"><img alt="GitHub"
+                                                                                                        src="/img/GitHub.png"/></a>
+                    <img alt="AppleStore" src="/img/docker.png"/>
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img alt="LogoLargo" src="/img/logoLarge.png"/>
+                <p>
+                    MarketHub brinda a sus vendedores una mejor experiencia al momento de vender sus productos.
+                </p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Contactanos</h3>
+                <ul>
+                    <li><a href="https://github.com/danielrincon-m">Daniel Rincon</a></li>
+                    <li><a href="mailto: paula.guevara-s@mail.escuelaing.edu.co">Paula Guevara</a></li>
+                    <li><a href="https://wa.me/573174414419">Andres Calderón</a></li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Síguenos En</h3>
+                <ul>
+                    <li>
+                        <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1">Github</a>
+                    </li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>Facebook</li>
+                </ul>
+            </div>
+        </div>
+        <hr/>
+        <p class="copyright">Copyright 2020 - MarketHub</p>
+    </div>
+</div>
 </body>
 
 </html>
