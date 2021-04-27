@@ -31,6 +31,11 @@ public class CachePersistence implements Persistence {
     }
 
     @Override
+    public void updateUser(UserMH user) {
+        // Método no necesitado de implementar
+    }
+
+    @Override
     public int registerProduct(Producto producto) {
         productMap.put(producto.getId(), producto);
         return producto.getId();
@@ -103,7 +108,7 @@ public class CachePersistence implements Persistence {
 
     @Override
     public void insertImage(File image, Imagen imagenMH) {
-        //Metodo no necesitado de implementar
+        // Método no necesitado de implementar
     }
 
     @Override

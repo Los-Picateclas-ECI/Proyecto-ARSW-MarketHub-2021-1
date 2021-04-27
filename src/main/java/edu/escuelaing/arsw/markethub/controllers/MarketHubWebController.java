@@ -1,5 +1,8 @@
 package edu.escuelaing.arsw.markethub.controllers;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,6 +56,11 @@ public class MarketHubWebController {
     public String failedLogin(Model model) {
         model.addAttribute("error", true);
         return "login";
+    }
+
+    @RequestMapping(value = "/cuenta/configuracion", method = RequestMethod.GET)
+    public String getConfiguracionCuenta() {
+        return "account-modification";
     }
 
     /*-----------------------------------------------*/

@@ -11,4 +11,6 @@ public interface UserMHDAO {
 
     void registerUser(@Param("user") UserMH user);
 
+    void updateUser(@Param("user") UserMH user);
+
 }

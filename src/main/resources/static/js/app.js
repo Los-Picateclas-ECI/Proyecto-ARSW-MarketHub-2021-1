@@ -169,6 +169,24 @@ const app = (function () {
             window.location.href = "/cuenta/registrar";
         }
 
+        function loadUserInfo() {
+            apiclient.getActualUserInfo((req, resp) => {
+                console.log(resp);
+                appendUserInfo(resp);
+            })
+        }
+
+        function appendUserInfo(data){
+            document.getElementById("username").value = data.username;
+            document.getElementById("email").value = data.email;
+            document.getElementById("nombre").value = data.nombre;
+            document.getElementById("edad").value = data.edad;
+            document.getElementById("telefono").value = data.telefono;
+            document.getElementById("direccion").value = data.direccion;
+            document.getElementById("tipoDoc").value = data.tipodocumento;
+            document.getElementById("documento").value = data.documento;
+        }
+
         function registerUser() {
             let dataCadenita = {};
             let username = $("#username").val();
@@ -248,6 +266,34 @@ const app = (function () {
             });
         }
 
+        function updateUserAccount(){
+            let dataCadenita = {};
+            let username = $("#username").val();
+            let nombre = $("#nombre").val();
+            let edad = $("#edad").val();
+            let email = $("#email").val();
+            let telefono = $("#telefono").val();
+            let direccion = $("#direccion").val();
+            let tipoDocumento = $("#tipoDoc").val();
+            let documento = $("#documento").val();
+            let passwordN = $("#passwordN").val();
+            let passwordNConfirm = $("#confirm").val();
+            if (passwordN === passwordNConfirm){
+                dataCadenita["username"] = username;
+                dataCadenita["documento"] = parseInt(documento);
+                dataCadenita["telefono"] = telefono;
+                dataCadenita["email"] = email;
+                dataCadenita["nombre"] = nombre;
+                dataCadenita["edad"] = parseInt(edad);
+                dataCadenita["password"] = passwordN;
+                dataCadenita["direccion"] = direccion;
+                dataCadenita["tipodocumento"] = tipoDocumento;
+                apiclient.updateUserAccount(dataCadenita);
+            } else {
+                alert("La nueva contraseña no coincide");
+            }
+        }
+
         function deleteProductFromCar(product) {
             let precioS = $("#PrecioProd" + product)[0].outerText;
             let precio = parseInt(precioS.substr(1));
@@ -278,6 +324,8 @@ const app = (function () {
             registerComment: registerComment,
             getAllCategories: getAllCategories,
             registerProduct: registerProduct,
+            loadUserInfo: loadUserInfo,
+            updateUserAccount: updateUserAccount,
             deleteProductFromCar: deleteProductFromCar
         };
     }

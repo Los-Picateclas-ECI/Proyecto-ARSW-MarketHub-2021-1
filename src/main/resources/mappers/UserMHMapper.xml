@@ -23,23 +23,40 @@
            OR usr.email = #{usernameOrEmail}
     </select>
 
-    <insert id="registerUser"  parameterType="map">
-        INSERT INTO usuarios(username, documento, telefono, email, nombre, edad, "password", direccion, tipodocumento, rol)
-        VALUES(#{user.username}, #{user.documento}, #{user.telefono}, #{user.email}, 
-                #{user.nombre}, #{user.edad}, #{user.password}, #{user.direccion}, #{user.tipodocumento}, #{user.role.id});
+    <insert id="registerUser" parameterType="map">
+        INSERT INTO usuarios(username, documento, telefono, email, nombre, edad, "password", direccion, tipodocumento,
+                             rol)
+        VALUES (#{user.username}, #{user.documento}, #{user.telefono}, #{user.email},
+                #{user.nombre}, #{user.edad}, #{user.password}, #{user.direccion}, #{user.tipodocumento},
+                #{user.role.id});
     </insert>
 
+    <update id="updateUser" parameterType="map">
+        UPDATE usuarios
+        SET email     = #{user.email},
+            telefono  = #{user.telefono},
+            direccion = #{user.direccion},
+            password  = #{user.password}
+        WHERE username = #{user.username}
+    </update>
+
+    <delete id="deleteUser">
+        DELETE
+        FROM usuarios
+        WHERE username = #{user.username}
+    </delete>
+
     <resultMap id="UserResult" type="UserMH">
-        <result property="username" column="usr_username" />
-        <result property="documento" column="usr_documento" />
-        <result property="telefono" column="usr_telefono" />
-        <result property="email" column="usr_email" />
-        <result property="nombre" column="usr_nombre" />
-        <result property="edad" column="usr_edad" />
-        <result property="password" column="usr_password" />
-        <result property="direccion" column="usr_direccion" />
-        <result property="tipodocumento" column="usr_tipodocumento" />
-        <association property="role" resultMap="edu.escuelaing.arsw.markethub.persistence.dao.RolDAO.RolResult" />
+        <result property="username" column="usr_username"/>
+        <result property="documento" column="usr_documento"/>
+        <result property="telefono" column="usr_telefono"/>
+        <result property="email" column="usr_email"/>
+        <result property="nombre" column="usr_nombre"/>
+        <result property="edad" column="usr_edad"/>
+        <result property="password" column="usr_password"/>
+        <result property="direccion" column="usr_direccion"/>
+        <result property="tipodocumento" column="usr_tipodocumento"/>
+        <association property="role" resultMap="edu.escuelaing.arsw.markethub.persistence.dao.RolDAO.RolResult"/>
     </resultMap>
 
 </mapper>

@@ -18,6 +18,8 @@ public interface Persistence {
     /*------------ PRODUCTOS -------------*/
     /*------------------------------------*/
 
+    void updateUser(UserMH user);
+
     int registerProduct(Producto producto);
 
     List<Producto> getAllProducts();

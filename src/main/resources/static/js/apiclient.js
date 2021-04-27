@@ -116,8 +116,27 @@ const apiclient = (function () {
             },
             function (error) {
                 alert("Es necesario estar loggeado para realizar esta acción.")
+                window.location.href = "/login";
             }
         )
+    }
+
+    function getActualUserInfo(callback) {
+        getActualUserName((req, resp) => {
+            const promise = $.get({
+                url: "/usuario/" + resp,
+                contentType: "application/json",
+            });
+            promise.then(
+                function (data) {
+                    callback(null, data);
+                },
+                function (error) {
+                    alert("Es necesario estar loggeado para realizar esta acción.")
+                    window.location.href = "/login";
+                }
+            )
+        });
     }
 
     function getCarritoProducts(username, callback) {
@@ -185,6 +204,24 @@ const apiclient = (function () {
         });
     }
 
+    function updateUserAccount (data) {
+        return $.ajax({
+            type: "PUT",
+            url: "/actualizar/usuario/",
+            data: JSON.stringify(data),
+            cache: false,
+            contentType: "application/json",
+            processData: false,
+            success: function (response) {
+                alert("Actualización de cuenta satisfactoria !");
+                front.loadUserInfo();
+            },
+            error: function (xhr, status, err) {
+                alert("Ha ocurrido un error en el servidor");
+            },
+        });
+    }
+
     function deleteProductFromCar(data) {
         return $.ajax({
             type: "DELETE",
@@ -204,6 +241,7 @@ const apiclient = (function () {
 
     return {
         getAllProducts: getAllProducts,
+        getActualUserInfo: getActualUserInfo,
         getProductsByCategory: getProductsByCategory,
         getStarProducts: getStarProducts,
         getLatestProducts: getLatestProducts,
@@ -217,6 +255,7 @@ const apiclient = (function () {
         registerProductInToCar: registerProductInToCar,
         getAllCategories: getAllCategories,
         registerProduct: registerProduct,
+        updateUserAccount: updateUserAccount,
         deleteProductFromCar: deleteProductFromCar
     };
 })();

@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,7 +41,22 @@ public class MarketHubController {
         return "Bienvenidos a Markethub";
     }
 
-    /*----------- METODOS GET -----------*/
+    /*----------- MÉTODOS GET -----------*/
+
+    @RequestMapping(value = "/usuario/{username}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserFullInfo(@PathVariable("username") String username) {
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            String usernameAuth = ((User) auth.getPrincipal()).getUsername();
+            if (!usernameAuth.equals(username)){
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            } else {
+                return new ResponseEntity<>(accountServices.getUser(username), HttpStatus.OK);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+    }
 
     @RequestMapping(value = "/logged/username", method = RequestMethod.GET)
     public ResponseEntity<?> getUsrInfo() {
@@ -128,7 +142,7 @@ public class MarketHubController {
         }
     }
 
-    /*----------- METODOS POST -----------*/
+    /*----------- MÉTODOS POST -----------*/
 
     @RequestMapping(value = "/registrar/usuario", method = RequestMethod.POST)
     public ResponseEntity<?> setProductPageId(@RequestBody UserMH user) {
@@ -138,7 +152,7 @@ public class MarketHubController {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
 
@@ -174,7 +188,7 @@ public class MarketHubController {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
 
@@ -184,31 +198,41 @@ public class MarketHubController {
             productServices.registerComment(comentario);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
 
     @RequestMapping(value = "/carrito/registrar/producto", method = RequestMethod.POST)
     public ResponseEntity<?> registerProductInToCar(@RequestBody CarritoCompra carritoCompra) {
         try {
-            System.out.println(carritoCompra.getUsuario());
-            System.out.println(carritoCompra.getProducto().getId());
             productServices.insertCarritoCompra(carritoCompra);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
 
-    /*----------- METODOS DELETE -----------*/
+    /*----------- MÉTODOS DELETE -----------*/
+
     @RequestMapping(value = "/carrito/borrar/{producto}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteProductFromCar(@PathVariable Integer producto) {
         try {
             productServices.deleteProductFromCar(producto);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /*----------- MÉTODOS PUT -----------*/
+
+    @RequestMapping(value = "/actualizar/usuario", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateUserAccount(@RequestBody UserMH user) {
+        try {
+            accountServices.updateUser(user);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 

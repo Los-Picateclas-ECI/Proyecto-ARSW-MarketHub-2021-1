@@ -53,6 +53,11 @@ public class MyBatisPersistence implements Persistence {
         return userMHDAO.getUserByUsername(usernameOrEmail);
     }
 
+    @Override
+    public void updateUser(UserMH user) {
+        userMHDAO.updateUser(user);
+    }
+
     /*------------------------------------*/
     /*------------ PRODUCTOS -------------*/
     /*------------------------------------*/
