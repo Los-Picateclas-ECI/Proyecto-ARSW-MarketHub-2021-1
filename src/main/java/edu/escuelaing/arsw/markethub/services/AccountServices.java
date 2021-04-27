@@ -3,6 +3,7 @@ package edu.escuelaing.arsw.markethub.services;
 import edu.escuelaing.arsw.markethub.entities.Rol;
 import edu.escuelaing.arsw.markethub.entities.UserMH;
 import edu.escuelaing.arsw.markethub.persistence.Persistence;
+import org.cloudinary.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
@@ -48,6 +49,15 @@ public class AccountServices {
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         persistence.updateUser(user);
+    }
+
+    public Boolean deleteUser(JSONObject userJSon) {
+        UserMH userMH = this.getUser(userJSon.getString("username"));
+        if (passwordEncoder.matches(userJSon.getString("password"), userMH.getPassword())) {
+            persistence.deleteUser(userMH.getUsername());
+            return true;
+        }
+        return false;
     }
 
     /*------------------------------------*/

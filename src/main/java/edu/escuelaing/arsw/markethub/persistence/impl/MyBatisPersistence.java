@@ -58,6 +58,11 @@ public class MyBatisPersistence implements Persistence {
         userMHDAO.updateUser(user);
     }
 
+    @Override
+    public void deleteUser(String username){
+        userMHDAO.deleteUser(username);
+    }
+
     /*------------------------------------*/
     /*------------ PRODUCTOS -------------*/
     /*------------------------------------*/

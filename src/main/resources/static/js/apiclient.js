@@ -202,6 +202,14 @@ const apiclient = (function () {
             contentType: "application/json",
             data: JSON.stringify(data),
         });
+        promise.then(
+            function () {
+                alert("Producto registrado de manera satisfactoria! .")
+            },
+            function (error) {
+                alert("No se pudo registrar el Producto en el carrito, Intente de Nuevo! .")
+            }
+        );
     }
 
     function updateUserAccount (data) {
@@ -218,6 +226,24 @@ const apiclient = (function () {
             },
             error: function (xhr, status, err) {
                 alert("Ha ocurrido un error en el servidor");
+            },
+        });
+    }
+
+    function deleteUser(data) {
+        return $.ajax({
+            type: "DELETE",
+            url: "/eliminar/usuario",
+            data: JSON.stringify(data),
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                alert("Se ha eliminado su cuenta de manera satisfactoria! .");
+                window.location.href = "/inicio";
+            },
+            error: function (xhr, status, err) {
+                alert("No se ha podido Eliminar la Cuenta!");
             },
         });
     }
@@ -255,6 +281,7 @@ const apiclient = (function () {
         registerProductInToCar: registerProductInToCar,
         getAllCategories: getAllCategories,
         registerProduct: registerProduct,
+        deleteUser: deleteUser,
         updateUserAccount: updateUserAccount,
         deleteProductFromCar: deleteProductFromCar
     };

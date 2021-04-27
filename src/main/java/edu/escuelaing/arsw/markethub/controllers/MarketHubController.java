@@ -4,6 +4,7 @@ import edu.escuelaing.arsw.markethub.entities.*;
 import edu.escuelaing.arsw.markethub.services.AccountServices;
 import edu.escuelaing.arsw.markethub.services.ProductServices;
 import edu.escuelaing.arsw.markethub.tools.FileManager;
+import org.cloudinary.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -219,6 +220,25 @@ public class MarketHubController {
         try {
             productServices.deleteProductFromCar(producto);
             return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/eliminar/usuario", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteUser(@RequestBody String userInfo){
+        try {
+            JSONObject jsonObject = new JSONObject(userInfo);
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            String usernameAuth = ((User) auth.getPrincipal()).getUsername();
+            if (!usernameAuth.equals(jsonObject.get("username"))){
+                return new ResponseEntity<>("Usuario no coincide con el usuario actual", HttpStatus.FORBIDDEN);
+            }
+            else if (accountServices.deleteUser(jsonObject)){
+                return new ResponseEntity<>(HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Contraseña Incorrecta", HttpStatus.FORBIDDEN);
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }

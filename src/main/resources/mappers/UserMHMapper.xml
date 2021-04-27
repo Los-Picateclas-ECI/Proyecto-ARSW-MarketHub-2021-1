@@ -43,7 +43,7 @@
     <delete id="deleteUser">
         DELETE
         FROM usuarios
-        WHERE username = #{user.username}
+        WHERE username = #{username}
     </delete>
 
     <resultMap id="UserResult" type="UserMH">

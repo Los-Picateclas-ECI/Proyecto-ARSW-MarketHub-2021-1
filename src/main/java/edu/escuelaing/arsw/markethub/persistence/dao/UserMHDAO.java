@@ -13,4 +13,6 @@ public interface UserMHDAO {
 
     void updateUser(@Param("user") UserMH user);
 
+    void deleteUser(@Param("username") String username);
+
 }

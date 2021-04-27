@@ -309,6 +309,22 @@ const app = (function () {
             apiclient.deleteProductFromCar(product)
         }
 
+        function deleteUser(){
+            let dataCadenita = {};
+            let username = $("#usernameE").val();
+            let passwordEl1 = $("#passwordE").val();
+            let passwordEl2 = $("#confirmE").val();
+            if (passwordEl1 === passwordEl2){
+                dataCadenita["username"] = username;
+                dataCadenita["password"] = passwordEl1;
+                apiclient.deleteUser(dataCadenita);
+            } else {
+                alert("Las contraseñas no coinciden");
+            }
+
+
+        }
+
         return {
             loadProductPage: loadProductPage,
             getAllProducts: getAllProducts,
@@ -326,7 +342,8 @@ const app = (function () {
             registerProduct: registerProduct,
             loadUserInfo: loadUserInfo,
             updateUserAccount: updateUserAccount,
-            deleteProductFromCar: deleteProductFromCar
+            deleteProductFromCar: deleteProductFromCar,
+            deleteUser: deleteUser
         };
     }
 

@@ -36,6 +36,11 @@ public class CachePersistence implements Persistence {
     }
 
     @Override
+    public void deleteUser(String username) {
+        // Método no necesitado de implementar
+    }
+
+    @Override
     public int registerProduct(Producto producto) {
         productMap.put(producto.getId(), producto);
         return producto.getId();

@@ -20,6 +20,8 @@ public interface Persistence {
 
     void updateUser(UserMH user);
 
+    void deleteUser(String username);
+
     int registerProduct(Producto producto);
 
     List<Producto> getAllProducts();
