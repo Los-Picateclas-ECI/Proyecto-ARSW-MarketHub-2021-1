@@ -9,7 +9,7 @@ const epayco = (function () {
             //Onpage="false" - Standard="true"
             external: "false",
             //Atributos opcionales
-            response: "http://localhost:8080/pagos/respuesta",
+            response: "https://markethub.tk/pagos/respuesta",
         };
 
         function epaycoPay() {
