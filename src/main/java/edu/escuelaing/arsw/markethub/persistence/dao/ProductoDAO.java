@@ -21,4 +21,6 @@ public interface ProductoDAO {
     List<Producto> getProductsByLatest();
 
     Producto getProductById(@Param("id") int id);
+
+    void updateExistencias(@Param("cantidad") Integer cantidad, @Param("producto") Integer producto);
 }

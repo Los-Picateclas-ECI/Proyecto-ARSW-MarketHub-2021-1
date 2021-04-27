@@ -25,12 +25,12 @@
     </sql>
 
     <select id="getAllProducts" resultMap="prodResult">
-        <include refid="selectProducts" />
+        <include refid="selectProducts"/>
         ORDER BY prod.id, img.id
     </select>
 
     <select id="getProductsByCategory" resultMap="prodResult">
-        <include refid="selectProducts" />
+        <include refid="selectProducts"/>
         WHERE cat.nombre = #{categoryName}
         ORDER BY prod.id, img.id
     </select>
@@ -42,7 +42,7 @@
         ORDER BY p.puntaje DESC
         LIMIT 4
         )
-        <include refid="selectProducts" />
+        <include refid="selectProducts"/>
         ORDER BY prod.puntaje DESC, img.id
     </select>
 
@@ -53,12 +53,12 @@
         ORDER BY p.id DESC
         LIMIT 8
         )
-        <include refid="selectProducts" />
+        <include refid="selectProducts"/>
         ORDER BY prod.id DESC, img.id
     </select>
 
     <select id="getProductById" resultMap="prodResult">
-        <include refid="selectProducts" />
+        <include refid="selectProducts"/>
         WHERE prod.id = #{id}
     </select>
 
@@ -68,16 +68,24 @@
                 #{prod.cantidad})
     </insert>
 
-    <resultMap id="prodResult" type="Producto">
-        <id property="id" column="prod_id" />
-        <result property="nombre" column="prod_nombre" />
-        <result property="precio" column="prod_precio" />
-        <result property="descripcion" column="prod_descripcion" />
-        <result property="puntaje" column="prod_puntaje" />
-        <result property="cantidad" column="prod_cantidad" />
+    <update id="updateExistencias" parameterType="map">
+        UPDATE productos
+        SET cantidad = cantidad - #{cantidad}
+        WHERE id = #{producto}
+    </update>
 
-        <association property="categoria" resultMap="edu.escuelaing.arsw.markethub.persistence.dao.CategoriaDAO.categoryResult" />
-        <collection property="imagenes" ofType="Imagen" resultMap="edu.escuelaing.arsw.markethub.persistence.dao.ImagenDAO.imgResult" />
+    <resultMap id="prodResult" type="Producto">
+        <id property="id" column="prod_id"/>
+        <result property="nombre" column="prod_nombre"/>
+        <result property="precio" column="prod_precio"/>
+        <result property="descripcion" column="prod_descripcion"/>
+        <result property="puntaje" column="prod_puntaje"/>
+        <result property="cantidad" column="prod_cantidad"/>
+
+        <association property="categoria"
+                     resultMap="edu.escuelaing.arsw.markethub.persistence.dao.CategoriaDAO.categoryResult"/>
+        <collection property="imagenes" ofType="Imagen"
+                    resultMap="edu.escuelaing.arsw.markethub.persistence.dao.ImagenDAO.imgResult"/>
     </resultMap>
 
 </mapper>

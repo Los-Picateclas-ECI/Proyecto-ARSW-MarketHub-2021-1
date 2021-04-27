@@ -98,6 +98,11 @@ public class MyBatisPersistence implements Persistence {
         return productoDAO.getProductsByLatest();
     }
 
+    @Override
+    public void updateExistencias(Integer cantidad, Integer productoID){
+        productoDAO.updateExistencias(cantidad,productoID);
+    }
+
     /*------------------------------------*/
     /*------------ CATEGORÍAS ------------*/
     /*------------------------------------*/
@@ -184,6 +189,11 @@ public class MyBatisPersistence implements Persistence {
     @Override
     public void updateCantidad(CarritoCompra carrito) {
         carritoCompraDAO.updateCantidad(carrito);
+    }
+
+    @Override
+    public void deleteAllFromCar(String username){
+        carritoCompraDAO.deleteAllFromCar(username);
     }
 
 }

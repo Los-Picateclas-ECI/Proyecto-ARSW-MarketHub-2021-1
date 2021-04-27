@@ -225,6 +225,17 @@ public class MarketHubController {
         }
     }
 
+    @RequestMapping(value = "/carrito/borrar/todo", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteAllFromCar() {
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            productServices.deleteAllFromCar(auth.getName());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(value = "/eliminar/usuario", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteUser(@RequestBody String userInfo){
         try {
@@ -240,6 +251,20 @@ public class MarketHubController {
                 return new ResponseEntity<>("Contraseña Incorrecta", HttpStatus.FORBIDDEN);
             }
         } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/productos/eliminar/existencias", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteProductExistences(){
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            String username = ((User) auth.getPrincipal()).getUsername();
+            productServices.updateExistenciasWithCarInfo(username);
+            this.deleteAllFromCar();
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }

@@ -83,6 +83,18 @@ public class ProductServices {
         persistenceCache.registerProduct(product);
     }
 
+    public void updateExistencias (Integer cantidad, Integer productoID){
+        persistenceMyBatis.updateExistencias(cantidad, productoID);
+        persistenceCache.updateExistencias(cantidad, productoID);
+    }
+
+    public void updateExistenciasWithCarInfo(String username){
+        List<CarritoCompra> carritoCompraList = this.getCarritoProductsByUsername(username);
+        for (CarritoCompra carritoCompra : carritoCompraList){
+            this.updateExistencias(carritoCompra.getCantidad(), carritoCompra.getProducto().getId());
+        }
+    }
+
     /*------------------------------------*/
     /*------------ CATEGORÍAS ------------*/
     /*------------------------------------*/
@@ -142,6 +154,10 @@ public class ProductServices {
         } catch (DuplicateKeyException e){
             persistenceMyBatis.updateCantidad(carrito);
         }
+    }
+
+    public void deleteAllFromCar(String username){
+        persistenceMyBatis.deleteAllFromCar(username);
     }
 
 }

@@ -97,6 +97,11 @@ public class CachePersistence implements Persistence {
     }
 
     @Override
+    public void updateExistencias(Integer cantidad, Integer productoID) {
+        productMap.get(productoID).setCantidad(productMap.get(productoID).getCantidad() - cantidad);
+    }
+
+    @Override
     public void insertCategory(Categoria categoria) {
         categoriaMap.put(categoria.getNombre(), categoria);
     }
@@ -159,6 +164,11 @@ public class CachePersistence implements Persistence {
     @Override
     public void updateCantidad(CarritoCompra carrito) {
         // Método no necesitado de implementar
+    }
+
+    @Override
+    public void deleteAllFromCar(String username) {
+
     }
 
 }

@@ -146,8 +146,8 @@ const app = (function () {
                     'width="100%"' + ">" + "</div>";
             }
             html += "</div>" + "</div>" + '<div class="container-row__2">' + "<p>" + "Productos / " + data.categoria.nombre +
-                "</p>" + "<h1>" + data.nombre + "</h1>" + "<h4>" + "$ " + data.precio + "</h4>" + '<input id="ProdID' + data.id + '" type="number" value="' +
-                data.cantidad + '">' + '<a class="container-row__2-btn" onclick="app.registerProductInToCar()">Añadir Al Carrito</a>' + '<h3>Detalles del Producto <i class="fa fa-indent"></i></h3>' +
+                "</p>" + "<h1>" + data.nombre + "</h1>" + "<h4>" + "$ " + data.precio + "</h4>" + '<input id="ProdID' + data.id + '" type="number"  min="1" value="' +
+                data.cantidad + '" max="'+ data.cantidad + '">' + '<a class="container-row__2-btn" onclick="app.registerProductInToCar()">Añadir Al Carrito</a>' + '<h3>Detalles del Producto <i class="fa fa-indent"></i></h3>' +
                 "<br>" + "<p>" + data.descripcion + "</p>" + "</div>";
             $("#container-row__detail").append($(html));
         }
@@ -205,7 +205,7 @@ const app = (function () {
                 || documento === "" || password === "" || passwordConfirm === "" || email === "") {
                 alert("Debe Ingresar todos los datos");
             } else if (!(password === passwordConfirm)) {
-                alert("Las contraseñas no coinciden! ");
+                alert("Las contraseñas no coinciden!");
             } else {
                 dataCadenita["username"] = username;
                 dataCadenita["documento"] = parseInt(documento);
@@ -239,7 +239,7 @@ const app = (function () {
             const contenido = $("#comment-textarea-id").val();
             const productId = window.location.pathname.substr(20, 20);
             if (contenido === null) {
-                alert("Debe escribir algo en la caja de comentarios! ")
+                alert("Debe escribir algo en la caja de comentarios!")
             } else {
                 apiclient.getActualUserName((req, resp) => {
                     dataCadenita["id"] = 0;
@@ -256,15 +256,19 @@ const app = (function () {
         function registerProductInToCar() {
             const productId = window.location.pathname.substr(20, 20);
             const cantidad = $("#ProdID" + productId).val();
-            apiclient.getActualUserName((req, resp) => {
-                let dataCadenita = {};
-                dataCadenita["usuario"] = resp;
-                apiclient.getProductPageInfo(productId, (req, resp) => {
-                    dataCadenita["producto"] = resp;
-                    dataCadenita["cantidad"] = cantidad;
-                    apiclient.registerProductInToCar(dataCadenita);
-                })
-            });
+            if (parseInt(cantidad) > 0) {
+                apiclient.getActualUserName((req, resp) => {
+                    let dataCadenita = {};
+                    dataCadenita["usuario"] = resp;
+                    apiclient.getProductPageInfo(productId, (req, resp) => {
+                        dataCadenita["producto"] = resp;
+                        dataCadenita["cantidad"] = cantidad;
+                        apiclient.registerProductInToCar(dataCadenita);
+                    })
+                });
+            } else {
+                alert("Valor ingresado No Valido!")
+            }
         }
 
         function updateUserAccount(){

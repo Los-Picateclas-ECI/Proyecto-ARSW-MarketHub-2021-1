@@ -75,6 +75,10 @@ const front = (function () {
         app.loadUserInfo();
     }
 
+    function loadTransactionInfo(){
+        loadAll();
+    }
+
     return {
         menutoggle: menutoggle,
         acctToggle: acctToggle,
@@ -85,6 +89,7 @@ const front = (function () {
         loadProductsCategories: loadProductsCategories,
         loadCategorias: loadCategorias,
         loadUserInfo: loadUserInfo,
+        loadTransactionInfo: loadTransactionInfo,
         loadAll: loadAll,
     };
 })();

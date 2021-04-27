@@ -38,6 +38,8 @@ public interface Persistence {
     /*------------ CATEGORÍAS ------------*/
     /*------------------------------------*/
 
+    void updateExistencias(Integer cantidad, Integer productoID);
+
     void insertCategory(Categoria categoria);
 
     List<Categoria> getAllCategories();
@@ -67,4 +69,6 @@ public interface Persistence {
     void insertCarritoCompra(CarritoCompra carrito);
 
     void updateCantidad(CarritoCompra carrito);
+
+    void deleteAllFromCar(String username);
 }

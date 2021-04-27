@@ -91,7 +91,7 @@ const apiclient = (function () {
     }
 
     function getAllCommentsByProductID(producto, callback) {
-        const  promise = $.get({
+        const promise = $.get({
             url: "/comentarios/" + producto,
             contentType: "application/json",
         });
@@ -115,7 +115,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("Es necesario estar loggeado para realizar esta acción.")
+                alert("Es necesario estar loggeado para realizar esta acción!")
                 window.location.href = "/login";
             }
         )
@@ -132,7 +132,7 @@ const apiclient = (function () {
                     callback(null, data);
                 },
                 function (error) {
-                    alert("Es necesario estar loggeado para realizar esta acción.")
+                    alert("Es necesario estar loggeado para realizar esta acción!")
                     window.location.href = "/login";
                 }
             )
@@ -149,7 +149,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("No se pudo realizar la consulta! ")
+                alert("No se pudo realizar la consulta!")
             }
         );
     }
@@ -188,7 +188,7 @@ const apiclient = (function () {
         });
     }
 
-    function registerComment(data){
+    function registerComment(data) {
         const promise = $.post({
             url: "/registrar/comentario",
             contentType: "application/json",
@@ -204,15 +204,15 @@ const apiclient = (function () {
         });
         promise.then(
             function () {
-                alert("Producto registrado de manera satisfactoria! .")
+                alert("Producto registrado de manera satisfactoria!")
             },
             function (error) {
-                alert("No se pudo registrar el Producto en el carrito, Intente de Nuevo! .")
+                alert("No se pudo registrar el Producto en el carrito, Intente de Nuevo!")
             }
         );
     }
 
-    function updateUserAccount (data) {
+    function updateUserAccount(data) {
         return $.ajax({
             type: "PUT",
             url: "/actualizar/usuario/",
@@ -221,7 +221,7 @@ const apiclient = (function () {
             contentType: "application/json",
             processData: false,
             success: function (response) {
-                alert("Actualización de cuenta satisfactoria !");
+                alert("Actualización de cuenta satisfactoria!");
                 front.loadUserInfo();
             },
             error: function (xhr, status, err) {
@@ -239,7 +239,7 @@ const apiclient = (function () {
             contentType: false,
             processData: false,
             success: function (response) {
-                alert("Se ha eliminado su cuenta de manera satisfactoria! .");
+                alert("Se ha eliminado su cuenta de manera satisfactoria!");
                 window.location.href = "/inicio";
             },
             error: function (xhr, status, err) {
@@ -265,6 +265,40 @@ const apiclient = (function () {
         });
     }
 
+    function deleteProductExistences() {
+        return $.ajax({
+            type: "DELETE",
+            url: "/productos/eliminar/existencias",
+            data: null,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                // alert("Se registró satisfactoriamente el producto");
+            },
+            error: function (xhr, status, err) {
+                alert("Ha ocurrido un error en el servidor");
+            },
+        });
+    }
+
+    function deleteAllFromCar(callback) {
+        return $.ajax({
+            type: "DELETE",
+            url: "/carrito/borrar/todo",
+            data: null,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                callback(null, response);
+            },
+            error: function (xhr, status, err) {
+                alert("Ha ocurrido un error en el servidor");
+            },
+        });
+    }
+
     return {
         getAllProducts: getAllProducts,
         getActualUserInfo: getActualUserInfo,
@@ -283,6 +317,8 @@ const apiclient = (function () {
         registerProduct: registerProduct,
         deleteUser: deleteUser,
         updateUserAccount: updateUserAccount,
-        deleteProductFromCar: deleteProductFromCar
+        deleteAllFromCar: deleteAllFromCar,
+        deleteProductFromCar: deleteProductFromCar,
+        deleteProductExistences: deleteProductExistences
     };
 })();

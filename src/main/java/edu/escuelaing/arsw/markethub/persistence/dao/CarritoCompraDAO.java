@@ -17,4 +17,6 @@ public interface CarritoCompraDAO {
 
     void updateCantidad(@Param("carrito") CarritoCompra carrito);
 
+    void deleteAllFromCar(@Param("username") String username);
+
 }

@@ -9,7 +9,7 @@ const epayco = (function () {
             //Onpage="false" - Standard="true"
             external: "false",
             //Atributos opcionales
-            response: "https://markethub.tk/pagos/respuesta",
+            response: "http://localhost:8080/pagos/respuesta",
         };
 
         function epaycoPay() {
@@ -37,15 +37,22 @@ const epayco = (function () {
                         data["type_doc_billing"] = resp.tipodocumento;
                         data["mobilephone_billing"] = resp.telefono;
                         data["number_doc_billing"] = resp.documento;
-                        console.log(data);
                         handler.open(data);
                     })
                 });
             });
         }
 
+        function updateInformation(){
+            let estadoTrans = $("#respuesta").text();
+            if(estadoTrans === "Aceptada"){
+                apiclient.deleteProductExistences();
+            }
+        }
+
         return {
-            epaycoPay: epaycoPay
+            epaycoPay: epaycoPay,
+            updateInformation: updateInformation
         };
     }
 

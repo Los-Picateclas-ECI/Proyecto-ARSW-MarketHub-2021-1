@@ -48,6 +48,12 @@
           AND car.producto = #{producto}
     </delete>
 
+    <delete id="deleteAllFromCar">
+        DELETE
+        FROM carrito_compras car
+        WHERE car.usuario = #{username}
+    </delete>
+
     <resultMap id="CarritoResult" type="CarritoCompra">
         <result property="usuario" column="car_usuario"/>
         <result property="cantidad" column="car_cantidad"/>
