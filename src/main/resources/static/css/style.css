@@ -736,6 +736,7 @@ form select:focus {
 
 .container-row__2-btn {
     cursor: pointer;
+    border: none;
 }
 
 /* Media para menu responsive */

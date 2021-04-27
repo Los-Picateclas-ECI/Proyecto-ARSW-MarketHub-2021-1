@@ -63,6 +63,11 @@ public class MarketHubWebController {
         return "account-modification";
     }
 
+    @RequestMapping(value = "/pagos/respuesta", method = RequestMethod.GET)
+    public String getRespuestaPage() {
+        return "responseEpayco";
+    }
+
     /*-----------------------------------------------*/
     /*----------- MAPPING DEL ADMIN SOCIO -----------*/
     /*-----------------------------------------------*/

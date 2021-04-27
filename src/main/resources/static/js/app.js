@@ -76,6 +76,7 @@ const app = (function () {
         }
 
         function appendCarritoCompras(data) {
+            console.log(data);
             $("#carrito-table tbody").empty();
             total = 0;
             for (let i = 0; i < data.length; i++) {
@@ -92,7 +93,7 @@ const app = (function () {
             let iva = Math.floor(total * 0.19);
             let totalIva = total + iva;
             $("#total-price-id").append(
-                $("<table><tr><td>SubTotal</td><td>$" + total + "</td></tr><tr><td>IVA</td><td>$" + iva + "</td><tr><td>Total</td><td>$" + totalIva + "</td></tr></table>")
+                $("<table><tr><td>SubTotal</td><td id=\"totalNoIva\">$" + total + "</td></tr><tr><td>IVA</td><td id=\"ivaAmount\">$" + iva + "</td><tr><td>Total</td><td id=\"totalWithIva\">$" + totalIva + "</td></tr></table>")
             );
         }
 
