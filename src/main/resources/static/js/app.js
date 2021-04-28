@@ -46,6 +46,7 @@ const app = (function () {
         function getCarritoProducts() {
             apiclient.getActualUserName((req, resp) => {
                 apiclient.getCarritoProducts(resp, (req, resp) => {
+                    console.log(resp);
                     appendCarritoCompras(resp);
                 });
             });
