@@ -21,7 +21,7 @@
     </insert>
 
     <resultMap id="comResult" type="Comentario">
-        <result property="id" column="com_id"/>
+        <id property="id" column="com_id"/>
         <result property="usuario" column="com_usuario"/>
         <result property="producto" column="com_producto"/>
         <result property="contenido" column="com_contenido"/>
