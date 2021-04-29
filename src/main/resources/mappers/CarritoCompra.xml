@@ -5,8 +5,10 @@
     <!--Prefijo car -->
 
     <select id="getCarritoProductsByUsername" resultMap="CarritoResult">
-        SELECT car.usuario      AS car_usuario,
+        SELECT car.id           AS car_id,
+               car.usuario      AS car_usuario,
                car.cantidad     AS car_cantidad,
+               car.producto     AS car_producto,
 
                prod.id          AS prod_id,
                prod.nombre      AS prod_nombre,
@@ -29,7 +31,7 @@
         ORDER BY prod.id DESC, img.id
     </select>
 
-    <insert id="insertCarritoCompra" parameterType="map">
+    <insert id="insertCarritoCompra" parameterType="map" useGeneratedKeys="true" keyProperty="carrito.id" keyColumn="id">
         INSERT INTO carrito_compras (usuario, producto, cantidad)
         VALUES (#{carrito.usuario}, #{carrito.producto.id}, #{carrito.cantidad})
     </insert>
@@ -55,6 +57,7 @@
     </delete>
 
     <resultMap id="CarritoResult" type="CarritoCompra">
+        <id property="id" column="car_id"/>
         <result property="usuario" column="car_usuario"/>
         <result property="cantidad" column="car_cantidad"/>
         <association property="producto"
