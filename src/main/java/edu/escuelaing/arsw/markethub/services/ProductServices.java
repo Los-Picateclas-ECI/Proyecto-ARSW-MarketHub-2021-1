@@ -80,7 +80,10 @@ public class ProductServices {
 
     public void insertProduct(Producto product) {
         persistenceMyBatis.registerProduct(product);
-        persistenceCache.registerProduct(product);
+    }
+
+    public void insertProductCache(Producto producto){
+        persistenceCache.registerProduct(persistenceMyBatis.getProductById(producto.getId()));
     }
 
     public void updateExistencias (Integer cantidad, Integer productoID){

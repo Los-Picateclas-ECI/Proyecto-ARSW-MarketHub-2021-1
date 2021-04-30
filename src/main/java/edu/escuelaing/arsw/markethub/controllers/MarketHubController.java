@@ -186,6 +186,7 @@ public class MarketHubController {
                 productServices.insertImage(img, imagenMH);
             }
             FileManager.removeDir(dir);
+            productServices.insertProductCache(producto);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
