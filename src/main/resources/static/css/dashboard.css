@@ -1,0 +1,118 @@
+body{
+    background: #efefef;
+
+}
+
+.barra{
+    background: coral;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
+.dropdown-menu{
+    margin: 17px;
+    background: #333333;
+    color: #efefef;
+    box-shadow: 0 0 10px rgba(0,0,0,0.568);
+}
+.menuperfil{
+    color: #efefef;
+}
+.menuperfil:focus{
+    background: #ff523b;
+    box-shadow: 0 0 10px rgba(0,0,0,0.568);
+}
+
+.cerrar:hover{
+    background-col: #ff523b;
+    box-shadow: 0 0 10px rgba(0,0,0,0.568);
+}
+
+/*barra lateral*/
+
+.barra-lateral{
+    background:#333333;
+    color: #efefef;
+    min-width: 300px;
+    min-height: 100vh;
+    padding:0;
+}
+
+.barra-lateral a{
+    color: #efefef;
+}
+
+/*estilo menu*/
+
+.barra-lateral .menu a{
+    display: block;
+    text-align: left;
+    padding: 20px;
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.barra-lateral .menu a:hover{
+    background-color: lightsalmon;
+    text-decoration: none;
+}
+
+.barra-lateral.menu{
+    border-top: 5px #efefef solid;
+}
+
+.barra-lateral .menu a i{
+    margin-right: 20px;
+}
+
+/*estilo main*/
+.main{
+    padding-top: 40px;
+}
+.main .columna{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/*mediaquerys, para attaptar la pantalla*/
+@media screen and (max-width:1300px){
+    .barra-lateral {
+        min-width: auto;
+    }
+    .barra-lateral .menu a span{
+        display: none;
+    }
+    .barra-lateral .menu a i{
+        margin: 0;
+    }
+    .barra {
+        min-width: auto;
+    }
+    .dropdown-menu{
+        margin: 20px -79px 0px;
+    }
+}
+
+
+@media screen and (max-width: 575px){
+    .barra-lateral{
+        height: auto;
+    }
+
+    .barra-lateral .menu a{
+        display: inline-block;
+        border-bottom: none;
+    }
+    .dropdown-menu{
+        margin: 20px -78px 0;
+    }
+    body{
+        font-size: 16px;
+        overflow: visible;
+    }
+}
+
+
+
