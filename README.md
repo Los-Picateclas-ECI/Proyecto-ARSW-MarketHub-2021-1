@@ -78,6 +78,8 @@ En este proyecto decidimos documentar dos escenarios que muestren nuestra apropi
 ### Prueba A/B
 El A/B Testing consiste en desarrollar y lanzar dos o más versiones de un mismo elemento y medir cuál funciona mejor. Es una prueba que nos sirve para optimizar una estrategia de marketing o para mejorar la usabilidad de una pagina web.
 
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/Testab.jpg)
+
 ### Funcionamiento 
 Este método consiste en desarrollar dos versiones de un mismo elemento que vamos a lanzar al mercado, y luego utilizar las métricas de cada variación para evaluar cuál funciona mejor.
 
