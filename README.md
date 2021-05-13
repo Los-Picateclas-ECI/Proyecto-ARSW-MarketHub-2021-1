@@ -69,6 +69,55 @@ Haga click [Aqui](/Documentacion/MarketHubManualdeUsuario.pdf) para ver el docum
 
 ![](./Img/DiagramaDeComponenetes.png)
 
+## Atributos No Funcionales
+
+En este proyecto decidimos documentar dos escenarios que muestren nuestra apropiación del requerimiento no funcional. Escogimos la Usabilidad y la demostraremos por medio del uso de las pruebas A/B y de la herramienta Crazy Egg
+
+### Prueba A/B
+El A/B Testing consiste en desarrollar y lanzar dos o más versiones de un mismo elemento y medir cuál funciona mejor. Es una prueba que nos sirve para optimizar una estrategia de marketing o para mejorar la usabilidad de una pagina web.
+
+### Funcionamiento 
+Este método consiste en desarrollar dos versiones de un mismo elemento que vamos a lanzar al mercado, y luego utilizar las métricas de cada variación para evaluar cuál funciona mejor.
+
+En nuestro caso decidimos usar algunas modificaciones como lo fueron:
+
+* Cambiar palabras, colores, tamaños y ubicación textos.
+* Cambiar titulares de la descripción de algunos productos.
+* Reducir la extensión de un formulario y tipos de campos.
+* Cambiar el layout visual de la página web.
+* Cambiar algunas imágenes de productos.
+
+### Crazy Egg
+
+Crazy Egg es una herramienta de usabilidad y optimización web que monitoriza la actividad de los usuarios en una página web. Permite extraer información muy útil de cara a ver cómo se navega la página, ya que muestra, por ejemplo, en qué secciones de la web se detienen los usuarios, hasta qué punto hacen scroll, dónde hacen clic, etc. Con estos datos se pueden tomar decisiones cruciales tanto de diseño como de usabilidad.
+
+#### Generamos Scroll maps que nos muestran el contenido más visualizado de nuestro API
+
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/scrollmap-1.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/scrollmap-2.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/scrollmap-3.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/scrollmap-4.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/scrollmap-5.png)
+
+#### Generamos Heat maps que nos muestran el contenido más clickeado junto con sus elementos relacionados de nuestro API:
+
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/heatmap-1.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/heatmap-2.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/heatmap-3.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/heatmap-4.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/heatmap-5.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/heatmap-6.png)
+
+#### Generamos Confetti maps que básicamente es un heat map ampliado que muestra las fuentes de referencia que generan la mayor cantidad de clics y la tendencia de estos en el API:
+
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/confeti-1.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/confeti-2.png)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/confeti-3.png)
+
+#### Finalmente generamos estadísticas por cada elemento disponible para saber que elementos eran los que estaban recibiendo más interacciones:
+
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/lista%20de%20estadistica.png)
+
 ## Mockups 💻 📱
 
 ### Vista incial
