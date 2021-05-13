@@ -88,7 +88,6 @@ En nuestro caso decidimos usar algunas modificaciones como lo fueron:
 * Cambiar palabras, colores, tamaños y ubicación textos.
 * Cambiar titulares de la descripción de algunos productos.
 * Reducir la extensión de un formulario y tipos de campos.
-* Cambiar el layout visual de la página web.
 * Cambiar algunas imágenes de productos.
 
 ### Crazy Egg
