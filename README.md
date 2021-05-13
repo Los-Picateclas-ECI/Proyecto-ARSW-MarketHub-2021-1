@@ -69,6 +69,8 @@ Haga click [Aqui](/Documentacion/MarketHubManualdeUsuario.pdf) para ver el docum
 
 ![](./Img/DiagramaDeComponenetes.png)
 
+---
+
 ## Atributos No Funcionales
 
 En este proyecto decidimos documentar dos escenarios que muestren nuestra apropiación del requerimiento no funcional. Escogimos la Usabilidad y la demostraremos por medio del uso de las pruebas A/B y de la herramienta Crazy Egg
@@ -117,6 +119,8 @@ Crazy Egg es una herramienta de usabilidad y optimización web que monitoriza la
 #### Finalmente generamos estadísticas por cada elemento disponible para saber que elementos eran los que estaban recibiendo más interacciones:
 
 ![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/lista%20de%20estadistica.png)
+
+---
 
 ## Mockups 💻 📱
 
