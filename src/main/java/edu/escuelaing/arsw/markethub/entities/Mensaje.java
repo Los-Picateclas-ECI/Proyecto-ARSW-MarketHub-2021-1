@@ -1,21 +1,21 @@
 package edu.escuelaing.arsw.markethub.entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Mensaje {
 
     private Integer id;
     private String emisor;
     private String receptor;
-    private Date fecha;
+    private LocalDateTime fecha;
     private String contenido;
     private Boolean visto;
 
     public Mensaje(){
-        //Constructor vació
+        //Constructor vacio
     }
 
-    public Mensaje(Integer id, String emisor, String receptor, Date fecha, String contenido, Boolean visto) {
+    public Mensaje(Integer id, String emisor, String receptor, LocalDateTime fecha, String contenido, Boolean visto) {
         this.id = id;
         this.emisor = emisor;
         this.receptor = receptor;
@@ -49,11 +49,11 @@ public class Mensaje {
         this.receptor = receptor;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 

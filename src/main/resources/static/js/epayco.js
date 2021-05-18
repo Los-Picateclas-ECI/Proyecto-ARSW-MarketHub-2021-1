@@ -36,6 +36,7 @@ const epayco = (function () {
                         data["type_doc_billing"] = resp.tipodocumento;
                         data["mobilephone_billing"] = resp.telefono;
                         data["number_doc_billing"] = resp.documento;
+                        // realtime.sendQuantityChange()
                         handler.open(data);
                     })
                 });
@@ -45,7 +46,7 @@ const epayco = (function () {
         function updateInformation(){
             let estadoTrans = $("#respuesta").text();
             if(estadoTrans === "Aceptada"){
-                apiclient.deleteProductExistences();
+                    apiclient.deleteProductExistences();
             }
         }
 

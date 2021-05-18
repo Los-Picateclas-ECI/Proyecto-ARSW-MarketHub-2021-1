@@ -246,8 +246,11 @@ const app = (function () {
                     dataCadenita["producto"] = parseInt(productId);
                     dataCadenita["contenido"] = contenido;
                     apiclient.registerComment(dataCadenita);
-                    let comentBox = $("#comment-box-id");
-                    comentBox.append($("<div class=\"comentario\">" + "<h3>" + dataCadenita.usuario + "</h3>" + "<p>" + dataCadenita.contenido + "</p>"));
+                    realtime.sendComment(dataCadenita);
+                    let commentArea = $("#comment-textarea-id");
+                    commentArea.val('');
+                    // let comentBox = $("#comment-box-id");
+                    // comentBox.append($("<div class=\"comentario\">" + "<h3>" + dataCadenita.usuario + "</h3>" + "<p>" + dataCadenita.contenido + "</p>"));
                 })
             }
         }

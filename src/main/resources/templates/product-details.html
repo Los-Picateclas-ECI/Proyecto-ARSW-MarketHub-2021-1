@@ -18,6 +18,9 @@
     <script src="/js/front.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/apiclient.js"></script>
+    <script src="/js/realtime.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script>
         window.onload = front.changeImages;
     </script>
@@ -43,7 +46,7 @@
     <div class="commentRegisterBox">
         <h4>Escribe tu comentario!</h4>
         <label>
-            <textarea cols="130" placeholder="Excelente producto y muy buena atencion." rows="4" id="comment-textarea-id"></textarea>
+            <textarea cols="130" placeholder="Excelente producto y muy buena atención." rows="4" id="comment-textarea-id"></textarea>
         </label>
         <a class="container-row__2-btn" onclick="app.registerComment()">Enviar Comentario!</a>
     </div>

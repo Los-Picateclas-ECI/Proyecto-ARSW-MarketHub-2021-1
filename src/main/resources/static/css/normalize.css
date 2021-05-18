@@ -320,6 +320,7 @@ progress {
 
 textarea {
 	overflow: auto;
+	padding: 7px;
 }
 
 
