@@ -129,6 +129,12 @@ Crazy Egg es una herramienta de usabilidad y optimización web que monitoriza la
 
 ![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/lista%20de%20estadistica.png)
 
+
+
+### Prueba A/B
+
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/pruebaAB-1.PNG)
+![](https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1/blob/main/Img/crazyegg/pruebaAB-2.PNG)
 ---
 
 ## Mockups 💻 📱
