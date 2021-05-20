@@ -67,7 +67,7 @@ Haga click [Aqui](/Documentacion/MarketHubManualdeUsuario.pdf) para ver el docum
 
 ### Diagrama de Clases 📐
 
-![](./Img/DiagramaClases.png)
+![](./Img/DiagramaClases2.png)
 
 ### Diagrama de Despliegue
 
@@ -75,7 +75,7 @@ Haga click [Aqui](/Documentacion/MarketHubManualdeUsuario.pdf) para ver el docum
 
 ### Diagrama de Componentes
 
-![](./Img/DiagramaDeComponenetes.png)
+![](./Img/DiagramaDeComponenetes2.png)
 
 ---
 
