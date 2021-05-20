@@ -9,10 +9,13 @@ const epayco = (function () {
             //Onpage="false" - Standard="true"
             external: "false",
             //Atributos opcionales
-            response: "https://markethub.tk/pagos/respuesta",
+            //response: "https://markethub.tk/pagos/respuesta",
         };
 
         function epaycoPay() {
+            let url = window.location.href;
+            let arr = url.split("/");
+            data["response"] = arr[0] + "//" + arr[2] + '/pagos/respuesta';
             data["name"] = "Compra MarketHub";
             apiclient.getActualUserName((req, resp) => {
                 apiclient.getCarritoProducts(resp, (req, resp) => {
@@ -36,7 +39,6 @@ const epayco = (function () {
                         data["type_doc_billing"] = resp.tipodocumento;
                         data["mobilephone_billing"] = resp.telefono;
                         data["number_doc_billing"] = resp.documento;
-                        // realtime.sendQuantityChange()
                         handler.open(data);
                     })
                 });
@@ -46,7 +48,8 @@ const epayco = (function () {
         function updateInformation(){
             let estadoTrans = $("#respuesta").text();
             if(estadoTrans === "Aceptada"){
-                    apiclient.deleteProductExistences();
+                realtime.sendQuantityChange()
+                apiclient.deleteProductExistences();
             }
         }
 

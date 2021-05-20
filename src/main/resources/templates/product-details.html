@@ -25,6 +25,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script>
         window.onload = front.changeImages;
+        $(document).ready(function () {
+            realtime.connectAndListenProduct();
+        });
     </script>
     <title>Detalles del Producto</title>
 </head>
