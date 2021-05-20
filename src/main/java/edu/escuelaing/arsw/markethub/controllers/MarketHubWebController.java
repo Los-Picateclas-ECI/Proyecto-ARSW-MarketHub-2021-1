@@ -96,4 +96,10 @@ public class MarketHubWebController {
 		return "product-modification";
 	}
 
+	@GetMapping(value = "/admin/dashboard")
+	public String adminDashboard() {
+
+		return "admin-dashboard";
+	}
+
 }

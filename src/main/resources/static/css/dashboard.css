@@ -1,114 +1,126 @@
-body{
+body {
     background: #efefef;
-
 }
 
-.barra{
-    background: coral;
+.barra {
+    background: #ffffff;
     padding-top: 15px;
     padding-bottom: 15px;
-
+    padding-left: 60px;
 }
 
-.dropdown-menu{
+.navbar-nav {
+    padding-left: 310px;
+}
+
+.dropdown-menu {
     margin: 17px;
     background: #333333;
     color: #efefef;
-    box-shadow: 0 0 10px rgba(0,0,0,0.568);
-}
-.menuperfil{
-    color: #efefef;
-}
-.menuperfil:focus{
-    background: #ff523b;
-    box-shadow: 0 0 10px rgba(0,0,0,0.568);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.568);
 }
 
-.cerrar:hover{
+.menuperfil {
+    color: #efefef;
+}
+
+.menuperfil:focus {
+    background: #ff523b;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.568);
+}
+
+.cerrar:hover {
     background-col: #ff523b;
-    box-shadow: 0 0 10px rgba(0,0,0,0.568);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.568);
 }
 
 /*barra lateral*/
 
-.barra-lateral{
-    background:#333333;
+.barra-lateral {
+    background: #333333;
     color: #efefef;
     min-width: 800px;
     min-height: 40vh;
-    padding:10px;
+    padding: 10px;
 }
 
-.barra-lateral a{
+.barra-lateral a {
     color: #efefef;
 }
 
 /*estilo menu*/
 
-.barra-lateral .menu a{
+.barra-lateral .menu a {
     display: block;
     text-align: left;
     padding: 20px;
     font-family: Roboto, sans-serif;
     font-weight: 600;
-    border-bottom: 1px solid rgba(255,255,255,.1);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
-.barra-lateral .menu a:hover{
+.barra-lateral .menu a:hover {
     background-color: lightsalmon;
     text-decoration: none;
 }
 
-.barra-lateral.menu{
+.barra-lateral.menu {
     border-top: 5px #efefef solid;
 }
 
-.barra-lateral .menu a i{
+.barra-lateral .menu a i {
     margin-right: 20px;
 }
 
 /*estilo main*/
-.main{
+.main {
     padding-top: 40px;
 }
-.main .columna{
+
+.main .columna {
     padding-left: 10px;
     padding-right: 10px;
 }
 
 /*mediaquerys, para attaptar la pantalla*/
-@media screen and (max-width:1300px){
+@media screen and (max-width: 1300px) {
     .barra-lateral {
         min-width: auto;
     }
-    .barra-lateral .menu a span{
+
+    .barra-lateral .menu a span {
         display: none;
     }
-    .barra-lateral .menu a i{
+
+    .barra-lateral .menu a i {
         margin: 0;
     }
+
     .barra {
         min-width: auto;
     }
-    .dropdown-menu{
+
+    .dropdown-menu {
         margin: 20px -79px 0px;
     }
 }
 
 
-@media screen and (max-width: 575px){
-    .barra-lateral{
+@media screen and (max-width: 575px) {
+    .barra-lateral {
         height: auto;
     }
 
-    .barra-lateral .menu a{
+    .barra-lateral .menu a {
         display: inline-block;
         border-bottom: none;
     }
-    .dropdown-menu{
+
+    .dropdown-menu {
         margin: 20px -78px 0;
     }
-    body{
+
+    body {
         font-size: 16px;
         overflow: visible;
     }
