@@ -1,6 +1,7 @@
 const app = (function () {
         let productId = 0;
         let total = 0;
+        let prodData = null;
 
         const fullStar = '<i class="fa fa-star"></i>';
         const halfStar = '<i class="fa fa-star-half-o"></i>';
@@ -146,9 +147,9 @@ const app = (function () {
                     'width="100%"' + ">" + "</div>";
             }
             html += "</div>" + "</div>" + '<div class="container-row__2">' + "<p>" + "Productos / " + data.categoria.nombre +
-                "</p>" + "<h1>" + data.nombre + "</h1>" + "<h4>" + "$ " + data.precio + "</h4>" + '<input id="ProdID' + data.id + '" type="number"  min="1" value="' +
-                data.cantidad + '" max="'+ data.cantidad + '">' + '<a class="container-row__2-btn" onclick="app.registerProductInToCar()">Añadir Al Carrito</a>' + '<h3>Detalles del Producto <i class="fa fa-indent"></i></h3>' +
-                "<br>" + "<p>" + data.descripcion + "</p>" + "</div>";
+                "</p>" + "<h1 id='prodnombre'>" + data.nombre + "</h1>" + "<h4 id='prodprecio'>" + "$ " + data.precio + "</h4>" + '<input id="ProdID' + data.id + '" type="number"  min="1" value="' +
+                data.cantidad + '" max="' + data.cantidad + '">' + '<a class="container-row__2-btn" onclick="app.registerProductInToCar()">Añadir Al Carrito</a>' + '<h3>Detalles del Producto <i class="fa fa-indent"></i></h3>' +
+                "<br>" + "<p id='proddescr'>" + data.descripcion + "</p>" + "</div>";
             $("#container-row__detail").append($(html));
         }
 
@@ -176,7 +177,30 @@ const app = (function () {
             })
         }
 
-        function appendUserInfo(data){
+        function loadProductDropdown() {
+            apiclient.getAllProducts((req, resp) => {
+                appendDropDownProducts(resp);
+            });
+        }
+
+        function appendDropDownProducts(data) {
+            prodData = data;
+            for (let i = 0; i < data.length; i++) {
+                $("#dropdownprod").append(
+                    $('<option value=\"' + i + '\">' + data[i].nombre + '</option>')
+                );
+            }
+        }
+
+        function onChangeDropDown() {
+            const selectedProd = parseInt($("#dropdownprod").val());
+            document.getElementById("nombre").value = prodData[selectedProd].nombre;
+            document.getElementById("precio").value = prodData[selectedProd].precio;
+            document.getElementById("cantidad").value = prodData[selectedProd].cantidad;
+            document.getElementById("descripcion").value = prodData[selectedProd].descripcion;
+        }
+
+        function appendUserInfo(data) {
             document.getElementById("username").value = data.username;
             document.getElementById("email").value = data.email;
             document.getElementById("nombre").value = data.nombre;
@@ -185,6 +209,17 @@ const app = (function () {
             document.getElementById("direccion").value = data.direccion;
             document.getElementById("tipoDoc").value = data.tipodocumento;
             document.getElementById("documento").value = data.documento;
+        }
+
+        function updateProductInfo() {
+            const selectedProd = parseInt($("#dropdownprod").val());
+            prodData[selectedProd].nombre = document.getElementById("nombre").value;
+            prodData[selectedProd].precio = document.getElementById("precio").value;
+            prodData[selectedProd].cantidad = document.getElementById("cantidad").value;
+            prodData[selectedProd].descripcion = document.getElementById("descripcion").value;
+            const data = prodData[selectedProd];
+            apiclient.updateProductInfo(data);
+            realtime.sendProductUpdate(data);
         }
 
         function registerUser() {
@@ -202,9 +237,9 @@ const app = (function () {
 
             if (username === "" || nombre === "" || edad === "" || telefono === "" || direccion === "" || tipoDocumento === ""
                 || documento === "" || password === "" || passwordConfirm === "" || email === "") {
-                alert("Debe Ingresar todos los datos");
+                toastr.error("Debe Ingresar todos los datos");
             } else if (!(password === passwordConfirm)) {
-                alert("Las contraseñas no coinciden!");
+                toastr.error("Las contraseñas no coinciden!");
             } else {
                 dataCadenita["username"] = username;
                 dataCadenita["documento"] = parseInt(documento);
@@ -238,7 +273,7 @@ const app = (function () {
             const contenido = $("#comment-textarea-id").val();
             const productId = window.location.pathname.substr(20, 20);
             if (contenido === null) {
-                alert("Debe escribir algo en la caja de comentarios!")
+                toastr.error("Debe escribir algo en la caja de comentarios!")
             } else {
                 apiclient.getActualUserName((req, resp) => {
                     dataCadenita["id"] = 0;
@@ -246,8 +281,11 @@ const app = (function () {
                     dataCadenita["producto"] = parseInt(productId);
                     dataCadenita["contenido"] = contenido;
                     apiclient.registerComment(dataCadenita);
-                    let comentBox = $("#comment-box-id");
-                    comentBox.append($("<div class=\"comentario\">" + "<h3>" + dataCadenita.usuario + "</h3>" + "<p>" + dataCadenita.contenido + "</p>"));
+                    realtime.sendComment(dataCadenita);
+                    let commentArea = $("#comment-textarea-id");
+                    commentArea.val('');
+                    // let comentBox = $("#comment-box-id");
+                    // comentBox.append($("<div class=\"comentario\">" + "<h3>" + dataCadenita.usuario + "</h3>" + "<p>" + dataCadenita.contenido + "</p>"));
                 })
             }
         }
@@ -266,11 +304,11 @@ const app = (function () {
                     })
                 });
             } else {
-                alert("Valor ingresado No Valido!")
+                toastr.error("Valor ingresado No Valido!")
             }
         }
 
-        function updateUserAccount(){
+        function updateUserAccount() {
             let dataCadenita = {};
             let username = $("#username").val();
             let nombre = $("#nombre").val();
@@ -282,7 +320,7 @@ const app = (function () {
             let documento = $("#documento").val();
             let passwordN = $("#passwordN").val();
             let passwordNConfirm = $("#confirm").val();
-            if (passwordN === passwordNConfirm){
+            if (passwordN === passwordNConfirm) {
                 dataCadenita["username"] = username;
                 dataCadenita["documento"] = parseInt(documento);
                 dataCadenita["telefono"] = telefono;
@@ -294,7 +332,7 @@ const app = (function () {
                 dataCadenita["tipodocumento"] = tipoDocumento;
                 apiclient.updateUserAccount(dataCadenita);
             } else {
-                alert("La nueva contraseña no coincide");
+                toastr.error("La nueva contraseña no coincide");
             }
         }
 
@@ -313,20 +351,18 @@ const app = (function () {
             apiclient.deleteProductFromCar(product)
         }
 
-        function deleteUser(){
+        function deleteUser() {
             let dataCadenita = {};
             let username = $("#usernameE").val();
             let passwordEl1 = $("#passwordE").val();
             let passwordEl2 = $("#confirmE").val();
-            if (passwordEl1 === passwordEl2){
+            if (passwordEl1 === passwordEl2) {
                 dataCadenita["username"] = username;
                 dataCadenita["password"] = passwordEl1;
                 apiclient.deleteUser(dataCadenita);
             } else {
-                alert("Las contraseñas no coinciden");
+                toastr.error("Las contraseñas no coinciden");
             }
-
-
         }
 
         return {
@@ -347,7 +383,11 @@ const app = (function () {
             loadUserInfo: loadUserInfo,
             updateUserAccount: updateUserAccount,
             deleteProductFromCar: deleteProductFromCar,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            loadProductDropdown: loadProductDropdown,
+            appendDropDownProducts: appendDropDownProducts,
+            onChangeDropDown: onChangeDropDown,
+            updateProductInfo: updateProductInfo
         };
     }
 

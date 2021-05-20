@@ -10,6 +10,7 @@
     <link href="/img/favicon.ico" rel="icon" type="image/x-icon"/>
     <link href="/css/normalize.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/toastr.min.css" rel="stylesheet"/>
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
@@ -18,8 +19,15 @@
     <script src="/js/front.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/apiclient.js"></script>
+    <script src="/js/realtime.js"></script>
+    <script src="/js/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script>
         window.onload = front.changeImages;
+        $(document).ready(function () {
+            realtime.connectAndListenProduct();
+        });
     </script>
     <title>Detalles del Producto</title>
 </head>
@@ -43,7 +51,7 @@
     <div class="commentRegisterBox">
         <h4>Escribe tu comentario!</h4>
         <label>
-            <textarea cols="130" placeholder="Excelente producto y muy buena atencion." rows="4" id="comment-textarea-id"></textarea>
+            <textarea cols="130" placeholder="Excelente producto y muy buena atención." rows="4" id="comment-textarea-id"></textarea>
         </label>
         <a class="container-row__2-btn" onclick="app.registerComment()">Enviar Comentario!</a>
     </div>

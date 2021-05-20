@@ -10,7 +10,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("No se pudo realizar la consulta");
+                toastr.error("No se pudo realizar la consulta");
             }
         );
     }
@@ -25,7 +25,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("No se pudo realizar la consulta");
+                toastr.error("No se pudo realizar la consulta");
             }
         );
     }
@@ -40,7 +40,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("No se pudo realizar la consulta");
+                toastr.error("No se pudo realizar la consulta");
             }
         );
     }
@@ -55,7 +55,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("No se pudo realizar la consulta de categorias");
+                toastr.error("No se pudo realizar la consulta de categorias");
             }
         );
     }
@@ -70,7 +70,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("No se pudo realizar la consulta");
+                toastr.error("No se pudo realizar la consulta");
             }
         );
     }
@@ -85,7 +85,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("No se pudo realizar la consulta");
+                toastr.error("No se pudo realizar la consulta");
             }
         );
     }
@@ -100,7 +100,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("No se pudieron cargar los comentarios")
+                toastr.error("No se pudieron cargar los comentarios")
             }
         );
     }
@@ -115,7 +115,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("Es necesario estar loggeado para realizar esta acción!")
+                toastr.error("Es necesario estar loggeado para realizar esta acción!")
                 window.location.href = "/login";
             }
         )
@@ -132,7 +132,7 @@ const apiclient = (function () {
                     callback(null, data);
                 },
                 function (error) {
-                    alert("Es necesario estar loggeado para realizar esta acción!")
+                    toastr.error("Es necesario estar loggeado para realizar esta acción!")
                     window.location.href = "/login";
                 }
             )
@@ -149,7 +149,7 @@ const apiclient = (function () {
                 callback(null, data);
             },
             function (error) {
-                alert("No se pudo realizar la consulta!")
+                toastr.error("No se pudo realizar la consulta!")
             }
         );
     }
@@ -182,7 +182,7 @@ const apiclient = (function () {
                 // alert("Se registró satisfactoriamente el producto");
             },
             error: function (xhr, status, err) {
-                alert("Ha ocurrido un error en el servidor");
+                toastr.error("Ha ocurrido un error en el servidor");
             },
         });
     }
@@ -203,12 +203,30 @@ const apiclient = (function () {
         });
         promise.then(
             function () {
-                alert("Producto registrado de manera satisfactoria!")
+                toastr.success("Producto registrado de manera satisfactoria!")
             },
             function (error) {
-                alert("No se pudo registrar el Producto en el carrito, Intente de Nuevo!")
+                toastr.error("No se pudo registrar el Producto en el carrito, Intente de Nuevo!")
             }
         );
+    }
+
+    function updateProductInfo(data) {
+        console.log(data)
+        return $.ajax({
+            type: "PUT",
+            url: "/admin/actualizar/producto",
+            data: JSON.stringify(data),
+            cache: false,
+            contentType: "application/json",
+            processData: false,
+            success: function (response) {
+                toastr.success("Actualización de producto satisfactoria!");
+            },
+            error: function (xhr, status, err) {
+                toastr.error("Ha ocurrido un error en el servidor");
+            },
+        });
     }
 
     function updateUserAccount(data) {
@@ -220,11 +238,11 @@ const apiclient = (function () {
             contentType: "application/json",
             processData: false,
             success: function (response) {
-                alert("Actualización de cuenta satisfactoria!");
+                toastr.success("Actualización de cuenta satisfactoria!");
                 front.loadUserInfo();
             },
             error: function (xhr, status, err) {
-                alert("Ha ocurrido un error en el servidor");
+                toastr.error("Ha ocurrido un error en el servidor");
             },
         });
     }
@@ -238,11 +256,11 @@ const apiclient = (function () {
             contentType: false,
             processData: false,
             success: function (response) {
-                alert("Se ha eliminado su cuenta de manera satisfactoria!");
+                toastr.success("Se ha eliminado su cuenta de manera satisfactoria!");
                 window.location.href = "/inicio";
             },
             error: function (xhr, status, err) {
-                alert("No se ha podido Eliminar la Cuenta!");
+                toastr.error("No se ha podido Eliminar la Cuenta!");
             },
         });
     }
@@ -259,7 +277,7 @@ const apiclient = (function () {
                 // alert("Se registró satisfactoriamente el producto");
             },
             error: function (xhr, status, err) {
-                alert("Ha ocurrido un error en el servidor");
+                toastr.error("Ha ocurrido un error en el servidor");
             },
         });
     }
@@ -276,7 +294,7 @@ const apiclient = (function () {
                 // alert("Se registró satisfactoriamente el producto");
             },
             error: function (xhr, status, err) {
-                alert("Ha ocurrido un error en el servidor");
+                toastr.error("Ha ocurrido un error en el servidor");
             },
         });
     }
@@ -293,7 +311,7 @@ const apiclient = (function () {
                 callback(null, response);
             },
             error: function (xhr, status, err) {
-                alert("Ha ocurrido un error en el servidor");
+                toastr.error("Ha ocurrido un error en el servidor");
             },
         });
     }
@@ -318,6 +336,7 @@ const apiclient = (function () {
         updateUserAccount: updateUserAccount,
         deleteAllFromCar: deleteAllFromCar,
         deleteProductFromCar: deleteProductFromCar,
-        deleteProductExistences: deleteProductExistences
+        deleteProductExistences: deleteProductExistences,
+        updateProductInfo: updateProductInfo
     };
 })();

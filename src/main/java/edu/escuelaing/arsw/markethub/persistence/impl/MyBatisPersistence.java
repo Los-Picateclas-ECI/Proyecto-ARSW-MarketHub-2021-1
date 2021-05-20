@@ -1,14 +1,5 @@
 package edu.escuelaing.arsw.markethub.persistence.impl;
 
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
-import edu.escuelaing.arsw.markethub.entities.*;
-import edu.escuelaing.arsw.markethub.persistence.Persistence;
-import edu.escuelaing.arsw.markethub.persistence.dao.*;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
@@ -16,184 +7,239 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import edu.escuelaing.arsw.markethub.entities.CarritoCompra;
+import edu.escuelaing.arsw.markethub.entities.Categoria;
+import edu.escuelaing.arsw.markethub.entities.Comentario;
+import edu.escuelaing.arsw.markethub.entities.Imagen;
+import edu.escuelaing.arsw.markethub.entities.Producto;
+import edu.escuelaing.arsw.markethub.entities.Rol;
+import edu.escuelaing.arsw.markethub.entities.UserMH;
+import edu.escuelaing.arsw.markethub.persistence.Persistence;
+import edu.escuelaing.arsw.markethub.persistence.dao.CarritoCompraDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.CategoriaDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.ComentarioDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.ImagenDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.ProductoDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.RolDAO;
+import edu.escuelaing.arsw.markethub.persistence.dao.UserMHDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 @Component("myBatisPersistence")
 public class MyBatisPersistence implements Persistence {
 
-    @Autowired
-    UserMHDAO userMHDAO;
+	UserMHDAO userMHDAO;
 
-    @Autowired
-    ProductoDAO productoDAO;
+	ProductoDAO productoDAO;
 
-    @Autowired
-    CategoriaDAO categoriaDAO;
+	CategoriaDAO categoriaDAO;
 
-    @Autowired
-    ImagenDAO imagenDAO;
+	ImagenDAO imagenDAO;
 
-    @Autowired
-    RolDAO rolDAO;
+	RolDAO rolDAO;
 
-    @Autowired
-    ComentarioDAO comentarioDAO;
+	ComentarioDAO comentarioDAO;
 
-    @Autowired
-    CarritoCompraDAO carritoCompraDAO;
+	CarritoCompraDAO carritoCompraDAO;
 
-    /*------------------------------------*/
-    /*------------- USUARIOS -------------*/
-    /*------------------------------------*/
-    @Override
-    public void registerUser(UserMH user) {
-        userMHDAO.registerUser(user);
-    }
+	@Autowired
+	public MyBatisPersistence(final UserMHDAO userMHDAO, final ProductoDAO productoDAO,
+							  final CategoriaDAO categoriaDAO, final ImagenDAO imagenDAO, final RolDAO rolDAO,
+							  final ComentarioDAO comentarioDAO, final CarritoCompraDAO carritoCompraDAO) {
 
-    @Override
-    public UserMH getUser(String usernameOrEmail) {
-        return userMHDAO.getUserByUsername(usernameOrEmail);
-    }
+		this.userMHDAO = userMHDAO;
+		this.productoDAO = productoDAO;
+		this.categoriaDAO = categoriaDAO;
+		this.imagenDAO = imagenDAO;
+		this.rolDAO = rolDAO;
+		this.comentarioDAO = comentarioDAO;
+		this.carritoCompraDAO = carritoCompraDAO;
+	}
 
-    @Override
-    public void updateUser(UserMH user) {
-        userMHDAO.updateUser(user);
-    }
+	/*------------------------------------*/
+	/*------------- USUARIOS -------------*/
+	/*------------------------------------*/
+	@Override
+	public void registerUser(UserMH user) {
 
-    @Override
-    public void deleteUser(String username){
-        userMHDAO.deleteUser(username);
-    }
+		userMHDAO.registerUser(user);
+	}
 
-    /*------------------------------------*/
-    /*------------ PRODUCTOS -------------*/
-    /*------------------------------------*/
+	@Override
+	public UserMH getUser(String usernameOrEmail) {
 
-    @Override
-    public int registerProduct(Producto producto) {
-        productoDAO.insertProduct(producto);
-        return producto.getId();
-    }
+		return userMHDAO.getUserByUsername(usernameOrEmail);
+	}
 
-    @Override
-    public List<Producto> getAllProducts() {
-        return productoDAO.getAllProducts();
-    }
+	@Override
+	public void updateUser(UserMH user) {
 
-    @Override
-    public List<Producto> getProductsByCategory(String categoryName) {
-        return productoDAO.getProductsByCategory(categoryName);
-    }
+		userMHDAO.updateUser(user);
+	}
 
-    @Override
-    public Producto getProductById(Integer id) {
-        return productoDAO.getProductById(id);
-    }
+	@Override
+	public void deleteUser(String username) {
 
-    @Override
-    public List<Producto> getProductsByRating() {
-        return productoDAO.getProductsByRating();
-    }
+		userMHDAO.deleteUser(username);
+	}
 
-    @Override
-    public List<Producto> getProductsByLatest() {
-        return productoDAO.getProductsByLatest();
-    }
+	/*------------------------------------*/
+	/*------------ PRODUCTOS -------------*/
+	/*------------------------------------*/
 
-    @Override
-    public void updateExistencias(Integer cantidad, Integer productoID){
-        productoDAO.updateExistencias(cantidad,productoID);
-    }
+	@Override
+	public int registerProduct(Producto producto) {
 
-    /*------------------------------------*/
-    /*------------ CATEGORÍAS ------------*/
-    /*------------------------------------*/
+		productoDAO.insertProduct(producto);
+		return producto.getId();
+	}
 
-    @Override
-    public void insertCategory(Categoria categoria) {
-        categoriaDAO.insertCategory(categoria);
-    }
+	@Override
+	public void updateProductInformation(Producto producto) {
 
-    @Override
-    public List<Categoria> getAllCategories() {
-        return categoriaDAO.getAllCategories();
-    }
+		productoDAO.updateProductInformation(producto);
+	}
 
-    @Override
-    public Categoria getCategory(String name) {
-        return categoriaDAO.getCategory(name);
-    }
+	@Override
+	public List<Producto> getAllProducts() {
 
-    /*------------------------------------*/
-    /*------------- IMÁGENES -------------*/
-    /*------------------------------------*/
+		return productoDAO.getAllProducts();
+	}
 
-    @Override
-    public void insertImage(File image, Imagen imagenMH) {
-        // Subir imagen a Cloudinary
-        String key =
-                "Y2xvdWRpbmFyeTovLzEzMTI0Njk1MzMyMzcxNjpuNHNPcVBfVlBDdU92SmRrcDZnMmpueG5BLVFAdDZmZDdnMXU=";
-        String decodedString = new String(Base64.getDecoder().decode(key));
-        Cloudinary cloudinary = new Cloudinary(decodedString);
-        Map<?, ?> res = new HashMap<>();
-        try {
-            res = cloudinary.uploader().upload(image, ObjectUtils.emptyMap());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        imagenMH.setUrl(res.get("secure_url").toString());
-        imagenDAO.insertImage(imagenMH);
-    }
+	@Override
+	public List<Producto> getProductsByCategory(String categoryName) {
 
-    /*------------------------------------*/
-    /*--------------- ROLES --------------*/
-    /*------------------------------------*/
+		return productoDAO.getProductsByCategory(categoryName);
+	}
 
-    @Override
-    public Rol getRoleByName(String name) {
-        return rolDAO.getRoleByName(name);
-    }
+	@Override
+	public Producto getProductById(Integer id) {
 
-    /*------------------------------------*/
-    /*------------ COMENTARIOS -----------*/
-    /*------------------------------------*/
+		return productoDAO.getProductById(id);
+	}
 
-    @Override
-    public List<Comentario> getAllCommentsByProductID(Integer producto) {
-        return comentarioDAO.getAllCommentsByProductID(producto);
-    }
+	@Override
+	public List<Producto> getProductsByRating() {
 
-    @Override
-    public Integer registerComment(Comentario comentario) {
-        comentarioDAO.insertComment(comentario);
-        return comentario.getId();
-    }
+		return productoDAO.getProductsByRating();
+	}
 
-    /*------------------------------------*/
-    /*---------- CARRITO COMPRA ----------*/
-    /*------------------------------------*/
+	@Override
+	public List<Producto> getProductsByLatest() {
 
-    @Override
-    public List<CarritoCompra> getCarritoProductsByUsername(String username) {
-        return carritoCompraDAO.getCarritoProductsByUsername(username);
-    }
+		return productoDAO.getProductsByLatest();
+	}
 
-    @Override
-    public void deleteProductFromCar(String username, Integer productID) {
-        carritoCompraDAO.deleteProductFromCar(username, productID);
-    }
+	@Override
+	public void updateExistencias(Integer cantidad, Integer productoID) {
 
-    @Override
-    public void insertCarritoCompra(CarritoCompra carrito) {
-        carritoCompraDAO.insertCarritoCompra(carrito);
-    }
+		productoDAO.updateExistencias(cantidad, productoID);
+	}
 
-    @Override
-    public void updateCantidad(CarritoCompra carrito) {
-        carritoCompraDAO.updateCantidad(carrito);
-    }
+	/*------------------------------------*/
+	/*------------ CATEGORÍAS ------------*/
+	/*------------------------------------*/
 
-    @Override
-    public void deleteAllFromCar(String username){
-        carritoCompraDAO.deleteAllFromCar(username);
-    }
+	@Override
+	public void insertCategory(Categoria categoria) {
+
+		categoriaDAO.insertCategory(categoria);
+	}
+
+	@Override
+	public List<Categoria> getAllCategories() {
+
+		return categoriaDAO.getAllCategories();
+	}
+
+	@Override
+	public Categoria getCategory(String name) {
+
+		return categoriaDAO.getCategory(name);
+	}
+
+	/*------------------------------------*/
+	/*------------- IMÁGENES -------------*/
+	/*------------------------------------*/
+
+	@Override
+	public void insertImage(File image, Imagen imagenMH) {
+		// Subir imagen a Cloudinary
+		String key =
+				"Y2xvdWRpbmFyeTovLzEzMTI0Njk1MzMyMzcxNjpuNHNPcVBfVlBDdU92SmRrcDZnMmpueG5BLVFAdDZmZDdnMXU=";
+		String decodedString = new String(Base64.getDecoder().decode(key));
+		Cloudinary cloudinary = new Cloudinary(decodedString);
+		Map<?, ?> res = new HashMap<>();
+		try {
+			res = cloudinary.uploader().upload(image, ObjectUtils.emptyMap());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		imagenMH.setUrl(res.get("secure_url").toString());
+		imagenDAO.insertImage(imagenMH);
+	}
+
+	/*------------------------------------*/
+	/*--------------- ROLES --------------*/
+	/*------------------------------------*/
+
+	@Override
+	public Rol getRoleByName(String name) {
+
+		return rolDAO.getRoleByName(name);
+	}
+
+	/*------------------------------------*/
+	/*------------ COMENTARIOS -----------*/
+	/*------------------------------------*/
+
+	@Override
+	public List<Comentario> getAllCommentsByProductID(Integer producto) {
+
+		return comentarioDAO.getAllCommentsByProductID(producto);
+	}
+
+	@Override
+	public Integer registerComment(Comentario comentario) {
+
+		comentarioDAO.insertComment(comentario);
+		return comentario.getId();
+	}
+
+	/*------------------------------------*/
+	/*---------- CARRITO COMPRA ----------*/
+	/*------------------------------------*/
+
+	@Override
+	public List<CarritoCompra> getCarritoProductsByUsername(String username) {
+
+		return carritoCompraDAO.getCarritoProductsByUsername(username);
+	}
+
+	@Override
+	public void deleteProductFromCar(String username, Integer productID) {
+
+		carritoCompraDAO.deleteProductFromCar(username, productID);
+	}
+
+	@Override
+	public void insertCarritoCompra(CarritoCompra carrito) {
+
+		carritoCompraDAO.insertCarritoCompra(carrito);
+	}
+
+	@Override
+	public void updateCantidad(CarritoCompra carrito) {
+
+		carritoCompraDAO.updateCantidad(carrito);
+	}
+
+	@Override
+	public void deleteAllFromCar(String username) {
+
+		carritoCompraDAO.deleteAllFromCar(username);
+	}
 
 }

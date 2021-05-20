@@ -25,6 +25,14 @@ Haga click [Aqui](/Documentacion/MarketHubManualdeUsuario.pdf) para ver el docum
 -   Paula Andrea Guevara Sanchez - [PaulaSanchez810](https://github.com/PaulaSanchez810)
 -   Andres Mateo Calderon Ortega - [Candres1019](https://github.com/Candres1019)
 
+### Imagen Dockerizada en DockerHub 🐳
+
+[![Dockerhub](./Img/docker-hub.png)](https://hub.docker.com/repository/docker/candres1019/markethubimg) 
+
+### Despliegue en AWS - Producto Dockerizado 🤯
+
+[![Deployed to AWS](./Img/aws.png)](http://54.234.217.63/) 
+
 ### Despliegue en Heroku ☁️
 
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://markethub.tk)
