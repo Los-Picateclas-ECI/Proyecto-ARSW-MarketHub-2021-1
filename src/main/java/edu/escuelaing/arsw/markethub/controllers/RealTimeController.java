@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import edu.escuelaing.arsw.markethub.entities.CarritoCompra;
 import edu.escuelaing.arsw.markethub.entities.Comentario;
 import edu.escuelaing.arsw.markethub.entities.Mensaje;
+import edu.escuelaing.arsw.markethub.entities.Producto;
 import edu.escuelaing.arsw.markethub.services.ProductServices;
 import edu.escuelaing.arsw.markethub.services.RealTimeServices;
 
@@ -44,9 +45,14 @@ public class RealTimeController {
         for (CarritoCompra cc : carritoCompras) {
             messagingTemplate.convertAndSend(
                 "/rt/quantity/" + cc.getProducto().getId(),
-                cc
-            );
+                cc);
         }
     }
 
+    @MessageMapping("/product")
+    public void processProduct(@Payload Producto producto) {
+        messagingTemplate.convertAndSend(
+            "/rt/product/" + producto.getId(), 
+            producto);
+    }
 }

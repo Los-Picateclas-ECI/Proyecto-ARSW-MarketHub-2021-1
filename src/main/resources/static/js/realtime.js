@@ -30,6 +30,10 @@ const realtime = (function () {
             "/rt/quantity/" + productId,
             onQuantityChange
         );
+        stompClient.subscribe(
+            "/rt/product/" + productId,
+            onProductChange
+        );
     }
 
     const onError = (err) => {
@@ -57,6 +61,27 @@ const realtime = (function () {
         }
     }
 
+    const onProductChange = (msg) => {
+        let json = JSON.parse(msg.body);
+        let nombre = json.nombre;
+        let precio = json.precio;
+        let cantidadEntrada = json.cantidad;
+        let cant = $("#ProdID" + json.id);
+        let cantvalue = cant.attr("value");
+        let descripcion = json.descripcion;
+        $("#prodnombre").html(nombre);
+        $("#prodprecio").html(precio);
+        $("#proddescr").html(descripcion);
+        cant.attr({
+            "max": cantidadEntrada
+        });
+        if (cantvalue > cantidadEntrada) {
+            cant.attr({
+                "value": cantidadEntrada
+            });
+        }
+    }
+
     const sendComment = (c) => {
         stompClient.send('/app/comment', {}, JSON.stringify(c));
     }
@@ -65,10 +90,15 @@ const realtime = (function () {
         return stompClient.send('/app/quantity');
     }
 
+    const sendProductUpdate = (p) => {
+        stompClient.send('/app/product', {}, JSON.stringify(p));
+    }
+
     return {
         connect: connect,
         connectAndListenProduct: connectAndListenProduct,
         sendComment: sendComment,
         sendQuantityChange: sendQuantityChange,
+        sendProductUpdate: sendProductUpdate,
     }
 })();
