@@ -1,16 +1,26 @@
 const realtime = (function () {
     let stompClient;
 
-    const connect = () => {
+    const init = () => {
         let url = window.location.href;
         let arr = url.split("/");
         let sockjs = new SockJS(arr[0] + "//" + arr[2] + '/ws');
         stompClient = Stomp.over(sockjs);
+    }
+
+    const connect = () => {
+        init();
         stompClient.connect({}, onConnect, onError);
     }
 
-    const onConnect = () => {
-        console.log('connected');
+    const connectAndListenProduct = () => {
+        init();
+        stompClient.connect({}, subscribeProduct, onError);
+    }
+
+    const onConnect = () => { }
+
+    const subscribeProduct = () => {
         let productId = window.location.pathname.substr(20, 20);
         stompClient.subscribe(
             "/rt/comment/" + productId,
@@ -33,7 +43,18 @@ const realtime = (function () {
     }
 
     const onQuantityChange = (msg) => {
-        console.log(msg);
+        let json = JSON.parse(msg.body);
+        let cant = $("#ProdID" + json.producto.id);
+        let max = cant.attr("max") - json.cantidad;
+        let value = cant.attr("value");
+        cant.attr({
+            "max": max
+        });
+        if (value > max) {
+            cant.attr({
+                "value": max
+            });
+        }
     }
 
     const sendComment = (c) => {
@@ -46,11 +67,8 @@ const realtime = (function () {
 
     return {
         connect: connect,
+        connectAndListenProduct: connectAndListenProduct,
         sendComment: sendComment,
         sendQuantityChange: sendQuantityChange,
     }
 })();
-
-$(document).ready(function () {
-    realtime.connect();
-});

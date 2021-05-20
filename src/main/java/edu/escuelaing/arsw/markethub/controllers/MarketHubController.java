@@ -39,7 +39,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class MarketHubController {
 
 	ProductServices productServices;
-
 	AccountServices accountServices;
 
 	@Autowired

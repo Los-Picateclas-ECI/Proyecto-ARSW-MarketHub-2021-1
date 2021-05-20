@@ -1,13 +1,12 @@
 package edu.escuelaing.arsw.markethub.controllers;
 
+import java.security.Principal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import edu.escuelaing.arsw.markethub.entities.CarritoCompra;
 import edu.escuelaing.arsw.markethub.entities.Comentario;
@@ -39,14 +38,13 @@ public class RealTimeController {
     }
 
     @MessageMapping("/quantity")
-    public void processQuantity() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = ((User) auth.getPrincipal()).getUsername();
+    public void processQuantity(@AuthenticationPrincipal Principal user) {
+        String username = user.getName();
         List<CarritoCompra> carritoCompras = productServices.getCarritoProductsByUsername(username);
         for (CarritoCompra cc : carritoCompras) {
             messagingTemplate.convertAndSend(
                 "/rt/quantity/" + cc.getProducto().getId(),
-                cc.getCantidad()
+                cc
             );
         }
     }
