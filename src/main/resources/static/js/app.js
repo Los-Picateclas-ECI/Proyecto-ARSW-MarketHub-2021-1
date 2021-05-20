@@ -202,9 +202,9 @@ const app = (function () {
 
             if (username === "" || nombre === "" || edad === "" || telefono === "" || direccion === "" || tipoDocumento === ""
                 || documento === "" || password === "" || passwordConfirm === "" || email === "") {
-                alert("Debe Ingresar todos los datos");
+                toastr.error("Debe Ingresar todos los datos");
             } else if (!(password === passwordConfirm)) {
-                alert("Las contraseñas no coinciden!");
+                toastr.error("Las contraseñas no coinciden!");
             } else {
                 dataCadenita["username"] = username;
                 dataCadenita["documento"] = parseInt(documento);
@@ -238,7 +238,7 @@ const app = (function () {
             const contenido = $("#comment-textarea-id").val();
             const productId = window.location.pathname.substr(20, 20);
             if (contenido === null) {
-                alert("Debe escribir algo en la caja de comentarios!")
+                toastr.error("Debe escribir algo en la caja de comentarios!")
             } else {
                 apiclient.getActualUserName((req, resp) => {
                     dataCadenita["id"] = 0;
@@ -269,7 +269,7 @@ const app = (function () {
                     })
                 });
             } else {
-                alert("Valor ingresado No Valido!")
+                toastr.error("Valor ingresado No Valido!")
             }
         }
 
@@ -297,7 +297,7 @@ const app = (function () {
                 dataCadenita["tipodocumento"] = tipoDocumento;
                 apiclient.updateUserAccount(dataCadenita);
             } else {
-                alert("La nueva contraseña no coincide");
+                toastr.error("La nueva contraseña no coincide");
             }
         }
 
@@ -326,7 +326,7 @@ const app = (function () {
                 dataCadenita["password"] = passwordEl1;
                 apiclient.deleteUser(dataCadenita);
             } else {
-                alert("Las contraseñas no coinciden");
+                toastr.error("Las contraseñas no coinciden");
             }
 
 

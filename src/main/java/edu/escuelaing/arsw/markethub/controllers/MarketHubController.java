@@ -26,11 +26,15 @@ import java.util.List;
 @RestController
 public class MarketHubController {
 
-    @Autowired
     ProductServices productServices;
 
-    @Autowired
     AccountServices accountServices;
+
+    @Autowired
+    public MarketHubController(ProductServices productServices, AccountServices accountServices) {
+        this.productServices = productServices;
+        this.accountServices = accountServices;
+    }
 
     /**
      * Clase de hello markethub

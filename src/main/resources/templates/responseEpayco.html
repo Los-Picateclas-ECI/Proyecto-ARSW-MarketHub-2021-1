@@ -16,11 +16,13 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/normalize.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/toastr.min.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://checkout.epayco.co/checkout.js" type="text/javascript"></script>
     <script src="/js/epayco.js"></script>
     <script src="/js/front.js"></script>
     <script src="/js/apiclient.js"></script>
+    <script src="/js/toastr.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
         window.onload = front.loadAll;
@@ -114,7 +116,7 @@
             if (response.success) {
                 if (response.data.x_cod_response === 1) {
                     //Codigo personalizado
-                    alert("Transaccion Aprobada");
+                    toastr.success("Transaccion Aprobada");
                     console.log('transacción aceptada');
                 }
                 //Transaccion Rechazada
