@@ -211,6 +211,24 @@ const apiclient = (function () {
         );
     }
 
+    function updateProductInfo(data) {
+        console.log(data)
+        return $.ajax({
+            type: "PUT",
+            url: "/admin/actualizar/producto",
+            data: JSON.stringify(data),
+            cache: false,
+            contentType: "application/json",
+            processData: false,
+            success: function (response) {
+                toastr.success("Actualización de producto satisfactoria!");
+            },
+            error: function (xhr, status, err) {
+                toastr.error("Ha ocurrido un error en el servidor");
+            },
+        });
+    }
+
     function updateUserAccount(data) {
         return $.ajax({
             type: "PUT",
@@ -318,6 +336,7 @@ const apiclient = (function () {
         updateUserAccount: updateUserAccount,
         deleteAllFromCar: deleteAllFromCar,
         deleteProductFromCar: deleteProductFromCar,
-        deleteProductExistences: deleteProductExistences
+        deleteProductExistences: deleteProductExistences,
+        updateProductInfo: updateProductInfo
     };
 })();

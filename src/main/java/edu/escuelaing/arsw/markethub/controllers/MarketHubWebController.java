@@ -2,80 +2,98 @@ package edu.escuelaing.arsw.markethub.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MarketHubWebController {
 
-    @RequestMapping(value = "/inicio", method = RequestMethod.GET)
-    public String getIndex() {
-        return "index";
-    }
+	@GetMapping(value = "/inicio")
+	public String getIndex() {
 
-    @RequestMapping(value = "/productos", method = RequestMethod.GET)
-    public String getProducts() {
-        return "products";
-    }
+		return "index";
+	}
 
-    @RequestMapping(value = "/productos/{categoria}", method = RequestMethod.GET)
-    public String getProductsCategories(@PathVariable("categoria") String categoria) {
-        return "products-categories";
-    }
+	@GetMapping(value = "/productos")
+	public String getProducts() {
 
-    @RequestMapping(value = "/productos/producto/{id}", method = RequestMethod.GET)
-    public String getProducts(@PathVariable("id") Integer id) {
-        return "product-details";
-    }
+		return "products";
+	}
 
-    @RequestMapping(value = "/cuenta", method = RequestMethod.GET)
-    public String getCuenta() {
-        return "account";
-    }
+	@GetMapping(value = "/productos/{categoria}")
+	public String getProductsCategories(@PathVariable("categoria") String categoria) {
 
-    @RequestMapping(value = "/cuenta/registrar", method = RequestMethod.GET)
-    public String getRegistrarCuenta() {
-        return "account-registration";
-    }
+		return "products-categories";
+	}
 
-    @RequestMapping(value = "/carrito", method = RequestMethod.GET)
-    public String getCarrito() {
-        return "carrito";
-    }
+	@GetMapping(value = "/productos/producto/{id}")
+	public String getProducts(@PathVariable("id") Integer id) {
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String getLogin() {
-        return "login";
-    }
+		return "product-details";
+	}
 
-    @RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
-    public String failedLogin(Model model) {
-        model.addAttribute("error", true);
-        return "login";
-    }
+	@GetMapping(value = "/cuenta")
+	public String getCuenta() {
 
-    @RequestMapping(value = "/cuenta/configuracion", method = RequestMethod.GET)
-    public String getConfiguracionCuenta() {
-        return "account-modification";
-    }
+		return "account";
+	}
 
-    @RequestMapping(value = "/pagos/respuesta", method = RequestMethod.GET)
-    public String getRespuestaPage() {
-        return "responseEpayco";
-    }
+	@GetMapping(value = "/cuenta/registrar")
+	public String getRegistrarCuenta() {
 
-    @RequestMapping(value = "/chat", method = RequestMethod.GET)
-    public String getChat() {
-        return "chat";
-    }
+		return "account-registration";
+	}
 
-    /*-----------------------------------------------*/
-    /*----------- MAPPING DEL ADMIN SOCIO -----------*/
-    /*-----------------------------------------------*/
-    @RequestMapping(value = "/admin/registrar/producto", method = RequestMethod.GET)
-    public String productRegistration() {
-        return "product-registration";
-    }
+	@GetMapping(value = "/carrito")
+	public String getCarrito() {
+
+		return "carrito";
+	}
+
+	@GetMapping(value = "/login")
+	public String getLogin() {
+
+		return "login";
+	}
+
+	@GetMapping(value = "/loginfailed")
+	public String failedLogin(Model model) {
+
+		model.addAttribute("error", true);
+		return "login";
+	}
+
+	@GetMapping(value = "/cuenta/configuracion")
+	public String getConfiguracionCuenta() {
+
+		return "account-modification";
+	}
+
+	@GetMapping(value = "/pagos/respuesta")
+	public String getRespuestaPage() {
+
+		return "responseEpayco";
+	}
+
+	@GetMapping(value = "/chat")
+	public String getChat() {
+
+		return "chat";
+	}
+
+	/*-----------------------------------------------*/
+	/*----------- MAPPING DEL ADMIN SOCIO -----------*/
+	/*-----------------------------------------------*/
+	@GetMapping(value = "/admin/registrar/producto")
+	public String productRegistration() {
+
+		return "product-registration";
+	}
+
+	@GetMapping(value = "/admin/modificar/producto")
+	public String productModification() {
+
+		return "product-modification";
+	}
 
 }

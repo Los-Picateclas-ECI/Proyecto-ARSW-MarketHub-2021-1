@@ -24,7 +24,9 @@ public interface Persistence {
 
     int registerProduct(Producto producto);
 
-    List<Producto> getAllProducts();
+	void updateProductInformation(Producto producto);
+
+	List<Producto> getAllProducts();
 
     List<Producto> getProductsByCategory(String categoryName);
 

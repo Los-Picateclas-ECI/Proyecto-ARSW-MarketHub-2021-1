@@ -2,90 +2,99 @@
 
 <mapper namespace="edu.escuelaing.arsw.markethub.persistence.dao.ProductoDAO">
 
-    <!-- Prefijo prod_ -->
+	<!-- Prefijo prod_ -->
 
-    <sql id="selectProducts">
-        SELECT prod.id          AS prod_id,
-               prod.nombre      AS prod_nombre,
-               prod.precio      AS prod_precio,
-               prod.descripcion AS prod_descripcion,
-               prod.puntaje     AS prod_puntaje,
-               prod.cantidad    AS prod_cantidad,
+	<sql id="selectProducts">
+		SELECT prod.id          AS prod_id,
+			   prod.nombre      AS prod_nombre,
+			   prod.precio      AS prod_precio,
+			   prod.descripcion AS prod_descripcion,
+			   prod.puntaje     AS prod_puntaje,
+			   prod.cantidad    AS prod_cantidad,
 
-               cat.nombre       AS cat_nombre,
-               cat.descripcion  AS cat_descripcion,
+			   cat.nombre       AS cat_nombre,
+			   cat.descripcion  AS cat_descripcion,
 
-               img.id           AS img_id,
-               img.producto     AS img_producto,
-               img.url          AS img_url
-        FROM productos prod
-                 JOIN imagenes img ON img.producto = prod.id
-                 JOIN categorias cat
-                      ON prod.categoria = cat.nombre
-    </sql>
+			   img.id           AS img_id,
+			   img.producto     AS img_producto,
+			   img.url          AS img_url
+		FROM productos prod
+				 JOIN imagenes img ON img.producto = prod.id
+				 JOIN categorias cat
+					  ON prod.categoria = cat.nombre
+	</sql>
 
-    <select id="getAllProducts" resultMap="prodResult">
-        <include refid="selectProducts"/>
-        ORDER BY prod.id, img.id
-    </select>
+	<select id="getAllProducts" resultMap="prodResult">
+		<include refid="selectProducts"/>
+		ORDER BY prod.id, img.id
+	</select>
 
-    <select id="getProductsByCategory" resultMap="prodResult">
-        <include refid="selectProducts"/>
-        WHERE cat.nombre = #{categoryName}
-        ORDER BY prod.id, img.id
-    </select>
+	<select id="getProductsByCategory" resultMap="prodResult">
+		<include refid="selectProducts"/>
+		WHERE cat.nombre = #{categoryName}
+		ORDER BY prod.id, img.id
+	</select>
 
-    <select id="getProductsByRating" resultMap="prodResult">
-        WITH productos AS (
-        SELECT *
-        FROM productos p
-        ORDER BY p.puntaje DESC
-        LIMIT 4
-        )
-        <include refid="selectProducts"/>
-        ORDER BY prod.puntaje DESC, img.id
-    </select>
+	<select id="getProductsByRating" resultMap="prodResult">
+		WITH productos AS (
+		SELECT *
+		FROM productos p
+		ORDER BY p.puntaje DESC
+		LIMIT 4
+		)
+		<include refid="selectProducts"/>
+		ORDER BY prod.puntaje DESC, img.id
+	</select>
 
-    <select id="getProductsByLatest" resultMap="prodResult">
-        WITH productos AS (
-        SELECT *
-        FROM productos p
-        ORDER BY p.id DESC
-        LIMIT 8
-        )
-        <include refid="selectProducts"/>
-        ORDER BY prod.id DESC, img.id
-    </select>
+	<select id="getProductsByLatest" resultMap="prodResult">
+		WITH productos AS (
+		SELECT *
+		FROM productos p
+		ORDER BY p.id DESC
+		LIMIT 8
+		)
+		<include refid="selectProducts"/>
+		ORDER BY prod.id DESC, img.id
+	</select>
 
-    <select id="getProductById" resultMap="prodResult">
-        <include refid="selectProducts"/>
-        WHERE prod.id = #{id}
-    </select>
+	<select id="getProductById" resultMap="prodResult">
+		<include refid="selectProducts"/>
+		WHERE prod.id = #{id}
+	</select>
 
-    <insert id="insertProduct" parameterType="map" useGeneratedKeys="true" keyProperty="prod.id" keyColumn="id">
-        INSERT INTO productos (categoria, nombre, precio, descripcion, puntaje, cantidad)
-        VALUES (#{prod.categoria.nombre}, #{prod.nombre}, #{prod.precio}, #{prod.descripcion}, #{prod.puntaje},
-                #{prod.cantidad})
-    </insert>
+	<insert id="insertProduct" parameterType="map" useGeneratedKeys="true" keyProperty="prod.id" keyColumn="id">
+		INSERT INTO productos (categoria, nombre, precio, descripcion, puntaje, cantidad)
+		VALUES (#{prod.categoria.nombre}, #{prod.nombre}, #{prod.precio}, #{prod.descripcion}, #{prod.puntaje},
+				#{prod.cantidad})
+	</insert>
 
-    <update id="updateExistencias" parameterType="map">
-        UPDATE productos
-        SET cantidad = cantidad - #{cantidad}
-        WHERE id = #{producto}
-    </update>
+	<update id="updateExistencias" parameterType="map">
+		UPDATE productos
+		SET cantidad = cantidad - #{cantidad}
+		WHERE id = #{producto}
+	</update>
 
-    <resultMap id="prodResult" type="Producto">
-        <id property="id" column="prod_id"/>
-        <result property="nombre" column="prod_nombre"/>
-        <result property="precio" column="prod_precio"/>
-        <result property="descripcion" column="prod_descripcion"/>
-        <result property="puntaje" column="prod_puntaje"/>
-        <result property="cantidad" column="prod_cantidad"/>
+	<update id="updateProductInformation" parameterType="map">
+		UPDATE productos
+		SET cantidad    = #{producto.cantidad},
+			nombre      = #{producto.nombre},
+			precio      = #{producto.precio},
+			descripcion = #{producto.descripcion}
+		WHERE id = #{producto.id}
+	</update>
 
-        <association property="categoria"
-                     resultMap="edu.escuelaing.arsw.markethub.persistence.dao.CategoriaDAO.categoryResult"/>
-        <collection property="imagenes" ofType="Imagen"
-                    resultMap="edu.escuelaing.arsw.markethub.persistence.dao.ImagenDAO.imgResult"/>
-    </resultMap>
+	<resultMap id="prodResult" type="Producto">
+		<id property="id" column="prod_id"/>
+		<result property="nombre" column="prod_nombre"/>
+		<result property="precio" column="prod_precio"/>
+		<result property="descripcion" column="prod_descripcion"/>
+		<result property="puntaje" column="prod_puntaje"/>
+		<result property="cantidad" column="prod_cantidad"/>
+
+		<association property="categoria"
+					 resultMap="edu.escuelaing.arsw.markethub.persistence.dao.CategoriaDAO.categoryResult"/>
+		<collection property="imagenes" ofType="Imagen"
+					resultMap="edu.escuelaing.arsw.markethub.persistence.dao.ImagenDAO.imgResult"/>
+	</resultMap>
 
 </mapper>
