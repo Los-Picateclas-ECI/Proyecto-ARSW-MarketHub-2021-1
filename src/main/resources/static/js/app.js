@@ -147,9 +147,9 @@ const app = (function () {
                     'width="100%"' + ">" + "</div>";
             }
             html += "</div>" + "</div>" + '<div class="container-row__2">' + "<p>" + "Productos / " + data.categoria.nombre +
-                "</p>" + "<h1>" + data.nombre + "</h1>" + "<h4>" + "$ " + data.precio + "</h4>" + '<input id="ProdID' + data.id + '" type="number"  min="1" value="' +
+                "</p>" + "<h1 id='prodnombre'>" + data.nombre + "</h1>" + "<h4 id='prodprecio'>" + "$ " + data.precio + "</h4>" + '<input id="ProdID' + data.id + '" type="number"  min="1" value="' +
                 data.cantidad + '" max="' + data.cantidad + '">' + '<a class="container-row__2-btn" onclick="app.registerProductInToCar()">Añadir Al Carrito</a>' + '<h3>Detalles del Producto <i class="fa fa-indent"></i></h3>' +
-                "<br>" + "<p>" + data.descripcion + "</p>" + "</div>";
+                "<br>" + "<p id='proddescr'>" + data.descripcion + "</p>" + "</div>";
             $("#container-row__detail").append($(html));
         }
 
@@ -219,6 +219,7 @@ const app = (function () {
             prodData[selectedProd].descripcion = document.getElementById("descripcion").value;
             const data = prodData[selectedProd];
             apiclient.updateProductInfo(data);
+            realtime.sendProductUpdate(data);
         }
 
         function registerUser() {
