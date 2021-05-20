@@ -15,94 +15,91 @@
 
 </head>
 <body>
-    <!-- barra superior-->
-    <div class="container-fluid">
-        <div class="row justify-content-center align-content-center">
-            <div class="col-8 barra">
-                <a href="/inicio"><img alt="LogoMarketHub" src="./img/logoLarge.png" width="125px"></a>
+<!-- barra superior-->
+<div class="container-fluid">
+    <div class="row justify-content-center align-content-center">
+        <div class="col-8 barra">
+            <a href="#"><img alt="LogoMarketHub" src="./img/logoLarge.png" width="125px"></a>
+        </div>
+        <div class="col-4 text-right barra">
+            <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
+                <li>
+                    <a href="#" class="px-3 text-light perfil dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-edit" style="font-size:26px;color:white"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item menuperfil cerrar" href="#"><i class="fas fa-sign-out-alt m-1"></i>Salir</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- barra lateral-->
+<div class="account-page">
+    <div class="container">
+        <div style="margin: 50px auto 100px auto; max-width: 800px;">
+            <div class="container-fluid">
+                <div class="row ">
+                    <div class="barra-lateral col-12 col-sm-auto ">
+                        <nav class="menu d-flex d-sm-block justify-content-center flex-wgrap">
+                            <a href="/index"><i class="fas fa-home"></i><span>Inicio</span></a>
+                            <a href="/product-registration"><i class="far fa-file-alt"></i><span>Formulario</span></a>
+                            <a href="/product-datails"><i class="fab fa-gg"></i><span>Detalles de productos</span></a>
+                            <a href="#"><i class="fas fa-hand-holding-usd"></i><span>Detalles de ventas</span></a>
+                            <a href="#"><i class="fas fa-cogs"></i><span>Configuración de productos</span></a>
+                            <a href="/account-modification"><i class="fas fa-users"></i><span>Configuración de perfil de usuario</span></a>
+
+                        </nav>
+                </div>
             </div>
-            <div class="col-4 text-right barra">
-                <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
-                    <li>
-                        <a href="#" class="px-3 text-light perfil dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user-edit" style="font-size:26px;color:white"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item menuperfil cerrar" href="#"><i class="fas fa-sign-out-alt m-1"></i>Salir</a>
-                        </div>
-                    </li>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- Pie de pagina -->
+<div class="footer">
+    <div class="container">
+        <div class="container-row">
+            <div class="footer-col-1">
+                <h3>Descarga nuestra aplicación</h3>
+                <p>Descarga la aplicación en sus versiones:</p>
+                <div class="app-logo">
+                    <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1"><img alt="GitHub" src="./img/GitHub.png"></a>
+                    <img alt="AppleStore" src="./img/docker.png">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img alt="LogoLargo" src="./img/logoLarge.png">
+                <p>MarketHub brinda a sus vendedores una mejor experiencia al momento de vender sus productos.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Contactanos</h3>
+                <ul>
+                    <li><a href="https://github.com/danielrincon-m">Daniel Rincon</a></li>
+                    <li><a href="mailto: paula.guevara-s@mail.escuelaing.edu.co">Paula Guevara</a></li>
+                    <li><a href="https://wa.me/573174414419">Andres Calderón</a></li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Síguenos En</h3>
+                <ul>
+                    <li><a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1">Github</a></li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>Facebook</li>
                 </ul>
             </div>
         </div>
+        <hr>
+        <p class="copyright">Copyright 2020 - MarketHub</p>
     </div>
-
-    <!-- barra lateral-->
-    <div class="container-fluid">
-        <div class="row ">
-            <div class="barra-lateral col-12 col-sm-auto ">
-            <nav class="menu d-flex d-sm-block justify-content-center flex-wgrap">
-                <a href="#"><i class="fas fa-home"></i><span>Inicio</span></a>
-                <a href="#"><i class="far fa-file-alt"></i><span>Formulario</span></a>
-                <a href="#"><i class="fab fa-gg"></i><span>Detalles de productos</span></a>
-                <a href="#"><i class="fas fa-hand-holding-usd"></i><span>Detalles de ventas</span></a>
-                <a href="#"><i class="fas fa-cogs"></i><span>Configuración de productos</span></a>
-                <a href="#"><i class="fas fa-users"></i><span>Configuración de perfil de usuario</span></a>
-                <a href="#"><i class="far fa-comment-dots"></i><span>Chat</span></a>
-            </nav>
-        </div>
-        <main class="main col">
-            <div class="row justify-content-center alin-content-center text-center" >
-                <div class="columna col-lg-6">
-                    Contenido dashboard
-                </div>
-            </div>
-
-        </main>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-    <!-- Pie de pagina -->
-    <div class="footer">
-        <div class="container">
-            <div class="container-row">
-                <div class="footer-col-1">
-                    <h3>Descarga nuestra aplicación</h3>
-                    <p>Descarga la aplicación en sus versiones:</p>
-                    <div class="app-logo">
-                        <a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1"><img alt="GitHub" src="./img/GitHub.png"></a>
-                        <img alt="AppleStore" src="./img/docker.png">
-                    </div>
-                </div>
-                <div class="footer-col-2">
-                    <img alt="LogoLargo" src="./img/logoLarge.png">
-                    <p>MarketHub brinda a sus vendedores una mejor experiencia al momento de vender sus productos.</p>
-                </div>
-                <div class="footer-col-3">
-                    <h3>Contactanos</h3>
-                    <ul>
-                        <li><a href="https://github.com/danielrincon-m">Daniel Rincon</a></li>
-                        <li><a href="mailto: paula.guevara-s@mail.escuelaing.edu.co">Paula Guevara</a></li>
-                        <li><a href="https://wa.me/573174414419">Andres Calderón</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col-4">
-                    <h3>Síguenos En</h3>
-                    <ul>
-                        <li><a href="https://github.com/Los-Picateclas-ECI/Proyecto-ARSW-MarketHub-2021-1">Github</a></li>
-                        <li>Twitter</li>
-                        <li>Instagram</li>
-                        <li>Facebook</li>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-            <p class="copyright">Copyright 2020 - MarketHub</p>
-        </div>
-    </div>
+</div>
 
 </body>
 
